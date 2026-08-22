@@ -5085,6 +5085,28 @@ avviaSismografo("sismoItalia", 0.8);
 
 </script>
 
+
+
+<!-- FIREBASE ANALYTICS -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCyrW23MTFRWW0dogA5bDhWBdbN5V4hyo",
+    authDomain: "news-terremoti.firebaseapp.com",
+    projectId: "news-terremoti",
+    storageBucket: "news-terremoti.firebasestorage.app",
+    messagingSenderId: "944750257608",
+    appId: "1:944750257608:web:f0add770fcf35724810cfd",
+    measurementId: "G-WC79E3M0FW"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+<!-- FINE FIREBASE ANALYTICS -->
+
 </body>
 </html>
 
