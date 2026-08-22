@@ -1143,145 +1143,7 @@ footer {
 </style>
 
 
-<style id="pannello-scomparsa-destra">
 
-/* Pannello laterale */
-.cards {
-  position: fixed !important;
-
-  right: 0 !important;
-  top: 50% !important;
-
-  transform:
-    translateY(-50%)
-    translateX(calc(100% - 46px)) !important;
-
-  width: 350px !important;
-  max-width: 350px !important;
-
-  margin: 0 !important;
-
-  padding:
-    18px 18px 18px 58px !important;
-
-  z-index: 9999 !important;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(75,0,5,.94),
-      rgba(22,2,6,.97)
-    ) !important;
-
-  border:
-    2px solid #ff2638 !important;
-
-  border-right: 0 !important;
-
-  border-radius:
-    14px 0 0 14px !important;
-
-  box-shadow:
-    0 0 12px rgba(255,25,45,.75),
-    0 0 35px rgba(255,20,40,.30) !important;
-
-  transition:
-    transform .35s ease !important;
-}
-
-
-/* Pannello aperto */
-.cards.pannello-aperto {
-  transform:
-    translateY(-50%)
-    translateX(0) !important;
-}
-
-
-/* Linguetta laterale */
-.cards::after {
-  content: "☰";
-
-  position: absolute;
-
-  left: 0;
-  top: 0;
-
-  width: 46px;
-  height: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background:
-    linear-gradient(
-      180deg,
-      #d51225,
-      #79000c
-    );
-
-  color: white;
-
-  font-size: 24px;
-  font-weight: bold;
-
-  cursor: pointer;
-
-  border-radius:
-    11px 0 0 11px;
-
-  box-shadow:
-    0 0 12px rgba(255,20,40,.7);
-}
-
-
-/* Testo monitoraggio */
-.cards::before {
-  content: "● MONITORAGGIO SISMICO";
-
-  display: block;
-
-  color: #ff6673;
-
-  font-size: 11px;
-  font-weight: bold;
-  letter-spacing: 1.3px;
-
-  margin-bottom: 15px;
-}
-
-
-/* Elementi interni */
-.cards .card {
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-
-  width: 100% !important;
-
-  padding:
-    8px 0 13px !important;
-}
-
-
-.cards .card:not(:last-child) {
-  border-bottom:
-    1px solid rgba(255,80,90,.25) !important;
-}
-
-
-/* Telefono */
-@media (max-width: 700px) {
-
-  .cards {
-    width: 300px !important;
-    max-width: 85vw !important;
-  }
-
-}
-
-</style>
 
 
 <style id="foto-localita-terremoti">
@@ -2082,6 +1944,1328 @@ body > *:not(#lavaVulcanoCanvas) {
 
 </style>
 
+
+<style id="pulsanti-monitoraggio-home-css">
+
+.pulsanti-monitoraggio-home {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 14px;
+
+  flex-wrap: wrap;
+
+  margin-top: 8px;
+
+}
+
+.pulsanti-monitoraggio-home a {
+
+  display: inline-block;
+
+  margin: 0 !important;
+
+  padding: 13px 24px !important;
+
+  text-decoration: none;
+
+  font-weight: 900;
+
+}
+
+.pulsante-flegrei-italia {
+
+  background: #078bbf !important;
+
+}
+
+.pulsante-mondo {
+
+  background: #2456a6 !important;
+
+}
+
+.pulsante-chat-community {
+
+  background: #0a9b65 !important;
+
+}
+
+@media (max-width: 700px) {
+
+  .pulsanti-monitoraggio-home {
+
+    flex-direction: column;
+
+  }
+
+  .pulsanti-monitoraggio-home a {
+
+    width: min(
+      90%,
+      360px
+    );
+
+    box-sizing: border-box;
+
+  }
+
+}
+
+</style>
+
+
+<style id="terremoti-italia-colonna-css">
+
+#terremoti-italia .live-box {
+  text-align: left !important;
+}
+
+#terremoti-italia .quake-list {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 8px !important;
+
+  width: 100% !important;
+}
+
+#terremoti-italia .quake-item {
+  width: 100% !important;
+  max-width: 850px !important;
+
+  box-sizing: border-box !important;
+
+  margin: 0 !important;
+
+  padding: 12px 16px !important;
+
+  text-align: left !important;
+
+  border-radius: 8px !important;
+
+  background:
+    rgba(4, 25, 40, 0.88) !important;
+
+  border-left:
+    4px solid #159bd3 !important;
+}
+
+#terremoti-italia .quake-item img {
+  display: none !important;
+}
+
+#terremoti-italia .quake-item .quake-image,
+#terremoti-italia .quake-item .immagine,
+#terremoti-italia .quake-item .image {
+  display: none !important;
+}
+
+#terremoti-italia .quake-item h3,
+#terremoti-italia .quake-item h4,
+#terremoti-italia .quake-item strong {
+  text-align: left !important;
+}
+
+#terremoti-italia .notice {
+  text-align: left !important;
+}
+
+</style>
+
+
+<style id="liste-terremoti-colonna-sinistra">
+
+#terremoti-italia .quake-list,
+#campi-flegrei .quake-list,
+#quakeListItalia,
+#quakeListFlegrei {
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  align-items: flex-start !important;
+
+  justify-content: flex-start !important;
+
+  width: 100% !important;
+
+  gap: 8px !important;
+
+  text-align: left !important;
+}
+
+
+#terremoti-italia .quake,
+#campi-flegrei .quake,
+#quakeListItalia .quake,
+#quakeListFlegrei .quake {
+
+  width: 100% !important;
+
+  max-width: 850px !important;
+
+  margin-left: 0 !important;
+  margin-right: auto !important;
+
+  box-sizing: border-box !important;
+
+  text-align: left !important;
+}
+
+
+#terremoti-italia .quake > *,
+#campi-flegrei .quake > *,
+#quakeListItalia .quake > *,
+#quakeListFlegrei .quake > * {
+
+  text-align: left !important;
+
+}
+
+
+#terremoti-italia .quake h4,
+#campi-flegrei .quake h4,
+#quakeListItalia .quake h4,
+#quakeListFlegrei .quake h4 {
+
+  text-align: left !important;
+
+}
+
+
+#terremoti-italia .quake-meta,
+#campi-flegrei .quake-meta,
+#quakeListItalia .quake-meta,
+#quakeListFlegrei .quake-meta {
+
+  text-align: left !important;
+
+}
+
+
+#terremoti-italia .live-box,
+#campi-flegrei .live-box {
+
+  text-align: left !important;
+
+}
+
+</style>
+
+
+<style id="colonna-verticale-terremoti">
+
+/* 🇮🇹 ITALIA — UNA SOLA COLONNA */
+#quakeListItalia {
+  display: block !important;
+  width: 100% !important;
+  text-align: left !important;
+}
+
+#quakeListItalia .quake {
+  display: flex !important;
+  width: 100% !important;
+  max-width: 850px !important;
+
+  margin: 0 0 8px 0 !important;
+
+  box-sizing: border-box !important;
+
+  float: none !important;
+
+  text-align: left !important;
+}
+
+
+/* 🌋 CAMPI FLEGREI — UNA SOLA COLONNA */
+#quakeListFlegrei {
+  display: block !important;
+  width: 100% !important;
+  text-align: left !important;
+}
+
+#quakeListFlegrei .quake {
+  display: flex !important;
+  width: 100% !important;
+  max-width: 850px !important;
+
+  margin: 0 0 8px 0 !important;
+
+  box-sizing: border-box !important;
+
+  float: none !important;
+
+  text-align: left !important;
+}
+
+
+/* contenitore interno sempre a sinistra */
+#quakeListItalia .quake > *,
+#quakeListFlegrei .quake > * {
+  text-align: left !important;
+}
+
+
+/* niente griglia */
+#quakeListItalia,
+#quakeListFlegrei {
+  grid-template-columns: none !important;
+  columns: 1 !important;
+}
+
+</style>
+
+
+<style id="terremoti-bordo-sinistro-finale">
+
+/* 🇮🇹 SEZIONE ITALIA */
+#terremoti-italia {
+  width: 100% !important;
+  max-width: none !important;
+
+  margin: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 20px !important;
+
+  box-sizing: border-box !important;
+
+  text-align: left !important;
+}
+
+
+/* contenitore interno */
+#terremoti-italia > .container {
+  width: 100% !important;
+  max-width: none !important;
+
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+  padding-left: 0 !important;
+  padding-right: 20px !important;
+
+  box-sizing: border-box !important;
+
+  text-align: left !important;
+}
+
+
+/* contenitore della lista */
+#terremoti-italia #quakeListItalia {
+  display: block !important;
+
+  width: 100% !important;
+
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+  padding-left: 0 !important;
+
+  text-align: left !important;
+}
+
+
+/* singoli terremoti */
+#terremoti-italia #quakeListItalia .quake {
+  display: flex !important;
+
+  width: 100% !important;
+  max-width: 850px !important;
+
+  margin-left: 0 !important;
+  margin-right: auto !important;
+
+  margin-top: 0 !important;
+  margin-bottom: 8px !important;
+
+  float: none !important;
+
+  box-sizing: border-box !important;
+
+  text-align: left !important;
+}
+
+
+/* 🌋 CAMPI FLEGREI */
+#campi-flegrei {
+  width: 100% !important;
+  max-width: none !important;
+
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+  text-align: left !important;
+}
+
+
+#campi-flegrei > .container {
+  width: 100% !important;
+  max-width: none !important;
+
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+  padding-left: 0 !important;
+  padding-right: 20px !important;
+
+  box-sizing: border-box !important;
+
+  text-align: left !important;
+}
+
+
+#campi-flegrei #quakeListFlegrei {
+  display: block !important;
+
+  width: 100% !important;
+
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+  padding-left: 0 !important;
+
+  text-align: left !important;
+}
+
+
+#campi-flegrei #quakeListFlegrei .quake {
+  display: flex !important;
+
+  width: 100% !important;
+  max-width: 850px !important;
+
+  margin-left: 0 !important;
+  margin-right: auto !important;
+
+  margin-top: 0 !important;
+  margin-bottom: 8px !important;
+
+  float: none !important;
+
+  box-sizing: border-box !important;
+
+  text-align: left !important;
+}
+
+</style>
+
+
+<style id="terremoti-senza-rettangoli">
+
+/* 🇮🇹 Italia */
+#terremoti-italia #quakeListItalia .quake {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* 🌋 Campi Flegrei */
+#campi-flegrei #quakeListFlegrei .quake {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Mantieni tutte le scritte */
+#terremoti-italia #quakeListItalia .quake *,
+#campi-flegrei #quakeListFlegrei .quake * {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Elimina eventuali sfondi generati */
+#terremoti-italia #quakeListItalia .quake::before,
+#terremoti-italia #quakeListItalia .quake::after,
+#campi-flegrei #quakeListFlegrei .quake::before,
+#campi-flegrei #quakeListFlegrei .quake::after {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+</style>
+
+
+<style id="terremoti-completamente-trasparenti">
+
+#terremoti-italia #quakeListItalia .quake,
+#campi-flegrei #quakeListFlegrei .quake {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+#terremoti-italia #quakeListItalia .quake *,
+#campi-flegrei #quakeListFlegrei .quake * {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+#terremoti-italia #quakeListItalia .quake::before,
+#terremoti-italia #quakeListItalia .quake::after,
+#campi-flegrei #quakeListFlegrei .quake::before,
+#campi-flegrei #quakeListFlegrei .quake::after {
+  display: none !important;
+  opacity: 1 !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+</style>
+
+
+<style id="terremoti-zero-sfocatura">
+
+#terremoti-italia #quakeListItalia .quake,
+#campi-flegrei #quakeListFlegrei .quake {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  text-shadow: none !important;
+}
+
+#terremoti-italia #quakeListItalia .quake *,
+#campi-flegrei #quakeListFlegrei .quake * {
+  opacity: 1 !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+#terremoti-italia #quakeListItalia .quake::before,
+#terremoti-italia #quakeListItalia .quake::after,
+#campi-flegrei #quakeListFlegrei .quake::before,
+#campi-flegrei #quakeListFlegrei .quake::after {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+</style>
+
+
+<style id="mondo-colonna-destra">
+
+/* 🌍 MONDO — UNA SOLA COLONNA A DESTRA */
+#ultimi-terremoti {
+  text-align: right !important;
+}
+
+#ultimi-terremoti > .container {
+  width: 100% !important;
+  max-width: none !important;
+
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+  padding-left: 20px !important;
+  padding-right: 0 !important;
+
+  box-sizing: border-box !important;
+
+  text-align: right !important;
+}
+
+#ultimi-terremoti .live-box {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+
+  text-align: right !important;
+}
+
+#ultimi-terremoti #quakeList {
+  display: block !important;
+
+  width: 100% !important;
+
+  margin-left: auto !important;
+  margin-right: 0 !important;
+
+  padding: 0 !important;
+
+  text-align: right !important;
+}
+
+#ultimi-terremoti #quakeList .quake {
+  display: flex !important;
+
+  width: 100% !important;
+  max-width: 850px !important;
+
+  margin-left: auto !important;
+  margin-right: 0 !important;
+
+  margin-top: 0 !important;
+  margin-bottom: 8px !important;
+
+  float: none !important;
+
+  box-sizing: border-box !important;
+
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  opacity: 1 !important;
+
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  text-align: right !important;
+}
+
+/* testo a destra */
+#ultimi-terremoti #quakeList .quake * {
+  opacity: 1 !important;
+
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  text-align: right !important;
+}
+
+/* elimina eventuali effetti grafici */
+#ultimi-terremoti #quakeList .quake::before,
+#ultimi-terremoti #quakeList .quake::after {
+  display: none !important;
+  content: none !important;
+
+  background: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+</style>
+
+
+<style id="mondo-alto-sinistra-final">
+
+/* 🌍 MONDO — IN ALTO E A BORDO SINISTRO */
+
+#ultimi-terremoti {
+  position: relative !important;
+
+  width: 100% !important;
+  max-width: none !important;
+
+  margin: 0 !important;
+
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  text-align: left !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+#ultimi-terremoti > .container {
+  width: 100% !important;
+  max-width: none !important;
+
+  margin-left: 0 !important;
+  margin-right: auto !important;
+
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  text-align: left !important;
+}
+
+#ultimi-terremoti .section-title,
+#ultimi-terremoti .section-subtitle {
+  text-align: left !important;
+
+  margin-left: 20px !important;
+}
+
+#ultimi-terremoti .live-box {
+  width: 100% !important;
+  max-width: none !important;
+
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  text-align: left !important;
+}
+
+#ultimi-terremoti .live-head {
+  text-align: left !important;
+}
+
+#ultimi-terremoti #quakeList {
+  display: flex !important;
+
+  flex-direction: column !important;
+
+  align-items: flex-start !important;
+
+  justify-content: flex-start !important;
+
+  width: 100% !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  gap: 8px !important;
+
+  text-align: left !important;
+}
+
+#ultimi-terremoti #quakeList .quake {
+  display: flex !important;
+
+  flex-direction: row !important;
+
+  width: 100% !important;
+  max-width: 850px !important;
+
+  margin: 0 !important;
+
+  box-sizing: border-box !important;
+
+  text-align: left !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+
+  opacity: 1 !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+#ultimi-terremoti #quakeList .quake img,
+#ultimi-terremoti #quakeList .foto-localita,
+#ultimi-terremoti #quakeList .foto-localita-placeholder,
+#ultimi-terremoti #quakeList .mappa-terremoto {
+  display: none !important;
+}
+
+</style>
+
+
+<style id="mondo-bordo-sinistro">
+
+/* 🌍 TERREMOTI MONDO — BORDE SINISTRO */
+
+#ultimi-terremoti {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  text-align: left !important;
+
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+#ultimi-terremoti > .container {
+  width: 100% !important;
+  max-width: none !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  text-align: left !important;
+}
+
+/* Titolo e sottotitolo */
+#ultimi-terremoti .section-title,
+#ultimi-terremoti .section-subtitle {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+
+  text-align: left !important;
+}
+
+/* Contenitore */
+#ultimi-terremoti .live-box {
+  width: 100% !important;
+  max-width: none !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  text-align: left !important;
+
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Lista */
+#ultimi-terremoti #quakeList {
+  display: flex !important;
+
+  flex-direction: column !important;
+
+  align-items: flex-start !important;
+
+  justify-content: flex-start !important;
+
+  width: 100% !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  gap: 8px !important;
+
+  text-align: left !important;
+}
+
+/* Singolo terremoto */
+#ultimi-terremoti #quakeList .quake {
+  display: flex !important;
+
+  flex-direction: row !important;
+
+  width: 850px !important;
+  max-width: 850px !important;
+
+  margin: 0 !important;
+  padding: 8px 0 !important;
+
+  box-sizing: border-box !important;
+
+  text-align: left !important;
+
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+
+  box-shadow: none !important;
+
+  opacity: 1 !important;
+
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Nessuna immagine */
+#ultimi-terremoti #quakeList img,
+#ultimi-terremoti #quakeList .foto-localita,
+#ultimi-terremoti #quakeList .foto-localita-placeholder,
+#ultimi-terremoti #quakeList .mappa-terremoto {
+  display: none !important;
+}
+
+</style>
+
+
+<style id="mondo-bordo-destro-final">
+
+/* 🌍 MONDO — BORDO DESTRO */
+
+#ultimi-terremoti {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: right !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+#ultimi-terremoti > .container {
+  width: 100% !important;
+  max-width: none !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  text-align: right !important;
+}
+
+/* Titolo */
+#ultimi-terremoti .section-title,
+#ultimi-terremoti .section-subtitle {
+  text-align: right !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+/* Contenitore */
+#ultimi-terremoti .live-box {
+  width: 100% !important;
+  max-width: none !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  text-align: right !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Lista a destra */
+#ultimi-terremoti #quakeList {
+  display: flex !important;
+  flex-direction: column !important;
+
+  align-items: flex-end !important;
+  justify-content: flex-start !important;
+
+  width: 100% !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  gap: 8px !important;
+
+  text-align: right !important;
+}
+
+/* Singoli terremoti */
+#ultimi-terremoti #quakeList .quake {
+  display: flex !important;
+  flex-direction: row !important;
+
+  width: 850px !important;
+  max-width: 850px !important;
+
+  margin: 0 !important;
+  padding: 8px 0 !important;
+
+  box-sizing: border-box !important;
+
+  text-align: right !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  opacity: 1 !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Contenuto interno */
+#ultimi-terremoti #quakeList .quake > * {
+  text-align: right !important;
+}
+
+/* Nessuna immagine */
+#ultimi-terremoti #quakeList img,
+#ultimi-terremoti #quakeList .foto-localita,
+#ultimi-terremoti #quakeList .foto-localita-placeholder,
+#ultimi-terremoti #quakeList .mappa-terremoto {
+  display: none !important;
+}
+
+</style>
+
+
+<style id="mondo-vero-bordo-destro">
+
+/* 🌍 MONDO — COLONNA REALMENTE A BORDO DESTRO */
+
+#ultimi-terremoti {
+    width: 100vw !important;
+    max-width: 100vw !important;
+
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: 0 !important;
+
+    padding: 0 !important;
+
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+
+    text-align: right !important;
+}
+
+/* contenitore che occupa tutta la finestra */
+#ultimi-terremoti > .container {
+    width: 100vw !important;
+    max-width: 100vw !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    box-sizing: border-box !important;
+
+    text-align: right !important;
+}
+
+/* nascondiamo titolo/sottotitolo se stanno interferendo */
+#ultimi-terremoti .section-title,
+#ultimi-terremoti .section-subtitle {
+    text-align: right !important;
+
+    margin-left: auto !important;
+    margin-right: 0 !important;
+}
+
+/* contenitore dati */
+#ultimi-terremoti .live-box {
+    width: 100vw !important;
+    max-width: 100vw !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+
+    text-align: right !important;
+}
+
+/* LISTA */
+#ultimi-terremoti #quakeList {
+    width: 100vw !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    align-items: flex-end !important;
+
+    justify-content: flex-start !important;
+
+    gap: 8px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    box-sizing: border-box !important;
+}
+
+/* OGNI TERREMOTO */
+#ultimi-terremoti #quakeList .quake {
+    width: 850px !important;
+    max-width: 850px !important;
+
+    margin-left: auto !important;
+    margin-right: 0 !important;
+
+    padding: 8px 0 !important;
+
+    box-sizing: border-box !important;
+
+    display: flex !important;
+
+    text-align: right !important;
+
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+
+    opacity: 1 !important;
+    filter: none !important;
+
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* testo a destra */
+#ultimi-terremoti #quakeList .quake > * {
+    text-align: right !important;
+}
+
+/* nessuna immagine */
+#ultimi-terremoti #quakeList img,
+#ultimi-terremoti #quakeList .mappa-terremoto,
+#ultimi-terremoti #quakeList .foto-localita,
+#ultimi-terremoti #quakeList .foto-localita-placeholder {
+    display: none !important;
+}
+
+</style>
+
+
+<style id="mondo-in-alto-final">
+
+/* 🌍 MONDO — POSIZIONE IN ALTO A DESTRA */
+
+#ultimi-terremoti {
+    position: absolute !important;
+
+    top: 0 !important;
+    right: 0 !important;
+    left: auto !important;
+
+    width: 850px !important;
+    max-width: 850px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    z-index: 50 !important;
+
+    background: transparent !important;
+}
+
+/* contenitore */
+#ultimi-terremoti > .container {
+    width: 850px !important;
+    max-width: 850px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    text-align: right !important;
+}
+
+/* titolo */
+#ultimi-terremoti .section-title {
+    margin: 0 0 10px 0 !important;
+    padding: 0 !important;
+
+    text-align: right !important;
+}
+
+/* sottotitolo */
+#ultimi-terremoti .section-subtitle {
+    margin: 0 0 15px 0 !important;
+    padding: 0 !important;
+
+    text-align: right !important;
+}
+
+/* box */
+#ultimi-terremoti .live-box {
+    width: 850px !important;
+    max-width: 850px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+
+    text-align: right !important;
+}
+
+/* lista */
+#ultimi-terremoti #quakeList {
+    width: 850px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    align-items: flex-end !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    gap: 6px !important;
+}
+
+/* singoli terremoti */
+#ultimi-terremoti #quakeList .quake {
+    width: 850px !important;
+    max-width: 850px !important;
+
+    margin: 0 !important;
+    padding: 7px 0 !important;
+
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+
+    text-align: right !important;
+
+    opacity: 1 !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* testo */
+#ultimi-terremoti #quakeList .quake * {
+    text-align: right !important;
+}
+
+/* niente immagini */
+#ultimi-terremoti #quakeList img,
+#ultimi-terremoti #quakeList .mappa-terremoto,
+#ultimi-terremoti #quakeList .foto-localita,
+#ultimi-terremoti #quakeList .foto-localita-placeholder {
+    display: none !important;
+}
+
+</style>
+
+
+<style id="italia-eventi-centro-final">
+
+/* 🇮🇹 EVENTI RECENTI ITALIA — CENTRO PAGINA */
+
+#terremoti-italia {
+    width: 100% !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    text-align: center !important;
+
+    background: transparent !important;
+}
+
+/* contenitore centrale */
+#terremoti-italia > .container {
+    width: 100% !important;
+    max-width: none !important;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+    text-align: center !important;
+}
+
+/* titolo */
+#terremoti-italia .section-title,
+#terremoti-italia .section-subtitle {
+    text-align: center !important;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* box */
+#terremoti-italia .live-box {
+    width: 850px !important;
+    max-width: calc(100vw - 40px) !important;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    padding: 0 !important;
+
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+
+    text-align: center !important;
+}
+
+/* lista */
+#terremoti-italia #quakeListItalia {
+    width: 850px !important;
+    max-width: 100% !important;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    align-items: center !important;
+
+    gap: 8px !important;
+
+    text-align: center !important;
+}
+
+/* singoli terremoti */
+#terremoti-italia #quakeListItalia .quake {
+    width: 850px !important;
+    max-width: 100% !important;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    box-sizing: border-box !important;
+
+    text-align: left !important;
+
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+
+    opacity: 1 !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* nessuna immagine */
+#terremoti-italia #quakeListItalia img,
+#terremoti-italia #quakeListItalia .mappa-terremoto,
+#terremoti-italia #quakeListItalia .foto-localita,
+#terremoti-italia #quakeListItalia .foto-localita-placeholder {
+    display: none !important;
+}
+
+</style>
+
+
+<style id="nascondi-intestazione-eventi-italia">
+
+#terremoti-italia .live-head h3,
+#terremoti-italia #ultimoAggiornamentoItalia {
+  display: none !important;
+}
+
+</style>
+
 </head>
 
 <body>
@@ -2163,14 +3347,7 @@ body > *:not(#lavaVulcanoCanvas) {
     </div>
   </header>
 
-  <nav>
-    <div class="nav-inner">
-      <a href="#monitoraggio">Monitoraggio</a>
-      <a href="#ultimi-terremoti">Ultimi terremoti</a>
-      <a href="#campi-flegrei">Campi Flegrei</a>
-      <a href="#community">Community</a>
-    </div>
-  </nav>
+  
 
   <main>
 
@@ -2191,22 +3368,27 @@ body > *:not(#lavaVulcanoCanvas) {
     📡 Sismografi in tempo reale
   </h2>
 
-  <a
-    href="sismografi.html"
-    class="btn telegram"
-    style="
-      display: inline-block;
-      margin: 0;
-      padding: 13px 24px;
-    ">
-    📊 APRI I SISMOGRAFI IN TEMPO REALE →
-  </a>
+  <div class="pulsanti-monitoraggio-home">
 
-<a
-  href="chat.html"
-  class="btn pulsante-chat-community">
-  💬 CHAT COMMUNITY →
-</a>
+    <a
+      href="sismografi.html"
+      class="btn pulsante-flegrei-italia">
+      🌋 CAMPI FLEGREI E ITALIA →
+    </a>
+
+    <a
+      href="sismografi_mondo.html"
+      class="btn pulsante-mondo">
+      🌍 SISMOGRAFI MONDO →
+    </a>
+
+    <a
+      href="chat.html"
+      class="btn pulsante-chat-community">
+      💬 CHAT COMMUNITY →
+    </a>
+
+  </div>
 
 
 </section>
@@ -2281,68 +3463,21 @@ body > *:not(#lavaVulcanoCanvas) {
         </div>
       </div>
 
-      <p class="notice">
-        Fonte dati: INGV - Istituto Nazionale di Geofisica e Vulcanologia.
-        I dati possono essere successivamente revisionati.
-      </p>
+      
 
     </div>
   </div>
 </section>
 
-    <section id="monitoraggio">
-      <div class="container">
+    
 
-        <div class="cards">
-
-          <div class="card">
-            <div class="icon">🇮🇹</div>
-            <h3>Terremoti in Italia</h3>
-            <p>
-              Eventi sismici sul territorio italiano con attenzione
-              a magnitudo, profondità e localizzazione.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="icon">🌋</div>
-            <h3>Napoli e Campi Flegrei</h3>
-            <p>
-              Focus dedicato all'area flegrea e agli aggiornamenti
-              sull'attività sismica e vulcanica.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="icon">🌍</div>
-            <h3>Terremoti nel mondo</h3>
-            <p>
-              Una panoramica sugli eventi sismici internazionali
-              più rilevanti.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="icon">📊</div>
-            <h3>Dati sismici</h3>
-            <p>
-              Magnitudo, profondità, orario, localizzazione
-              e collegamento alla fonte dell'evento.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
 
     <section id="ultimi-terremoti">
       <div class="container">
 
         <h2 class="section-title">🔴 Ultimi terremoti nel mondo</h2>
 
-        <p class="section-subtitle">
-          Dati caricati automaticamente dal feed pubblico USGS.
-        </p>
+        
 
         <div class="live-box">
 
@@ -2366,10 +3501,7 @@ body > *:not(#lavaVulcanoCanvas) {
             </div>
           </div>
 
-          <p class="notice">
-            Fonte dati: USGS Earthquake Hazards Program.
-            I dati possono essere aggiornati o revisionati dalla fonte.
-          </p>
+          
 
         </div>
       </div>
@@ -2406,9 +3538,7 @@ body > *:not(#lavaVulcanoCanvas) {
         </div>
       </div>
 
-      <p class="notice">
-        Fonte dati: INGV - Istituto Nazionale di Geofisica e Vulcanologia.
-      </p>
+      
 
     </div>
   </div>
@@ -2510,6 +3640,16 @@ body > *:not(#lavaVulcanoCanvas) {
   <script>
     const FEED_USGS =
       "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson";
+
+
+caricaTerremotiMondo();
+
+setInterval(
+  caricaTerremotiMondo,
+  60000
+);
+
+
 
 function urlIngvItalia() {
   const fine = new Date();
@@ -2771,200 +3911,368 @@ function creaSchedaTerremoto(evento, conMappa = false) {
 }
 
 
-async function caricaDatiINGV() {
-  const listaItalia = document.getElementById("quakeListItalia");
-  const aggiornamentoItalia =
-    document.getElementById("ultimoAggiornamentoItalia");
 
-  const listaFlegrei = document.getElementById("quakeListFlegrei");
-  const aggiornamentoFlegrei =
-    document.getElementById("ultimoAggiornamentoFlegrei");
+async function caricaTerremotiMondo() {
+
+  const contenitore =
+    document.getElementById("quakeList");
+
+  const aggiornamento =
+    document.getElementById("ultimoAggiornamento");
+
+  if (!contenitore) {
+    console.error("❌ quakeList non trovato");
+    return;
+  }
 
   try {
-    const risposta = await fetch(urlIngvItalia());
+
+    const risposta =
+      await fetch(
+        FEED_USGS + "?t=" + Date.now(),
+        {
+          cache: "no-store"
+        }
+      );
 
     if (!risposta.ok) {
-      throw new Error("Errore INGV");
+      throw new Error(
+        "HTTP " + risposta.status
+      );
     }
 
-    const dati = await risposta.json();
+    const dati =
+      await risposta.json();
 
-    const tuttiEventi = dati.features
-      .filter(evento => evento.properties.mag !== null)
-      .sort(
-        (a, b) =>
-          b.properties.time - a.properties.time
-      );
+    const eventi =
+      (dati.features || [])
+        .filter(
+          evento =>
+            evento.properties &&
+            evento.properties.mag !== null
+        )
+        .sort(
+          (a, b) =>
+            b.properties.time -
+            a.properties.time
+        )
+        .slice(0, 10);
 
-    const eventiItalia = tuttiEventi.slice(0, 3);
+    contenitore.innerHTML = "";
 
-    const eventiFlegrei = tuttiEventi
-      .filter(evento => {
-        const luogo =
-          (evento.properties.place || "").toLowerCase();
+    if (!eventi.length) {
 
-        return (
-          luogo.includes("campi flegrei") ||
-          luogo.includes("pozzuoli") ||
-          luogo.includes("bacoli") ||
-          luogo.includes("napoli")
-        );
-      })
-      .slice(0, 10);
-
-    listaItalia.innerHTML = "";
-
-    eventiItalia.forEach(evento => {
-      listaItalia.appendChild(
-        creaSchedaTerremoto(evento, true)
-      );
-    });
-
-    listaFlegrei.innerHTML = "";
-
-    if (eventiFlegrei.length === 0) {
-      listaFlegrei.innerHTML = `
+      contenitore.innerHTML = `
         <div class="loading">
-          Nessun evento recente nell'area flegrea.
+          Nessun terremoto disponibile.
         </div>
       `;
-    } else {
-      eventiFlegrei.forEach(evento => {
-        listaFlegrei.appendChild(
-          creaSchedaTerremoto(evento)
-        );
-      });
+
+      return;
     }
 
-    const oraAggiornamento =
-      new Intl.DateTimeFormat("it-IT", {
-        dateStyle: "short",
-        timeStyle: "medium"
-      }).format(new Date());
+    eventi.forEach(evento => {
 
-    aggiornamentoItalia.textContent =
-      "Ultimo aggiornamento: " + oraAggiornamento;
+      contenitore.appendChild(
+        creaSchedaTerremoto(
+          evento,
+          false
+        )
+      );
 
-    aggiornamentoFlegrei.textContent =
-      "Ultimo aggiornamento: " + oraAggiornamento;
+    });
+
+    if (aggiornamento) {
+
+      const ora =
+        new Intl.DateTimeFormat(
+          "it-IT",
+          {
+            dateStyle: "short",
+            timeStyle: "medium"
+          }
+        ).format(new Date());
+
+      aggiornamento.textContent =
+        "Ultimo aggiornamento: " + ora;
+    }
+
+    console.log(
+      "🌍 Mondo:",
+      eventi.length,
+      "eventi"
+    );
 
   } catch (errore) {
-    console.error("INGV:", errore);
 
-    listaItalia.innerHTML = `
-      <div class="loading">
-        ⚠️ Dati INGV momentaneamente non disponibili.
-      </div>
-    `;
+    console.error(
+      "❌ Terremoti Mondo:",
+      errore
+    );
 
-    listaFlegrei.innerHTML = `
+    contenitore.innerHTML = `
       <div class="loading">
-        ⚠️ Dati Campi Flegrei momentaneamente non disponibili.
+        ⚠️ Dati terremoti Mondo momentaneamente non disponibili.
       </div>
     `;
   }
 }
-    async function caricaTerremoti() {
-      const contenitore = document.getElementById("quakeList");
-      const aggiornamento = document.getElementById("ultimoAggiornamento");
 
-      try {
-        const risposta = await fetch(FEED_USGS);
+async function caricaDatiINGV() {
 
-        if (!risposta.ok) {
-          throw new Error("Errore nel caricamento dei dati");
+  const listaItalia =
+    document.getElementById(
+      "quakeListItalia"
+    );
+
+  const aggiornamentoItalia =
+    document.getElementById(
+      "ultimoAggiornamentoItalia"
+    );
+
+  const listaFlegrei =
+    document.getElementById(
+      "quakeListFlegrei"
+    );
+
+  const aggiornamentoFlegrei =
+    document.getElementById(
+      "ultimoAggiornamentoFlegrei"
+    );
+
+
+  try {
+
+    const risposta =
+      await fetch(
+        "/api/ultimi-terremoti-italia?t=" +
+        Date.now(),
+        {
+          cache: "no-store"
         }
+      );
 
-        const dati = await risposta.json();
 
-        const eventi = dati.features
-          .filter(evento => evento.properties.mag !== null)
-          .sort(
-            (a, b) =>
-              b.properties.time - a.properties.time
-          )
-          .slice(0, 8);
+    if (!risposta.ok) {
 
-        contenitore.innerHTML = "";
+      throw new Error(
+        "Errore API INGV Italia HTTP " +
+        risposta.status
+      );
 
-        if (eventi.length === 0) {
-          contenitore.innerHTML =
-            '<div class="loading">Nessun evento disponibile.</div>';
-          return;
-        }
-
-        eventi.forEach(evento => {
-          const p = evento.properties;
-          const coordinate = evento.geometry.coordinates;
-
-          const profondita =
-            coordinate && coordinate.length > 2
-              ? Number(coordinate[2]).toFixed(1)
-              : "N/D";
-
-          const elemento = document.createElement("article");
-          elemento.className = "quake";
-
-          elemento.innerHTML = `
-            <div class="mag">
-              M ${formattaMagnitudo(p.mag)}
-            </div>
-
-            <div>
-              <h4>${p.place || "Località non disponibile"}</h4>
-
-              <div class="quake-meta">
-                🕒 ${formattaData(p.time)}
-                &nbsp; • &nbsp;
-                📏 Profondità ${profondita} km
-              </div>
-            </div>
-
-            <a
-              href="${p.url}"
-              target="_blank"
-              rel="noopener">
-              Dettagli →
-            </a>
-          `;
-
-          contenitore.appendChild(elemento);
-        });
-
-        aggiornamento.textContent =
-          "Ultimo aggiornamento pagina: " +
-          new Intl.DateTimeFormat("it-IT", {
-            dateStyle: "short",
-            timeStyle: "medium"
-          }).format(new Date());
-
-      } catch (errore) {
-        console.error(errore);
-
-        contenitore.innerHTML = `
-          <div class="loading">
-            ⚠️ Non è stato possibile caricare i dati sismici.
-            Riprova tra qualche minuto.
-          </div>
-        `;
-
-        aggiornamento.textContent =
-          "Dati momentaneamente non disponibili";
-      }
     }
 
-      caricaTerremoti();
-      caricaDatiINGV();
 
-      setInterval(
-        caricaTerremoti,
-        60000
+    const dati =
+      await risposta.json();
+
+
+    const tuttiEventi =
+      (dati.features || [])
+        .filter(
+          evento =>
+            evento.properties &&
+            evento.properties.mag !== null
+        );
+
+
+    /*
+     * 🇮🇹 ITALIA
+     *
+     * Gli eventi arrivano già ordinati
+     * dal backend INGV.
+     *
+     * Mostriamo gli ultimi 10.
+     */
+
+    const eventiItalia =
+      tuttiEventi.slice(
+        0,
+        10
       );
 
-      setInterval(
-        caricaDatiINGV,
-        60000
+
+    /*
+     * 🌋 CAMPI FLEGREI
+     *
+     * Manteniamo il filtro originale.
+     */
+
+    const eventiFlegrei =
+      tuttiEventi
+        .filter(
+          evento => {
+
+            const luogo =
+              (
+                evento.properties.place ||
+                ""
+              ).toLowerCase();
+
+
+            return (
+              luogo.includes(
+                "campi flegrei"
+              ) ||
+              luogo.includes(
+                "pozzuoli"
+              ) ||
+              luogo.includes(
+                "bacoli"
+              ) ||
+              luogo.includes(
+                "napoli"
+              )
+            );
+
+          }
+        )
+        .slice(
+          0,
+          10
+        );
+
+
+    /*
+     * 🇮🇹 RENDER ITALIA
+     */
+
+    listaItalia.innerHTML = "";
+
+
+    if (
+      eventiItalia.length === 0
+    ) {
+
+      listaItalia.innerHTML = `
+        <div class="loading">
+          Nessun terremoto M 1.5+
+          nelle ultime 24 ore.
+        </div>
+      `;
+
+    } else {
+
+      eventiItalia.forEach(
+        evento => {
+
+          listaItalia.appendChild(
+            creaSchedaTerremoto(
+              evento,
+              false
+            )
+          );
+
+        }
       );
+
+    }
+
+
+    /*
+     * 🌋 RENDER CAMPI FLEGREI
+     */
+
+    listaFlegrei.innerHTML = "";
+
+
+    if (
+      eventiFlegrei.length === 0
+    ) {
+
+      listaFlegrei.innerHTML = `
+        <div class="loading">
+          Nessun evento recente
+          nell'area flegrea.
+        </div>
+      `;
+
+    } else {
+
+      eventiFlegrei.forEach(
+        evento => {
+
+          listaFlegrei.appendChild(
+            creaSchedaTerremoto(
+              evento,
+              false
+            )
+          );
+
+        }
+      );
+
+    }
+
+
+    /*
+     * 🕒 AGGIORNAMENTO
+     */
+
+    const oraAggiornamento =
+      new Intl.DateTimeFormat(
+        "it-IT",
+        {
+          dateStyle: "short",
+          timeStyle: "medium"
+        }
+      ).format(
+        new Date()
+      );
+
+
+    aggiornamentoItalia.textContent =
+      "Ultimo aggiornamento: " +
+      oraAggiornamento;
+
+
+    aggiornamentoFlegrei.textContent =
+      "Ultimo aggiornamento: " +
+      oraAggiornamento;
+
+
+    console.log(
+      "🇮🇹 Italia:",
+      eventiItalia.length,
+      "eventi"
+    );
+
+
+    console.log(
+      "🌋 Campi Flegrei:",
+      eventiFlegrei.length,
+      "eventi"
+    );
+
+
+  } catch (errore) {
+
+    console.error(
+      "❌ INGV:",
+      errore
+    );
+
+
+    listaItalia.innerHTML = `
+      <div class="loading">
+        ⚠️ Dati INGV Italia
+        momentaneamente non disponibili.
+      </div>
+    `;
+
+
+    listaFlegrei.innerHTML = `
+      <div class="loading">
+        ⚠️ Dati Campi Flegrei
+        momentaneamente non disponibili.
+      </div>
+    `;
+
+  }
+
+}
+
+
 
 function avviaSismografo(canvasId, intensita = 1) {
   const canvas = document.getElementById(canvasId);
@@ -3063,50 +4371,7 @@ avviaSismografo("sismoItalia", 0.8);
 </script>
 
 
-<script id="js-pannello-scomparsa">
-document.addEventListener(
-  "DOMContentLoaded",
-  function () {
 
-    const pannello =
-      document.querySelector(".cards");
-
-    if (!pannello) return;
-
-    pannello.addEventListener(
-      "click",
-      function (evento) {
-
-        /*
-        Quando il pannello è chiuso,
-        qualsiasi click sulla linguetta
-        lo apre.
-        */
-
-        const rettangolo =
-          pannello.getBoundingClientRect();
-
-        const zonaLinguetta =
-          evento.clientX <
-          rettangolo.left + 55;
-
-        if (
-          zonaLinguetta ||
-          !pannello.classList.contains(
-            "pannello-aperto"
-          )
-        ) {
-          pannello.classList.toggle(
-            "pannello-aperto"
-          );
-        }
-
-      }
-    );
-
-  }
-);
-</script>
 
 
 
@@ -3778,6 +5043,16 @@ document.addEventListener(
     Primo caricamento:
     memorizza gli eventi già presenti.
   */
+  /*
+    Caricamento iniziale:
+    Italia + Campi Flegrei
+  */
+  caricaDatiINGV();
+
+
+  /*
+    Primo controllo degli allarmi
+  */
   controllaItalia();
   controllaMondo();
 
@@ -3796,9 +5071,130 @@ document.addEventListener(
   );
 
 
+  /*
+    Aggiornamento dati Italia +
+    Campi Flegrei ogni 60 secondi
+  */
+  setInterval(
+    caricaDatiINGV,
+    60000
+  );
+
+
 })();
 
 </script>
 
 </body>
 </html>
+
+<style id="mondo-bordo-destro-assoluto">
+
+/* 🌍 MONDO — ATTACCATO AL BORDO DESTRO DELLO SCHERMO */
+
+#ultimi-terremoti {
+    position: relative !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+    left: 0 !important;
+    right: 0 !important;
+
+    text-align: right !important;
+}
+
+/* contenitore a tutta larghezza */
+#ultimi-terremoti > .container {
+    width: 100vw !important;
+    max-width: 100vw !important;
+
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+    text-align: right !important;
+}
+
+/* live box */
+#ultimi-terremoti .live-box {
+    width: 100% !important;
+    max-width: none !important;
+
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+    text-align: right !important;
+
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+/* lista */
+#ultimi-terremoti #quakeList {
+    width: 100% !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    align-items: flex-end !important;
+
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+    text-align: right !important;
+}
+
+/* singoli terremoti */
+#ultimi-terremoti #quakeList .quake {
+    width: 850px !important;
+    max-width: 850px !important;
+
+    margin-left: auto !important;
+    margin-right: 0 !important;
+
+    padding-right: 0 !important;
+
+    box-sizing: border-box !important;
+
+    text-align: right !important;
+
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+
+    opacity: 1 !important;
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* testo interno */
+#ultimi-terremoti #quakeList .quake * {
+    text-align: right !important;
+}
+
+/* niente immagini/mappe */
+#ultimi-terremoti #quakeList img,
+#ultimi-terremoti #quakeList .mappa-terremoto,
+#ultimi-terremoti #quakeList .foto-localita,
+#ultimi-terremoti #quakeList .foto-localita-placeholder {
+    display: none !important;
+}
+
+</style>
+
