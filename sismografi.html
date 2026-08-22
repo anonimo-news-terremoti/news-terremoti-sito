@@ -2464,7 +2464,7 @@ function preparaCanvas(station) {
 async function scaricaDati(station) {
   try {
     const risposta = await fetch(
-      "/api/sismografo/" +
+      "https://news-terremoti-sito.onrender.com/api/sismografo/" +
       station +
       "?t=" +
       Date.now()
@@ -2775,12 +2775,15 @@ async function avviaSismografi() {
     animaSismografo(station);
   });
 
-  // Scarica tutti i sismografi contemporaneamente
-  await Promise.allSettled(
-    stazioniAttive.map(station =>
-      scaricaDati(station)
-    )
-  );
+  // NON bloccare l'apertura della pagina.
+  // I dati reali vengono caricati in background.
+  setTimeout(() => {
+    Promise.allSettled(
+      stazioniAttive.map(station =>
+        scaricaDati(station)
+      )
+    );
+  }, 100);
 }
 
 
@@ -2997,7 +3000,7 @@ async function scaricaMiniRegione(codice) {
 
   try {
     const risposta = await fetch(
-      "/api/sismografo/" +
+      "https://news-terremoti-sito.onrender.com/api/sismografo/" +
       station +
       "?t=" +
       Date.now()

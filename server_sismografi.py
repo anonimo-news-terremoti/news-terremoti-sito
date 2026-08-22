@@ -7,6 +7,14 @@ import numpy as np
 from obspy import read
 
 app = Flask(__name__, static_folder=".")
+
+@app.after_request
+def aggiungi_cors(response):
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Methods"] = "GET, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type"
+    return response
+
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
 
 # Cache temporanea dei dati dei sismografi
@@ -201,19 +209,22 @@ def api_sismografo(station):
 
     info = STAZIONI[station]
 
+    import time
+
+    adesso = time.time()
+
+    # Controlla la cache PRIMA di contattare INGV.
+    # In questo modo le richieste successive sono immediate.
+    cache = CACHE_SISMOGRAFI.get(station)
+
+    if cache and adesso - cache["time"] < CACHE_DURATA:
+        return jsonify(cache["data"])
+
     try:
         file_mseed = scarica(
             station,
             info["channel"]
         )
-
-        import time
-
-        adesso = time.time()
-        cache = CACHE_SISMOGRAFI.get(station)
-
-        if cache and adesso - cache["time"] < CACHE_DURATA:
-            return jsonify(cache["data"])
 
         dati = prepara_dati(file_mseed)
 
