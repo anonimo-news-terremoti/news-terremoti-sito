@@ -2843,6 +2843,14 @@ avviaSismografi();
  */
 async function leggiJSONSicuro(risposta, nome = "API") {
 
+  // HTTP 204 = nessun dato disponibile.
+  // Non è un errore: restituiamo un oggetto vuoto.
+  if (risposta.status === 204) {
+    return {
+      features: []
+    };
+  }
+
   const testo = await risposta.text();
 
   if (!testo || !testo.trim()) {
