@@ -5281,14 +5281,8 @@ setInterval(
 <!-- SIMULAZIONE TERREMOTO PUBBLICA -->
 <button
   id="test-terremoto-flegrei"
-  onclick='attivaEventoConfermato("CAM", {
-    mag: 3.2,
-    lat: 40.82,
-    lon: 14.14,
-    profondita: 2.5,
-    place: "SIMULAZIONE - Campi Flegrei"
-  })'
-  title="Simulazione grafica: non è un terremoto reale"
+  onclick="testTerremotoFlegrei()"
+  title="Simulazione grafica e audio: non è un terremoto reale"
   style="
     position:fixed;
     bottom:20px;
@@ -5306,6 +5300,33 @@ setInterval(
 >
 🧪 SIMULAZIONE TERREMOTO
 </button>
+
+<script>
+function testTerremotoFlegrei() {
+
+  console.log("🧪 TEST TERREMOTO CAMPI FLEGREI");
+
+  const audio = new Audio(
+    "/news-terremoti-sito/allarme_terremoto.wav?t=" + Date.now()
+  );
+
+  audio.volume = 1.0;
+
+  audio.play().then(() => {
+    console.log("🔊 Audio simulazione avviato");
+  }).catch((errore) => {
+    console.error("❌ Audio simulazione bloccato:", errore);
+  });
+
+  attivaEventoConfermato("CAM", {
+    mag: 3.2,
+    lat: 40.82,
+    lon: 14.14,
+    profondita: 2.5,
+    place: "SIMULAZIONE - Campi Flegrei"
+  });
+}
+</script>
 
 </body>
 </html>
