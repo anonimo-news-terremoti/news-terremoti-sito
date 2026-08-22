@@ -8,6 +8,22 @@ from obspy import read
 
 app = Flask(__name__, static_folder=".")
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
+
+# Cache temporanea dei dati dei sismografi
+CACHE_SISMOGRAFI = {}
+CACHE_TERREMOTI_ITALIA = None
+CACHE_TERREMOTI_ITALIA_TIME = 0
+CACHE_TERREMOTI_ITALIA_DURATA = 20
+
+CACHE_TERREMOTI_MONDO = None
+CACHE_TERREMOTI_MONDO_TIME = 0
+CACHE_TERREMOTI_DURATA = 20
+
+CACHE_SISMOGRAFI_MONDO = {}
+CACHE_DURATA_MONDO = 15
+
+CACHE_DURATA = 15
+
 utenti_online = 0
 
 STAZIONI = {
@@ -191,15 +207,30 @@ def api_sismografo(station):
             info["channel"]
         )
 
+        import time
+
+        adesso = time.time()
+        cache = CACHE_SISMOGRAFI.get(station)
+
+        if cache and adesso - cache["time"] < CACHE_DURATA:
+            return jsonify(cache["data"])
+
         dati = prepara_dati(file_mseed)
 
-        return jsonify({
+        risultato = {
             "station": station,
             "channel": info["channel"],
             "name": info["name"],
             "updated": datetime.now().astimezone().isoformat(),
             "samples": dati
-        })
+        }
+
+        CACHE_SISMOGRAFI[station] = {
+            "time": adesso,
+            "data": risultato
+        }
+
+        return jsonify(risultato)
 
     except Exception as e:
         return jsonify({
@@ -301,6 +332,16 @@ def api_sismografo_mondo(codice):
 
     url = cfg["base"] + "/dataselect/1/query"
 
+    import time
+
+    cache_key = codice
+    adesso = time.time()
+
+    cache = CACHE_SISMOGRAFI_MONDO.get(cache_key)
+
+    if cache and adesso - cache["time"] < CACHE_DURATA_MONDO:
+        return cache["data"]
+
     try:
         r = requests.get(
             url,
@@ -345,7 +386,7 @@ def api_sismografo_mondo(codice):
 
             dati = dati[indici]
 
-        return {
+        risultato = {
             "code": codice,
             "source": cfg["source"],
             "network": cfg["net"],
@@ -354,6 +395,13 @@ def api_sismografo_mondo(codice):
             "channel": cfg["cha"],
             "samples": dati.tolist()
         }
+
+        CACHE_SISMOGRAFI_MONDO[cache_key] = {
+            "time": adesso,
+            "data": risultato
+        }
+
+        return risultato
 
     except Exception as e:
         return {
@@ -384,6 +432,19 @@ def api_ultimi_terremoti_mondo():
         "limit": 3
     }
 
+    import time
+
+    global CACHE_TERREMOTI_MONDO
+    global CACHE_TERREMOTI_MONDO_TIME
+
+    adesso = time.time()
+
+    if (
+        CACHE_TERREMOTI_MONDO is not None
+        and adesso - CACHE_TERREMOTI_MONDO_TIME < CACHE_TERREMOTI_DURATA
+    ):
+        return CACHE_TERREMOTI_MONDO
+
     try:
         r = requests.get(
             url,
@@ -401,7 +462,12 @@ def api_ultimi_terremoti_mondo():
                 "http": r.status_code
             }, 502
 
-        return r.json()
+        dati = r.json()
+
+        CACHE_TERREMOTI_MONDO = dati
+        CACHE_TERREMOTI_MONDO_TIME = adesso
+
+        return dati
 
     except Exception as e:
         return {
@@ -453,6 +519,19 @@ def api_ultimi_terremoti_italia():
         "nodata": 404
     }
 
+    import time
+
+    global CACHE_TERREMOTI_ITALIA
+    global CACHE_TERREMOTI_ITALIA_TIME
+
+    adesso = time.time()
+
+    if (
+        CACHE_TERREMOTI_ITALIA is not None
+        and adesso - CACHE_TERREMOTI_ITALIA_TIME < CACHE_TERREMOTI_ITALIA_DURATA
+    ):
+        return CACHE_TERREMOTI_ITALIA
+
     try:
 
         r = requests.get(
@@ -497,13 +576,18 @@ def api_ultimi_terremoti_italia():
         # Ultimi 10
         eventi = eventi[:10]
 
-        return {
+        risultato = {
             "type":
                 "FeatureCollection",
 
             "features":
                 eventi
         }
+
+        CACHE_TERREMOTI_ITALIA = risultato
+        CACHE_TERREMOTI_ITALIA_TIME = adesso
+
+        return risultato
 
     except Exception as e:
 
