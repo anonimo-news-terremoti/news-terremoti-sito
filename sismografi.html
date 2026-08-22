@@ -5277,5 +5277,35 @@ setInterval(
 
 </script>
 
+
+<!-- SIMULAZIONE TERREMOTO PUBBLICA -->
+<button
+  id="test-terremoto-flegrei"
+  onclick='attivaEventoConfermato("CAM", {
+    mag: 3.2,
+    lat: 40.82,
+    lon: 14.14,
+    profondita: 2.5,
+    place: "SIMULAZIONE - Campi Flegrei"
+  })'
+  title="Simulazione grafica: non è un terremoto reale"
+  style="
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    z-index:99999;
+    padding:12px 18px;
+    border:2px solid #ff9800;
+    border-radius:10px;
+    background:#222;
+    color:#fff;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 3px 12px rgba(0,0,0,.35);
+  "
+>
+🧪 SIMULAZIONE TERREMOTO
+</button>
+
 </body>
 </html>
