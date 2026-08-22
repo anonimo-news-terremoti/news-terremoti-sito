@@ -4327,14 +4327,22 @@ setInterval(
   window.testScossaFlegrei = function() {
 
     console.log(
-      "🚨 TEST COMPLETO CAMPI FLEGREI"
+      "🚨 TEST COMPLETO CAMPI FLEGREI — PISCIARELLI"
     );
+
+    // 🔊 Avvia direttamente l'allarme audio
+    if (
+      typeof riproduciAllarmeTerremoto === "function"
+    ) {
+      riproduciAllarmeTerremoto();
+    }
 
     mostraScossaFlegreiINGV({
       mag: 3.6,
       profondita: 4.2,
       lat: 40.827,
-      lon: 14.139
+      lon: 14.139,
+      place: "Pisciarelli - Campi Flegrei"
     });
 
   };
