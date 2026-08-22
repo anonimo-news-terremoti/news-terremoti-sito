@@ -2476,7 +2476,7 @@ async function scaricaDati(station) {
       );
     }
 
-    const dati = await risposta.json();
+    const dati = await leggiJSONSicuro(risposta, "INGV");
 
     if (
       !Array.isArray(dati.samples) ||
@@ -2831,6 +2831,39 @@ avviaSismografi();
 </script>
 
 
+
+<script>
+/*
+ * Lettura JSON sicura.
+ * Se il server restituisce una risposta vuota o non valida,
+ * non blocca il resto della pagina.
+ */
+async function leggiJSONSicuro(risposta, nome = "API") {
+
+  const testo = await risposta.text();
+
+  if (!testo || !testo.trim()) {
+    throw new Error(
+      nome + ": risposta vuota dal server"
+    );
+  }
+
+  try {
+    return JSON.parse(testo);
+  } catch (errore) {
+    console.error(
+      "❌ JSON non valido:",
+      nome,
+      testo.substring(0, 300)
+    );
+
+    throw new Error(
+      nome + ": risposta JSON non valida"
+    );
+  }
+}
+</script>
+
 <script id="mini-sismografi-regioni-js">
 
 const REGIONI_LIVE = {
@@ -2976,7 +3009,7 @@ async function scaricaMiniRegione(codice) {
       );
     }
 
-    const dati = await risposta.json();
+    const dati = await leggiJSONSicuro(risposta, "INGV");
 
     if (
       !Array.isArray(dati.samples) ||
@@ -3879,7 +3912,7 @@ async function controllaEventiINGVRegioni() {
 
 
     const dati =
-      await risposta.json();
+      await leggiJSONSicuro(risposta, "INGV");
 
 
     const eventi =
@@ -4341,11 +4374,11 @@ setInterval(
         encodeURIComponent(
           formatta(fine)
         ) +
-        "&minlat=40.65" +
-        "&maxlat=41.00" +
-        "&minlon=13.90" +
-        "&maxlon=14.40" +
-        "&minmag=1.0" +
+        "&minlatitude=40.65" +
+        "&maxlatitude=41.00" +
+        "&minlongitude=13.90" +
+        "&maxlongitude=14.40" +
+        "&minmagnitude=1.0" +
         "&format=geojson" +
         "&orderby=time" +
         "&nocache=" +
@@ -4368,7 +4401,7 @@ setInterval(
 
 
       const dati =
-        await risposta.json();
+        await leggiJSONSicuro(risposta, "INGV");
 
 
       const eventi =
@@ -4858,7 +4891,7 @@ window.suonoAllertaVesuvio =
         "&maxlat=40.95" +
         "&minlon=14.25" +
         "&maxlon=14.60" +
-        "&minmag=1.0" +
+        "&minmagnitude=1.0" +
         "&format=geojson" +
         "&orderby=time" +
         "&nocache=" +
@@ -4875,7 +4908,7 @@ window.suonoAllertaVesuvio =
 
 
       const dati =
-        await risposta.json();
+        await leggiJSONSicuro(risposta, "INGV");
 
 
       const eventi =
@@ -5079,7 +5112,7 @@ async function aggiornaTickerTerremotiItalia() {
 
 
     const dati =
-      await risposta.json();
+      await leggiJSONSicuro(risposta, "INGV");
 
 
     const eventi =
