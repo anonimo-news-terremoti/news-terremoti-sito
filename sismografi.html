@@ -4330,11 +4330,26 @@ setInterval(
       "🚨 TEST COMPLETO CAMPI FLEGREI — PISCIARELLI"
     );
 
-    // 🔊 Avvia direttamente l'allarme audio
-    if (
-      typeof riproduciAllarmeTerremoto === "function"
-    ) {
-      riproduciAllarmeTerremoto();
+    // 🔊 Audio TEST: avvio diretto dal click dell'utente
+    const audioTest =
+      document.getElementById("audioTerremotoFlegrei");
+
+    if (audioTest) {
+      audioTest.currentTime = 0;
+      audioTest.volume = 1.0;
+
+      audioTest.play().then(() => {
+        console.log("🔊 AUDIO TEST PISCIARELLI AVVIATO");
+      }).catch((errore) => {
+        console.error(
+          "❌ AUDIO TEST BLOCCATO:",
+          errore
+        );
+      });
+    } else {
+      console.error(
+        "❌ Elemento audioTerremotoFlegrei non trovato"
+      );
     }
 
     mostraScossaFlegreiINGV({
@@ -4627,7 +4642,7 @@ function riproduciAllarmeTerremoto() {
 
     const audio =
       new Audio(
-        "/allarme_terremoto.wav?t=" +
+        "/news-terremoti-sito/allarme_terremoto.wav?t=" +
         Date.now()
       );
 
@@ -4674,7 +4689,7 @@ window.suonoAllertaVesuvio =
   id="audioAllarmeTerremoto"
   preload="auto">
   <source
-    src="/allarme_terremoto.wav"
+    src="/news-terremoti-sito/allarme_terremoto.wav"
     type="audio/wav">
 </audio>
 
@@ -4682,7 +4697,7 @@ window.suonoAllertaVesuvio =
 <audio
   id="audioTerremotoFlegrei"
   preload="auto"
-  src="/allarme_terremoto.wav">
+  src="/news-terremoti-sito/allarme_terremoto.wav">
 </audio>
 
 
@@ -4811,7 +4826,7 @@ window.suonoAllertaVesuvio =
 
       const audio =
         new Audio(
-          "/allarme_terremoto.wav?t=" +
+          "/news-terremoti-sito/allarme_terremoto.wav?t=" +
           Date.now()
         );
 
