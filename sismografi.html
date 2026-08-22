@@ -2759,7 +2759,10 @@ function animaSismografo(station) {
 
 
 async function avviaSismografi() {
-  for (const station of stazioniAttive) {
+
+  // Prepara subito tutti i sismografi
+  stazioniAttive.forEach(station => {
+
     statoSismografi[station] = {
       samples: [],
       indice: 0,
@@ -2769,18 +2772,44 @@ async function avviaSismografi() {
       eventoConfermato: false
     };
 
-    await scaricaDati(station);
-
     animaSismografo(station);
-  }
+  });
+
+  // Scarica tutti i sismografi contemporaneamente
+  await Promise.allSettled(
+    stazioniAttive.map(station =>
+      scaricaDati(station)
+    )
+  );
 }
 
 
 // Aggiorna i dati reali ogni 10 secondi
-setInterval(() => {
-  stazioniAttive.forEach(station => {
-    scaricaDati(station);
-  });
+let aggiornamentoInCorso = false;
+
+setInterval(async () => {
+
+  // Evita richieste sovrapposte
+  if (aggiornamentoInCorso) {
+    return;
+  }
+
+  aggiornamentoInCorso = true;
+
+  try {
+
+    await Promise.allSettled(
+      stazioniAttive.map(station =>
+        scaricaDati(station)
+      )
+    );
+
+  } finally {
+
+    aggiornamentoInCorso = false;
+
+  }
+
 }, 10000);
 
 
