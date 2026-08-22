@@ -1,2 +1,5 @@
 *_backup_*.html
 *.mseed
+*.png
+__pycache__/
+*.pyc

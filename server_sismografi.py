@@ -517,7 +517,7 @@ if __name__ == "__main__":
     socketio.run(
         app,
         host="0.0.0.0",
-        port=8090,
+        port=int(__import__("os").environ.get("PORT", 8090)),
         debug=False,
         allow_unsafe_werkzeug=True
     )
