@@ -2859,6 +2859,17 @@ const REGIONI_LIVE = {
 
 const statoMiniRegioni = {};
 
+// Inizializza tutti gli stati delle mini-regioni
+Object.keys(REGIONI_LIVE).forEach(codice => {
+  statoMiniRegioni[codice] = {
+    samples: [],
+    indice: 0,
+    ultimoPasso: 0,
+    movimentoPrecedente: false,
+    eventoConfermato: false
+  };
+});
+
 const FREQUENZE_REGIONI = {
   VDA: 520,
   PIE: 540,
