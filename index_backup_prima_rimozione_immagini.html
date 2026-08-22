@@ -1,0 +1,4200 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>News Terremoti Mondo e Italia | Aggiornamenti Sismici</title>
+
+  <meta
+    name="description"
+    content="Aggiornamenti su terremoti in Italia, Napoli, Campi Flegrei e nel mondo. Ultimi eventi sismici, magnitudo, profondità e community Telegram e WhatsApp."
+  >
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #eef4f8;
+      color: #17212b;
+      line-height: 1.6;
+    }
+
+    .topbar {
+      background: #071b2b;
+      color: #d9e7f1;
+      text-align: center;
+      padding: 8px 15px;
+      font-size: 14px;
+    }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      color: white;
+      background:
+        linear-gradient(135deg, rgba(4,29,52,.97), rgba(8,91,139,.94));
+      padding: 75px 20px 85px;
+      text-align: center;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      left: -5%;
+      right: -5%;
+      bottom: 20px;
+      height: 75px;
+      opacity: .35;
+      background:
+        linear-gradient(
+          90deg,
+          transparent 0%,
+          transparent 5%,
+          #8ee7ff 5.4%,
+          transparent 5.8%,
+          transparent 12%,
+          #8ee7ff 12.3%,
+          transparent 12.7%,
+          transparent 18%,
+          #8ee7ff 18.3%,
+          transparent 18.7%,
+          transparent 30%,
+          #8ee7ff 30.2%,
+          transparent 30.6%,
+          transparent 45%,
+          #8ee7ff 45.2%,
+          transparent 45.6%,
+          transparent 63%,
+          #8ee7ff 63.2%,
+          transparent 63.6%,
+          transparent 79%,
+          #8ee7ff 79.2%,
+          transparent 79.6%,
+          transparent 100%
+        );
+      transform: skewY(-2deg);
+    }
+
+    .hero {
+      position: relative;
+      z-index: 2;
+      max-width: 950px;
+      margin: auto;
+    }
+
+    header h1 {
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.08;
+      margin-bottom: 18px;
+    }
+
+    header p {
+      font-size: clamp(17px, 2.2vw, 21px);
+      max-width: 800px;
+      margin: auto;
+      color: #e9f5fb;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      color: white;
+      font-weight: 700;
+      padding: 14px 22px;
+      border-radius: 10px;
+      transition: .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .telegram {
+      background: #229ed9;
+    }
+
+    .whatsapp {
+      background: #25d366;
+    }
+
+    nav {
+      background: white;
+      border-bottom: 1px solid #dce7ee;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      box-shadow: 0 2px 10px rgba(0,0,0,.05);
+    }
+
+    nav .nav-inner {
+      max-width: 1180px;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 5px;
+      padding: 9px 15px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #123b58;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+
+    nav a:hover {
+      background: #e9f4fa;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 30px));
+      margin: auto;
+    }
+
+    section {
+      padding: 55px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #0c3553;
+      font-size: 32px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #536976;
+      max-width: 760px;
+      margin: 0 auto 32px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: 0 8px 25px rgba(15,48,70,.08);
+      border: 1px solid #e6eef3;
+    }
+
+    .card .icon {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      color: #0d4b73;
+      margin-bottom: 8px;
+    }
+
+    .live-box {
+      background: white;
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(15,48,70,.09);
+      border: 1px solid #dfeaf0;
+    }
+
+    .live-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .live-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: #0b5d45;
+      background: #e6f7ef;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      background: #18b76a;
+      border-radius: 50%;
+      box-shadow: 0 0 0 5px rgba(24,183,106,.13);
+    }
+
+    .quake-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .quake {
+      display: grid;
+      grid-template-columns: 82px 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 15px;
+      border-radius: 14px;
+      background: #f7fafc;
+      border: 1px solid #e2ebf0;
+    }
+
+    .mag {
+      text-align: center;
+      font-weight: 800;
+      font-size: 22px;
+      color: #8b1e1e;
+      background: #fff0f0;
+      padding: 11px 8px;
+      border-radius: 12px;
+    }
+
+    .quake h4 {
+      margin-bottom: 4px;
+      color: #183b52;
+    }
+
+    .quake-meta {
+      color: #667987;
+      font-size: 14px;
+    }
+
+    .quake a {
+      color: #0d75b8;
+      text-decoration: none;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .notice {
+      margin-top: 18px;
+      font-size: 13px;
+      color: #6a7b87;
+    }
+
+    .focus {
+      background: linear-gradient(135deg, #082e4b, #0f6595);
+      color: white;
+    }
+
+    .focus .section-title,
+    .focus .section-subtitle {
+      color: white;
+    }
+
+    .focus .section-subtitle {
+      opacity: .86;
+    }
+
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .focus-card {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 17px;
+      padding: 25px;
+      backdrop-filter: blur(8px);
+    }
+
+    .focus-card h3 {
+      margin-bottom: 9px;
+    }
+
+    .community {
+      background: white;
+      border-radius: 22px;
+      padding: 38px 24px;
+      box-shadow: 0 10px 30px rgba(15,48,70,.09);
+      text-align: center;
+    }
+
+    .community .hero-buttons {
+      margin-top: 24px;
+    }
+
+    .disclaimer {
+      background: #fff9df;
+      border-left: 5px solid #ddb020;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 35px;
+    }
+
+    footer {
+      background: #071b2b;
+      color: white;
+      margin-top: 45px;
+      padding: 38px 20px;
+      text-align: center;
+    }
+
+    footer p {
+      margin: 4px 0;
+    }
+
+    .loading {
+      color: #607581;
+      padding: 25px 4px;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      .quake {
+        grid-template-columns: 70px 1fr;
+      }
+
+      .quake a {
+        grid-column: 1 / -1;
+        text-align: right;
+      }
+
+      section {
+        padding: 40px 0;
+      }
+    }
+  </style>
+
+<style id="centro-sismico-theme">
+
+:root {
+  --bg-main: #020912;
+  --bg-panel: #071522;
+  --bg-panel-2: #0a1d2c;
+  --line: #12384e;
+  --text: #e7f6ff;
+  --muted: #7fa0b3;
+  --cyan: #4de1ff;
+  --green: #39e58c;
+  --orange: #ffb454;
+  --red: #ff5d68;
+}
+
+body {
+  background:
+    linear-gradient(rgba(4,18,30,.96), rgba(2,9,18,.98)),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 39px,
+      rgba(80,180,220,.05) 40px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 39px,
+      rgba(80,180,220,.05) 40px
+    );
+  color: var(--text);
+}
+
+.topbar {
+  background: #01060b !important;
+  color: var(--cyan) !important;
+  border-bottom: 1px solid #133246;
+  letter-spacing: .5px;
+}
+
+header {
+  background:
+    radial-gradient(circle at 50% 20%, rgba(0,130,180,.18), transparent 45%),
+    linear-gradient(180deg, #04111c, #020912) !important;
+  border-bottom: 1px solid #15425b;
+  position: relative;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 18px 0;
+  height: 70px;
+  opacity: .5;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 3%,
+      #35d9ff 3.4%,
+      transparent 3.8%,
+      transparent 10%,
+      #35d9ff 10.3%,
+      transparent 10.6%,
+      transparent 17%,
+      #35d9ff 17.2%,
+      transparent 17.6%,
+      transparent 23%,
+      #35d9ff 23.3%,
+      transparent 23.7%,
+      transparent 34%,
+      #35d9ff 34.4%,
+      transparent 34.8%,
+      transparent 50%,
+      #35d9ff 50.3%,
+      transparent 50.7%,
+      transparent 66%,
+      #35d9ff 66.3%,
+      transparent 66.7%,
+      transparent 82%,
+      #35d9ff 82.4%,
+      transparent 82.8%,
+      transparent 100%
+    );
+  filter: drop-shadow(0 0 7px rgba(77,225,255,.45));
+}
+
+header h1 {
+  color: white !important;
+  text-shadow: 0 0 18px rgba(77,225,255,.28);
+}
+
+header p {
+  color: #a9c6d5 !important;
+}
+
+nav {
+  background: rgba(3,14,23,.96) !important;
+  border-bottom: 1px solid #11384e !important;
+  box-shadow: none !important;
+}
+
+nav a {
+  color: #9fdff1 !important;
+}
+
+nav a:hover {
+  background: #0b2433 !important;
+  color: white !important;
+}
+
+section {
+  position: relative;
+}
+
+.section-title {
+  color: #dff8ff !important;
+  letter-spacing: .2px;
+}
+
+.section-subtitle {
+  color: #7f9eae !important;
+}
+
+.card,
+.live-box,
+.community,
+.sismo-riga,
+.monitor-card,
+.sismo-grande {
+  background:
+    linear-gradient(180deg, rgba(9,29,43,.98), rgba(4,18,29,.98)) !important;
+  border: 1px solid #123b52 !important;
+  color: var(--text) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.02),
+    0 8px 25px rgba(0,0,0,.25) !important;
+}
+
+.card h3,
+.live-box h3,
+.community h2,
+.monitor-card h3,
+.sismo-grande h2 {
+  color: #dff8ff !important;
+}
+
+.card p,
+.live-box p,
+.community p,
+.monitor-card p,
+.sismo-grande p {
+  color: #8faebe !important;
+}
+
+.live-status {
+  background: rgba(25,180,110,.1) !important;
+  color: var(--green) !important;
+  border: 1px solid rgba(57,229,140,.25);
+}
+
+.dot {
+  background: var(--green) !important;
+  box-shadow: 0 0 10px var(--green) !important;
+}
+
+.quake {
+  background: #061622 !important;
+  border: 1px solid #12384e !important;
+}
+
+.quake h4 {
+  color: #e5f7ff !important;
+}
+
+.quake-meta {
+  color: #7898a8 !important;
+}
+
+.mag {
+  background: rgba(255,93,104,.08) !important;
+  color: #ff858d !important;
+  border: 1px solid rgba(255,93,104,.18);
+}
+
+.focus {
+  background:
+    linear-gradient(180deg, #051522, #061d2c) !important;
+  border-top: 1px solid #14435a;
+  border-bottom: 1px solid #14435a;
+}
+
+.focus-card {
+  background: rgba(6,24,37,.86) !important;
+  border: 1px solid #174157 !important;
+}
+
+.info,
+.disclaimer {
+  background: #081927 !important;
+  color: #9db8c6 !important;
+  border-left-color: var(--orange) !important;
+}
+
+.btn {
+  box-shadow: 0 0 15px rgba(0,0,0,.25);
+}
+
+.telegram {
+  background: #0e7db2 !important;
+}
+
+.whatsapp {
+  background: #15985a !important;
+}
+
+footer {
+  background: #01060b !important;
+  border-top: 1px solid #11364a;
+  color: #8aa5b3 !important;
+}
+
+/* Box sismografi home */
+#sismografi-live .live-box {
+  position: relative;
+  overflow: hidden;
+}
+
+#sismografi-live .live-box::before {
+  content: "SYSTEM STATUS • ONLINE";
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--green);
+}
+
+#sismografi-live .live-box::after {
+  content: "";
+  display: block;
+  height: 42px;
+  margin-top: 22px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 6%,
+      var(--cyan) 6.2%,
+      transparent 6.5%,
+      transparent 14%,
+      var(--cyan) 14.2%,
+      transparent 14.5%,
+      transparent 28%,
+      var(--cyan) 28.2%,
+      transparent 28.6%,
+      transparent 43%,
+      var(--cyan) 43.4%,
+      transparent 43.7%,
+      transparent 60%,
+      var(--cyan) 60.3%,
+      transparent 60.6%,
+      transparent 77%,
+      var(--cyan) 77.4%,
+      transparent 77.7%,
+      transparent 100%
+    );
+  opacity: .35;
+  filter: drop-shadow(0 0 6px rgba(77,225,255,.35));
+}
+
+@media (max-width: 700px) {
+  #sismografi-live .live-box::before {
+    position: static;
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+
+</style>
+
+
+<style id="sfondo-vulcani-sismologia">
+
+html {
+  min-height: 100%;
+  background: #020912;
+}
+
+body {
+  min-height: 100vh !important;
+
+  background-image:
+    linear-gradient(
+      rgba(1, 8, 15, 0.32),
+      rgba(1, 8, 15, 0.48)
+    ),
+    url("sfondo-sismologia.png") !important;
+
+  background-size: cover !important;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+
+  color: #eaf8ff !important;
+}
+
+/* Pannelli stile sala sismologica */
+.card,
+.live-box,
+.focus-card,
+.community,
+.info,
+.quake {
+  background: rgba(3, 18, 29, 0.82) !important;
+
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+
+  border: 1px solid rgba(69, 207, 255, 0.28) !important;
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.35),
+    inset 0 0 20px rgba(0,150,220,.03) !important;
+}
+
+/* Le sezioni non devono coprire lo sfondo */
+main,
+section,
+.focus,
+.container {
+  background-color: transparent !important;
+}
+
+/* Header trasparente */
+header {
+  background:
+    linear-gradient(
+      rgba(1,9,16,.55),
+      rgba(1,9,16,.20)
+    ) !important;
+}
+
+/* Menu */
+nav {
+  background: rgba(1, 9, 16, 0.88) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Titoli leggibili sopra lo sfondo */
+h1,
+h2,
+h3 {
+  text-shadow:
+    0 2px 5px rgba(0,0,0,.9),
+    0 0 12px rgba(0,170,255,.18);
+}
+
+/* Testo */
+p {
+  text-shadow: 0 1px 3px rgba(0,0,0,.85);
+}
+
+/* Footer */
+footer {
+  background: rgba(1, 7, 12, .92) !important;
+}
+
+/* Smartphone */
+@media (max-width: 800px) {
+  body {
+    background-attachment: scroll !important;
+    background-position: center top !important;
+  }
+}
+
+</style>
+
+
+<style id="sezioni-home-trasparenti">
+
+/* Sezioni principali senza riquadri */
+#terremoti-italia .live-box,
+#ultimi-terremoti .live-box,
+#campi-flegrei .focus-card,
+#campi-flegrei,
+#community .community {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Titoli più visibili sullo sfondo */
+#terremoti-italia .section-title,
+#ultimi-terremoti .section-title,
+#campi-flegrei .section-title,
+#community .section-title {
+  color: #ffffff !important;
+  text-shadow:
+    0 2px 7px rgba(0,0,0,.95),
+    0 0 14px rgba(64,210,255,.55);
+}
+
+/* Testi leggibili */
+#terremoti-italia .section-subtitle,
+#ultimi-terremoti .section-subtitle,
+#campi-flegrei .section-subtitle,
+#community p {
+  color: #d7edf7 !important;
+  text-shadow: 0 2px 5px rgba(0,0,0,.95);
+}
+
+/* Eventuali liste terremoti rimangono leggibili */
+.quake {
+  background: rgba(3,18,29,.72) !important;
+  border: 1px solid rgba(80,210,255,.20) !important;
+}
+
+/* Riduce lo spazio verticale */
+#terremoti-italia,
+#ultimi-terremoti,
+#campi-flegrei,
+#community {
+  padding-top: 35px !important;
+  padding-bottom: 35px !important;
+}
+
+</style>
+
+
+<style id="home-senza-riquadri">
+
+/* Toglie SOLO i riquadri */
+.live-box,
+.card,
+.focus-card,
+.community,
+.info {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Mantiene tutte le scritte ben visibili */
+.section-title,
+.live-box h3,
+.card h3,
+.focus-card h3,
+.community h2,
+.info h2 {
+  color: #ffffff !important;
+  text-shadow:
+    0 2px 6px rgba(0,0,0,.95),
+    0 0 12px rgba(40,200,255,.45);
+}
+
+.section-subtitle,
+.live-box p,
+.card p,
+.focus-card p,
+.community p,
+.info p {
+  color: #d8edf7 !important;
+  text-shadow:
+    0 2px 5px rgba(0,0,0,.95);
+}
+
+/* Le singole righe dei terremoti restano leggibili */
+.quake {
+  background: rgba(2,15,25,.72) !important;
+  border: 1px solid rgba(70,205,255,.25) !important;
+}
+
+.quake h4 {
+  color: #ffffff !important;
+}
+
+.quake-meta {
+  color: #b8d0dc !important;
+}
+
+/* Mantiene visibili pulsanti e stato live */
+.live-status,
+.btn {
+  opacity: 1 !important;
+}
+
+</style>
+
+
+<style id="cards-colonna-destra">
+
+/* I 4 elementi principali sulla destra */
+.cards {
+  width: 360px !important;
+  max-width: 38vw !important;
+
+  margin-left: auto !important;
+  margin-right: 35px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+
+  gap: 18px !important;
+}
+
+/* Ogni elemento resta senza riquadro */
+.cards .card {
+  width: 100% !important;
+
+  display: grid !important;
+  grid-template-columns: 42px 1fr !important;
+  grid-template-rows: auto auto !important;
+
+  column-gap: 12px !important;
+
+  padding: 5px 0 !important;
+  margin: 0 !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Icona a sinistra */
+.cards .card .icon {
+  grid-column: 1 !important;
+  grid-row: 1 / 3 !important;
+
+  font-size: 30px !important;
+  line-height: 1 !important;
+
+  margin: 2px 0 0 0 !important;
+}
+
+/* Titolo */
+.cards .card h3 {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+
+  margin: 0 0 4px 0 !important;
+
+  color: #ffffff !important;
+  font-size: 18px !important;
+
+  text-shadow:
+    0 2px 5px rgba(0,0,0,.95),
+    0 0 10px rgba(50,200,255,.30);
+}
+
+/* Descrizione */
+.cards .card p {
+  grid-column: 2 !important;
+  grid-row: 2 !important;
+
+  margin: 0 !important;
+
+  color: #d8edf7 !important;
+  font-size: 14px !important;
+  line-height: 1.45 !important;
+
+  text-shadow:
+    0 2px 4px rgba(0,0,0,.95);
+}
+
+/* Su telefono torna normale */
+@media (max-width: 800px) {
+
+  .cards {
+    width: auto !important;
+    max-width: none !important;
+
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+  }
+
+}
+
+</style>
+
+
+<style id="cards-tutto-destra">
+
+.cards {
+  width: 330px !important;
+  max-width: 330px !important;
+
+  margin-left: auto !important;
+  margin-right: 15px !important;
+
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+
+  gap: 16px !important;
+}
+
+.cards .card {
+  width: 330px !important;
+  max-width: 330px !important;
+
+  margin-left: auto !important;
+  margin-right: 0 !important;
+
+  padding: 4px 0 !important;
+
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Telefono */
+@media (max-width: 800px) {
+  .cards {
+    width: auto !important;
+    max-width: none !important;
+    margin: 20px !important;
+    align-items: stretch !important;
+  }
+
+  .cards .card {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
+
+</style>
+
+
+<style id="cards-bordo-destro">
+
+/* Porta il gruppo fino al bordo destro dello schermo */
+.cards {
+  width: 340px !important;
+  max-width: 340px !important;
+
+  position: relative !important;
+
+  margin-left: auto !important;
+  margin-right: calc((100vw - 100%) / -2) !important;
+
+  padding-right: 8px !important;
+  padding-left: 0 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+}
+
+/* Singoli elementi */
+.cards .card {
+  width: 100% !important;
+  max-width: none !important;
+
+  margin: 0 !important;
+  padding: 5px 0 !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Smartphone */
+@media (max-width: 800px) {
+  .cards {
+    width: auto !important;
+    max-width: none !important;
+
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+
+    padding-right: 0 !important;
+  }
+}
+
+</style>
+
+
+<style id="riquadro-rosso-destra">
+
+.cards {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(75, 0, 5, .88),
+      rgba(28, 2, 6, .92)
+    ) !important;
+
+  border: 2px solid #ff2638 !important;
+
+  border-radius: 12px !important;
+
+  padding:
+    18px 18px 18px 18px !important;
+
+  box-shadow:
+    0 0 8px rgba(255, 25, 45, .90),
+    0 0 25px rgba(255, 20, 40, .45),
+    inset 0 0 25px rgba(255, 0, 30, .12) !important;
+
+  overflow: hidden !important;
+}
+
+/* Piccola linea luminosa superiore */
+.cards::before {
+  content: "● MONITORAGGIO SISMICO";
+
+  display: block;
+
+  color: #ff6773;
+
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+
+  margin-bottom: 15px;
+
+  text-shadow:
+    0 0 8px rgba(255, 30, 50, .9);
+}
+
+/* I quattro elementi rimangono trasparenti */
+.cards .card {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Titoli bianchi */
+.cards .card h3 {
+  color: #ffffff !important;
+}
+
+/* Descrizioni */
+.cards .card p {
+  color: #f3dfe2 !important;
+}
+
+/* Separatore leggero tra gli elementi */
+.cards .card:not(:last-child) {
+  border-bottom:
+    1px solid rgba(255, 70, 85, .22) !important;
+
+  padding-bottom: 13px !important;
+}
+
+</style>
+
+
+<style id="pannello-scomparsa-destra">
+
+/* Pannello laterale */
+.cards {
+  position: fixed !important;
+
+  right: 0 !important;
+  top: 50% !important;
+
+  transform:
+    translateY(-50%)
+    translateX(calc(100% - 46px)) !important;
+
+  width: 350px !important;
+  max-width: 350px !important;
+
+  margin: 0 !important;
+
+  padding:
+    18px 18px 18px 58px !important;
+
+  z-index: 9999 !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(75,0,5,.94),
+      rgba(22,2,6,.97)
+    ) !important;
+
+  border:
+    2px solid #ff2638 !important;
+
+  border-right: 0 !important;
+
+  border-radius:
+    14px 0 0 14px !important;
+
+  box-shadow:
+    0 0 12px rgba(255,25,45,.75),
+    0 0 35px rgba(255,20,40,.30) !important;
+
+  transition:
+    transform .35s ease !important;
+}
+
+
+/* Pannello aperto */
+.cards.pannello-aperto {
+  transform:
+    translateY(-50%)
+    translateX(0) !important;
+}
+
+
+/* Linguetta laterale */
+.cards::after {
+  content: "☰";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 46px;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      180deg,
+      #d51225,
+      #79000c
+    );
+
+  color: white;
+
+  font-size: 24px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  border-radius:
+    11px 0 0 11px;
+
+  box-shadow:
+    0 0 12px rgba(255,20,40,.7);
+}
+
+
+/* Testo monitoraggio */
+.cards::before {
+  content: "● MONITORAGGIO SISMICO";
+
+  display: block;
+
+  color: #ff6673;
+
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1.3px;
+
+  margin-bottom: 15px;
+}
+
+
+/* Elementi interni */
+.cards .card {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+
+  width: 100% !important;
+
+  padding:
+    8px 0 13px !important;
+}
+
+
+.cards .card:not(:last-child) {
+  border-bottom:
+    1px solid rgba(255,80,90,.25) !important;
+}
+
+
+/* Telefono */
+@media (max-width: 700px) {
+
+  .cards {
+    width: 300px !important;
+    max-width: 85vw !important;
+  }
+
+}
+
+</style>
+
+
+<style id="foto-localita-terremoti">
+
+.quake-con-foto {
+  grid-template-columns: 150px 82px 1fr auto !important;
+}
+
+.foto-localita {
+  width: 150px;
+  height: 100px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(5,20,30,.85);
+  border: 1px solid rgba(80,210,255,.22);
+}
+
+.foto-localita img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.foto-localita-placeholder {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 8px;
+
+  color: #8eabb9;
+  font-size: 12px;
+}
+
+@media (max-width: 760px) {
+
+  .quake-con-foto {
+    grid-template-columns: 90px 65px 1fr !important;
+  }
+
+  .foto-localita {
+    width: 90px;
+    height: 75px;
+  }
+
+  .quake-con-foto > a {
+    grid-column: 1 / -1;
+    text-align: right;
+  }
+}
+
+</style>
+
+
+<style id="grafica-scossa-italia">
+
+#quakeListItalia {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#quakeListItalia .quake {
+  position: relative;
+
+  display: grid !important;
+  grid-template-columns: 92px minmax(0, 1fr) auto !important;
+  align-items: center;
+
+  min-height: 96px;
+
+  padding: 15px 18px 15px 24px !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(3, 20, 33, .94),
+      rgba(2, 12, 22, .88)
+    ) !important;
+
+  border:
+    1px solid rgba(80, 205, 255, .20) !important;
+
+  border-radius: 14px !important;
+
+  box-shadow:
+    0 8px 24px rgba(0,0,0,.22),
+    inset 0 1px 0 rgba(255,255,255,.025) !important;
+
+  overflow: hidden;
+}
+
+/* Barra laterale stile centro sismico */
+#quakeListItalia .quake::before {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 5px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #35dfff,
+      #0879be
+    );
+
+  box-shadow:
+    0 0 12px rgba(53,223,255,.55);
+}
+
+
+/* Badge magnitudo */
+#quakeListItalia .mag {
+  width: 72px;
+  min-width: 72px;
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border-radius: 12px !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,65,85,.18),
+      rgba(115,12,27,.28)
+    ) !important;
+
+  border:
+    1px solid rgba(255,90,110,.35) !important;
+
+  color: #ff8795 !important;
+
+  font-size: 23px !important;
+  font-weight: 800 !important;
+
+  letter-spacing: .2px;
+
+  text-shadow:
+    0 0 10px rgba(255,60,80,.25);
+}
+
+
+/* Località */
+#quakeListItalia .quake h4 {
+  margin: 0 0 7px 0 !important;
+
+  color: #ffffff !important;
+
+  font-size: 18px !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+
+  text-shadow:
+    0 2px 6px rgba(0,0,0,.8);
+}
+
+
+/* Ora e profondità */
+#quakeListItalia .quake-meta {
+  color: #adc8d6 !important;
+
+  font-size: 13px !important;
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+
+  text-shadow:
+    0 1px 3px rgba(0,0,0,.8);
+}
+
+
+/* Dettagli */
+#quakeListItalia .quake > a {
+  color: #55dfff !important;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  padding: 8px 10px;
+
+  border-radius: 8px;
+
+  background: rgba(18,120,170,.12);
+
+  border:
+    1px solid rgba(70,210,255,.16);
+
+  transition: .2s;
+}
+
+#quakeListItalia .quake > a:hover {
+  background: rgba(30,170,220,.20);
+
+  box-shadow:
+    0 0 12px rgba(50,210,255,.15);
+}
+
+
+/* Effetto hover pannello */
+#quakeListItalia .quake:hover {
+  border-color:
+    rgba(90,220,255,.40) !important;
+
+  transform: translateX(3px);
+
+  transition: .2s;
+}
+
+
+/* Smartphone */
+@media (max-width: 700px) {
+
+  #quakeListItalia .quake {
+    grid-template-columns: 70px 1fr !important;
+    padding: 12px 12px 12px 18px !important;
+  }
+
+  #quakeListItalia .mag {
+    width: 58px;
+    min-width: 58px;
+    height: 54px;
+
+    font-size: 19px !important;
+  }
+
+  #quakeListItalia .quake h4 {
+    font-size: 15px !important;
+  }
+
+  #quakeListItalia .quake > a {
+    grid-column: 1 / -1;
+    justify-self: end;
+    margin-top: 8px;
+  }
+}
+
+</style>
+
+
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+
+<style id="mappe-terremoti-italia">
+
+#quakeListItalia .quake {
+  display: grid !important;
+  grid-template-columns: 180px 80px minmax(0,1fr) auto !important;
+  gap: 14px !important;
+  align-items: center !important;
+}
+
+.mappa-terremoto {
+  width: 180px;
+  height: 120px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255,70,70,.35);
+  box-shadow: 0 0 12px rgba(255,0,0,.12);
+}
+
+.marker-terremoto {
+  width: 14px;
+  height: 14px;
+  background: #ff2020;
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(255,0,0,.9);
+}
+
+@media (max-width: 800px) {
+  #quakeListItalia .quake {
+    grid-template-columns: 1fr !important;
+  }
+
+  .mappa-terremoto {
+    width: 100%;
+    height: 160px;
+  }
+}
+
+</style>
+
+
+
+
+
+
+
+
+<style id="italia-normale-centro">
+
+#terremoti-italia {
+  position: relative !important;
+
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+
+  transform: none !important;
+
+  width: 100% !important;
+  max-width: none !important;
+
+  max-height: none !important;
+  overflow: visible !important;
+
+  margin: 0 auto !important;
+  padding: 45px 20px !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  z-index: auto !important;
+}
+
+/* Elimina eventuale linguetta laterale */
+#terremoti-italia::after {
+  display: none !important;
+  content: none !important;
+}
+
+#terremoti-italia .container {
+  width: min(1100px, 94%) !important;
+  margin: 0 auto !important;
+}
+
+/* Titolo centrale */
+#terremoti-italia .section-title,
+#terremoti-italia .section-subtitle {
+  text-align: center !important;
+}
+
+/* Tre scosse normali */
+#quakeListItalia {
+  width: 100% !important;
+  max-width: 1000px !important;
+
+  margin: 25px auto 0 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+#quakeListItalia .quake {
+  position: relative !important;
+
+  display: grid !important;
+  grid-template-columns:
+    180px 80px minmax(0,1fr) auto !important;
+
+  gap: 15px !important;
+  align-items: center !important;
+
+  width: 100% !important;
+
+  min-height: 135px !important;
+  max-height: none !important;
+
+  padding: 14px 18px !important;
+
+  overflow: visible !important;
+  cursor: default !important;
+
+  transform: none !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(3,20,33,.92),
+      rgba(2,12,22,.88)
+    ) !important;
+
+  border:
+    1px solid rgba(70,205,255,.25) !important;
+
+  border-radius: 14px !important;
+}
+
+/* Elimina freccia delle schede a scomparsa */
+#quakeListItalia .quake::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Mappa sempre visibile */
+#quakeListItalia .mappa-terremoto {
+  display: block !important;
+
+  width: 180px !important;
+  height: 110px !important;
+
+  opacity: 1 !important;
+  transform: none !important;
+
+  pointer-events: auto !important;
+
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+/* Dati sempre visibili */
+#quakeListItalia .quake-meta {
+  opacity: 1 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* Dettagli sempre visibile */
+#quakeListItalia .quake > a {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+@media (max-width: 750px) {
+
+  #quakeListItalia .quake {
+    grid-template-columns: 1fr !important;
+  }
+
+  #quakeListItalia .mappa-terremoto {
+    width: 100% !important;
+    height: 160px !important;
+  }
+}
+
+</style>
+
+
+<style id="spazio-eventi-gravi">
+
+/*
+ Spazio riservato sopra agli eventi recenti
+ per terremoti importanti / forti
+*/
+#terremoti-italia #quakeListItalia {
+  margin-top: 25px !important;
+}
+
+/* Abbassa Eventi recenti + lista */
+#terremoti-italia .live-box {
+  margin-top: 260px !important;
+}
+
+</style>
+
+
+<style id="abbassa-titolo-italia">
+
+/* Abbassa tutta la sezione Italia, compreso titolo */
+#terremoti-italia {
+  padding-top: 260px !important;
+}
+
+/* Evita doppio spazio sugli eventi recenti */
+#terremoti-italia .live-box {
+  margin-top: 40px !important;
+}
+
+</style>
+
+
+
+
+
+
+
+
+<style id="stile-pulsante-chat">
+
+.pulsante-chat-community {
+  display: inline-block !important;
+
+  margin-left: 12px !important;
+  margin-top: 10px !important;
+
+  padding: 13px 24px !important;
+
+  color: #ffffff !important;
+  text-decoration: none !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0d9f73,
+      #056b55
+    ) !important;
+
+  border:
+    1px solid rgba(100,255,205,.55) !important;
+
+  border-radius: 9px !important;
+
+  box-shadow:
+    0 0 12px rgba(20,220,160,.20) !important;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease !important;
+}
+
+.pulsante-chat-community:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 0 20px rgba(20,230,170,.42) !important;
+}
+
+@media (max-width: 700px) {
+
+  .pulsante-chat-community {
+    display: block !important;
+
+    width: fit-content !important;
+
+    margin:
+      12px auto 0 !important;
+  }
+
+}
+
+</style>
+
+
+<style id="icone-community-home">
+
+.accessi-community {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 28px;
+
+  margin: 18px auto 35px;
+}
+
+.accesso-social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+
+  color: white !important;
+  text-decoration: none !important;
+
+  transition:
+    transform .2s ease,
+    filter .2s ease;
+}
+
+.social-icona {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 27px;
+
+  border: 1px solid rgba(255,255,255,.25);
+
+  box-shadow:
+    0 5px 18px rgba(0,0,0,.30);
+}
+
+.telegram-social .social-icona {
+  background:
+    linear-gradient(135deg, #27a7e7, #0877ac);
+}
+
+.whatsapp-social .social-icona {
+  background:
+    linear-gradient(135deg, #2bd36b, #128c4a);
+}
+
+.chat-social .social-icona {
+  background:
+    linear-gradient(135deg, #8d5cff, #5c31bb);
+}
+
+.social-nome {
+  font-size: 12px;
+  font-weight: 700;
+
+  color: #e9f7ff;
+
+  text-shadow:
+    0 2px 5px rgba(0,0,0,.9);
+}
+
+.accesso-social:hover {
+  transform: translateY(-4px);
+  filter: brightness(1.12);
+}
+
+@media (max-width: 600px) {
+  .accessi-community {
+    gap: 18px;
+  }
+
+  .social-icona {
+    width: 52px;
+    height: 52px;
+    font-size: 24px;
+  }
+}
+
+</style>
+
+
+<style id="galleria-danni-css">
+
+#galleria-danni {
+  width: 100%;
+  padding: 25px 0 45px;
+  overflow: hidden;
+  background: transparent !important;
+}
+
+#galleria-danni h2 {
+  text-align: center;
+  color: white;
+  font-size: 27px;
+  margin: 0 0 8px;
+
+  text-shadow:
+    0 2px 7px rgba(0,0,0,.95),
+    0 0 15px rgba(255,70,70,.35);
+}
+
+#galleria-danni .sottotitolo-danni {
+  text-align: center;
+  color: #d1e8f2;
+  margin: 0 0 22px;
+  font-size: 14px;
+}
+
+.danni-finestra {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+
+  mask-image:
+    linear-gradient(
+      90deg,
+      transparent,
+      black 5%,
+      black 95%,
+      transparent
+    );
+
+  -webkit-mask-image:
+    linear-gradient(
+      90deg,
+      transparent,
+      black 5%,
+      black 95%,
+      transparent
+    );
+}
+
+.danni-track {
+  display: flex;
+  width: max-content;
+  gap: 14px;
+
+  animation:
+    scorrimentoDanni 75s linear infinite;
+}
+
+.danni-finestra:hover .danni-track {
+  animation-play-state: paused;
+}
+
+.danno-card {
+  position: relative;
+
+  flex: 0 0 300px;
+  width: 300px;
+  height: 185px;
+
+  overflow: hidden;
+
+  border-radius: 12px;
+
+  background: #071522;
+
+  border:
+    1px solid rgba(255,85,85,.30);
+
+  box-shadow:
+    0 8px 22px rgba(0,0,0,.35);
+}
+
+.danno-card img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform .35s ease,
+    filter .35s ease;
+}
+
+.danno-card:hover img {
+  transform: scale(1.06);
+  filter: brightness(.75);
+}
+
+.danno-card .danno-overlay {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  padding: 28px 10px 9px;
+
+  background:
+    linear-gradient(
+      transparent,
+      rgba(0,0,0,.88)
+    );
+
+  color: white;
+  font-size: 11px;
+
+  opacity: 0;
+
+  transition: opacity .25s ease;
+}
+
+.danno-card:hover .danno-overlay {
+  opacity: 1;
+}
+
+.danni-loading {
+  color: #bdd7e3;
+  text-align: center;
+  padding: 35px;
+}
+
+@keyframes scorrimentoDanni {
+
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .danno-card {
+    flex-basis: 230px;
+    width: 230px;
+    height: 145px;
+  }
+
+  .danni-track {
+    animation-duration: 55s;
+  }
+
+}
+
+</style>
+
+
+<style id="lava-vulcano-css">
+
+#lavaVulcanoCanvas {
+  position: fixed;
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  pointer-events: none;
+
+  z-index: 0;
+
+  mix-blend-mode: screen;
+}
+
+/* Tutto il sito resta sopra l'animazione */
+body > *:not(#lavaVulcanoCanvas) {
+  position: relative;
+  z-index: 1;
+}
+
+</style>
+
+
+<style id="allerta-terremoti-css">
+
+#allertaTerremoto {
+  position: fixed;
+  left: 0;
+  top: 50%;
+
+  width: 380px;
+  max-width: 88vw;
+
+  padding: 18px 20px;
+
+  transform:
+    translateY(-50%)
+    translateX(-110%);
+
+  z-index: 20000;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(105,0,8,.97),
+      rgba(30,2,6,.98)
+    );
+
+  border:
+    2px solid #ff3245;
+
+  border-left: 0;
+
+  border-radius:
+    0 15px 15px 0;
+
+  box-shadow:
+    0 0 15px rgba(255,30,50,.70),
+    0 0 40px rgba(255,20,40,.28);
+
+  color: white;
+
+  transition:
+    transform .45s ease;
+}
+
+#allertaTerremoto.visibile {
+  transform:
+    translateY(-50%)
+    translateX(0);
+}
+
+.allerta-intestazione {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+
+  margin-bottom: 12px;
+
+  color: #ff6975;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.allerta-mag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 72px;
+  height: 55px;
+
+  padding: 0 12px;
+
+  border-radius: 10px;
+
+  background:
+    rgba(255,40,55,.15);
+
+  border:
+    1px solid rgba(255,80,90,.45);
+
+  color: #ff8993;
+
+  font-size: 23px;
+  font-weight: 900;
+
+  box-shadow:
+    inset 0 0 12px rgba(255,40,55,.08);
+}
+
+.allerta-corpo {
+  display: grid;
+  grid-template-columns: 82px 1fr;
+  gap: 14px;
+  align-items: center;
+}
+
+.allerta-localita {
+  margin: 0 0 6px;
+
+  color: #ffffff;
+
+  font-size: 17px;
+  line-height: 1.25;
+}
+
+.allerta-meta {
+  color: #d5e4eb;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.allerta-fonte {
+  margin-top: 9px;
+
+  color: #ffafb5;
+
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: .5px;
+}
+
+@media (max-width: 600px) {
+
+  #allertaTerremoto {
+    width: 92vw;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div
+  id="allertaTerremoto"
+  aria-live="polite">
+
+  <div class="allerta-intestazione">
+    <span>🚨 ALLERTA TERREMOTO</span>
+    <span id="allertaTipo">LIVE</span>
+  </div>
+
+  <div class="allerta-corpo">
+
+    <div
+      class="allerta-mag"
+      id="allertaMag">
+      M --
+    </div>
+
+    <div>
+
+      <h3
+        class="allerta-localita"
+        id="allertaLocalita">
+        Nuovo evento sismico
+      </h3>
+
+      <div
+        class="allerta-meta"
+        id="allertaMeta">
+      </div>
+
+      <div
+        class="allerta-fonte"
+        id="allertaFonte">
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<canvas id="lavaVulcanoCanvas"></canvas>
+
+
+  <div class="topbar">
+    📡 Portale informativo indipendente dedicato al monitoraggio sismico
+  </div>
+
+  <header>
+    <div class="hero">
+      <h1>🌍 News Terremoti Mondo e Italia</h1>
+
+      <p>
+        Aggiornamenti su terremoti, attività sismica e vulcanica,
+        con particolare attenzione a Italia, Napoli, Campi Flegrei
+        e agli eventi più importanti nel mondo.
+      </p>
+
+      <div class="hero-buttons">
+        <a
+          class="btn telegram"
+          href="https://t.me/+LqqCE0aOEjQ0Zjgy"
+          target="_blank">
+          📲 Telegram
+        </a>
+
+        <a
+          class="btn whatsapp"
+          href="https://chat.whatsapp.com/FcTdSeS16GJ5qx9UVmAo2c"
+          target="_blank">
+          💬 WhatsApp
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="#monitoraggio">Monitoraggio</a>
+      <a href="#ultimi-terremoti">Ultimi terremoti</a>
+      <a href="#campi-flegrei">Campi Flegrei</a>
+      <a href="#community">Community</a>
+    </div>
+  </nav>
+
+  <main>
+
+<section id="sismografi-link" style="
+  background: transparent !important;
+  text-align: center;
+  padding: 45px 20px 30px;
+">
+
+  <h2 style="
+    color: white;
+    font-size: 32px;
+    margin: 0 0 20px;
+    text-shadow:
+      0 2px 6px rgba(0,0,0,.95),
+      0 0 15px rgba(50,210,255,.65);
+  ">
+    📡 Sismografi in tempo reale
+  </h2>
+
+  <a
+    href="sismografi.html"
+    class="btn telegram"
+    style="
+      display: inline-block;
+      margin: 0;
+      padding: 13px 24px;
+    ">
+    📊 APRI I SISMOGRAFI IN TEMPO REALE →
+  </a>
+
+<a
+  href="chat.html"
+  class="btn pulsante-chat-community">
+  💬 CHAT COMMUNITY →
+</a>
+
+
+</section>
+
+<div class="accessi-community">
+
+  <a
+    class="accesso-social telegram-social"
+    href="https://t.me/+LqqCE0aOEjQ0Zjgy"
+    target="_blank"
+    rel="noopener">
+    <span class="social-icona">✈️</span>
+    <span class="social-nome">Telegram</span>
+  </a>
+
+  <a
+    class="accesso-social whatsapp-social"
+    href="https://chat.whatsapp.com/FcTdSeS16GJ5qx9UVmAo2c"
+    target="_blank"
+    rel="noopener">
+    <span class="social-icona">💬</span>
+    <span class="social-nome">WhatsApp</span>
+  </a>
+
+  <a
+    class="accesso-social chat-social"
+    href="chat.html">
+    <span class="social-icona">👥</span>
+    <span class="social-nome">Chat</span>
+  </a>
+
+</div>
+
+
+
+
+
+
+
+
+
+<section id="galleria-danni">
+
+  <h2>🏚️ Danni causati dai terremoti</h2>
+
+  <p class="sottotitolo-danni">
+    Immagini documentarie di terremoti avvenuti in Italia e nel mondo.
+  </p>
+
+  <div class="danni-finestra">
+
+    <div
+      class="danni-track"
+      id="danniTrack">
+
+      <div class="danni-loading">
+        ⏳ Caricamento immagini...
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="terremoti-italia">
+  <div class="container">
+
+    <h2 class="section-title">🇮🇹 Ultimi terremoti in Italia</h2>
+
+    <p class="section-subtitle">
+      Eventi sismici recenti registrati sul territorio italiano.
+    </p>
+
+    <div class="live-box">
+
+      <div class="live-head">
+        <div>
+          <h3>Eventi recenti in Italia</h3>
+          <p id="ultimoAggiornamentoItalia">
+            Aggiornamento in corso...
+          </p>
+        </div>
+
+        <div class="live-status">
+          <span class="dot"></span>
+          DATI LIVE
+        </div>
+      </div>
+
+      <div id="quakeListItalia" class="quake-list">
+        <div class="loading">
+          ⏳ Caricamento terremoti italiani...
+        </div>
+      </div>
+
+      <p class="notice">
+        Fonte dati: INGV - Istituto Nazionale di Geofisica e Vulcanologia.
+        I dati possono essere successivamente revisionati.
+      </p>
+
+    </div>
+  </div>
+</section>
+
+    <section id="monitoraggio">
+      <div class="container">
+
+        <div class="cards">
+
+          <div class="card">
+            <div class="icon">🇮🇹</div>
+            <h3>Terremoti in Italia</h3>
+            <p>
+              Eventi sismici sul territorio italiano con attenzione
+              a magnitudo, profondità e localizzazione.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🌋</div>
+            <h3>Napoli e Campi Flegrei</h3>
+            <p>
+              Focus dedicato all'area flegrea e agli aggiornamenti
+              sull'attività sismica e vulcanica.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="icon">🌍</div>
+            <h3>Terremoti nel mondo</h3>
+            <p>
+              Una panoramica sugli eventi sismici internazionali
+              più rilevanti.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="icon">📊</div>
+            <h3>Dati sismici</h3>
+            <p>
+              Magnitudo, profondità, orario, localizzazione
+              e collegamento alla fonte dell'evento.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="ultimi-terremoti">
+      <div class="container">
+
+        <h2 class="section-title">🔴 Ultimi terremoti nel mondo</h2>
+
+        <p class="section-subtitle">
+          Dati caricati automaticamente dal feed pubblico USGS.
+        </p>
+
+        <div class="live-box">
+
+          <div class="live-head">
+            <div>
+              <h3>Eventi recenti</h3>
+              <p id="ultimoAggiornamento">
+                Aggiornamento in corso...
+              </p>
+            </div>
+
+            <div class="live-status">
+              <span class="dot"></span>
+              DATI LIVE
+            </div>
+          </div>
+
+          <div id="quakeList" class="quake-list">
+            <div class="loading">
+              ⏳ Caricamento degli ultimi terremoti...
+            </div>
+          </div>
+
+          <p class="notice">
+            Fonte dati: USGS Earthquake Hazards Program.
+            I dati possono essere aggiornati o revisionati dalla fonte.
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+<section id="eventi-flegrei">
+  <div class="container">
+
+    <h2 class="section-title">🌋 Campi Flegrei – Ultimi eventi</h2>
+
+    <p class="section-subtitle">
+      Eventi sismici recenti nell'area dei Campi Flegrei e di Pozzuoli.
+    </p>
+
+    <div class="live-box">
+
+      <div class="live-head">
+        <div>
+          <h3>Area Flegrea</h3>
+          <p id="ultimoAggiornamentoFlegrei">
+            Aggiornamento in corso...
+          </p>
+        </div>
+
+        <div class="live-status">
+          <span class="dot"></span>
+          DATI LIVE
+        </div>
+      </div>
+
+      <div id="quakeListFlegrei" class="quake-list">
+        <div class="loading">
+          ⏳ Caricamento eventi Campi Flegrei...
+        </div>
+      </div>
+
+      <p class="notice">
+        Fonte dati: INGV - Istituto Nazionale di Geofisica e Vulcanologia.
+      </p>
+
+    </div>
+  </div>
+</section>
+
+    <section id="campi-flegrei" class="focus">
+
+      <div class="container">
+
+        <h2 class="section-title">🌋 Napoli e Campi Flegrei</h2>
+
+        <p class="section-subtitle">
+          Una sezione dedicata all'area più seguita dalla nostra community.
+        </p>
+
+        <div class="focus-grid">
+
+          <div class="focus-card">
+            <h3>📍 Area Flegrea</h3>
+            <p>
+              Seguiamo gli eventi sismici dell'area di Pozzuoli,
+              Napoli e Campi Flegrei.
+            </p>
+          </div>
+
+          <div class="focus-card">
+            <h3>📊 Aggiornamenti</h3>
+            <p>
+              Le informazioni più importanti vengono condivise
+              anche sui nostri canali Telegram e WhatsApp.
+            </p>
+          </div>
+
+          <div class="focus-card">
+            <h3>⚠️ Fonti ufficiali</h3>
+            <p>
+              Per comunicazioni di protezione civile ed emergenza
+              bisogna sempre fare riferimento alle autorità competenti.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="community">
+      <div class="container">
+
+        <div class="community">
+
+          <h2 class="section-title">
+            📲 Entra nella community
+          </h2>
+
+          <p>
+            Su Telegram ricevi gli aggiornamenti.
+            Su WhatsApp puoi parlare di terremoti,
+            confrontarti con gli altri membri e fare domande.
+          </p>
+
+          <div class="hero-buttons">
+
+            <a
+              class="btn telegram"
+              href="https://t.me/+LqqCE0aOEjQ0Zjgy"
+              target="_blank">
+              📲 SEGUICI SU TELEGRAM
+            </a>
+
+            <a
+              class="btn whatsapp"
+              href="https://chat.whatsapp.com/FcTdSeS16GJ5qx9UVmAo2c"
+              target="_blank">
+              💬 ENTRA SU WHATSAPP
+            </a>
+
+          </div>
+
+        </div>
+
+        <div class="disclaimer">
+          <strong>⚠️ Avvertenza:</strong>
+          questo sito ha finalità informative e divulgative.
+          Non sostituisce bollettini, comunicazioni o indicazioni
+          di INGV, Protezione Civile, autorità locali o altri enti competenti.
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p><strong>🌍 News Terremoti Mondo e Italia</strong></p>
+    <p>Informazione • Monitoraggio • Community</p>
+    <p>© 2026 News Terremoti Mondo e Italia</p>
+  </footer>
+
+  <script>
+    const FEED_USGS =
+      "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson";
+
+function urlIngvItalia() {
+  const fine = new Date();
+  const inizio = new Date(fine.getTime() - 24 * 60 * 60 * 1000);
+
+  const formatta = data =>
+    data.toISOString().replace(/\.\d{3}Z$/, "");
+
+  return (
+    "https://webservices.ingv.it/fdsnws/event/1/query" +
+    "?starttime=" + encodeURIComponent(formatta(inizio)) +
+    "&endtime=" + encodeURIComponent(formatta(fine)) +
+    "&minlat=35" +
+    "&maxlat=48" +
+    "&minlon=6" +
+    "&maxlon=19" +
+    "&format=geojson" +
+    "&orderby=time"
+  );
+}
+
+
+function formattaData(timestamp) {
+  return new Intl.DateTimeFormat("it-IT", {
+    dateStyle: "short",
+    timeStyle: "medium"
+  }).format(new Date(timestamp));
+}
+
+
+function formattaMagnitudo(mag) {
+  if (mag === null || mag === undefined) {
+    return "N/D";
+  }
+
+  return Number(mag).toFixed(1);
+}
+
+
+
+function estraiNomeLocalita(luogo) {
+  if (!luogo) return "";
+
+  let nome = luogo;
+
+  // Esempio:
+  // "4 km S Arrone (TR)" -> "Arrone"
+  nome = nome.replace(
+    /^\s*\d+(?:\.\d+)?\s*km\s+[NSEWO]+\s+/i,
+    ""
+  );
+
+  nome = nome.replace(
+    /\s*\([^)]*\)\s*$/,
+    ""
+  );
+
+  return nome.trim();
+}
+
+
+async function cercaFotoLocalita(luogo, contenitore) {
+  const localita = estraiNomeLocalita(luogo);
+
+  if (!localita || !contenitore) {
+    return;
+  }
+
+  try {
+    const query =
+      localita + " Italy";
+
+    const url =
+      "https://commons.wikimedia.org/w/api.php" +
+      "?action=query" +
+      "&generator=search" +
+      "&gsrsearch=" + encodeURIComponent(query) +
+      "&gsrnamespace=6" +
+      "&gsrlimit=5" +
+      "&prop=imageinfo" +
+      "&iiprop=url" +
+      "&iiurlwidth=400" +
+      "&format=json" +
+      "&origin=*";
+
+    const risposta = await fetch(url);
+
+    if (!risposta.ok) {
+      throw new Error("Errore Wikimedia");
+    }
+
+    const dati = await risposta.json();
+
+    const pagine =
+      Object.values(
+        dati.query?.pages || {}
+      );
+
+    const pagina = pagine.find(p =>
+      p.imageinfo &&
+      p.imageinfo[0] &&
+      (
+        p.imageinfo[0].thumburl ||
+        p.imageinfo[0].url
+      )
+    );
+
+    if (!pagina) {
+      contenitore.innerHTML =
+        '<div class="foto-localita-placeholder">' +
+        '📍 ' + localita +
+        '</div>';
+
+      return;
+    }
+
+    const info = pagina.imageinfo[0];
+
+    const immagine =
+      info.thumburl || info.url;
+
+    const linkCommons =
+      "https://commons.wikimedia.org/?curid=" +
+      pagina.pageid;
+
+    contenitore.innerHTML = `
+      <a
+        href="${linkCommons}"
+        target="_blank"
+        rel="noopener"
+        title="Foto della località - Wikimedia Commons"
+      >
+        <img
+          src="${immagine}"
+          alt="Foto di ${localita}"
+          loading="lazy"
+        >
+      </a>
+    `;
+
+  } catch (errore) {
+    console.error(
+      "Foto località:",
+      localita,
+      errore
+    );
+
+    contenitore.innerHTML =
+      '<div class="foto-localita-placeholder">' +
+      '📍 ' + localita +
+      '</div>';
+  }
+}
+
+
+function creaSchedaTerremoto(evento, conMappa = false) {
+  const p = evento.properties;
+  const coordinate = evento.geometry.coordinates;
+
+  const lon = Number(coordinate?.[0]);
+  const lat = Number(coordinate?.[1]);
+
+  const profondita =
+    coordinate && coordinate.length > 2
+      ? Number(coordinate[2]).toFixed(1)
+      : "N/D";
+
+  const elemento = document.createElement("article");
+  elemento.className = "quake";
+
+  let idMappa = null;
+
+  if (
+    conMappa &&
+    Number.isFinite(lat) &&
+    Number.isFinite(lon)
+  ) {
+    idMappa =
+      "mappa-" +
+      Math.random().toString(36).slice(2);
+
+    const mappa = document.createElement("div");
+    mappa.className = "mappa-terremoto";
+    mappa.id = idMappa;
+
+    elemento.appendChild(mappa);
+  }
+
+  const mag = document.createElement("div");
+  mag.className = "mag";
+  mag.textContent =
+    "M " + formattaMagnitudo(p.mag);
+
+  elemento.appendChild(mag);
+
+  const info = document.createElement("div");
+
+  info.innerHTML = `
+    <h4>${p.place || "Località non disponibile"}</h4>
+
+    <div class="quake-meta">
+      🕒 ${formattaData(p.time)}
+      &nbsp; • &nbsp;
+      📏 Profondità ${profondita} km
+    </div>
+  `;
+
+  elemento.appendChild(info);
+
+  const link = document.createElement("a");
+  link.href =
+    p.url || "https://terremoti.ingv.it/";
+  link.target = "_blank";
+  link.rel = "noopener";
+  link.textContent = "Dettagli →";
+
+  elemento.appendChild(link);
+
+  if (idMappa) {
+    setTimeout(() => {
+      const map = L.map(idMappa, {
+        zoomControl: false,
+        attributionControl: false,
+        dragging: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        boxZoom: false,
+        keyboard: false,
+        tap: false
+      }).setView([lat, lon], 8);
+
+      L.tileLayer(
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        {
+          maxZoom: 18
+        }
+      ).addTo(map);
+
+      const icona = L.divIcon({
+        className: "",
+        html: '<div class="marker-terremoto"></div>',
+        iconSize: [14, 14],
+        iconAnchor: [7, 7]
+      });
+
+      L.marker(
+        [lat, lon],
+        { icon: icona }
+      ).addTo(map);
+
+      setTimeout(() => {
+        map.invalidateSize();
+      }, 100);
+
+    }, 0);
+  }
+
+  return elemento;
+}
+
+
+async function caricaDatiINGV() {
+  const listaItalia = document.getElementById("quakeListItalia");
+  const aggiornamentoItalia =
+    document.getElementById("ultimoAggiornamentoItalia");
+
+  const listaFlegrei = document.getElementById("quakeListFlegrei");
+  const aggiornamentoFlegrei =
+    document.getElementById("ultimoAggiornamentoFlegrei");
+
+  try {
+    const risposta = await fetch(urlIngvItalia());
+
+    if (!risposta.ok) {
+      throw new Error("Errore INGV");
+    }
+
+    const dati = await risposta.json();
+
+    const tuttiEventi = dati.features
+      .filter(evento => evento.properties.mag !== null)
+      .sort(
+        (a, b) =>
+          b.properties.time - a.properties.time
+      );
+
+    const eventiItalia = tuttiEventi.slice(0, 3);
+
+    const eventiFlegrei = tuttiEventi
+      .filter(evento => {
+        const luogo =
+          (evento.properties.place || "").toLowerCase();
+
+        return (
+          luogo.includes("campi flegrei") ||
+          luogo.includes("pozzuoli") ||
+          luogo.includes("bacoli") ||
+          luogo.includes("napoli")
+        );
+      })
+      .slice(0, 10);
+
+    listaItalia.innerHTML = "";
+
+    eventiItalia.forEach(evento => {
+      listaItalia.appendChild(
+        creaSchedaTerremoto(evento, true)
+      );
+    });
+
+    listaFlegrei.innerHTML = "";
+
+    if (eventiFlegrei.length === 0) {
+      listaFlegrei.innerHTML = `
+        <div class="loading">
+          Nessun evento recente nell'area flegrea.
+        </div>
+      `;
+    } else {
+      eventiFlegrei.forEach(evento => {
+        listaFlegrei.appendChild(
+          creaSchedaTerremoto(evento)
+        );
+      });
+    }
+
+    const oraAggiornamento =
+      new Intl.DateTimeFormat("it-IT", {
+        dateStyle: "short",
+        timeStyle: "medium"
+      }).format(new Date());
+
+    aggiornamentoItalia.textContent =
+      "Ultimo aggiornamento: " + oraAggiornamento;
+
+    aggiornamentoFlegrei.textContent =
+      "Ultimo aggiornamento: " + oraAggiornamento;
+
+  } catch (errore) {
+    console.error("INGV:", errore);
+
+    listaItalia.innerHTML = `
+      <div class="loading">
+        ⚠️ Dati INGV momentaneamente non disponibili.
+      </div>
+    `;
+
+    listaFlegrei.innerHTML = `
+      <div class="loading">
+        ⚠️ Dati Campi Flegrei momentaneamente non disponibili.
+      </div>
+    `;
+  }
+}
+    async function caricaTerremoti() {
+      const contenitore = document.getElementById("quakeList");
+      const aggiornamento = document.getElementById("ultimoAggiornamento");
+
+      try {
+        const risposta = await fetch(FEED_USGS);
+
+        if (!risposta.ok) {
+          throw new Error("Errore nel caricamento dei dati");
+        }
+
+        const dati = await risposta.json();
+
+        const eventi = dati.features
+          .filter(evento => evento.properties.mag !== null)
+          .sort(
+            (a, b) =>
+              b.properties.time - a.properties.time
+          )
+          .slice(0, 8);
+
+        contenitore.innerHTML = "";
+
+        if (eventi.length === 0) {
+          contenitore.innerHTML =
+            '<div class="loading">Nessun evento disponibile.</div>';
+          return;
+        }
+
+        eventi.forEach(evento => {
+          const p = evento.properties;
+          const coordinate = evento.geometry.coordinates;
+
+          const profondita =
+            coordinate && coordinate.length > 2
+              ? Number(coordinate[2]).toFixed(1)
+              : "N/D";
+
+          const elemento = document.createElement("article");
+          elemento.className = "quake";
+
+          elemento.innerHTML = `
+            <div class="mag">
+              M ${formattaMagnitudo(p.mag)}
+            </div>
+
+            <div>
+              <h4>${p.place || "Località non disponibile"}</h4>
+
+              <div class="quake-meta">
+                🕒 ${formattaData(p.time)}
+                &nbsp; • &nbsp;
+                📏 Profondità ${profondita} km
+              </div>
+            </div>
+
+            <a
+              href="${p.url}"
+              target="_blank"
+              rel="noopener">
+              Dettagli →
+            </a>
+          `;
+
+          contenitore.appendChild(elemento);
+        });
+
+        aggiornamento.textContent =
+          "Ultimo aggiornamento pagina: " +
+          new Intl.DateTimeFormat("it-IT", {
+            dateStyle: "short",
+            timeStyle: "medium"
+          }).format(new Date());
+
+      } catch (errore) {
+        console.error(errore);
+
+        contenitore.innerHTML = `
+          <div class="loading">
+            ⚠️ Non è stato possibile caricare i dati sismici.
+            Riprova tra qualche minuto.
+          </div>
+        `;
+
+        aggiornamento.textContent =
+          "Dati momentaneamente non disponibili";
+      }
+    }
+
+      caricaTerremoti();
+      caricaDatiINGV();
+
+      setInterval(
+        caricaTerremoti,
+        60000
+      );
+
+      setInterval(
+        caricaDatiINGV,
+        60000
+      );
+
+function avviaSismografo(canvasId, intensita = 1) {
+  const canvas = document.getElementById(canvasId);
+
+  if (!canvas) {
+    return;
+  }
+
+  const ctx = canvas.getContext("2d");
+
+  function ridimensiona() {
+    const rect = canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  ridimensiona();
+  window.addEventListener("resize", ridimensiona);
+
+  let punti = [];
+  let fase = Math.random() * 1000;
+
+  function aggiorna() {
+    const larghezza = canvas.clientWidth;
+    const altezza = canvas.clientHeight;
+    const centro = altezza / 2;
+
+    fase += 0.15;
+
+    let valore =
+      Math.sin(fase) * 2 +
+      Math.sin(fase * 2.7) * 1.2 +
+      (Math.random() - 0.5) * 3;
+
+    if (Math.random() < 0.015) {
+      valore += (Math.random() - 0.5) * 45 * intensita;
+    }
+
+    punti.push(valore);
+
+    const maxPunti = Math.max(50, Math.floor(larghezza));
+
+    if (punti.length > maxPunti) {
+      punti.shift();
+    }
+
+    ctx.clearRect(0, 0, larghezza, altezza);
+
+    ctx.strokeStyle = "#0b334a";
+    ctx.lineWidth = 1;
+
+    for (let y = 20; y < altezza; y += 20) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(larghezza, y);
+      ctx.stroke();
+    }
+
+    ctx.strokeStyle = "#5ee7ff";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+
+    punti.forEach((punto, indice) => {
+      const x =
+        larghezza -
+        punti.length +
+        indice;
+
+      const y =
+        centro -
+        punto;
+
+      if (indice === 0) {
+        ctx.moveTo(x, y);
+      } else {
+        ctx.lineTo(x, y);
+      }
+    });
+
+    ctx.stroke();
+
+    requestAnimationFrame(aggiorna);
+  }
+
+  aggiorna();
+}
+
+avviaSismografo("sismoFlegrei", 1.3);
+avviaSismografo("sismoVesuvio", 1.0);
+avviaSismografo("sismoItalia", 0.8);
+
+</script>
+
+
+<script id="js-pannello-scomparsa">
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
+
+    const pannello =
+      document.querySelector(".cards");
+
+    if (!pannello) return;
+
+    pannello.addEventListener(
+      "click",
+      function (evento) {
+
+        /*
+        Quando il pannello è chiuso,
+        qualsiasi click sulla linguetta
+        lo apre.
+        */
+
+        const rettangolo =
+          pannello.getBoundingClientRect();
+
+        const zonaLinguetta =
+          evento.clientX <
+          rettangolo.left + 55;
+
+        if (
+          zonaLinguetta ||
+          !pannello.classList.contains(
+            "pannello-aperto"
+          )
+        ) {
+          pannello.classList.toggle(
+            "pannello-aperto"
+          );
+        }
+
+      }
+    );
+
+  }
+);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<script id="galleria-danni-js">
+
+document.addEventListener("DOMContentLoaded", async function () {
+
+  const track = document.getElementById("danniTrack");
+  if (!track) return;
+
+  /*
+    SOLO terremoti recenti con danni documentati.
+    Periodo: ultimi 2 mesi.
+  */
+  const eventiRecenti = [
+
+    {
+      ricerca: "Pozzuoli Campi Flegrei earthquake July 2026 damage",
+      localita: "Pozzuoli • Campi Flegrei",
+      data: "31 luglio 2026",
+      magnitudo: "M 4.7"
+    },
+
+    {
+      ricerca: "Naples Pozzuoli earthquake 2026 damage",
+      localita: "Napoli • Pozzuoli",
+      data: "31 luglio 2026",
+      magnitudo: "M 4.7"
+    },
+
+    {
+      ricerca: "Venezuela earthquake June 24 2026 damage La Guaira",
+      localita: "La Guaira • Venezuela",
+      data: "24 giugno 2026",
+      magnitudo: "M 7.2 / M 7.5"
+    },
+
+    {
+      ricerca: "Venezuela earthquake 2026 Caracas damage",
+      localita: "Venezuela",
+      data: "24 giugno 2026",
+      magnitudo: "M 7.2 / M 7.5"
+    },
+
+    {
+      ricerca: "Flores Indonesia earthquake August 15 2026 damage",
+      localita: "Flores • Indonesia",
+      data: "15 agosto 2026",
+      magnitudo: "M 7.7"
+    },
+
+    {
+      ricerca: "Indonesia Flores earthquake 2026 damaged buildings",
+      localita: "Indonesia",
+      data: "15 agosto 2026",
+      magnitudo: "M 7.7"
+    }
+
+  ];
+
+  const immagini = [];
+  const usate = new Set();
+
+  async function cercaImmagini(evento) {
+
+    const url =
+      "https://commons.wikimedia.org/w/api.php" +
+      "?action=query" +
+      "&generator=search" +
+      "&gsrsearch=" +
+      encodeURIComponent(evento.ricerca) +
+      "&gsrnamespace=6" +
+      "&gsrlimit=8" +
+      "&prop=imageinfo" +
+      "&iiprop=url" +
+      "&iiurlwidth=700" +
+      "&format=json" +
+      "&origin=*";
+
+    try {
+
+      const risposta = await fetch(url);
+
+      if (!risposta.ok) return;
+
+      const dati = await risposta.json();
+
+      const pagine =
+        Object.values(dati.query?.pages || {});
+
+      pagine.forEach(pagina => {
+
+        const info = pagina.imageinfo?.[0];
+
+        if (!info) return;
+
+        const src =
+          info.thumburl || info.url;
+
+        if (!src || usate.has(src)) return;
+
+        usate.add(src);
+
+        immagini.push({
+          src: src,
+
+          localita:
+            evento.localita,
+
+          data:
+            evento.data,
+
+          magnitudo:
+            evento.magnitudo,
+
+          link:
+            "https://commons.wikimedia.org/?curid=" +
+            pagina.pageid
+        });
+
+      });
+
+    } catch (errore) {
+
+      console.error(
+        "Errore immagini:",
+        evento.localita,
+        errore
+      );
+
+    }
+  }
+
+
+  for (const evento of eventiRecenti) {
+    await cercaImmagini(evento);
+  }
+
+
+  if (!immagini.length) {
+
+    track.innerHTML = `
+      <div class="danni-loading">
+        Nessuna immagine recente disponibile.
+      </div>
+    `;
+
+    return;
+  }
+
+
+  function creaCard(img) {
+
+    const card =
+      document.createElement("a");
+
+    card.className = "danno-card";
+
+    card.href = img.link;
+    card.target = "_blank";
+    card.rel = "noopener";
+
+
+    const foto =
+      document.createElement("img");
+
+    foto.src = img.src;
+    foto.alt =
+      "Danni terremoto " + img.localita;
+
+    foto.loading = "lazy";
+
+
+    const overlay =
+      document.createElement("div");
+
+    overlay.className =
+      "danno-overlay";
+
+    overlay.innerHTML = `
+      <strong>
+        ${img.localita}
+      </strong>
+      <br>
+      ${img.data} • ${img.magnitudo}
+    `;
+
+
+    card.appendChild(foto);
+    card.appendChild(overlay);
+
+    return card;
+  }
+
+
+  track.innerHTML = "";
+
+
+  /*
+    Duplica le immagini per ottenere
+    scorrimento continuo.
+  */
+  for (let copia = 0; copia < 2; copia++) {
+
+    immagini.forEach(img => {
+
+      track.appendChild(
+        creaCard(img)
+      );
+
+    });
+
+  }
+
+});
+
+</script>
+
+
+
+
+
+<script id="lava-vulcano-js">
+(() => {
+
+  const canvas = document.getElementById("lavaVulcanoCanvas");
+  if (!canvas) return;
+
+  const ctx = canvas.getContext("2d");
+
+  let W = 0;
+  let H = 0;
+  let DPR = 1;
+
+  const fumo = [];
+
+  function resize() {
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+
+    W = window.innerWidth;
+    H = window.innerHeight;
+
+    canvas.width = W * DPR;
+    canvas.height = H * DPR;
+
+    canvas.style.width = W + "px";
+    canvas.style.height = H + "px";
+
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  }
+
+  /*
+    Posizione del cratere nello sfondo.
+    La possiamo regolare dopo con precisione.
+  */
+  function cratere() {
+    return {
+      x: W * 0.775,
+      y: Math.min(H * 0.295, 290)
+    };
+  }
+
+  function creaFumo() {
+
+    const c = cratere();
+
+    fumo.push({
+      x: c.x + (Math.random() - .5) * 18,
+      y: c.y - 3,
+
+      vx: -.12 + Math.random() * .28,
+      vy: -.20 - Math.random() * .28,
+
+      r: 12 + Math.random() * 17,
+
+      vita: 0,
+      crescita: .07 + Math.random() * .09,
+
+      opacita: .08 + Math.random() * .09,
+
+      oscillazione: Math.random() * Math.PI * 2,
+      velocitaOscillazione: .006 + Math.random() * .006
+    });
+  }
+
+  function disegnaFumo(tempo) {
+
+    for (let i = fumo.length - 1; i >= 0; i--) {
+
+      const p = fumo[i];
+
+      p.vita += .0022;
+
+      /*
+        Il fumo sale.
+      */
+      p.y += p.vy;
+
+      /*
+        Leggero vento verso destra.
+      */
+      p.x += p.vx + .10;
+
+      /*
+        Movimento naturale laterale.
+      */
+      p.x += Math.sin(
+        tempo * p.velocitaOscillazione +
+        p.oscillazione
+      ) * .12;
+
+      /*
+        La nube si allarga mentre sale.
+      */
+      p.r += p.crescita;
+
+      /*
+        Appare gradualmente e poi svanisce.
+      */
+      let alpha;
+
+      if (p.vita < .15) {
+        alpha = p.opacita * (p.vita / .15);
+      } else {
+        alpha =
+          p.opacita *
+          Math.max(0, 1 - ((p.vita - .15) / .85));
+      }
+
+      const grad = ctx.createRadialGradient(
+        p.x,
+        p.y,
+        p.r * .15,
+        p.x,
+        p.y,
+        p.r
+      );
+
+      grad.addColorStop(
+        0,
+        `rgba(185,190,190,${alpha})`
+      );
+
+      grad.addColorStop(
+        .35,
+        `rgba(135,145,145,${alpha * .72})`
+      );
+
+      grad.addColorStop(
+        .70,
+        `rgba(85,95,100,${alpha * .35})`
+      );
+
+      grad.addColorStop(
+        1,
+        "rgba(60,70,75,0)"
+      );
+
+      ctx.fillStyle = grad;
+
+      ctx.beginPath();
+
+      ctx.arc(
+        p.x,
+        p.y,
+        p.r,
+        0,
+        Math.PI * 2
+      );
+
+      ctx.fill();
+
+      if (
+        p.vita >= 1 ||
+        p.y < -100
+      ) {
+        fumo.splice(i, 1);
+      }
+    }
+  }
+
+  let ultimoFumo = 0;
+
+  function anima(tempo) {
+
+    ctx.clearRect(0, 0, W, H);
+
+    /*
+      Nuove piccole nubi continuamente.
+    */
+    if (tempo - ultimoFumo > 180) {
+
+      ultimoFumo = tempo;
+
+      creaFumo();
+
+      if (Math.random() < .45) {
+        creaFumo();
+      }
+    }
+
+    disegnaFumo(tempo);
+
+    requestAnimationFrame(anima);
+  }
+
+  resize();
+
+  window.addEventListener("resize", resize);
+
+  requestAnimationFrame(anima);
+
+})();
+</script>
+
+
+
+
+<script id="allerta-terremoti-js">
+
+(() => {
+
+  const pannello =
+    document.getElementById(
+      "allertaTerremoto"
+    );
+
+  if (!pannello) return;
+
+  const magEl =
+    document.getElementById(
+      "allertaMag"
+    );
+
+  const localitaEl =
+    document.getElementById(
+      "allertaLocalita"
+    );
+
+  const metaEl =
+    document.getElementById(
+      "allertaMeta"
+    );
+
+  const fonteEl =
+    document.getElementById(
+      "allertaFonte"
+    );
+
+  const tipoEl =
+    document.getElementById(
+      "allertaTipo"
+    );
+
+
+  const visti = new Set();
+
+  let inizializzatoItalia = false;
+  let inizializzatoMondo = false;
+
+  let timerChiusura = null;
+
+
+  function formattaOra(timestamp) {
+
+    return new Intl.DateTimeFormat(
+      "it-IT",
+      {
+        dateStyle: "short",
+        timeStyle: "medium"
+      }
+    ).format(
+      new Date(timestamp)
+    );
+
+  }
+
+
+
+  function suonoAllertaTerremoto() {
+    try {
+      const AudioCtx =
+        window.AudioContext || window.webkitAudioContext;
+
+      const ctx = new AudioCtx();
+
+      const bip = (inizio, frequenza) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc.type = "sine";
+        osc.frequency.value = frequenza;
+
+        gain.gain.setValueAtTime(0.0001, ctx.currentTime + inizio);
+        gain.gain.exponentialRampToValueAtTime(
+          0.22,
+          ctx.currentTime + inizio + 0.02
+        );
+        gain.gain.exponentialRampToValueAtTime(
+          0.0001,
+          ctx.currentTime + inizio + 0.22
+        );
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start(ctx.currentTime + inizio);
+        osc.stop(ctx.currentTime + inizio + 0.24);
+      };
+
+      // BIP - BIP - BIP
+      bip(0.00, 880);
+      bip(0.32, 880);
+      bip(0.64, 1050);
+
+      setTimeout(() => ctx.close(), 1200);
+
+    } catch (e) {
+      console.log("Audio allerta non disponibile:", e);
+    }
+  }
+
+  function mostraAllerta(evento) {
+
+    suonoAllertaTerremoto();
+
+
+    magEl.textContent =
+      "M " +
+      Number(evento.mag).toFixed(1);
+
+    localitaEl.textContent =
+      evento.place ||
+      "Località non disponibile";
+
+    metaEl.innerHTML =
+      "🕒 " +
+      formattaOra(evento.time) +
+      "<br>" +
+      "📏 Profondità: " +
+      Number(evento.depth).toFixed(1) +
+      " km";
+
+    fonteEl.textContent =
+      "Fonte: " + evento.source;
+
+    tipoEl.textContent =
+      evento.source === "INGV"
+        ? "🇮🇹 ITALIA"
+        : "🌍 MONDO";
+
+
+    /*
+      Intensità grafica
+    */
+    if (evento.mag >= 6) {
+
+      pannello.style.borderColor =
+        "#ff001c";
+
+      pannello.style.boxShadow =
+        "0 0 22px rgba(255,0,30,.95), " +
+        "0 0 55px rgba(255,0,20,.48)";
+
+    } else if (evento.mag >= 4) {
+
+      pannello.style.borderColor =
+        "#ff4b36";
+
+      pannello.style.boxShadow =
+        "0 0 16px rgba(255,70,40,.75), " +
+        "0 0 40px rgba(255,50,20,.28)";
+
+    } else {
+
+      pannello.style.borderColor =
+        "#ff8b33";
+
+      pannello.style.boxShadow =
+        "0 0 13px rgba(255,130,40,.65), " +
+        "0 0 30px rgba(255,100,20,.20)";
+
+    }
+
+
+    pannello.classList.add(
+      "visibile"
+    );
+
+
+    if (timerChiusura) {
+      clearTimeout(timerChiusura);
+    }
+
+
+    timerChiusura =
+      setTimeout(
+        () => {
+
+          pannello.classList.remove(
+            "visibile"
+          );
+
+        },
+        12000
+      );
+
+
+  window.mostraAllerta = mostraAllerta;
+
+  }
+
+
+  async function controllaItalia() {
+
+    try {
+
+      const fine =
+        new Date();
+
+      const inizio =
+        new Date(
+          fine.getTime() -
+          60 * 60 * 1000
+        );
+
+      const formatta =
+        d =>
+          d.toISOString()
+            .replace(/\.\d{3}Z$/, "");
+
+
+      const url =
+        "https://webservices.ingv.it/fdsnws/event/1/query" +
+        "?starttime=" +
+        encodeURIComponent(
+          formatta(inizio)
+        ) +
+        "&endtime=" +
+        encodeURIComponent(
+          formatta(fine)
+        ) +
+        "&minlat=35" +
+        "&maxlat=48" +
+        "&minlon=6" +
+        "&maxlon=19" +
+        "&minmag=1.5" +
+        "&format=geojson" +
+        "&orderby=time";
+
+
+      const risposta =
+        await fetch(url);
+
+      if (!risposta.ok) return;
+
+
+      const dati =
+        await risposta.json();
+
+
+      const eventi =
+        (dati.features || [])
+          .filter(e =>
+            e.properties?.mag != null
+          )
+          .sort(
+            (a,b) =>
+              b.properties.time -
+              a.properties.time
+          );
+
+
+      /*
+        Al primo caricamento segniamo
+        gli eventi già esistenti come visti.
+        Così non parte un allarme vecchio.
+      */
+      if (!inizializzatoItalia) {
+
+        eventi.forEach(e => {
+
+          visti.add(
+            "INGV_" +
+            (
+              e.id ||
+              e.properties.time
+            )
+          );
+
+        });
+
+        inizializzatoItalia = true;
+        return;
+      }
+
+
+      for (
+        let i = eventi.length - 1;
+        i >= 0;
+        i--
+      ) {
+
+        const e =
+          eventi[i];
+
+        const id =
+          "INGV_" +
+          (
+            e.id ||
+            e.properties.time
+          );
+
+        if (visti.has(id)) {
+          continue;
+        }
+
+        visti.add(id);
+
+
+        mostraAllerta({
+
+          mag:
+            Number(
+              e.properties.mag
+            ),
+
+          place:
+            e.properties.place,
+
+          time:
+            e.properties.time,
+
+          depth:
+            Number(
+              e.geometry
+                ?.coordinates
+                ?.[2] || 0
+            ),
+
+          source:
+            "INGV"
+
+        });
+
+      }
+
+
+    } catch (errore) {
+
+      console.error(
+        "Allerta INGV:",
+        errore
+      );
+
+    }
+
+  }
+
+
+  async function controllaMondo() {
+
+    try {
+
+      const risposta =
+        await fetch(
+          "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_hour.geojson?t=" +
+          Date.now()
+        );
+
+      if (!risposta.ok) return;
+
+
+      const dati =
+        await risposta.json();
+
+
+      const eventi =
+        (dati.features || [])
+          .filter(e =>
+            e.properties?.mag != null
+          )
+          .sort(
+            (a,b) =>
+              b.properties.time -
+              a.properties.time
+          );
+
+
+      if (!inizializzatoMondo) {
+
+        eventi.forEach(e => {
+
+          visti.add(
+            "USGS_" +
+            (
+              e.id ||
+              e.properties.time
+            )
+          );
+
+        });
+
+        inizializzatoMondo = true;
+        return;
+      }
+
+
+      for (
+        let i = eventi.length - 1;
+        i >= 0;
+        i--
+      ) {
+
+        const e =
+          eventi[i];
+
+        const id =
+          "USGS_" +
+          (
+            e.id ||
+            e.properties.time
+          );
+
+        if (visti.has(id)) {
+          continue;
+        }
+
+        visti.add(id);
+
+
+        mostraAllerta({
+
+          mag:
+            Number(
+              e.properties.mag
+            ),
+
+          place:
+            e.properties.place,
+
+          time:
+            e.properties.time,
+
+          depth:
+            Number(
+              e.geometry
+                ?.coordinates
+                ?.[2] || 0
+            ),
+
+          source:
+            "USGS"
+
+        });
+
+      }
+
+
+    } catch (errore) {
+
+      console.error(
+        "Allerta USGS:",
+        errore
+      );
+
+    }
+
+  }
+
+
+  /*
+    Primo caricamento:
+    memorizza gli eventi già presenti.
+  */
+  controllaItalia();
+  controllaMondo();
+
+
+  /*
+    Nuovo controllo ogni 20 secondi.
+  */
+  setInterval(
+    controllaItalia,
+    20000
+  );
+
+  setInterval(
+    controllaMondo,
+    20000
+  );
+
+
+})();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2431 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Sismografi Mondo | News Terremoti Mondo e Italia
+</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: #020812;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  color: #eefaff;
+
+  background:
+    linear-gradient(
+      rgba(1,10,18,.74),
+      rgba(1,10,18,.88)
+    ),
+    url("sfondo_napoli.png")
+    center center / cover
+    fixed
+    no-repeat;
+}
+
+
+/* ========================
+   HEADER
+======================== */
+
+header {
+  text-align: center;
+
+  padding:
+    35px 20px 25px;
+
+  background:
+    rgba(2,15,25,.88);
+
+  border-bottom:
+    1px solid rgba(70,210,255,.25);
+}
+
+header h1 {
+  margin: 0 0 8px;
+
+  font-size: 34px;
+
+  text-shadow:
+    0 0 18px rgba(70,210,255,.35);
+}
+
+header p {
+  margin: 0;
+
+  color: #a9c5d3;
+
+  font-size: 14px;
+}
+
+
+/* ========================
+   NAV
+======================== */
+
+nav {
+  position: sticky;
+
+  top: 0;
+
+  z-index: 1000;
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  padding: 12px;
+
+  background:
+    rgba(1,9,16,.94);
+
+  border-bottom:
+    1px solid rgba(70,210,255,.20);
+
+  backdrop-filter: blur(8px);
+}
+
+nav a {
+  color: #dff8ff;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  padding:
+    10px 15px;
+
+  border:
+    1px solid rgba(70,210,255,.22);
+
+  border-radius:
+    8px;
+
+  background:
+    rgba(7,34,49,.76);
+}
+
+nav a:hover {
+  border-color:
+    rgba(70,220,255,.60);
+
+  background:
+    rgba(10,60,80,.88);
+}
+
+
+/* ========================
+   CONTAINER
+======================== */
+
+.container {
+  width:
+    min(1250px, 94%);
+
+  margin:
+    30px auto 70px;
+}
+
+
+/* ========================
+   STATUS
+======================== */
+
+.status-bar {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 28px;
+
+  color: #43eb92;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  letter-spacing: .8px;
+}
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: #43eb92;
+
+  box-shadow:
+    0 0 12px #43eb92;
+}
+
+
+/* ========================
+   CONTINENTE
+======================== */
+
+.continente {
+  margin-bottom: 32px;
+}
+
+.continente h2 {
+  margin:
+    0 0 12px;
+
+  padding-bottom:
+    9px;
+
+  font-size:
+    21px;
+
+  color:
+    #ffffff;
+
+  border-bottom:
+    1px solid rgba(70,210,255,.20);
+}
+
+
+/* ========================
+   GRIGLIA
+======================== */
+
+.stazioni-mondo {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 10px;
+}
+
+
+/* ========================
+   SISMOGRAFO
+======================== */
+
+.sismo-world {
+  display: grid;
+
+  grid-template-columns:
+    170px minmax(0,1fr);
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding:
+    9px 11px;
+
+  background:
+    linear-gradient(
+      100deg,
+      rgba(7,29,43,.94),
+      rgba(2,14,23,.92)
+    );
+
+  border:
+    1px solid rgba(70,210,255,.18);
+
+  border-radius:
+    9px;
+
+  box-shadow:
+    0 5px 15px rgba(0,0,0,.25);
+}
+
+.sismo-world:hover {
+  border-color:
+    rgba(70,220,255,.48);
+}
+
+.sismo-info strong {
+  display: block;
+
+  color: #ffffff;
+
+  font-size: 13px;
+
+  margin-bottom: 4px;
+}
+
+.sismo-info span {
+  display: block;
+
+  color: #69dfff;
+
+  font-family:
+    Consolas,
+    monospace;
+
+  font-size: 9px;
+
+  margin-bottom: 4px;
+}
+
+.stato-live {
+  color: #44e990 !important;
+
+  font-size: 8px !important;
+
+  font-family:
+    Arial,
+    sans-serif !important;
+
+  font-weight: 900;
+}
+
+
+/* ========================
+   CANVAS
+======================== */
+
+.world-canvas {
+  width: 100%;
+
+  height: 55px;
+
+  display: block;
+
+  background: #01080d;
+
+  border:
+    1px solid rgba(70,190,225,.18);
+
+  border-radius:
+    5px;
+}
+
+
+/* ========================
+   LEGENDA
+======================== */
+
+.legenda {
+  margin:
+    30px auto;
+
+  padding:
+    14px 18px;
+
+  max-width:
+    700px;
+
+  text-align: center;
+
+  background:
+    rgba(2,18,29,.85);
+
+  border:
+    1px solid rgba(70,210,255,.18);
+
+  border-radius:
+    10px;
+
+  font-size:
+    12px;
+
+  color:
+    #bed5df;
+}
+
+.bianco {
+  color: white;
+}
+
+.arancio {
+  color: #ff9d22;
+}
+
+.rosso {
+  color: #ff3030;
+}
+
+
+/* ========================
+   MOBILE
+======================== */
+
+@media (max-width: 850px) {
+
+  .stazioni-mondo {
+    grid-template-columns:
+      1fr;
+  }
+
+}
+
+@media (max-width: 550px) {
+
+  .sismo-world {
+    grid-template-columns:
+      1fr;
+  }
+
+  header h1 {
+    font-size:
+      25px;
+  }
+
+}
+
+</style>
+
+<style id="continenti-laterali-compatti-css">
+
+/* ==================================================
+   CONTINENTI AFFIANCATI AI SISMOGRAFI
+================================================== */
+
+.continente {
+  display: grid !important;
+
+  grid-template-columns:
+    115px minmax(0, 1fr) !important;
+
+  column-gap: 10px !important;
+
+  align-items: start !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
+/* Nome continente sulla sinistra */
+.continente > h2 {
+  margin: 0 !important;
+
+  padding:
+    14px 5px !important;
+
+  border: 0 !important;
+
+  position: sticky;
+
+  top: 70px;
+
+  text-align: right;
+
+  font-size:
+    15px !important;
+
+  line-height:
+    1.25;
+
+  color:
+    #ffffff !important;
+
+  text-shadow:
+    0 2px 6px
+    rgba(0,0,0,.9);
+}
+
+
+/* Griglia dei sismografi */
+.continente > .stazioni-mondo {
+  width: 100%;
+
+  display: grid !important;
+
+  grid-template-columns:
+    repeat(2, minmax(0,1fr)) !important;
+
+  gap:
+    3px 5px !important;
+
+  margin: 0 !important;
+
+  padding: 0 !important;
+}
+
+
+/* Elimina spazio tra una zona e l'altra */
+.continente + .continente {
+  margin-top:
+    5px !important;
+}
+
+
+/* Sismografi più ravvicinati */
+.sismo-world {
+  margin: 0 !important;
+
+  padding:
+    6px 8px !important;
+
+  min-height:
+    68px;
+
+  gap:
+    7px !important;
+}
+
+
+/* Tracciato compatto */
+.world-canvas {
+  height:
+    52px !important;
+}
+
+
+/* Riduce anche lo spazio generale */
+.container {
+  margin-top:
+    18px !important;
+}
+
+
+/* MOBILE */
+@media (max-width: 800px) {
+
+  .continente {
+    grid-template-columns:
+      1fr !important;
+  }
+
+  .continente > h2 {
+    position: static;
+
+    text-align: left;
+
+    padding:
+      10px 3px 5px !important;
+  }
+
+  .continente > .stazioni-mondo {
+    grid-template-columns:
+      1fr !important;
+  }
+
+}
+
+</style>
+
+
+<style id="allerta-mondo-css">
+
+#allertaMondo {
+  display: none;
+
+  width: min(1000px, 92%);
+  margin: 12px auto 18px;
+  padding: 13px 18px;
+
+  text-align: center;
+
+  color: #fff;
+
+  background:
+    linear-gradient(
+      90deg,
+      #5d0008,
+      #d31626,
+      #5d0008
+    );
+
+  border: 2px solid #ff3040;
+  border-radius: 10px;
+
+  box-shadow:
+    0 0 20px rgba(255,30,45,.70);
+
+  text-shadow:
+    0 2px 5px rgba(0,0,0,.9);
+
+  z-index: 2000;
+}
+
+#allertaMondo.attivo {
+  display: block;
+  animation: lampeggioMondo .9s infinite;
+}
+
+#allertaMondoTitolo {
+  font-size: 18px;
+  font-weight: 900;
+}
+
+#allertaMondoMeta {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #ffd8dc;
+}
+
+@keyframes lampeggioMondo {
+  0%,100% { opacity: 1; }
+  50% { opacity: .62; }
+}
+
+</style>
+
+
+<style id="zona-evento-mondo-css">
+
+.sismo-world {
+  position: relative;
+}
+
+.zona-evento-mondo {
+  display: none;
+  position: absolute;
+  top: -27px;
+  left: 170px;
+  right: 8px;
+  z-index: 30;
+  padding: 5px 8px;
+  text-align: center;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 900;
+  background: rgba(160,0,12,.96);
+  border: 1px solid #ff4050;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(255,30,45,.55);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.zona-evento-mondo.attivo {
+  display: block;
+}
+
+@media (max-width: 800px) {
+  .zona-evento-mondo {
+    left: 8px;
+  }
+}
+
+</style>
+
+
+<style id="ticker-terremoti-mondo-css">
+
+.ticker-terremoti-mondo {
+  width: 100%;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(70,0,5,.98),
+      rgba(185,10,20,.98),
+      rgba(70,0,5,.98)
+    );
+
+  border-top:
+    1px solid #ff3646;
+
+  border-bottom:
+    1px solid #ff3646;
+
+  box-shadow:
+    0 0 14px rgba(255,20,35,.35);
+
+  white-space: nowrap;
+
+  position: relative;
+
+  z-index: 1100;
+}
+
+.ticker-terremoti-mondo-inner {
+  display: inline-block;
+
+  min-width: 100%;
+
+  padding:
+    9px 0;
+
+  color: #ffffff;
+
+  font-size:
+    13px;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    .3px;
+
+  text-shadow:
+    0 2px 4px
+    rgba(0,0,0,.9);
+
+  animation:
+    tickerMondoScorre
+    32s linear infinite;
+}
+
+.ticker-terremoti-mondo:hover
+.ticker-terremoti-mondo-inner {
+  animation-play-state:
+    paused;
+}
+
+@keyframes tickerMondoScorre {
+
+  from {
+    transform:
+      translateX(100%);
+  }
+
+  to {
+    transform:
+      translateX(-100%);
+  }
+
+}
+
+.ticker-label {
+  color:
+    #ffd040;
+
+  margin-right:
+    20px;
+}
+
+.ticker-evento {
+  margin-right:
+    38px;
+}
+
+.ticker-mag {
+  color:
+    #ffdc5e;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<header>
+
+  <h1>
+    🌍 Sismografi Mondo
+  </h1>
+
+  <p>
+    Monitoraggio delle principali stazioni sismiche
+    internazionali in tempo reale
+  </p>
+
+</header>
+
+
+<nav>
+
+  <a href="index.html">
+    🏠 Home
+  </a>
+
+  <a href="sismografi.html">
+    🌋🇮🇹 Campi Flegrei e Italia
+  </a>
+
+  <a href="sismografi_mondo.html">
+    🌍 Mondo
+  </a>
+
+</nav>
+
+<div
+  id="tickerTerremotiMondo"
+  class="ticker-terremoti-mondo">
+
+  <div
+    id="tickerTerremotiMondoInner"
+    class="ticker-terremoti-mondo-inner">
+
+    <span class="ticker-label">
+      🌍 ULTIMI TERREMOTI
+    </span>
+
+    Caricamento eventi...
+
+  </div>
+
+</div>
+
+
+
+<main class="container">
+
+
+
+
+<div id="allertaMondo">
+  <div id="allertaMondoTitolo">
+    🔴 TERREMOTO CONFERMATO
+  </div>
+
+  <div id="allertaMondoMeta"></div>
+</div>
+
+
+  <div class="status-bar">
+
+    <span class="status-dot"></span>
+
+    SISTEMA MONITORAGGIO MONDIALE ATTIVO
+
+  </div>
+
+
+  <!-- EUROPA -->
+
+  <section class="continente">
+
+    <h2>🇪🇺 Europa</h2>
+
+    <div class="stazioni-mondo">
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇬🇷 Grecia</strong>
+          <span id="info-world-GRECIA">
+            Stazione da collegare
+          </span>
+          <span class="stato-live">
+            ● LIVE
+          </span>
+        </div>
+
+        <canvas
+          id="world-GRECIA"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇮🇸 Islanda</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-ISLANDA"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇹🇷 Turchia</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-TURCHIA"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇪🇸 Spagna</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-SPAGNA"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- AMERICHE -->
+
+  <section class="continente">
+
+    <h2>🌎 Americhe</h2>
+
+    <div class="stazioni-mondo">
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇺🇸 California</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-CALIFORNIA"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇲🇽 Messico</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-MESSICO"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇨🇱 Cile</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-CILE"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇻🇪 Venezuela</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-VENEZUELA"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- ASIA E OCEANIA -->
+
+  <section class="continente">
+
+    <h2>🌏 Asia e Oceania</h2>
+
+    <div class="stazioni-mondo">
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇯🇵 Giappone</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-GIAPPONE"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇮🇩 Indonesia</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-INDONESIA"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇵🇬 Papua Nuova Guinea</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-PAPUA"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇳🇿 Nuova Zelanda</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-NUOVAZELANDA"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- AFRICA -->
+
+  <section class="continente">
+
+    <h2>🌍 Africa</h2>
+
+    <div class="stazioni-mondo">
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇪🇹 Etiopia</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-ETIOPIA"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇿🇦 Sudafrica</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-SUDAFRICA"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <div class="legenda">
+
+    <strong>Legenda:</strong>
+
+    <span class="bianco">
+      ⚪ normale
+    </span>
+
+    &nbsp; • &nbsp;
+
+    <span class="arancio">
+      🟠 movimento elevato
+    </span>
+
+    &nbsp; • &nbsp;
+
+    <span class="rosso">
+      🔴 terremoto confermato
+    </span>
+
+  </div>
+
+</main>
+
+
+<script id="sismografi-mondo-live-js">
+
+const WORLD_CODES = [
+  "GRECIA",
+  "ISLANDA",
+  "TURCHIA",
+  "SPAGNA",
+  "CALIFORNIA",
+  "MESSICO",
+  "CILE",
+  "VENEZUELA",
+  "GIAPPONE",
+  "INDONESIA",
+  "PAPUA",
+  "NUOVAZELANDA",
+  "ETIOPIA",
+  "SUDAFRICA"
+];
+
+const statoMondo = {};
+
+
+/* =============================
+   CARICA DATI REALI
+============================= */
+
+async function caricaDatiMondo(codice) {
+
+  const canvas =
+    document.getElementById(
+      "world-" + codice
+    );
+
+  if (!canvas) {
+    console.warn(
+      "Canvas non trovato:",
+      codice
+    );
+    return;
+  }
+
+  const card =
+    canvas.closest(".sismo-world");
+
+  const info =
+    card
+      ?.querySelector(
+        ".sismo-info span:not(.stato-live)"
+      );
+
+  const live =
+    card
+      ?.querySelector(
+        ".stato-live"
+      );
+
+  try {
+
+    const risposta =
+      await fetch(
+        "/api/sismografo-mondo/" +
+        codice +
+        "?t=" +
+        Date.now()
+      );
+
+
+    if (!risposta.ok) {
+
+      throw new Error(
+        "HTTP " +
+        risposta.status
+      );
+
+    }
+
+
+    const dati =
+      await risposta.json();
+
+
+    if (
+      !Array.isArray(
+        dati.samples
+      ) ||
+      dati.samples.length < 2
+    ) {
+
+      throw new Error(
+        "Nessun campione"
+      );
+
+    }
+
+
+    const stato =
+      statoMondo[codice];
+
+
+    stato.samples =
+      dati.samples;
+
+
+    /*
+      Al primo caricamento partiamo
+      dall'inizio dei campioni.
+    */
+    if (
+      stato.indice >=
+      stato.samples.length
+    ) {
+
+      stato.indice = 0;
+
+    }
+
+
+    const loc =
+      dati.location &&
+      dati.location !== "*"
+        ? dati.location
+        : "--";
+
+
+    if (info) {
+
+      info.textContent =
+        dati.network +
+        "." +
+        dati.station +
+        "." +
+        loc +
+        "." +
+        dati.channel +
+        " • " +
+        dati.source;
+
+    }
+
+
+    if (live) {
+
+      live.textContent =
+        "● LIVE";
+
+      live.style.color =
+        "#44e990";
+
+    }
+
+
+    stato.online = true;
+
+
+  } catch (errore) {
+
+    console.error(
+      "Errore " +
+      codice +
+      ":",
+      errore
+    );
+
+
+    const stato =
+      statoMondo[codice];
+
+    if (stato) {
+      stato.online = false;
+    }
+
+
+    if (live) {
+
+      live.textContent =
+        "● DATI NON DISPONIBILI";
+
+      live.style.color =
+        "#ff9d22";
+
+    }
+
+  }
+
+}
+
+
+/* =============================
+   DISEGNA TRACCIATO
+============================= */
+
+function disegnaMondo(codice) {
+
+  const canvas =
+    document.getElementById(
+      "world-" + codice
+    );
+
+  const stato =
+    statoMondo[codice];
+
+
+  if (
+    !canvas ||
+    !stato ||
+    stato.visibili.length < 2
+  ) {
+
+    return;
+
+  }
+
+
+  const larghezza =
+    Math.max(
+      120,
+      Math.floor(
+        canvas.clientWidth
+      )
+    );
+
+
+  const altezza = 55;
+
+
+  if (
+    canvas.width !== larghezza
+  ) {
+
+    canvas.width =
+      larghezza;
+
+    canvas.height =
+      altezza;
+
+  }
+
+
+  const ctx =
+    canvas.getContext("2d");
+
+
+  ctx.clearRect(
+    0,
+    0,
+    larghezza,
+    altezza
+  );
+
+
+  ctx.beginPath();
+
+
+  stato.visibili.forEach(
+    (valore, indice) => {
+
+      const x =
+        (
+          indice /
+          Math.max(
+            1,
+            stato.visibili.length - 1
+          )
+        ) *
+        larghezza;
+
+
+      const y =
+        altezza / 2 -
+        Number(valore) *
+        altezza *
+        0.42;
+
+
+      if (indice === 0) {
+
+        ctx.moveTo(
+          x,
+          y
+        );
+
+      } else {
+
+        ctx.lineTo(
+          x,
+          y
+        );
+
+      }
+
+    }
+  );
+
+
+  /*
+    Rilevamento semplice di
+    movimento elevato.
+  */
+
+  const valori =
+    stato.visibili
+      .map(
+        v =>
+          Math.abs(
+            Number(v) || 0
+          )
+      )
+      .sort(
+        (a,b) =>
+          a-b
+      );
+
+
+  let movimentoElevato =
+    false;
+
+
+  if (
+    valori.length > 30
+  ) {
+
+    const mediana =
+      valori[
+        Math.floor(
+          valori.length / 2
+        )
+      ];
+
+
+    const picco =
+      valori[
+        valori.length - 1
+      ];
+
+
+    movimentoElevato =
+      picco > 0.60 &&
+      picco >
+        Math.max(
+          0.05,
+          mediana * 6
+        );
+
+  }
+
+
+  /*
+    BIANCO = normale
+    ARANCIONE = movimento elevato
+  */
+
+  ctx.strokeStyle =
+    stato.eventoConfermato
+      ? "#ff2020"
+      : movimentoElevato
+        ? "#ff9d22"
+        : "#ffffff";
+
+
+  ctx.shadowColor =
+    movimentoElevato
+      ? "rgba(255,157,34,.70)"
+      : "rgba(255,255,255,.20)";
+
+
+  ctx.shadowBlur =
+    movimentoElevato
+      ? 5
+      : 1;
+
+
+  ctx.lineWidth = 1;
+
+  ctx.stroke();
+
+}
+
+
+/* =============================
+   ANIMAZIONE CONTINUA
+============================= */
+
+function animaMondo(codice) {
+
+  function frame(timestamp) {
+
+    const stato =
+      statoMondo[codice];
+
+    const canvas =
+      document.getElementById(
+        "world-" + codice
+      );
+
+
+    if (
+      stato &&
+      canvas &&
+      stato.samples.length
+    ) {
+
+      /*
+        Circa 4 punti al secondo.
+      */
+
+      if (
+        timestamp -
+        stato.ultimoPasso >=
+        250
+      ) {
+
+        stato.ultimoPasso =
+          timestamp;
+
+
+        stato.visibili.push(
+          stato.samples[
+            stato.indice
+          ]
+        );
+
+
+        stato.indice++;
+
+
+        if (
+          stato.indice >=
+          stato.samples.length
+        ) {
+
+          stato.indice = 0;
+
+        }
+
+
+        /*
+          Mantiene il tracciato
+          in scorrimento.
+        */
+
+        const massimo =
+          Math.max(
+            160,
+            Math.floor(
+              canvas.clientWidth
+            )
+          );
+
+
+        while (
+          stato.visibili.length >
+          massimo
+        ) {
+
+          stato.visibili.shift();
+
+        }
+
+      }
+
+
+      disegnaMondo(
+        codice
+      );
+
+    }
+
+
+    requestAnimationFrame(
+      frame
+    );
+
+  }
+
+
+  requestAnimationFrame(
+    frame
+  );
+
+}
+
+
+/* =============================
+   AVVIO
+============================= */
+
+async function avviaSismografiMondo() {
+
+  console.log(
+    "🌍 Avvio sismografi mondo..."
+  );
+
+
+  for (
+    const codice
+    of WORLD_CODES
+  ) {
+
+    statoMondo[codice] = {
+      samples: [],
+      indice: 0,
+      visibili: [],
+      ultimoPasso: 0,
+      online: false,
+      eventoConfermato: false
+    };
+
+
+    /*
+      Caricamento uno alla volta:
+      evita di sovraccaricare Flask.
+    */
+
+    await caricaDatiMondo(
+      codice
+    );
+
+
+    animaMondo(
+      codice
+    );
+
+
+    await new Promise(
+      resolve =>
+        setTimeout(
+          resolve,
+          700
+        )
+    );
+
+  }
+
+
+  console.log(
+    "✅ Sismografi mondo avviati"
+  );
+
+}
+
+
+/* =============================
+   AGGIORNAMENTO DATI
+============================= */
+
+async function aggiornaSismografiMondo() {
+
+  for (
+    const codice
+    of WORLD_CODES
+  ) {
+
+    await caricaDatiMondo(
+      codice
+    );
+
+
+    await new Promise(
+      resolve =>
+        setTimeout(
+          resolve,
+          700
+        )
+    );
+
+  }
+
+}
+
+
+/*
+  Nuovi dati ogni 60 secondi.
+  Il tracciato continua a muoversi
+  anche durante l'aggiornamento.
+*/
+
+setInterval(
+  aggiornaSismografiMondo,
+  60000
+);
+
+
+avviaSismografiMondo();
+
+</script>
+
+
+<script id="allerta-mondo-js">
+
+const COORD_MONDO = {
+  GRECIA: [38.5, 23.7],
+  ISLANDA: [64.8, -18.0],
+  TURCHIA: [39.0, 35.0],
+  SPAGNA: [40.3, -3.7],
+
+  CALIFORNIA: [36.5, -119.5],
+  MESSICO: [23.6, -102.5],
+  CILE: [-33.0, -71.0],
+  VENEZUELA: [8.0, -66.0],
+
+  GIAPPONE: [36.2, 138.2],
+  INDONESIA: [-2.0, 118.0],
+  PAPUA: [-6.0, 147.0],
+  NUOVAZELANDA: [-41.0, 174.0],
+
+  ETIOPIA: [9.0, 40.5],
+  SUDAFRICA: [-30.5, 24.0]
+};
+
+const NOMI_MONDO = {
+  GRECIA: "Grecia",
+  ISLANDA: "Islanda",
+  TURCHIA: "Turchia",
+  SPAGNA: "Spagna",
+
+  CALIFORNIA: "California",
+  MESSICO: "Messico",
+  CILE: "Cile",
+  VENEZUELA: "Venezuela",
+
+  GIAPPONE: "Giappone",
+  INDONESIA: "Indonesia",
+  PAPUA: "Papua Nuova Guinea",
+  NUOVAZELANDA: "Nuova Zelanda",
+
+  ETIOPIA: "Etiopia",
+  SUDAFRICA: "Sudafrica"
+};
+
+
+const eventiMondoVisti =
+  new Set();
+
+let mondoInizializzato =
+  false;
+
+let timerAllertaMondo =
+  null;
+
+
+function distanzaKmMondo(
+  lat1,
+  lon1,
+  lat2,
+  lon2
+) {
+
+  const R = 6371;
+
+  const rad =
+    x => x * Math.PI / 180;
+
+  const dLat =
+    rad(lat2 - lat1);
+
+  const dLon =
+    rad(lon2 - lon1);
+
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(rad(lat1)) *
+    Math.cos(rad(lat2)) *
+    Math.sin(dLon / 2) ** 2;
+
+  return (
+    2 *
+    R *
+    Math.asin(Math.sqrt(a))
+  );
+}
+
+
+function zonaMondoPiuVicina(
+  lat,
+  lon
+) {
+
+  let migliore = null;
+  let distanza = Infinity;
+
+  for (
+    const [codice, posizione]
+    of Object.entries(COORD_MONDO)
+  ) {
+
+    const km =
+      distanzaKmMondo(
+        lat,
+        lon,
+        posizione[0],
+        posizione[1]
+      );
+
+    if (km < distanza) {
+      distanza = km;
+      migliore = codice;
+    }
+  }
+
+  return {
+    codice: migliore,
+    distanza
+  };
+}
+
+
+function allarmeAudioMondo() {
+
+  try {
+
+    const audio =
+      new Audio(
+        "/allarme_terremoto.wav?t=" +
+        Date.now()
+      );
+
+    audio.volume = 1;
+
+    audio.play().catch(
+      errore =>
+        console.log(
+          "Audio bloccato:",
+          errore
+        )
+    );
+
+  } catch (errore) {
+
+    console.log(
+      "Audio non disponibile:",
+      errore
+    );
+
+  }
+}
+
+
+
+function mostraZonaEventoMondo(
+  codice,
+  evento
+) {
+
+  const canvas =
+    document.getElementById(
+      "world-" + codice
+    );
+
+  if (!canvas) {
+    return;
+  }
+
+  const card =
+    canvas.closest(
+      ".sismo-world"
+    );
+
+  if (!card) {
+    return;
+  }
+
+  let box =
+    card.querySelector(
+      ".zona-evento-mondo"
+    );
+
+  if (!box) {
+
+    box =
+      document.createElement(
+        "div"
+      );
+
+    box.className =
+      "zona-evento-mondo";
+
+    card.appendChild(box);
+
+  }
+
+  const nome =
+    NOMI_MONDO[codice] ||
+    codice;
+
+  const zona =
+    evento.place ||
+    "Zona non specificata";
+
+  box.textContent =
+    "🔴 " +
+    nome.toUpperCase() +
+    " — " +
+    zona +
+    " • M " +
+    Number(evento.mag).toFixed(1);
+
+  box.classList.add(
+    "attivo"
+  );
+
+  if (box._timer) {
+    clearTimeout(
+      box._timer
+    );
+  }
+
+  box._timer =
+    setTimeout(() => {
+
+      box.classList.remove(
+        "attivo"
+      );
+
+    }, 30000);
+
+}
+
+function mostraAllertaMondo(
+  codice,
+  evento
+) {
+
+  const banner =
+    document.getElementById(
+      "allertaMondo"
+    );
+
+  const titolo =
+    document.getElementById(
+      "allertaMondoTitolo"
+    );
+
+  const meta =
+    document.getElementById(
+      "allertaMondoMeta"
+    );
+
+  if (
+    !banner ||
+    !titolo ||
+    !meta
+  ) return;
+
+
+  titolo.textContent =
+    "🔴 TERREMOTO CONFERMATO — " +
+    (
+      NOMI_MONDO[codice] ||
+      codice
+    ).toUpperCase();
+
+
+  meta.textContent =
+    "M " +
+    Number(evento.mag)
+      .toFixed(1) +
+    " • Profondità " +
+    Number(evento.profondita)
+      .toFixed(1) +
+    " km";
+
+
+  banner.classList.add(
+    "attivo"
+  );
+
+
+  const canvas =
+    document.getElementById(
+      "world-" + codice
+    );
+
+
+  if (canvas) {
+
+    canvas.style.border =
+      "2px solid #ff2020";
+
+    canvas.style.boxShadow =
+      "0 0 16px rgba(255,32,32,.80)";
+
+  }
+
+
+  if (
+    statoMondo &&
+    statoMondo[codice]
+  ) {
+
+    statoMondo[
+      codice
+    ].eventoConfermato =
+      true;
+
+  }
+
+
+  mostraZonaEventoMondo(
+    codice,
+    evento
+  );
+
+  allarmeAudioMondo();
+
+
+  if (timerAllertaMondo) {
+    clearTimeout(
+      timerAllertaMondo
+    );
+  }
+
+
+  timerAllertaMondo =
+    setTimeout(() => {
+
+      banner.classList.remove(
+        "attivo"
+      );
+
+
+      if (canvas) {
+
+        canvas.style.border =
+          "1px solid rgba(70,190,225,.18)";
+
+        canvas.style.boxShadow =
+          "none";
+
+      }
+
+
+      if (
+        statoMondo &&
+        statoMondo[codice]
+      ) {
+
+        statoMondo[
+          codice
+        ].eventoConfermato =
+          false;
+
+      }
+
+    }, 30000);
+
+}
+
+
+async function controllaTerremotiMondo() {
+
+  try {
+
+    const fine =
+      new Date();
+
+    const inizio =
+      new Date(
+        fine.getTime() -
+        10 * 60 * 1000
+      );
+
+
+    const formatta =
+      d =>
+        d.toISOString();
+
+
+    const url =
+      "https://earthquake.usgs.gov/fdsnws/event/1/query" +
+      "?format=geojson" +
+      "&starttime=" +
+      encodeURIComponent(
+        formatta(inizio)
+      ) +
+      "&endtime=" +
+      encodeURIComponent(
+        formatta(fine)
+      ) +
+      "&minmagnitude=3.5" +
+      "&orderby=time";
+
+
+    const risposta =
+      await fetch(
+        url +
+        "&nocache=" +
+        Date.now()
+      );
+
+
+    if (!risposta.ok) {
+      return;
+    }
+
+
+    const dati =
+      await risposta.json();
+
+
+    const eventi =
+      dati.features || [];
+
+
+    if (!mondoInizializzato) {
+
+      eventi.forEach(evento => {
+
+        eventiMondoVisti.add(
+          evento.id
+        );
+
+      });
+
+      mondoInizializzato =
+        true;
+
+      console.log(
+        "✅ Monitor terremoti Mondo attivo"
+      );
+
+      return;
+    }
+
+
+    for (
+      const evento
+      of eventi
+    ) {
+
+      if (
+        eventiMondoVisti
+          .has(evento.id)
+      ) {
+        continue;
+      }
+
+
+      eventiMondoVisti.add(
+        evento.id
+      );
+
+
+      const coord =
+        evento.geometry
+          ?.coordinates;
+
+
+      if (
+        !coord ||
+        coord.length < 2
+      ) continue;
+
+
+      const lon =
+        Number(coord[0]);
+
+      const lat =
+        Number(coord[1]);
+
+      const profondita =
+        Number(
+          coord[2] || 0
+        );
+
+      const mag =
+        Number(
+          evento.properties
+            ?.mag || 0
+        );
+
+
+      const zona =
+        zonaMondoPiuVicina(
+          lat,
+          lon
+        );
+
+
+      if (!zona.codice) {
+        continue;
+      }
+
+
+      /*
+        Evitiamo di associare
+        terremoti troppo lontani.
+      */
+      if (
+        zona.distanza >
+        700
+      ) {
+        continue;
+      }
+
+
+      mostraAllertaMondo(
+        zona.codice,
+        {
+          mag,
+          profondita,
+          lat,
+          lon,
+          place:
+            evento.properties?.place ||
+            "Zona non specificata"
+        }
+      );
+
+    }
+
+
+  } catch (errore) {
+
+    console.error(
+      "Errore eventi mondo:",
+      errore
+    );
+
+  }
+
+}
+
+
+controllaTerremotiMondo();
+
+
+setInterval(
+  controllaTerremotiMondo,
+  30000
+);
+
+</script>
+
+
+<script id="ticker-terremoti-mondo-js">
+
+async function aggiornaTickerTerremotiMondo() {
+
+  const box =
+    document.getElementById(
+      "tickerTerremotiMondoInner"
+    );
+
+  if (!box) {
+    return;
+  }
+
+  try {
+
+    const fine =
+      new Date();
+
+    const inizio =
+      new Date(
+        fine.getTime() -
+        24 * 60 * 60 * 1000
+      );
+
+
+    const url =
+      "https://earthquake.usgs.gov/fdsnws/event/1/query" +
+      "?format=geojson" +
+      "&starttime=" +
+      encodeURIComponent(
+        inizio.toISOString()
+      ) +
+      "&endtime=" +
+      encodeURIComponent(
+        fine.toISOString()
+      ) +
+      "&minmagnitude=3.5" +
+      "&orderby=time" +
+      "&limit=3" +
+      "&nocache=" +
+      Date.now();
+
+
+    const risposta =
+      await fetch(url);
+
+
+    if (!risposta.ok) {
+
+      throw new Error(
+        "HTTP " +
+        risposta.status
+      );
+
+    }
+
+
+    const dati =
+      await risposta.json();
+
+
+    const eventi =
+      dati.features || [];
+
+
+    if (!eventi.length) {
+
+      box.innerHTML =
+        '<span class="ticker-label">' +
+        '🌍 ULTIMI TERREMOTI' +
+        '</span>' +
+        ' Nessun evento M 3.5+ recente';
+
+      return;
+
+    }
+
+
+    const parti =
+      eventi.map(evento => {
+
+        const p =
+          evento.properties || {};
+
+        const c =
+          evento.geometry
+            ?.coordinates || [];
+
+        const mag =
+          Number(
+            p.mag || 0
+          ).toFixed(1);
+
+        const luogo =
+          p.place ||
+          "Zona non specificata";
+
+        const profondita =
+          Number(
+            c[2] || 0
+          ).toFixed(1);
+
+
+        const data =
+          p.time
+            ? new Date(
+                p.time
+              )
+            : null;
+
+
+        const ora =
+          data
+            ? data.toLocaleTimeString(
+                "it-IT",
+                {
+                  hour: "2-digit",
+                  minute: "2-digit"
+                }
+              )
+            : "--:--";
+
+
+        return (
+          '<span class="ticker-evento">' +
+          '🔴 ' +
+          '<span class="ticker-mag">' +
+          'M ' +
+          mag +
+          '</span>' +
+          ' • ' +
+          luogo +
+          ' • ' +
+          profondita +
+          ' km' +
+          ' • ' +
+          ora +
+          '</span>'
+        );
+
+      });
+
+
+    box.innerHTML =
+      '<span class="ticker-label">' +
+      '🌍 ULTIMI TERREMOTI' +
+      '</span>' +
+      parti.join("");
+
+
+  } catch (errore) {
+
+    console.error(
+      "Errore ticker terremoti:",
+      errore
+    );
+
+
+    box.innerHTML =
+      '<span class="ticker-label">' +
+      '🌍 ULTIMI TERREMOTI' +
+      '</span>' +
+      ' Dati momentaneamente non disponibili';
+
+  }
+
+}
+
+
+/*
+ * Primo caricamento.
+ */
+aggiornaTickerTerremotiMondo();
+
+
+/*
+ * Aggiorna ogni 60 secondi.
+ */
+setInterval(
+  aggiornaTickerTerremotiMondo,
+  60000
+);
+
+</script>
+
+</body>
+</html>

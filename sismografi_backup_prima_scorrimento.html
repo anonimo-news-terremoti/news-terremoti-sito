@@ -1,0 +1,820 @@
+nano ~/news-terremoti-sito/sismografi.html<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sismografi in tempo reale | News Terremoti Mondo e Italia</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #eef5f9;
+      color: #082d4c;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0b3656, #176c9d);
+      color: white;
+      text-align: center;
+      padding: 45px 20px;
+    }
+
+    header h1 {
+      margin: 0 0 12px;
+      font-size: 38px;
+    }
+
+    header p {
+      margin: 0 auto;
+      max-width: 800px;
+      line-height: 1.6;
+      font-size: 17px;
+    }
+
+    nav {
+      background: white;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+
+    nav a {
+      color: #083455;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 15px;
+    }
+
+    .container {
+      width: min(1200px, 92%);
+      margin: auto;
+    }
+
+    .intro {
+      text-align: center;
+      padding: 45px 10px 25px;
+    }
+
+    .intro h2 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .live {
+      display: inline-block;
+      background: #dcf8eb;
+      color: #087a4c;
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .filtri {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 25px 0 35px;
+    }
+
+    .filtri button {
+      border: 0;
+      background: white;
+      color: #083455;
+      padding: 12px 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 3px 10px rgba(0,0,0,.08);
+    }
+
+    .filtri button:hover {
+      background: #0d6595;
+      color: white;
+    }
+
+    .zona {
+      margin-bottom: 45px;
+    }
+
+    .zona h2 {
+      border-bottom: 2px solid #d4e3ec;
+      padding-bottom: 12px;
+    }
+
+    .stazioni {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+.principali {
+  margin-bottom: 45px;
+}
+
+.principali-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.sismo-grande {
+  background: white;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 6px 22px rgba(0,0,0,.08);
+}
+
+.sismo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.sismo-header h2 {
+  margin: 0;
+}
+
+.sismo-header p {
+  margin: 3px 0 0;
+  color: #617789;
+}
+
+.badge-live {
+  background: #dcf8eb;
+  color: #087a4c;
+  padding: 7px 11px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.grafico-grande {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.grafico-grande img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.info-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  color: #617789;
+  font-size: 13px;
+}
+
+.monitoraggio-vulcanico {
+  margin: 45px 0;
+}
+
+.monitor-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+
+.monitor-card {
+  background: white;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 5px 18px rgba(0,0,0,.07);
+  min-width: 0;
+}
+
+.monitor-placeholder {
+  margin-top: 15px;
+  height: 260px;
+  background: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.monitor-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 800px) {
+  .principali-grid,
+  .monitor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grafico-grande {
+    height: 230px;
+  }
+}
+
+    .stazione {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 5px 18px rgba(0,0,0,.07);
+    }
+
+    .stazione h3 {
+      margin: 0 0 5px;
+    }
+
+    .codice {
+      color: #617789;
+      font-size: 14px;
+    }
+
+    .sismogramma {
+      margin-top: 18px;
+      height: 150px;
+      background: #071d2c;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6be8ff;
+      font-size: 14px;
+    }
+
+    .stato {
+      margin-top: 12px;
+      color: #078354;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    footer {
+      background: #082d4c;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 29px;
+      }
+
+.lista-sismografi {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.sismo-riga {
+  background: white;
+  border-radius: 5px;
+  padding: 4px 7px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.05);
+  border: 1px solid #dbe6ec;
+}
+
+.sismo-riga {
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+.sismo-riga canvas.sismo-live {
+  display: block;
+  width: 100% !important;
+  height: 55px !important;
+  min-height: 55px !important;
+  max-height: 55px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #ffffff;
+}
+.sismo-titolo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1px;
+}
+
+.sismo-titolo strong {
+  font-size: 13px;
+  color: #082d4c;
+}
+
+.sismo-titolo span {
+  font-size: 10px;
+  color: #617789;
+}
+
+.sismo-riga img {
+  display: block;
+  width: 100%;
+  height: 70px;
+  object-fit: fill;
+  background: white;
+}
+
+@media (max-width: 700px) {
+  .sismo-riga img {
+    height: 90px;
+  }
+
+  .sismo-titolo {
+    flex-wrap: wrap;
+  }
+}    
+.sismo-live {
+  display: block;
+  width: 100%;
+  height: 55px !important;
+  min-height: 55px !important;
+  max-height: 55px !important;
+  background: white;
+  border: 1px solid #d8e1e8;
+  box-sizing: border-box;
+}
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>📡 Sismografi in tempo reale</h1>
+
+  <p>
+    Consulta i tracciati delle stazioni sismiche disponibili
+    sul territorio italiano.
+  </p>
+</header>
+
+<nav>
+  <a href="index.html">🏠 Home</a>
+  <a href="#nord">Nord</a>
+  <a href="#centro">Centro</a>
+  <a href="#sud">Sud</a>
+  <a href="#isole">Isole</a>
+</nav>
+
+<main class="container">
+
+<section class="intro">
+
+  <span class="live">● MONITORAGGIO SISMICO E VULCANICO</span>
+
+  <h2>Napoli, Campi Flegrei e Vesuvio</h2>
+
+  <p>
+    Monitoraggio dei principali sismografi e dei parametri vulcanici
+    dell'area napoletana.
+  </p>
+
+</section>
+
+<section class="principali">
+
+  <h2>🌋 Campi Flegrei – Sismografi principali</h2>
+
+  <div class="lista-sismografi">
+
+    <article class="sismo-riga">
+      <div class="sismo-titolo">
+        <strong>Solfatara</strong>
+        <span>IV.CSFT..HHZ</span>
+      </div>
+
+<canvas
+  id="canvas-CSFT"
+  class="sismo-live"
+  data-station="CSFT">
+</canvas>
+
+    </article>
+
+    <article class="sismo-riga">
+      <div class="sismo-titolo">
+        <strong>Pisciarelli</strong>
+        <span>IV.CPIS..HHZ</span>
+      </div>
+<canvas
+  id="canvas-CPIS"
+  class="sismo-live"
+  data-station="CPIS">
+</canvas>
+    </article>
+
+    <article class="sismo-riga">
+      <div class="sismo-titolo">
+        <strong>Bagnoli</strong>
+        <span>IV.CBAG..HHZ</span>
+      </div>
+<canvas
+  id="canvas-CBAG"
+  class="sismo-live"
+  data-station="CBAG">
+</canvas>
+    </article>
+
+    <article class="sismo-riga">
+      <div class="sismo-titolo">
+        <strong>Nisida</strong>
+        <span>IV.CNIS..HHZ</span>
+      </div>
+
+<canvas
+  id="canvas-CNIS"
+  class="sismo-live"
+  data-station="CNIS">
+</canvas>
+    </article>
+
+    <article class="sismo-riga">
+      <div class="sismo-titolo">
+        <strong>Monte Nuovo</strong>
+        <span>IV.CFMN..HHZ</span>
+      </div>
+<canvas
+  id="canvas-CFMN"
+  class="sismo-live"
+  data-station="CFMN">
+</canvas>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<section class="monitoraggio-vulcanico">
+
+  <h2>🌋 Monitoraggio Vesuvio e attività fumarolica</h2>
+
+  <div class="monitor-grid">
+
+    <article class="monitor-card">
+.      <h3>🌋 Vesuvio</h3>
+      <p>
+        Stato del monitoraggio sismico e vulcanico.
+      </p>
+
+<div class="monitor-placeholder">
+  <canvas
+    id="canvas-OVO"
+    class="sismo-live"
+    data-station="OVO">
+  </canvas>
+</div>
+
+      </div>
+    </article>
+
+
+    <article class="monitor-card">
+      <h3>💨 Fumarole</h3>
+      <p>
+        Parametri disponibili relativi all'attività fumarolica.
+      </p>
+
+<div class="monitor-placeholder">
+  <img
+    src="CPIS_HHZ.png"
+    alt="Sismografo Pisciarelli area fumarole"
+    style="width:100%;height:100%;object-fit:contain;border-radius:10px;background:white;"
+  >
+</div>
+<a
+  class="webcam-button"
+  href="https://www.campanialive.it/webcam.asp?localita=agnanosolfatara"  
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  📹 Apri Webcam Pisciarelli / Agnano-Solfatara
+</a>
+    </article>
+
+  </div>
+
+</section>
+
+  <section class="zona" id="nord">
+
+    <h2>🏔️ Italia Nord</h2>
+
+    <div class="stazioni">
+
+      <div class="stazione">
+        <h3>Stazione sismica</h3>
+        <div class="codice">Codice stazione: da collegare</div>
+
+        <div class="sismogramma">
+          📡 Tracciato in attesa dei dati
+        </div>
+
+        <div class="stato">
+          ● CONNESSIONE DATI DA CONFIGURARE
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="zona" id="centro">
+
+    <h2>🏛️ Italia Centro</h2>
+
+    <div class="stazioni">
+
+      <div class="stazione">
+        <h3>Stazione sismica</h3>
+        <div class="codice">Codice stazione: da collegare</div>
+
+        <div class="sismogramma">
+          📡 Tracciato in attesa dei dati
+        </div>
+
+        <div class="stato">
+          ● CONNESSIONE DATI DA CONFIGURARE
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="zona" id="sud">
+
+    <h2>🌋 Italia Sud</h2>
+
+    <div class="stazioni">
+
+      <div class="stazione">
+        <h3>Stazione sismica</h3>
+        <div class="codice">Codice stazione: da collegare</div>
+
+        <div class="sismogramma">
+          📡 Tracciato in attesa dei dati
+        </div>
+
+        <div class="stato">
+          ● CONNESSIONE DATI DA CONFIGURARE
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="zona" id="isole">
+
+    <h2>🏝️ Sicilia e Sardegna</h2>
+
+    <div class="stazioni">
+
+      <div class="stazione">
+        <h3>Stazione sismica</h3>
+        <div class="codice">Codice stazione: da collegare</div>
+
+        <div class="sismogramma">
+          📡 Tracciato in attesa dei dati
+        </div>
+
+        <div class="stato">
+          ● CONNESSIONE DATI DA CONFIGURARE
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 News Terremoti Mondo e Italia
+</footer>
+
+<script>
+async function caricaStazioni() {
+  try {
+    const risposta = await fetch("stazioni_iv.json");
+
+    if (!risposta.ok) {
+      throw new Error("Impossibile caricare stazioni_iv.json");
+    }
+
+    const stazioni = await risposta.json();
+
+    const contenitori = {
+      nord: document.querySelector("#nord .stazioni"),
+      centro: document.querySelector("#centro .stazioni"),
+      sud: document.querySelector("#sud .stazioni"),
+      sicilia: document.querySelector("#isole .stazioni"),
+      sardegna: document.querySelector("#isole .stazioni")
+    };
+
+    Object.values(contenitori).forEach(c => {
+      if (c) c.innerHTML = "";
+    });
+
+    stazioni.forEach(stazione => {
+      const contenitore = contenitori[stazione.zone];
+
+      if (!contenitore) {
+        return;
+      }
+
+      const scheda = document.createElement("div");
+      scheda.className = "stazione";
+
+      scheda.innerHTML = `
+        <h3>${stazione.name || stazione.station}</h3>
+
+        <div class="codice">
+          Codice: <strong>${stazione.network}.${stazione.station}</strong><br>
+          Lat: ${stazione.latitude.toFixed(4)} |
+          Lon: ${stazione.longitude.toFixed(4)}<br>
+          Quota: ${stazione.elevation || "N/D"} m
+        </div>
+
+        <div class="sismogramma">
+          ${
+            stazione.station === "APPI"
+              ? `
+                <img
+                  src="appi_ehz.png"
+                  alt="Sismogramma IV.APPI EHZ"
+                  style="
+                    width:100%;
+                    height:100%;
+                    object-fit:contain;
+                    border-radius:10px;
+                    background:white;
+                  "
+                >
+              `
+              : "📡 Tracciato sismico da collegare"
+          }
+        </div>
+
+        <div class="stato">
+          ● STAZIONE ATTIVA
+        </div>
+      `;
+
+      contenitore.appendChild(scheda);
+    });
+
+    console.log("✅ Stazioni caricate:", stazioni.length);
+
+  } catch (errore) {
+    console.error("Errore caricamento stazioni:", errore);
+  }
+}
+
+caricaStazioni();
+</script>
+<script>
+function aggiornaImmaginiSismografi() {
+  const timestamp = Date.now();
+
+const immagini = [
+  "CSFT_HHZ.png",
+  "CPIS_HHZ.png",
+  "CBAG_HHZ.png",
+  "CNIS_HHZ.png",
+  "CFMN_HHZ.png",
+  "OVO_HHZ.png"
+];
+
+  document.querySelectorAll("img").forEach(img => {
+    const srcPulito = img.getAttribute("src")?.split("?")[0];
+
+    if (immagini.includes(srcPulito)) {
+      img.src = srcPulito + "?t=" + timestamp;
+    }
+  });
+}
+
+setInterval(
+  aggiornaImmaginiSismografi,
+  60000
+);
+
+aggiornaImmaginiSismografi();
+</script>
+<script>
+const stazioniAttive = [
+  "CSFT",
+  "CPIS",
+  "CBAG",
+  "CNIS",
+  "CFMN",
+  "OVO"
+];
+
+async function disegnaSismografo(station) {
+  const canvas = document.getElementById("canvas-" + station);
+
+  if (!canvas) {
+    console.error("Canvas non trovato:", station);
+    return;
+  }
+
+  try {
+    const risposta = await fetch(
+      "/api/sismografo/" + station + "?t=" + Date.now()
+    );
+
+    if (!risposta.ok) {
+      console.error("HTTP", risposta.status, station);
+      return;
+    }
+
+    const dati = await risposta.json();
+    const samples = dati.samples;
+
+    if (!Array.isArray(samples) || samples.length < 2) {
+      console.error("Samples mancanti:", station);
+      return;
+    }
+
+    const rect = canvas.getBoundingClientRect();
+    const width = Math.max(300, Math.floor(rect.width));
+    const height = 55;
+
+    canvas.width = width;
+    canvas.height = height;
+
+    const ctx = canvas.getContext("2d");
+
+    ctx.clearRect(0, 0, width, height);
+
+    // linea centrale
+    ctx.beginPath();
+    ctx.moveTo(0, height / 2);
+    ctx.lineTo(width, height / 2);
+    ctx.strokeStyle = "#d7e1e8";
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    // tracciato
+    ctx.beginPath();
+
+    for (let i = 0; i < samples.length; i++) {
+      const x =
+        (i / (samples.length - 1)) * width;
+
+      const y =
+        (height / 2) -
+        (samples[i] * height * 0.42);
+
+      if (i === 0) {
+        ctx.moveTo(x, y);
+      } else {
+        ctx.lineTo(x, y);
+      }
+    }
+
+    ctx.strokeStyle = "#005eff";
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    console.log("✅ Disegnato", station, samples.length);
+
+  } catch (errore) {
+    console.error("Errore", station, errore);
+  }
+}
+
+async function aggiornaTutti() {
+  for (const station of stazioniAttive) {
+    await disegnaSismografo(station);
+  }
+}
+
+aggiornaTutti();
+
+setInterval(
+  aggiornaTutti,
+  10000
+);
+</script>
+</body>
+</html>

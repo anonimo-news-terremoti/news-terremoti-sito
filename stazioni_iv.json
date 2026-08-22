@@ -1,0 +1,4241 @@
+[
+  {
+    "network": "IV",
+    "station": "ACATE",
+    "name": "ACATE",
+    "latitude": 37.02398,
+    "longitude": 14.50064,
+    "elevation": "210",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "ACER",
+    "name": "Acerenza",
+    "latitude": 40.7867,
+    "longitude": 15.9427,
+    "elevation": "690",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "AGLI",
+    "name": "Aglientu",
+    "latitude": 41.1269,
+    "longitude": 9.1733,
+    "elevation": "180",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "AGST",
+    "name": "Augusta",
+    "latitude": 37.25652,
+    "longitude": 15.22713,
+    "elevation": "70",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "AIO",
+    "name": "Antillo, Italy",
+    "latitude": 37.9712,
+    "longitude": 15.233,
+    "elevation": "751",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "ALJA",
+    "name": "Alia",
+    "latitude": 37.74897,
+    "longitude": 13.75373,
+    "elevation": "700",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "AMUR",
+    "name": "Altamura",
+    "latitude": 40.9071,
+    "longitude": 16.6041,
+    "elevation": "443",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "AOI",
+    "name": "Monte Conero",
+    "latitude": 43.55017,
+    "longitude": 13.602,
+    "elevation": "530.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "APEC",
+    "name": "Apecchio",
+    "latitude": 43.55846,
+    "longitude": 12.41991,
+    "elevation": "488",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "APPI",
+    "name": "Appiano",
+    "latitude": 46.47868,
+    "longitude": 11.22813,
+    "elevation": "1056.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "APRC",
+    "name": "Apricena (FG)",
+    "latitude": 41.75738,
+    "longitude": 15.54308,
+    "elevation": "672.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "ARCI",
+    "name": "Arcidosso",
+    "latitude": 42.8519,
+    "longitude": 11.4754,
+    "elevation": "1080",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "ARRO",
+    "name": "Arrone",
+    "latitude": 42.57917,
+    "longitude": 12.76567,
+    "elevation": "253",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "ARVD",
+    "name": "ARCEVIA 2",
+    "latitude": 43.49807,
+    "longitude": 12.94153,
+    "elevation": "461.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "ASCOL",
+    "name": "Ascoli Piceno",
+    "latitude": 42.851223,
+    "longitude": 13.58969,
+    "elevation": "180",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "ASOL",
+    "name": "Asolo",
+    "latitude": 45.8003,
+    "longitude": 11.9023,
+    "elevation": "181.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "ASQU",
+    "name": "Asqua",
+    "latitude": 43.7967,
+    "longitude": 11.7893,
+    "elevation": "860",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "ASSB",
+    "name": "Assisi San Benedetto",
+    "latitude": 43.0426,
+    "longitude": 12.6587,
+    "elevation": "734",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "ATBU",
+    "name": "AVT - Serra di Burano",
+    "latitude": 43.47571,
+    "longitude": 12.54828,
+    "elevation": "1000",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "ATCC",
+    "name": "AVT - Casa Castalda",
+    "latitude": 43.18514,
+    "longitude": 12.63994,
+    "elevation": "557",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "ATFO",
+    "name": "Monte Foce - Gubbio",
+    "latitude": 43.3666,
+    "longitude": 12.5715,
+    "elevation": "960",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "ATLO",
+    "name": "AVT - Montelovesco",
+    "latitude": 43.31516,
+    "longitude": 12.40726,
+    "elevation": "584",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "ATMC",
+    "name": "Monte Cedrone",
+    "latitude": 43.44685,
+    "longitude": 12.1928,
+    "elevation": "740",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "ATMI",
+    "name": "AVT - Monte Miggiano",
+    "latitude": 43.33419,
+    "longitude": 12.26801,
+    "elevation": "581",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "ATPC",
+    "name": "Poggio Castellaccio",
+    "latitude": 43.4807,
+    "longitude": 12.457,
+    "elevation": "810",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "ATPI",
+    "name": "Pietralunga - Aviosuperficie",
+    "latitude": 43.45068,
+    "longitude": 12.40222,
+    "elevation": "694",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "ATSC",
+    "name": "Scheggia",
+    "latitude": 43.424,
+    "longitude": 12.68641,
+    "elevation": "895",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "ATVA",
+    "name": "AVT - Monte Valcinella",
+    "latitude": 43.2786,
+    "longitude": 12.28531,
+    "elevation": "605",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "ATVO",
+    "name": "AVT - Monte Valentino",
+    "latitude": 43.38211,
+    "longitude": 12.40663,
+    "elevation": "638",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "BADI",
+    "name": "BADIALI",
+    "latitude": 43.50967,
+    "longitude": 12.24433,
+    "elevation": "430",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "BAG8",
+    "name": "Bagolino",
+    "latitude": 45.8228,
+    "longitude": 10.4664,
+    "elevation": "807.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "BARO",
+    "name": "Barbarano",
+    "latitude": 42.24795,
+    "longitude": 12.05123,
+    "elevation": "350",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "BASIC",
+    "name": "BASIC",
+    "latitude": 38.06703,
+    "longitude": 15.068847,
+    "elevation": "536",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "BAZZO",
+    "name": "Basiluzzo",
+    "latitude": 38.6619947,
+    "longitude": 15.11632,
+    "elevation": "50.0",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "BDI",
+    "name": "BAGNI DI LUCCA",
+    "latitude": 44.0628,
+    "longitude": 10.5956,
+    "elevation": "864",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "BIOG",
+    "name": "Camporeale (Ariano Irpino)",
+    "latitude": 41.199899,
+    "longitude": 15.132629,
+    "elevation": "623.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "BLLA",
+    "name": "Bellaria",
+    "latitude": 44.14294,
+    "longitude": 12.47033,
+    "elevation": "1.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "BOB",
+    "name": "BOBBIO",
+    "latitude": 44.76792,
+    "longitude": 9.44782,
+    "elevation": "910",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "BOSL",
+    "name": "BORGO SAN LORENZO",
+    "latitude": 43.93096,
+    "longitude": 11.374336,
+    "elevation": "378",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "BOZZ",
+    "name": "Bozzolo (MN)",
+    "latitude": 45.1071,
+    "longitude": 10.482,
+    "elevation": "30.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "BRES",
+    "name": "BRESSANONE",
+    "latitude": 46.69868,
+    "longitude": 11.7341,
+    "elevation": "2454.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "BRICA",
+    "name": "Briatico (VV)",
+    "latitude": 38.72384,
+    "longitude": 16.02905,
+    "elevation": "47",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "BRIS",
+    "name": "BRISIGHELLA",
+    "latitude": 44.22454,
+    "longitude": 11.76657,
+    "elevation": "260",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "BRMO",
+    "name": "BORMIO",
+    "latitude": 46.47616,
+    "longitude": 10.37218,
+    "elevation": "1380.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "BRSN",
+    "name": "BARISANO",
+    "latitude": 44.28418,
+    "longitude": 12.08023,
+    "elevation": "20",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "BSSO",
+    "name": "Busso",
+    "latitude": 41.5461,
+    "longitude": 14.5938,
+    "elevation": "1010.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "BULG",
+    "name": "Bulgheria - Camerota",
+    "latitude": 40.0783,
+    "longitude": 15.3776,
+    "elevation": "815.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "BULT",
+    "name": "Bultei - Sa Pruna",
+    "latitude": 40.5092,
+    "longitude": 9.0397,
+    "elevation": "741",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CAAM",
+    "name": "Accademia Aeronautica - Stazione Osservatorio Vesuviano",
+    "latitude": 40.820065,
+    "longitude": 14.142049,
+    "elevation": "170.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CADA",
+    "name": "Capodarco",
+    "latitude": 43.1942,
+    "longitude": 13.7614,
+    "elevation": "148",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "CADC",
+    "name": "Capriano del Colle (BS)",
+    "latitude": 45.455464,
+    "longitude": 10.128662,
+    "elevation": "106.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "CAFE",
+    "name": "Carife",
+    "latitude": 41.028,
+    "longitude": 15.2366,
+    "elevation": "1070.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CAFI",
+    "name": "Castiglion Fiorentino",
+    "latitude": 43.3292,
+    "longitude": 11.9663,
+    "elevation": "547.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "CAIS",
+    "name": "CAIS",
+    "latitude": 43.050003,
+    "longitude": 9.842659,
+    "elevation": "33",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "CAMP",
+    "name": "CAMPOTOSTO",
+    "latitude": 42.53578,
+    "longitude": 13.409,
+    "elevation": "1283",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "CAPA",
+    "name": "Cerignola FG",
+    "latitude": 41.158295,
+    "longitude": 15.816928,
+    "elevation": "156.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CAPR",
+    "name": "Capriolo",
+    "latitude": 45.6372,
+    "longitude": 9.9345,
+    "elevation": "215.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "CAR1",
+    "name": "CAROLEI",
+    "latitude": 39.2534,
+    "longitude": 16.2114,
+    "elevation": "680.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CASP",
+    "name": "Castiglione della Pescaia",
+    "latitude": 42.7908,
+    "longitude": 10.8652,
+    "elevation": "390",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "CAVE",
+    "name": "Cavezzo",
+    "latitude": 44.8658,
+    "longitude": 11.0031,
+    "elevation": "18",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "CAVT",
+    "name": "Castelvetrano - Marcita",
+    "latitude": 37.67883,
+    "longitude": 12.7556,
+    "elevation": "158.0",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "CAWE",
+    "name": "Astroni Ovest - Stazione Osservatorio Vesuviano",
+    "latitude": 40.840439,
+    "longitude": 14.139376,
+    "elevation": "276",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CBAC",
+    "name": "Campi Flegrei, Castello di Baia - Stazione Osservatorio Vesu",
+    "latitude": 40.810901,
+    "longitude": 14.08057,
+    "elevation": "77",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CBAG",
+    "name": "Bagnoli Pozzo Italsider - Stazione Osservatorio Vesuviano",
+    "latitude": 40.811524,
+    "longitude": 14.174719,
+    "elevation": "51.9",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CCAP",
+    "name": "Capo Posillipo - Stazione Osservatorio Vesuviano",
+    "latitude": 40.8064,
+    "longitude": 14.192267,
+    "elevation": "207.2",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CDCA",
+    "name": "Citta di Castello",
+    "latitude": 43.4584,
+    "longitude": 12.2336,
+    "elevation": "50",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "CDRU",
+    "name": "Civita di Ruta - Ottati",
+    "latitude": 40.4896,
+    "longitude": 15.3046,
+    "elevation": "1057.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CELB",
+    "name": "S.Piero in Campo Elba",
+    "latitude": 42.746577,
+    "longitude": 10.210652,
+    "elevation": "742",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "CELI",
+    "name": "Celico, Cosenza",
+    "latitude": 39.4027,
+    "longitude": 16.5088,
+    "elevation": "1290.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CERA",
+    "name": "Filignano",
+    "latitude": 41.5978,
+    "longitude": 14.0183,
+    "elevation": "800.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "CERT",
+    "name": "CERRETO",
+    "latitude": 41.94903,
+    "longitude": 12.98176,
+    "elevation": "773",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "CESI",
+    "name": "Cesi-Serravalle di Chienti",
+    "latitude": 43.0049,
+    "longitude": 12.9046,
+    "elevation": "840.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "CESX",
+    "name": "Cesi",
+    "latitude": 42.608486,
+    "longitude": 12.58676,
+    "elevation": "380",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "CET2",
+    "name": "Cetraro",
+    "latitude": 39.528756,
+    "longitude": 15.954618,
+    "elevation": "675",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CFMN",
+    "name": " Monte Nuovo - Stazione Osservatorio Vesuviano",
+    "latitude": 40.832942,
+    "longitude": 14.090403,
+    "elevation": "91.9",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CGL",
+    "name": "PUNTA SERPEDDI",
+    "latitude": 39.366,
+    "longitude": 9.296,
+    "elevation": "1050.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CGN1",
+    "name": "EX-NATO GALLERIA 2 - Stazione Osservatorio Vesuviano",
+    "latitude": 40.822128,
+    "longitude": 14.16215,
+    "elevation": "65.2",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CGN2",
+    "name": "Galleria NATO 2- Stazione Osservatorio Vesuviano",
+    "latitude": 40.82082665,
+    "longitude": 14.16818864,
+    "elevation": "90.83",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CIGN",
+    "name": "Sant'Elia a Pianisi (CB)",
+    "latitude": 41.65418,
+    "longitude": 14.90502,
+    "elevation": "350.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "CIMA",
+    "name": "Civitanova Marche",
+    "latitude": 43.305297,
+    "longitude": 13.670091,
+    "elevation": "163",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "CIMI",
+    "name": "CIMI",
+    "latitude": 37.881475,
+    "longitude": 13.572629,
+    "elevation": "623.0",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "CING",
+    "name": "CINGOLI",
+    "latitude": 43.37557,
+    "longitude": 13.1954,
+    "elevation": "626",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "CLTA",
+    "name": "Licata (Agrigento)",
+    "latitude": 37.158,
+    "longitude": 13.962,
+    "elevation": "246",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "CLTB",
+    "name": "Caltabellotta, Italy",
+    "latitude": 37.578,
+    "longitude": 13.216,
+    "elevation": "949.0",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "CMAG",
+    "name": "Costamagna",
+    "latitude": 44.53466,
+    "longitude": 7.88007,
+    "elevation": "344.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "CMDO",
+    "name": "CMDO",
+    "latitude": 37.4639,
+    "longitude": 13.8229,
+    "elevation": "571",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "CMIS",
+    "name": " Capo Miseno - Stazione Osservatorio Vesuviano",
+    "latitude": 40.778122,
+    "longitude": 14.088917,
+    "elevation": "133.6",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CMPR",
+    "name": "Campora",
+    "latitude": 40.3181,
+    "longitude": 15.303,
+    "elevation": "732.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CMSN",
+    "name": "Monte S.Angelo - Stazione Osservatorio Vesuviano",
+    "latitude": 40.838661,
+    "longitude": 14.183622,
+    "elevation": "154.4",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CMTS",
+    "name": "Via Metastasio - Stazione Osservatorio Vesuviano",
+    "latitude": 40.831427,
+    "longitude": 14.197239,
+    "elevation": "84.9",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CNCS",
+    "name": "Concesio",
+    "latitude": 45.606,
+    "longitude": 10.217,
+    "elevation": "126.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "CNIS",
+    "name": "Campi Flegrei - Isola di Nisida",
+    "latitude": 40.79817,
+    "longitude": 14.163176,
+    "elevation": "50.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "COLB",
+    "name": "Galleria Monte Olibano - Stazione Osservatorio Vesuviano",
+    "latitude": 40.819016,
+    "longitude": 14.144606,
+    "elevation": "55.9",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "COR1",
+    "name": "Corinaldo",
+    "latitude": 43.63183,
+    "longitude": 13.00033,
+    "elevation": "237",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "CORL",
+    "name": "Corleone (Palermo)",
+    "latitude": 37.8943,
+    "longitude": 13.3038,
+    "elevation": "660.0",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "CPGN",
+    "name": "Carpegna",
+    "latitude": 43.8011,
+    "longitude": 12.3205,
+    "elevation": "1400",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "CPIS",
+    "name": "Fumarola Pisciarelli - Stazione Osservatorio Vesuviano",
+    "latitude": 40.829403,
+    "longitude": 14.146811,
+    "elevation": "124.6",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CPOZ",
+    "name": "Darsena Pozzuoli - Stazione Osservatorio Vesuviano",
+    "latitude": 40.821072,
+    "longitude": 14.11911,
+    "elevation": "52",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CPTP",
+    "name": "CPTP - Pietraperzia, Italy",
+    "latitude": 37.4075,
+    "longitude": 14.1625,
+    "elevation": "561",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "CQUE",
+    "name": " Quarto Est - Stazione Osservatorio Vesuviano",
+    "latitude": 40.885339,
+    "longitude": 14.155411,
+    "elevation": "108.3",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CRAC",
+    "name": "Craco",
+    "latitude": 40.3814,
+    "longitude": 16.435,
+    "elevation": "384.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CRE",
+    "name": "CAPRESE MICHELANGELO",
+    "latitude": 43.61888,
+    "longitude": 11.95167,
+    "elevation": "1215",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "CRJA",
+    "name": "COSTA RAJA",
+    "latitude": 37.80162,
+    "longitude": 13.00433,
+    "elevation": "560.0",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "CRMI",
+    "name": "Carmignano",
+    "latitude": 43.795597222222,
+    "longitude": 10.979505555556,
+    "elevation": "490",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "CROCE",
+    "name": "CROCE",
+    "latitude": 36.8326,
+    "longitude": 14.5345,
+    "elevation": "112.0",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "CRSP",
+    "name": "",
+    "latitude": 42.82076,
+    "longitude": 12.917122,
+    "elevation": "550.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "CRTC",
+    "name": "Cartoceto",
+    "latitude": 43.768478,
+    "longitude": 12.883011,
+    "elevation": "197",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "CRTO",
+    "name": "Vesuvio - Cratere Ovest",
+    "latitude": 40.821151,
+    "longitude": 14.422303,
+    "elevation": "1206",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CRUS",
+    "name": "Monte Rusciello - Stazione Osservatorio Vesuviano",
+    "latitude": 40.862148,
+    "longitude": 14.079901,
+    "elevation": "174.9",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CSFT",
+    "name": " Cratere Solfatara - Stazione Osservatorio Vesuviano",
+    "latitude": 40.829168,
+    "longitude": 14.139635,
+    "elevation": "150.9",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CSGE1",
+    "name": "Gerace",
+    "latitude": 38.2705,
+    "longitude": 16.2205,
+    "elevation": "480.0",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "CSLB",
+    "name": "CASTELBUONO",
+    "latitude": 37.93745,
+    "longitude": 14.05785,
+    "elevation": "583.0",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "CSNT",
+    "name": "CASTELLINA IN CHIANTI",
+    "latitude": 43.47311,
+    "longitude": 11.29017,
+    "elevation": "636",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "CSOB",
+    "name": "Solfatara Bordo Cratere - Stazione Osservatorio Vesuviano",
+    "latitude": 40.826469,
+    "longitude": 14.143963,
+    "elevation": "222.7",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CSP1",
+    "name": "Cessapalombo",
+    "latitude": 43.091833,
+    "longitude": 13.204833,
+    "elevation": "1188.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "CSTH",
+    "name": "Solfatara Tennis Hotel - Stazione Osservatorio Vesuviano",
+    "latitude": 40.829447,
+    "longitude": 14.149329,
+    "elevation": "108.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "CTI",
+    "name": "CASTELLO TESINO",
+    "latitude": 46.04818,
+    "longitude": 11.6497,
+    "elevation": "1180",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "CTL8",
+    "name": "Castelleone",
+    "latitude": 45.2763,
+    "longitude": 9.7622,
+    "elevation": "60.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "CUMA",
+    "name": "",
+    "latitude": 40.847875,
+    "longitude": 14.05338,
+    "elevation": "81.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "DGI",
+    "name": "DORGALI GROTTA ISPINIGOLI",
+    "latitude": 40.31802,
+    "longitude": 9.60668,
+    "elevation": "354",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "EBCN",
+    "name": "Etna Bocca Nuova",
+    "latitude": 37.752,
+    "longitude": 14.9858,
+    "elevation": "3135",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "EBDA",
+    "name": "Etna Bosco di Aci",
+    "latitude": 37.6335,
+    "longitude": 15.1223,
+    "elevation": "350",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "ECBD",
+    "name": "Etna Case Bada",
+    "latitude": 37.7802,
+    "longitude": 15.0865,
+    "elevation": "1465",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "ECHR",
+    "name": "Santa Chiara",
+    "latitude": 37.6863,
+    "longitude": 14.9129,
+    "elevation": "1168",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "ECNE",
+    "name": "ECNE",
+    "latitude": 37.7653,
+    "longitude": 15.0018,
+    "elevation": "2946",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "ECPN",
+    "name": "Etna Cratere del Piano",
+    "latitude": 37.7437,
+    "longitude": 14.9865,
+    "elevation": "3038",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "ECTS",
+    "name": "ECTS - Etna Castiglione di Sicilia",
+    "latitude": 37.8825,
+    "longitude": 15.1212,
+    "elevation": "644",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "ECZM",
+    "name": "Etna Case Zampini",
+    "latitude": 37.7313,
+    "longitude": 14.9041,
+    "elevation": "1391",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "EFIU",
+    "name": "Fiumefreddo di Sicilia",
+    "latitude": 37.7896,
+    "longitude": 15.2103,
+    "elevation": "97",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "EL6",
+    "name": "Elcito",
+    "latitude": 43.329333,
+    "longitude": 13.101667,
+    "elevation": "978",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "EMAS",
+    "name": "Mascalucia",
+    "latitude": 37.57919,
+    "longitude": 15.05257,
+    "elevation": "612",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "EMCN",
+    "name": "Monte Conca",
+    "latitude": 37.7912,
+    "longitude": 15.0336,
+    "elevation": "1916",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "EMCO",
+    "name": "Etna Monte Colla",
+    "latitude": 37.9264,
+    "longitude": 14.9029,
+    "elevation": "1500",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "EMFO",
+    "name": "Etna Monte Fontane",
+    "latitude": 37.7357,
+    "longitude": 15.0902,
+    "elevation": "1209",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "EMFS",
+    "name": "Etna Monte Frumento Supino",
+    "latitude": 37.7196,
+    "longitude": 14.9979,
+    "elevation": "2552",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "EMNR",
+    "name": "Etna Monte Nero",
+    "latitude": 37.8168,
+    "longitude": 15.026,
+    "elevation": "1845",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "EMPL",
+    "name": "EMPL - Etna Monte Parmentelli, Italy",
+    "latitude": 37.679,
+    "longitude": 14.9703,
+    "elevation": "1484",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "EMSA",
+    "name": "Motta Sant Anastasia (CT)",
+    "latitude": 37.498,
+    "longitude": 14.945,
+    "elevation": "140",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "EMSG",
+    "name": "EMSG",
+    "latitude": 37.8208,
+    "longitude": 14.9498,
+    "elevation": "1435",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "ENIC",
+    "name": "ENIC",
+    "latitude": 37.6314,
+    "longitude": 15.0216,
+    "elevation": "877",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "EPDN",
+    "name": "Etna Pizzi Deneri",
+    "latitude": 37.7659,
+    "longitude": 15.0168,
+    "elevation": "2862",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "EPIT",
+    "name": "Pozzo Pitarrone, Linguaglossa, Catania",
+    "latitude": 37.8113,
+    "longitude": 15.0567,
+    "elevation": "1657",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "EPLC",
+    "name": "Etna Punta Lucia",
+    "latitude": 37.7651,
+    "longitude": 14.9857,
+    "elevation": "2698",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "EPMN",
+    "name": "Piedimonte Etneo",
+    "latitude": 37.8204,
+    "longitude": 15.1773,
+    "elevation": "541",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "EPOZ",
+    "name": "EPOZ",
+    "latitude": 37.6719,
+    "longitude": 15.1885,
+    "elevation": "124",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "EPZF",
+    "name": "Pizzo Felice",
+    "latitude": 37.824,
+    "longitude": 14.857,
+    "elevation": "1140",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "ERBM",
+    "name": "EREMO DI BISMANTOVA",
+    "latitude": 44.41945,
+    "longitude": 10.41268,
+    "elevation": "933",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "ERC",
+    "name": "ERICE",
+    "latitude": 38.03763,
+    "longitude": 12.5873,
+    "elevation": "776",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "ESAL",
+    "name": "Etna Sant Alfio",
+    "latitude": 37.7551,
+    "longitude": 15.1345,
+    "elevation": "768",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "ESCV",
+    "name": "Etna Scorciavacca",
+    "latitude": 37.747,
+    "longitude": 14.8152,
+    "elevation": "640",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "ESLN",
+    "name": "Serra La Nave",
+    "latitude": 37.6934,
+    "longitude": 14.9744,
+    "elevation": "1787",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "ESML",
+    "name": "ESML",
+    "latitude": 37.6181,
+    "longitude": 14.8794,
+    "elevation": "417",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "ESPC",
+    "name": "Etna Serra Pizzuta Calvarina",
+    "latitude": 37.6925,
+    "longitude": 15.0274,
+    "elevation": "1655",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "ESVO",
+    "name": "Etna Monte Scavo",
+    "latitude": 37.7731,
+    "longitude": 14.9469,
+    "elevation": "1736",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "EUCT",
+    "name": "Pavia",
+    "latitude": 45.2026,
+    "longitude": 9.1349,
+    "elevation": "82.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "EVRN",
+    "name": "Santa Venerina",
+    "latitude": 37.6892,
+    "longitude": 15.1356,
+    "elevation": "421",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "FAEN",
+    "name": "Faenza",
+    "latitude": 44.2895,
+    "longitude": 11.877,
+    "elevation": "41",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "FAGN",
+    "name": "FAGNANO",
+    "latitude": 42.26573,
+    "longitude": 13.58379,
+    "elevation": "761.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "FANO",
+    "name": "Fano",
+    "latitude": 43.843471,
+    "longitude": 13.018354,
+    "elevation": "15",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "FAVA",
+    "name": "FAVA",
+    "latitude": 37.328791,
+    "longitude": 13.659995,
+    "elevation": "370.0",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "FCOR",
+    "name": "Fonte Corniale (PU)",
+    "latitude": 43.76911,
+    "longitude": 12.81459,
+    "elevation": "555",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "FDMO",
+    "name": "Fiordimonte",
+    "latitude": 43.0365,
+    "longitude": 13.0873,
+    "elevation": "550.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "FELT",
+    "name": "Feltre",
+    "latitude": 46.0729,
+    "longitude": 11.9275,
+    "elevation": "520.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "FEMA",
+    "name": "Monte Fema",
+    "latitude": 42.9621,
+    "longitude": 13.04976,
+    "elevation": "1370",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "FENE",
+    "name": "Fenestrelle (TO)",
+    "latitude": 45.029845,
+    "longitude": 7.060438,
+    "elevation": "1170.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "FERS",
+    "name": "FERS",
+    "latitude": 44.9035,
+    "longitude": 11.5406,
+    "elevation": "3.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "FIAM",
+    "name": "FIAMIGNANO",
+    "latitude": 42.26802,
+    "longitude": 13.11718,
+    "elevation": "1070",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "FIR",
+    "name": "Firenze",
+    "latitude": 43.774366,
+    "longitude": 11.255134,
+    "elevation": "40",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "FIU",
+    "name": "FONDO FIUMICELLO (MINERBIO)",
+    "latitude": 44.64031,
+    "longitude": 11.49165,
+    "elevation": "12",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "FIU1",
+    "name": "Fiuminata",
+    "latitude": 43.188561,
+    "longitude": 12.931604,
+    "elevation": "479.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "FNVD",
+    "name": "FONTANA VIDOLA",
+    "latitude": 44.16782,
+    "longitude": 11.1229,
+    "elevation": "950",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "FOSV",
+    "name": "Fossato di Vico",
+    "latitude": 43.29483,
+    "longitude": 12.76117,
+    "elevation": "559",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "FREG",
+    "name": "Fregona",
+    "latitude": 46.011092,
+    "longitude": 12.312986,
+    "elevation": "500",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "FRES",
+    "name": "Fresagrandinaria",
+    "latitude": 41.97351,
+    "longitude": 14.66926,
+    "elevation": "414.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "FRON",
+    "name": "Frontone",
+    "latitude": 43.51777,
+    "longitude": 12.72572,
+    "elevation": "515",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "FVI",
+    "name": "FORNI AVOLTRI",
+    "latitude": 46.59658,
+    "longitude": 12.7804,
+    "elevation": "1024.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "GAG1",
+    "name": "Gagliole",
+    "latitude": 43.238063,
+    "longitude": 13.067434,
+    "elevation": "484",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "GALF",
+    "name": "Gagliano Castelferrato",
+    "latitude": 37.7107,
+    "longitude": 14.5665,
+    "elevation": "740",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "GATE",
+    "name": "Gambatesa",
+    "latitude": 41.513145,
+    "longitude": 14.910201,
+    "elevation": "487.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "GAVE",
+    "name": "Gavelli",
+    "latitude": 42.6922,
+    "longitude": 12.8942,
+    "elevation": "1161",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "GIB",
+    "name": "GIBILMANNA",
+    "latitude": 37.990126,
+    "longitude": 14.026023,
+    "elevation": "1020",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "GIGS",
+    "name": "GIGS",
+    "latitude": 42.453167,
+    "longitude": 13.572833,
+    "elevation": "960",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "GIUL",
+    "name": "GIULIANO DI ROMA",
+    "latitude": 41.55827,
+    "longitude": 13.25458,
+    "elevation": "566",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "GIZZ",
+    "name": "GIZZ",
+    "latitude": 38.97983,
+    "longitude": 16.20777,
+    "elevation": "713.0",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "GMB1",
+    "name": "GMB1",
+    "latitude": 38.1723,
+    "longitude": 15.8179,
+    "elevation": "1198",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "GRI",
+    "name": "GIRIFALCO",
+    "latitude": 38.82213,
+    "longitude": 16.42002,
+    "elevation": "510.0",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "GRIS",
+    "name": "Grisolia",
+    "latitude": 39.7405,
+    "longitude": 15.8531,
+    "elevation": "551",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "GUAR",
+    "name": "GUARCINO",
+    "latitude": 41.7945,
+    "longitude": 13.31229,
+    "elevation": "741",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "GUMA",
+    "name": "Gualdo di Macerata",
+    "latitude": 43.0627,
+    "longitude": 13.3352,
+    "elevation": "574",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "HAGA",
+    "name": "HAGA - Augusta (SR), Italy",
+    "latitude": 37.2858,
+    "longitude": 15.1552,
+    "elevation": "176",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "HAVL",
+    "name": "HAVL - Avola (RG), Italy",
+    "latitude": 36.9596,
+    "longitude": 15.122,
+    "elevation": "495",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "HCRL",
+    "name": "HCRL - Carlentini (SR), Italy",
+    "latitude": 37.2831,
+    "longitude": 15.0323,
+    "elevation": "191",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "HLNI",
+    "name": "Lentini Masseria Cucco",
+    "latitude": 37.3485,
+    "longitude": 14.872,
+    "elevation": "146",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "HMDC",
+    "name": "Modica",
+    "latitude": 36.959,
+    "longitude": 14.7831,
+    "elevation": "595",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "HPAC",
+    "name": "HPAC",
+    "latitude": 36.7085,
+    "longitude": 15.0372,
+    "elevation": "70",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "HSRS",
+    "name": "Siracusa Targia Epipoli (Belvedere)",
+    "latitude": 37.0928,
+    "longitude": 15.222,
+    "elevation": "100",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "HVIT",
+    "name": "Vittoria (Ragusa)",
+    "latitude": 36.9926,
+    "longitude": 14.5216,
+    "elevation": "296",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "HVZN",
+    "name": "Vizzini",
+    "latitude": 37.1783,
+    "longitude": 14.7155,
+    "elevation": "787",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "IACL",
+    "name": "ALICUDI",
+    "latitude": 38.533,
+    "longitude": 14.355,
+    "elevation": "145",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "IBCM",
+    "name": "IBCM",
+    "latitude": 40.71089,
+    "longitude": 13.91612,
+    "elevation": "314",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "IBRN",
+    "name": "Ischia Barano - Stazione Osservatorio Vesuviano",
+    "latitude": 40.713953,
+    "longitude": 13.926856,
+    "elevation": "188",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "ICVJ",
+    "name": "ICVJ",
+    "latitude": 40.74351,
+    "longitude": 13.89522,
+    "elevation": "81",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "IFIL",
+    "name": "IFIL - Filicudi (ME), Italy",
+    "latitude": 38.5642,
+    "longitude": 14.5753,
+    "elevation": "269",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "IFOR",
+    "name": "Faro Punta Imperatore - Stazione Osservatorio Vesuviano",
+    "latitude": 40.711512,
+    "longitude": 13.855177,
+    "elevation": "278",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "ILOS",
+    "name": "Lipari Observatory",
+    "latitude": 38.4457,
+    "longitude": 14.9483,
+    "elevation": "283",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "IMOL",
+    "name": "Imola",
+    "latitude": 44.35955,
+    "longitude": 11.74248,
+    "elevation": "27",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "IMTC",
+    "name": "Monte Corvo - Stazione Osservatorio Vesuviano",
+    "latitude": 40.720887,
+    "longitude": 13.875813,
+    "elevation": "256",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "INTR",
+    "name": "INTRODACQUA",
+    "latitude": 42.01154,
+    "longitude": 13.9046,
+    "elevation": "924",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "IOCA",
+    "name": "Ischia - Osservatorio Casamicciola",
+    "latitude": 40.746797,
+    "longitude": 13.90142,
+    "elevation": "166",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "IPAI",
+    "name": "IPAI",
+    "latitude": 36.912079,
+    "longitude": 14.724807,
+    "elevation": "584",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "IPNR",
+    "name": "Panarea",
+    "latitude": 38.6435,
+    "longitude": 15.0688,
+    "elevation": "205",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "IPSM",
+    "name": "Ischia Porto, Stazione Osservartorio Vesuviano",
+    "latitude": 40.746222,
+    "longitude": 13.943825,
+    "elevation": "154",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "ISNA",
+    "name": "Monte Fossa delle Felci - Santa Marina Salina (ME)",
+    "latitude": 38.5546,
+    "longitude": 14.8496,
+    "elevation": "978",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "ISPIC",
+    "name": "ISPICA",
+    "latitude": 36.7804,
+    "longitude": 14.9033,
+    "elevation": "260",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "IST3",
+    "name": "Stromboli-Oss. Fiorentini",
+    "latitude": 38.7992,
+    "longitude": 15.2304,
+    "elevation": "255",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "ISTR",
+    "name": "Ginostra",
+    "latitude": 38.7866,
+    "longitude": 15.1918,
+    "elevation": "103",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "IVCR",
+    "name": "Vulcano Cratere",
+    "latitude": 38.4096,
+    "longitude": 14.961,
+    "elevation": "172",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "IVGP",
+    "name": "Grotta Palizzi Isola di Vulcano",
+    "latitude": 38.3968,
+    "longitude": 14.9608,
+    "elevation": "150",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "IVLC",
+    "name": "Ischia Villa la Colombaia, Stazione Osservartorio Vesuviano",
+    "latitude": 40.75909,
+    "longitude": 13.872129,
+    "elevation": "92",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "IVLO",
+    "name": "Vulcanello (isola di Vulcano)",
+    "latitude": 38.42619,
+    "longitude": 14.96096,
+    "elevation": "56",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "IVLT",
+    "name": "Vulcano Lentia",
+    "latitude": 38.3961,
+    "longitude": 14.9482,
+    "elevation": "242",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "IVPL",
+    "name": "Vulcano Piano",
+    "latitude": 38.3763,
+    "longitude": 14.9801,
+    "elevation": "486",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "IVUG",
+    "name": "Isola Vulcano Grillo",
+    "latitude": 38.396,
+    "longitude": 14.986,
+    "elevation": "250",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "LADO",
+    "name": "San Nicola dell Alto",
+    "latitude": 39.283981,
+    "longitude": 16.979492,
+    "elevation": "488.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "LATB",
+    "name": "Latina borehole",
+    "latitude": 41.4939,
+    "longitude": 12.96239,
+    "elevation": "0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "LATE",
+    "name": "Latera",
+    "latitude": 42.6137,
+    "longitude": 11.804,
+    "elevation": "610",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "LATO",
+    "name": "Coassolo Torinese",
+    "latitude": 45.18018,
+    "longitude": 7.27432,
+    "elevation": "742.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "LAV9",
+    "name": "LANUVIO",
+    "latitude": 41.67778,
+    "longitude": 12.69888,
+    "elevation": "300",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "LEVAN",
+    "name": "LEVAN",
+    "latitude": 37.991327,
+    "longitude": 12.345623,
+    "elevation": "73",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "LIBRI",
+    "name": "LIBRI",
+    "latitude": 38.083692,
+    "longitude": 14.928733,
+    "elevation": "945",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "LIK",
+    "name": "LIK",
+    "latitude": 41.49961,
+    "longitude": 13.55943,
+    "elevation": "312",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "LINA",
+    "name": "Isola di Linosa",
+    "latitude": 35.871622,
+    "longitude": 12.863385,
+    "elevation": "63.0",
+    "zone": "sardegna"
+  },
+  {
+    "network": "IV",
+    "station": "LMD",
+    "name": "LMD",
+    "latitude": 44.07746,
+    "longitude": 11.707267,
+    "elevation": "450",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "LNSS",
+    "name": "LEONESSA",
+    "latitude": 42.60286,
+    "longitude": 13.04032,
+    "elevation": "1155",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "LOCA",
+    "name": "LOCA",
+    "latitude": 43.30644,
+    "longitude": 11.26226,
+    "elevation": "511",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "LPEL",
+    "name": "Lama dei Peligni",
+    "latitude": 42.0468,
+    "longitude": 14.1832,
+    "elevation": "760",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "LRP",
+    "name": "Arpino",
+    "latitude": 41.64709,
+    "longitude": 13.58658,
+    "elevation": "372",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "LSPZ",
+    "name": "Monte Viseggi",
+    "latitude": 44.132497,
+    "longitude": 9.790457,
+    "elevation": "346.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "LTRZ",
+    "name": "LATERZA",
+    "latitude": 40.60325,
+    "longitude": 16.8191,
+    "elevation": "381.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "MA9",
+    "name": "MARINO",
+    "latitude": 41.769756,
+    "longitude": 12.65907,
+    "elevation": "340",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MABI",
+    "name": "MALGA BISSINA",
+    "latitude": 46.05492,
+    "longitude": 10.514,
+    "elevation": "1853.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "MAGA",
+    "name": "Magasa",
+    "latitude": 45.7753,
+    "longitude": 10.6286,
+    "elevation": "1265.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "MALA0",
+    "name": "MALA",
+    "latitude": 43.00582,
+    "longitude": 11.473764,
+    "elevation": "441.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MALA1",
+    "name": "MALA",
+    "latitude": 43.003873,
+    "longitude": 11.476899,
+    "elevation": "404.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MALA2",
+    "name": "MALA",
+    "latitude": 43.003587,
+    "longitude": 11.478221,
+    "elevation": "414.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MALA3",
+    "name": "MALA",
+    "latitude": 43.005215,
+    "longitude": 11.479964,
+    "elevation": "445.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MALA4",
+    "name": "MALA",
+    "latitude": 43.005606,
+    "longitude": 11.47773,
+    "elevation": "430.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MALA5",
+    "name": "MALA",
+    "latitude": 43.007009,
+    "longitude": 11.47807,
+    "elevation": "444.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MARET",
+    "name": "MARET",
+    "latitude": 37.968674,
+    "longitude": 12.072507,
+    "elevation": "64",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "MARIO",
+    "name": "MARINEO",
+    "latitude": 37.954428,
+    "longitude": 13.433009,
+    "elevation": "724",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "MARS",
+    "name": "Marsala",
+    "latitude": 37.7532,
+    "longitude": 12.5647,
+    "elevation": "65",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "MBAL",
+    "name": "Monte Baldo Osservatorio Astronomico Novezzina",
+    "latitude": 45.697536,
+    "longitude": 10.858943,
+    "elevation": "1215.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "MBFT",
+    "name": "Monte Bonifato",
+    "latitude": 37.946147,
+    "longitude": 12.953452,
+    "elevation": "520.0",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "MC2",
+    "name": "Monte Cornaccione",
+    "latitude": 42.911418,
+    "longitude": 13.188976,
+    "elevation": "1888.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MCEL",
+    "name": "Monticello",
+    "latitude": 40.3249,
+    "longitude": 15.8019,
+    "elevation": "960.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "MCI",
+    "name": "Montecassino",
+    "latitude": 41.491036,
+    "longitude": 13.813008,
+    "elevation": "493",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "MCIF",
+    "name": "Montecalvo in Foglia",
+    "latitude": 43.811583,
+    "longitude": 12.631683,
+    "elevation": "330",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MCRV",
+    "name": "Calabritto - Mt. Cervialto",
+    "latitude": 40.7826,
+    "longitude": 15.1684,
+    "elevation": "1191.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "MCT",
+    "name": "MONTECAMMARATA",
+    "latitude": 37.61864,
+    "longitude": 13.60761,
+    "elevation": "1558",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "MDAR",
+    "name": "Monte Daria",
+    "latitude": 43.1927,
+    "longitude": 13.1427,
+    "elevation": "940",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MDI",
+    "name": "Monte diNese (BG), Italy",
+    "latitude": 45.76972,
+    "longitude": 9.716,
+    "elevation": "954.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "MELA",
+    "name": "Melanico - S. Croce di Magliano",
+    "latitude": 41.7059,
+    "longitude": 15.127,
+    "elevation": "115.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MERA",
+    "name": "Merate",
+    "latitude": 45.7054,
+    "longitude": 9.4291,
+    "elevation": "338.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "MESG",
+    "name": "Mesagne",
+    "latitude": 40.589408,
+    "longitude": 17.850423,
+    "elevation": "78",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "MF5",
+    "name": "Montefalcone Appennino",
+    "latitude": 42.987797,
+    "longitude": 13.459709,
+    "elevation": "723",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MFNL",
+    "name": "MONTE FINESTRELLE",
+    "latitude": 37.79082,
+    "longitude": 12.92242,
+    "elevation": "677",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "MGAB",
+    "name": "Montegabbione",
+    "latitude": 42.91263,
+    "longitude": 12.11214,
+    "elevation": "547.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MGR",
+    "name": "Morigerati",
+    "latitude": 40.1376,
+    "longitude": 15.55352,
+    "elevation": "986.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "MIDA",
+    "name": "Miranda",
+    "latitude": 41.64188,
+    "longitude": 14.25402,
+    "elevation": "950.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MIGL",
+    "name": "Miglionico",
+    "latitude": 40.6044,
+    "longitude": 16.441,
+    "elevation": "440.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "MILN",
+    "name": "Milano",
+    "latitude": 45.4803,
+    "longitude": 9.2321,
+    "elevation": "125.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "MILZ",
+    "name": "Milazzo Faro",
+    "latitude": 38.2713,
+    "longitude": 15.2313,
+    "elevation": "0",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "MLIG",
+    "name": "Colle Melosa",
+    "latitude": 43.988313,
+    "longitude": 7.683705,
+    "elevation": "1553.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MMGO",
+    "name": "MONTE MAGAGGIARO",
+    "latitude": 37.66195,
+    "longitude": 12.97673,
+    "elevation": "397.0",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "MML1",
+    "name": "Monte Lago",
+    "latitude": 43.1135,
+    "longitude": 12.9717,
+    "elevation": "943.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MMN",
+    "name": "MORMANNO",
+    "latitude": 39.890961,
+    "longitude": 15.990414,
+    "elevation": "921",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "MMUR",
+    "name": "Monte Murano",
+    "latitude": 43.44183,
+    "longitude": 12.9973,
+    "elevation": "840",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MNTP",
+    "name": "Montappone",
+    "latitude": 43.137378,
+    "longitude": 13.469252,
+    "elevation": "325",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MNTT",
+    "name": "Montottone",
+    "latitude": 43.062,
+    "longitude": 13.595667,
+    "elevation": "343",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MNTV",
+    "name": "Mantova",
+    "latitude": 45.1495,
+    "longitude": 10.7897,
+    "elevation": "36.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "MOCL",
+    "name": "Montecuccoli",
+    "latitude": 44.004901,
+    "longitude": 11.180785,
+    "elevation": "639",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "MOCO",
+    "name": "Biccari - Monte Cornacchia",
+    "latitude": 41.37,
+    "longitude": 15.158,
+    "elevation": "1049.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "MODE",
+    "name": "Modena",
+    "latitude": 44.629722,
+    "longitude": 10.949167,
+    "elevation": "41.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "MODR",
+    "name": "Mondragone",
+    "latitude": 41.1459,
+    "longitude": 13.8779,
+    "elevation": "345.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "MOMA",
+    "name": "Monte Martano",
+    "latitude": 42.80387,
+    "longitude": 12.570071,
+    "elevation": "1040",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MONC",
+    "name": "Moncucco Torinese",
+    "latitude": 45.0739,
+    "longitude": 7.9271,
+    "elevation": "480",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "MPAG",
+    "name": "Monte Paganuccio",
+    "latitude": 43.6292,
+    "longitude": 12.7595,
+    "elevation": "930",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MPAZ",
+    "name": "Palizzi",
+    "latitude": 37.9531,
+    "longitude": 16.0067,
+    "elevation": "496",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "MPG",
+    "name": "MONTE PELLEGRINO",
+    "latitude": 38.16167,
+    "longitude": 13.36,
+    "elevation": "600",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "MPNC",
+    "name": "MPNC - San Pier Niceto (ME), Italy",
+    "latitude": 38.145,
+    "longitude": 15.352,
+    "elevation": "385",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "MPPT",
+    "name": "Montemurlo",
+    "latitude": 43.957533,
+    "longitude": 11.090265,
+    "elevation": "752",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MRB1",
+    "name": "MONTE ROCCHETTA",
+    "latitude": 41.1227,
+    "longitude": 14.96815,
+    "elevation": "688.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "MRCB",
+    "name": "Reggio Calabria",
+    "latitude": 38.162,
+    "longitude": 15.703,
+    "elevation": "500",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "MRGE",
+    "name": "Morge",
+    "latitude": 45.76975,
+    "longitude": 7.06101,
+    "elevation": "1660",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "MRLC",
+    "name": "Muro Lucano",
+    "latitude": 40.7564,
+    "longitude": 15.48892,
+    "elevation": "605.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "MRVN",
+    "name": "Minervino Murge",
+    "latitude": 41.0609,
+    "longitude": 16.1958,
+    "elevation": "610.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "MSAG",
+    "name": "Monte S. Angelo",
+    "latitude": 41.712,
+    "longitude": 15.9096,
+    "elevation": "890.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MSFR",
+    "name": "MSFR - San Fratllo (ME), Italy",
+    "latitude": 38.0339,
+    "longitude": 14.5916,
+    "elevation": "723",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "MSRU",
+    "name": "POGGIO SCUDEARU",
+    "latitude": 38.2639,
+    "longitude": 15.5083,
+    "elevation": "408",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "MSSA",
+    "name": "Maissana",
+    "latitude": 44.31625,
+    "longitude": 9.51739,
+    "elevation": "930.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "MTCE",
+    "name": "MONTECELIO",
+    "latitude": 42.022382,
+    "longitude": 12.742577,
+    "elevation": "388",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MTGR",
+    "name": "MONTAGNA GRANDE",
+    "latitude": 37.89337,
+    "longitude": 12.75932,
+    "elevation": "751",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "MTL1",
+    "name": "Matelica",
+    "latitude": 43.256732,
+    "longitude": 13.009601,
+    "elevation": "353",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MTMR",
+    "name": "Montemarano (AV)",
+    "latitude": 40.918446,
+    "longitude": 15.002567,
+    "elevation": "850.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "MTRA",
+    "name": "Matera di Acquasanta Terme (AP)",
+    "latitude": 42.75669,
+    "longitude": 13.39654,
+    "elevation": "809",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "MTRZ",
+    "name": "Monterenzio",
+    "latitude": 44.3128,
+    "longitude": 11.4248,
+    "elevation": "570",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "MTSN",
+    "name": "Montesano sulla Marcellana",
+    "latitude": 40.2663,
+    "longitude": 15.7515,
+    "elevation": "1056.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "MTTG",
+    "name": "MOTTA SAN GIOVANNI",
+    "latitude": 38.0031,
+    "longitude": 15.69992,
+    "elevation": "484",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "MUCR",
+    "name": "Ucria",
+    "latitude": 38.043,
+    "longitude": 14.8739,
+    "elevation": "1042",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "MURB",
+    "name": "MONTE URBINO",
+    "latitude": 43.263,
+    "longitude": 12.5246,
+    "elevation": "845",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "NARO",
+    "name": "Abbazia di Naro",
+    "latitude": 43.610823,
+    "longitude": 12.580583,
+    "elevation": "272",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "NDIM",
+    "name": "Novi di Modena",
+    "latitude": 44.8873,
+    "longitude": 10.8987,
+    "elevation": "19.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "NEVI",
+    "name": "Neviano degli Arduini",
+    "latitude": 44.5834,
+    "longitude": 10.3163,
+    "elevation": "480.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "NICCA",
+    "name": "Nicotera (VV)",
+    "latitude": 38.55694,
+    "longitude": 15.93858,
+    "elevation": "240",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "NOCI",
+    "name": "Noci",
+    "latitude": 40.7888,
+    "longitude": 17.0644,
+    "elevation": "420.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "NOV",
+    "name": "NOV - Novara (ME), Italy",
+    "latitude": 38.0286,
+    "longitude": 15.1355,
+    "elevation": "840",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "NRCA",
+    "name": "NORCIA",
+    "latitude": 42.83355,
+    "longitude": 13.11427,
+    "elevation": "927",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "OFFI",
+    "name": "Offida",
+    "latitude": 42.93348,
+    "longitude": 13.685707,
+    "elevation": "258.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "OPPE",
+    "name": "Oppeano",
+    "latitude": 45.3082,
+    "longitude": 11.1724,
+    "elevation": "20.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "ORI",
+    "name": "ORIOLO CALABRO",
+    "latitude": 40.05096,
+    "longitude": 16.450405,
+    "elevation": "375.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "ORO",
+    "name": "OROPA",
+    "latitude": 45.62678,
+    "longitude": 7.9813,
+    "elevation": "1157.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "ORTE",
+    "name": "ORTE",
+    "latitude": 42.460718,
+    "longitude": 12.384527,
+    "elevation": "100",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "ORZI",
+    "name": "Orzinuovi",
+    "latitude": 45.4056,
+    "longitude": 9.9307,
+    "elevation": "83.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "OSSC",
+    "name": "OSSC",
+    "latitude": 43.52358,
+    "longitude": 11.24579,
+    "elevation": "452",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "OVO",
+    "name": "OSSERVATORIO VESUVIANO",
+    "latitude": 40.8275,
+    "longitude": 14.39667,
+    "elevation": "584",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "PABO",
+    "name": "Pietrabbondante",
+    "latitude": 41.748856,
+    "longitude": 14.386994,
+    "elevation": "1016",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "PALZ",
+    "name": "Palazzo San Gervasio",
+    "latitude": 40.9441,
+    "longitude": 15.9602,
+    "elevation": "450.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "PANTE",
+    "name": "PANTE",
+    "latitude": 36.81011,
+    "longitude": 11.99514,
+    "elevation": "111",
+    "zone": "sardegna"
+  },
+  {
+    "network": "IV",
+    "station": "PAOL",
+    "name": "Paolisi",
+    "latitude": 41.031206,
+    "longitude": 14.567486,
+    "elevation": "715.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "PARC",
+    "name": "Parchiule",
+    "latitude": 43.6486,
+    "longitude": 12.2386,
+    "elevation": "580",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "PCN",
+    "name": "PCN",
+    "latitude": 45.0353,
+    "longitude": 9.7247,
+    "elevation": "55.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "PCRO",
+    "name": "Pietralacroce (Ancona)",
+    "latitude": 43.60768,
+    "longitude": 13.53233,
+    "elevation": "165",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "PE3",
+    "name": "Peglio",
+    "latitude": 43.696,
+    "longitude": 12.496333,
+    "elevation": "530.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "PESA",
+    "name": "PESARO",
+    "latitude": 43.94105,
+    "longitude": 12.84018,
+    "elevation": "221",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "PETRA",
+    "name": "Petralia Soprana",
+    "latitude": 37.8335,
+    "longitude": 14.1148,
+    "elevation": "1547.0",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "PF6",
+    "name": "Pievefavera",
+    "latitude": 43.137868,
+    "longitude": 13.194333,
+    "elevation": "419",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "PGEL",
+    "name": "Pantelleria Gelfiser",
+    "latitude": 36.7942,
+    "longitude": 11.9788,
+    "elevation": "416",
+    "zone": "sardegna"
+  },
+  {
+    "network": "IV",
+    "station": "PGHD",
+    "name": "Pantelleria Serra Ghirlanda",
+    "latitude": 36.7714,
+    "longitude": 12.0405,
+    "elevation": "331",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "PIEI",
+    "name": "PIEIA",
+    "latitude": 43.53567,
+    "longitude": 12.535,
+    "elevation": "665",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "PIGN",
+    "name": "Pignataro Maggiore (CE)",
+    "latitude": 41.200001,
+    "longitude": 14.17989,
+    "elevation": "398.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "PII",
+    "name": "PISA",
+    "latitude": 43.72193,
+    "longitude": 10.52495,
+    "elevation": "66",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "PIO1",
+    "name": "Pioraco",
+    "latitude": 43.178198,
+    "longitude": 12.983759,
+    "elevation": "460",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "PIPA",
+    "name": "Pietrapaola",
+    "latitude": 39.48514,
+    "longitude": 16.8158,
+    "elevation": "479.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "PLAC",
+    "name": "Placanica",
+    "latitude": 38.4494,
+    "longitude": 16.4383,
+    "elevation": "602.0",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "PLLN",
+    "name": "POLLINA",
+    "latitude": 37.9926,
+    "longitude": 14.1431,
+    "elevation": "787",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "PLMA",
+    "name": "Palmaria-Portovenere",
+    "latitude": 44.04981775414,
+    "longitude": 9.85365177896,
+    "elevation": "22.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "POFI",
+    "name": "Posta Fibreno",
+    "latitude": 41.71743,
+    "longitude": 13.71202,
+    "elevation": "878",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "PONC",
+    "name": "Ponte Chianale",
+    "latitude": 44.626924,
+    "longitude": 7.02424,
+    "elevation": "1720.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "PP3",
+    "name": "PP3",
+    "latitude": 43.379,
+    "longitude": 13.6095,
+    "elevation": "21.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "PRMA",
+    "name": "Parma",
+    "latitude": 44.76374,
+    "longitude": 10.31311,
+    "elevation": "78",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "PSB1",
+    "name": "PESCO SANNITA",
+    "latitude": 41.22345,
+    "longitude": 14.81078,
+    "elevation": "551.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "PSL",
+    "name": "Pistoia",
+    "latitude": 44.008889,
+    "longitude": 10.928229,
+    "elevation": "770",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "PTCC",
+    "name": "PATOCCO",
+    "latitude": 46.4075,
+    "longitude": 13.354,
+    "elevation": "700",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "PTMR",
+    "name": "Procida - Terra Murata, Stazione Osservatorio Vesuviano",
+    "latitude": 40.761401,
+    "longitude": 14.034938,
+    "elevation": "134",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "PTQR",
+    "name": "PIETRAQUARIA",
+    "latitude": 42.02193,
+    "longitude": 13.40057,
+    "elevation": "957",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "PTRJ",
+    "name": "Pietraroja",
+    "latitude": 41.3641,
+    "longitude": 14.529,
+    "elevation": "1027.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "PTRP",
+    "name": "PIETRAPERTOSA",
+    "latitude": 40.52148,
+    "longitude": 16.06124,
+    "elevation": "1077.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "PZIN",
+    "name": "Pantelleria Zinedi",
+    "latitude": 36.8121,
+    "longitude": 11.9729,
+    "elevation": "205",
+    "zone": "sardegna"
+  },
+  {
+    "network": "IV",
+    "station": "PZUN",
+    "name": "Potenza Universita",
+    "latitude": 40.6458,
+    "longitude": 15.807,
+    "elevation": "820.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "QLNO",
+    "name": "QUILIANO",
+    "latitude": 44.32425,
+    "longitude": 8.34592,
+    "elevation": "547",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "RAFF",
+    "name": "Raffo Rosso",
+    "latitude": 37.2225,
+    "longitude": 14.3624,
+    "elevation": "310.0",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "RAVA",
+    "name": "RAVARINO",
+    "latitude": 44.75587,
+    "longitude": 11.1188,
+    "elevation": "15",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "RCAV",
+    "name": "Rocca di Cave",
+    "latitude": 41.847261,
+    "longitude": 12.945292,
+    "elevation": "940",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "RDP",
+    "name": "ROCCA DI PAPA",
+    "latitude": 41.76039,
+    "longitude": 12.7103,
+    "elevation": "760.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "RESU",
+    "name": "Resuttano",
+    "latitude": 37.6468,
+    "longitude": 14.0568,
+    "elevation": "785.0",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "RIBO",
+    "name": "RIBO",
+    "latitude": 42.949,
+    "longitude": 11.0465,
+    "elevation": "50",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "RINC",
+    "name": "Rincine (FI)",
+    "latitude": 43.886471,
+    "longitude": 11.60699,
+    "elevation": "955.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "RM33",
+    "name": "",
+    "latitude": 42.50898,
+    "longitude": 13.21452,
+    "elevation": "1097",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "RMP",
+    "name": "MONTE PORZIO CATONE",
+    "latitude": 41.811928,
+    "longitude": 12.70492,
+    "elevation": "380",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "RNI2",
+    "name": "RIONERO SANNITICO",
+    "latitude": 41.70328,
+    "longitude": 14.1524,
+    "elevation": "950.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "ROM9",
+    "name": "ROMA (sede INGV)",
+    "latitude": 41.82842,
+    "longitude": 12.51553,
+    "elevation": "110",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "ROVR",
+    "name": "Rovere Veronese",
+    "latitude": 45.6468,
+    "longitude": 11.0721,
+    "elevation": "1316.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "RSM2",
+    "name": "Repubblica San Marino",
+    "latitude": 43.937695,
+    "longitude": 12.445128,
+    "elevation": "645.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "RUFI",
+    "name": "RUFI",
+    "latitude": 43.838,
+    "longitude": 11.5095,
+    "elevation": "243",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "SACR",
+    "name": "S. CROCE DEL SANNIO",
+    "latitude": 41.3974,
+    "longitude": 14.7057,
+    "elevation": "859.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "SACS",
+    "name": "San Casciano dei Bagni",
+    "latitude": 42.84906,
+    "longitude": 11.90967,
+    "elevation": "845",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "SAIV",
+    "name": "Sant Angelo in Vado (PU)",
+    "latitude": 43.66482,
+    "longitude": 12.413039,
+    "elevation": "360.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "SAL",
+    "name": "Salo Centro - MuSa (BS), Italy",
+    "latitude": 45.607609,
+    "longitude": 10.525968,
+    "elevation": "94",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "SALB",
+    "name": "San Lorenzo Bellizzi",
+    "latitude": 39.8772,
+    "longitude": 16.3459,
+    "elevation": "1200.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "SALIN",
+    "name": "Salina",
+    "latitude": 38.57911,
+    "longitude": 14.81508,
+    "elevation": "412.0",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "SALO",
+    "name": "Salo - San Bartolemeo (BS), Italy",
+    "latitude": 45.6183,
+    "longitude": 10.5243,
+    "elevation": "600.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "SAMA",
+    "name": "S.Maria delle Mole (Ciampino, Roma)",
+    "latitude": 41.7805,
+    "longitude": 12.5923,
+    "elevation": "119",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "SAP2",
+    "name": "Sant Angelo in Pontano (MC)",
+    "latitude": 43.09667,
+    "longitude": 13.399167,
+    "elevation": "402",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "SARZ",
+    "name": "Sarezzano",
+    "latitude": 44.867306,
+    "longitude": 8.913604,
+    "elevation": "266.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "SBPO",
+    "name": "S.Benedetto Po",
+    "latitude": 45.05108,
+    "longitude": 10.91987,
+    "elevation": "10",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "SCHR",
+    "name": "S. CHIRICO RAPARO",
+    "latitude": 40.19924,
+    "longitude": 16.0759,
+    "elevation": "968.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "SCIAC",
+    "name": "SCIAC",
+    "latitude": 37.516469,
+    "longitude": 13.101908,
+    "elevation": "181",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "SCIAR",
+    "name": "SCIAR",
+    "latitude": 37.94064,
+    "longitude": 13.74926,
+    "elevation": "490",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "SCIC",
+    "name": "SCIC",
+    "latitude": 36.796216,
+    "longitude": 14.672208,
+    "elevation": "253",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "SCTE",
+    "name": "Santa Cesarea Terme",
+    "latitude": 40.0724,
+    "longitude": 18.4675,
+    "elevation": "150.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "SEF1",
+    "name": "Sefro",
+    "latitude": 43.14683,
+    "longitude": 12.94762,
+    "elevation": "518",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "SEI",
+    "name": "SANT AGATA",
+    "latitude": 44.05428,
+    "longitude": 11.35855,
+    "elevation": "610",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "SELL",
+    "name": "Sellia (CZ)",
+    "latitude": 38.983001,
+    "longitude": 16.627906,
+    "elevation": "633.0",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "SENI",
+    "name": "Senigallia",
+    "latitude": 43.7052,
+    "longitude": 13.2331,
+    "elevation": "10.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "SERM",
+    "name": "Sermide (MN)",
+    "latitude": 45.00997,
+    "longitude": 11.29582,
+    "elevation": "7",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "SERS",
+    "name": "Sersale",
+    "latitude": 39.0359,
+    "longitude": 16.6886,
+    "elevation": "1221.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "SFI",
+    "name": "SANTA SOFIA",
+    "latitude": 43.90477,
+    "longitude": 11.84695,
+    "elevation": "548",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "SGAL",
+    "name": "Botticino San Gallo",
+    "latitude": 45.563555,
+    "longitude": 10.31064,
+    "elevation": "460.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "SGG",
+    "name": "S.Gregorio Matese",
+    "latitude": 41.38667,
+    "longitude": 14.37917,
+    "elevation": "880.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "SGO",
+    "name": "SICIGNANO DEGLI ALBURNI",
+    "latitude": 40.56045,
+    "longitude": 15.30738,
+    "elevation": "651",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "SGRT",
+    "name": "San Giovanni Rotondo",
+    "latitude": 41.7546,
+    "longitude": 15.7437,
+    "elevation": "960.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "SGTA",
+    "name": "Sant Agata di Puglia",
+    "latitude": 41.135,
+    "longitude": 15.365,
+    "elevation": "890.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "SIRI",
+    "name": "Monte Sirino - Moliterno",
+    "latitude": 40.1821,
+    "longitude": 15.8675,
+    "elevation": "1063.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "SLCN",
+    "name": "SALA CONSILINA",
+    "latitude": 40.39,
+    "longitude": 15.63277,
+    "elevation": "986.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "SMA1",
+    "name": "San Martino",
+    "latitude": 42.6305,
+    "longitude": 13.3353,
+    "elevation": "1150",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "SNAL",
+    "name": "S. Angelo dei Lombardi",
+    "latitude": 40.92542,
+    "longitude": 15.20908,
+    "elevation": "874.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "SNTG",
+    "name": "ESANATOGLIA",
+    "latitude": 43.255,
+    "longitude": 12.94057,
+    "elevation": "650",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "SOI",
+    "name": "SAMO",
+    "latitude": 38.07323,
+    "longitude": 16.05424,
+    "elevation": "305",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "SOLUN",
+    "name": "SOLUNTO",
+    "latitude": 38.09193,
+    "longitude": 13.53261,
+    "elevation": "190.0",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "SORR",
+    "name": "Penisola sorrentina - Stazione Osservatorio Vesuviano",
+    "latitude": 40.58256,
+    "longitude": 14.335709,
+    "elevation": "537",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "SPS2",
+    "name": "Spezzano Piccolo",
+    "latitude": 39.291028,
+    "longitude": 16.338806,
+    "elevation": "620",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "SRES",
+    "name": "Monte Soratte",
+    "latitude": 42.23696,
+    "longitude": 12.50993,
+    "elevation": "410",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "SSFR",
+    "name": "Montelago di Sassoferrato",
+    "latitude": 43.43628,
+    "longitude": 12.78225,
+    "elevation": "750",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "SSP9",
+    "name": "Sansepolcro",
+    "latitude": 43.57387,
+    "longitude": 12.13136,
+    "elevation": "324.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "SSY",
+    "name": "SORTINO",
+    "latitude": 37.1577,
+    "longitude": 15.0737,
+    "elevation": "600",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "STAL",
+    "name": "Staligial",
+    "latitude": 46.2601,
+    "longitude": 12.7104,
+    "elevation": "625",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "STR6",
+    "name": "Stromboli - Guardiani Stazione Osservatorio Vesuviano",
+    "latitude": 38.787368,
+    "longitude": 15.216027,
+    "elevation": "814",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "STRA",
+    "name": "Stromboli InizioDirettissima-Stazione Osservatorio Vesuviano",
+    "latitude": 38.795253,
+    "longitude": 15.217123,
+    "elevation": "847",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "STRC",
+    "name": "Stromboli Timpone del Fuoco - Stazione Osservatorio Vesuvian",
+    "latitude": 38.791058,
+    "longitude": 15.191556,
+    "elevation": "182",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "STRE",
+    "name": "Stromboli - Sentiero del Bastimento, quota 450m",
+    "latitude": 38.802415,
+    "longitude": 15.215261,
+    "elevation": "495",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "STRG",
+    "name": "Stromboli-Localit.. Labronzo",
+    "latitude": 38.809615,
+    "longitude": 15.2149,
+    "elevation": "163",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "T0110",
+    "name": "Collepietro",
+    "latitude": 42.22944,
+    "longitude": 13.776334,
+    "elevation": "915",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "T1101",
+    "name": "Colle del Matese (CE)",
+    "latitude": 41.474883,
+    "longitude": 14.540325,
+    "elevation": "510.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "TB01",
+    "name": "Gubbio",
+    "latitude": 43.381567,
+    "longitude": 12.435667,
+    "elevation": "643.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "TB02",
+    "name": "Pietralunga",
+    "latitude": 43.370417,
+    "longitude": 12.409367,
+    "elevation": "691.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "TB03",
+    "name": "Pietralunga",
+    "latitude": 43.40134,
+    "longitude": 12.41034,
+    "elevation": "580.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "TDS",
+    "name": "TERRANOVA DA SIBARI",
+    "latitude": 39.6601,
+    "longitude": 16.33762,
+    "elevation": "244.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "TEOL",
+    "name": "Teolo",
+    "latitude": 45.361667,
+    "longitude": 11.673889,
+    "elevation": "370.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "TERO",
+    "name": "TERAMO",
+    "latitude": 42.62279,
+    "longitude": 13.60393,
+    "elevation": "673",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "TOLF",
+    "name": "TOLFA",
+    "latitude": 42.06406,
+    "longitude": 12.00017,
+    "elevation": "371",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "TRE1",
+    "name": "Treia",
+    "latitude": 43.311198,
+    "longitude": 13.312848,
+    "elevation": "330",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "TREG",
+    "name": "Tregnago",
+    "latitude": 45.523,
+    "longitude": 11.1606,
+    "elevation": "342.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "TREM",
+    "name": "ISOLE TREMITI - SAN NICOLA",
+    "latitude": 42.123,
+    "longitude": 15.51,
+    "elevation": "120.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "TRIC",
+    "name": "Tricerro (VC)",
+    "latitude": 45.233997,
+    "longitude": 8.327064,
+    "elevation": "141.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "TRIV",
+    "name": "Trivento",
+    "latitude": 41.7666,
+    "longitude": 14.5502,
+    "elevation": "598.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "TRTR",
+    "name": "Tortoreto Alta",
+    "latitude": 42.8081,
+    "longitude": 13.9138,
+    "elevation": "160",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "TSM1",
+    "name": "Gubbio Cimitero Sito 1 STAR",
+    "latitude": 43.34536,
+    "longitude": 12.597621,
+    "elevation": "553.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "TSM2",
+    "name": "star site 2",
+    "latitude": 43.39619,
+    "longitude": 12.489944,
+    "elevation": "630.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "TSM3",
+    "name": "star site 3",
+    "latitude": 43.38298,
+    "longitude": 12.354506,
+    "elevation": "341.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "TSM4",
+    "name": "Umbertide",
+    "latitude": 43.3087,
+    "longitude": 12.3046,
+    "elevation": "270.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "TSM5",
+    "name": "Cantiano",
+    "latitude": 43.479692,
+    "longitude": 12.60252,
+    "elevation": "379.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "TSM6",
+    "name": "Città di Castello",
+    "latitude": 43.47246,
+    "longitude": 12.33275,
+    "elevation": "402.0",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "USI",
+    "name": "USTICA",
+    "latitude": 38.70787,
+    "longitude": 13.17913,
+    "elevation": "285",
+    "zone": "sicilia"
+  },
+  {
+    "network": "IV",
+    "station": "VAGA",
+    "name": "Valle Agricola",
+    "latitude": 41.4154,
+    "longitude": 14.2342,
+    "elevation": "795.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "VARE",
+    "name": "Varese",
+    "latitude": 45.867695,
+    "longitude": 8.77,
+    "elevation": "1219.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "VBKE",
+    "name": "",
+    "latitude": 40.818549,
+    "longitude": 14.438636,
+    "elevation": "913.2",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "VBKN",
+    "name": " Vesuvio Bunker NORD - Stazione Osservatorio Vesuviano",
+    "latitude": 40.829959,
+    "longitude": 14.429881,
+    "elevation": "1004.18",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "VBKS",
+    "name": "Vesuvio Bunker SUD - Stazione Osservatorio Vesuviano",
+    "latitude": 40.806289,
+    "longitude": 14.422496,
+    "elevation": "617.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "VBKW",
+    "name": "Vesuvio Bunker OVEST - Stazione Osservatorio Vesuviano",
+    "latitude": 40.824231,
+    "longitude": 14.414156,
+    "elevation": "877.7",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "VCEL",
+    "name": "VILLA CELIERA",
+    "latitude": 42.39455,
+    "longitude": 13.84059,
+    "elevation": "1185",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "VCNE",
+    "name": "Vesuvio Cratere Nord-Est - Stazione Osservatorio Vesuviano",
+    "latitude": 40.826595,
+    "longitude": 14.433985,
+    "elevation": "1007",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "VCRE",
+    "name": "Vesuvio - Cratere Est, Stazione Osservatorio Vesuviano",
+    "latitude": 40.818999,
+    "longitude": 14.431419,
+    "elevation": "1175",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "VENL",
+    "name": "Venezia Lido",
+    "latitude": 45.4167,
+    "longitude": 12.3765,
+    "elevation": "4.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "VENT",
+    "name": "VENTOTENE",
+    "latitude": 40.79478,
+    "longitude": 13.42156,
+    "elevation": "108",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "VERO",
+    "name": "VEROLI",
+    "latitude": 41.691045,
+    "longitude": 13.4157987,
+    "elevation": "590",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "VIND",
+    "name": "Vinadio",
+    "latitude": 44.309828,
+    "longitude": 7.175396,
+    "elevation": "953.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "VISG",
+    "name": "Visignano (FI)",
+    "latitude": 44.188961,
+    "longitude": 11.43431,
+    "elevation": "727",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "VITU",
+    "name": "Vitulano",
+    "latitude": 41.18326,
+    "longitude": 14.630154,
+    "elevation": "848.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "VIVA",
+    "name": "Vivaro",
+    "latitude": 41.750225,
+    "longitude": 12.770183,
+    "elevation": "550",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "VMAN",
+    "name": "Volta Mantovana (MN)",
+    "latitude": 45.3135,
+    "longitude": 10.6628,
+    "elevation": "64.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "VMGN",
+    "name": "Villore del Mugello",
+    "latitude": 43.9545,
+    "longitude": 11.5327,
+    "elevation": "550",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "VOBA",
+    "name": "Vobarno",
+    "latitude": 45.6429,
+    "longitude": 10.504,
+    "elevation": "292.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "VPOB",
+    "name": "Pollena - Stazione Osservatorio Vesuviano",
+    "latitude": 40.852793,
+    "longitude": 14.383211,
+    "elevation": "221",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "VTIR",
+    "name": "Vesuvio - Forestale",
+    "latitude": 40.8059,
+    "longitude": 14.4242,
+    "elevation": "612",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "VTRZ",
+    "name": "Vesuvio - Terzigno",
+    "latitude": 40.807581,
+    "longitude": 14.475264,
+    "elevation": "225.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "VULT",
+    "name": "Monte Vulture - Melfi",
+    "latitude": 40.9549,
+    "longitude": 15.6163,
+    "elevation": "1101",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "VVDG",
+    "name": " Vesuvio Valle del Gigante - Stazione Osservatorio Vesuviano",
+    "latitude": 40.8356,
+    "longitude": 14.4239,
+    "elevation": "855.0",
+    "zone": "sud"
+  },
+  {
+    "network": "IV",
+    "station": "VVLD",
+    "name": "VILLAVALLELONGA",
+    "latitude": 41.86965,
+    "longitude": 13.62324,
+    "elevation": "1051",
+    "zone": "centro"
+  },
+  {
+    "network": "IV",
+    "station": "ZCCA",
+    "name": "ZOCCA",
+    "latitude": 44.35085,
+    "longitude": 10.9765,
+    "elevation": "700",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "ZEN8",
+    "name": "San Zeno di Montagna",
+    "latitude": 45.6378,
+    "longitude": 10.7319,
+    "elevation": "596.0",
+    "zone": "nord"
+  },
+  {
+    "network": "IV",
+    "station": "ZOVE",
+    "name": "Zovencedo",
+    "latitude": 45.4536,
+    "longitude": 11.4876,
+    "elevation": "376.0",
+    "zone": "nord"
+  }
+]

@@ -1,0 +1,182 @@
+{
+  "VDA": {
+    "region": "Valle d'Aosta",
+    "station": "MRGE",
+    "channel": "HHZ",
+    "name": "Morge",
+    "latitude": 45.76975,
+    "longitude": 7.06101,
+    "distance_km": 20.4
+  },
+  "PIE": {
+    "region": "Piemonte",
+    "station": "MONC",
+    "channel": "HHZ",
+    "name": "Moncucco Torinese",
+    "latitude": 45.0739,
+    "longitude": 7.9271,
+    "distance_km": 20.4
+  },
+  "LIG": {
+    "region": "Liguria",
+    "station": "QLNO",
+    "channel": "HHZ",
+    "name": "QUILIANO",
+    "latitude": 44.32425,
+    "longitude": 8.34592,
+    "distance_km": 47.2
+  },
+  "LOM": {
+    "region": "Lombardia",
+    "station": "MILN",
+    "channel": "HHZ",
+    "name": "Milano",
+    "latitude": 45.4803,
+    "longitude": 9.2321,
+    "distance_km": 3.5
+  },
+  "TAA": {
+    "region": "Trentino-Alto Adige",
+    "station": "APPI",
+    "channel": "EHZ",
+    "name": "Appiano",
+    "latitude": 46.47868,
+    "longitude": 11.22813,
+    "distance_km": 9.6
+  },
+  "VEN": {
+    "region": "Veneto",
+    "station": "VENL",
+    "channel": "EHZ",
+    "name": "Venezia Lido",
+    "latitude": 45.4167,
+    "longitude": 12.3765,
+    "distance_km": 4.5
+  },
+  "FVG": {
+    "region": "Friuli-Venezia Giulia",
+    "station": "STAL",
+    "channel": "HHZ",
+    "name": "Staligial",
+    "latitude": 46.2601,
+    "longitude": 12.7104,
+    "distance_km": 45.9
+  },
+  "EMR": {
+    "region": "Emilia-Romagna",
+    "station": "FIU",
+    "channel": "EHZ",
+    "name": "FONDO FIUMICELLO (MINERBIO)",
+    "latitude": 44.64031,
+    "longitude": 11.49165,
+    "distance_km": 20.6
+  },
+  "TOS": {
+    "region": "Toscana",
+    "station": "FIR",
+    "channel": "HHZ",
+    "name": "Firenze",
+    "latitude": 43.774366,
+    "longitude": 11.255134,
+    "distance_km": 0.6
+  },
+  "UMB": {
+    "region": "Umbria",
+    "station": "MURB",
+    "channel": "HHZ",
+    "name": "MONTE URBINO",
+    "latitude": 43.263,
+    "longitude": 12.5246,
+    "distance_km": 20.2
+  },
+  "MAR": {
+    "region": "Marche",
+    "station": "AOI",
+    "channel": "HHZ",
+    "name": "Monte Conero",
+    "latitude": 43.55017,
+    "longitude": 13.602,
+    "distance_km": 10.2
+  },
+  "LAZ": {
+    "region": "Lazio",
+    "station": "ROM9",
+    "channel": "HNZ",
+    "name": "ROMA (sede INGV)",
+    "latitude": 41.82842,
+    "longitude": 12.51553,
+    "distance_km": 8.1
+  },
+  "ABR": {
+    "region": "Abruzzo",
+    "station": "FAGN",
+    "channel": "HHZ",
+    "name": "FAGNANO",
+    "latitude": 42.26573,
+    "longitude": 13.58379,
+    "distance_km": 17.8
+  },
+  "MOL": {
+    "region": "Molise",
+    "station": "BSSO",
+    "channel": "HHZ",
+    "name": "Busso",
+    "latitude": 41.5461,
+    "longitude": 14.5938,
+    "distance_km": 5.7
+  },
+  "CAM": {
+    "region": "Campania",
+    "station": "CMTS",
+    "channel": "EHZ",
+    "name": "Via Metastasio - Stazione Osservatorio Vesuviano",
+    "latitude": 40.831427,
+    "longitude": 14.197239,
+    "distance_km": 6.5
+  },
+  "PUG": {
+    "region": "Puglia",
+    "station": "AMUR",
+    "channel": "HHZ",
+    "name": "Altamura",
+    "latitude": 40.9071,
+    "longitude": 16.6041,
+    "distance_km": 32.5
+  },
+  "BAS": {
+    "region": "Basilicata",
+    "station": "PZUN",
+    "channel": "HHZ",
+    "name": "Potenza Universita",
+    "latitude": 40.6458,
+    "longitude": 15.807,
+    "distance_km": 0.9
+  },
+  "CAL": {
+    "region": "Calabria",
+    "station": "SELL",
+    "channel": "HHZ",
+    "name": "Sellia (CZ)",
+    "latitude": 38.983001,
+    "longitude": 16.627906,
+    "distance_km": 8.8
+  },
+  "SIC": {
+    "region": "Sicilia",
+    "station": "RESU",
+    "channel": "HHZ",
+    "name": "Resuttano",
+    "latitude": 37.6468,
+    "longitude": 14.0568,
+    "distance_km": 17.1
+  },
+  "SAR": {
+    "region": "Sardegna",
+    "station": "BULT",
+    "channel": "EHZ",
+    "name": "Bultei - Sa Pruna",
+    "latitude": 40.5092,
+    "longitude": 9.0397,
+    "distance_km": 43.4
+  }
+}

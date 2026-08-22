@@ -1,0 +1,32 @@
+{
+  "PAPUA": {
+    "zone": "Papua Nuova Guinea",
+    "network": "GE",
+    "station": "PMG",
+    "location": "",
+    "channel": "BHZ",
+    "latitude": -9.4047,
+    "longitude": 147.1597,
+    "distance_km": 379.0
+  },
+  "ETIOPIA": {
+    "zone": "Etiopia",
+    "network": "GE",
+    "station": "DAMY",
+    "location": "",
+    "channel": "HHZ",
+    "latitude": 14.5725,
+    "longitude": 44.3917,
+    "distance_km": 750.5
+  },
+  "SUDAFRICA": {
+    "zone": "Sudafrica",
+    "network": "GE",
+    "station": "WIN",
+    "location": "",
+    "channel": "HHZ",
+    "latitude": -22.5691,
+    "longitude": 17.0915,
+    "distance_km": 1117.4
+  }
+}

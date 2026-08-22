@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Sismografi Mondo | News Terremoti Mondo e Italia
+</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: #020812;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  color: #eefaff;
+
+  background:
+    linear-gradient(
+      rgba(1,10,18,.74),
+      rgba(1,10,18,.88)
+    ),
+    url("sfondo_napoli.png")
+    center center / cover
+    fixed
+    no-repeat;
+}
+
+
+/* ========================
+   HEADER
+======================== */
+
+header {
+  text-align: center;
+
+  padding:
+    35px 20px 25px;
+
+  background:
+    rgba(2,15,25,.88);
+
+  border-bottom:
+    1px solid rgba(70,210,255,.25);
+}
+
+header h1 {
+  margin: 0 0 8px;
+
+  font-size: 34px;
+
+  text-shadow:
+    0 0 18px rgba(70,210,255,.35);
+}
+
+header p {
+  margin: 0;
+
+  color: #a9c5d3;
+
+  font-size: 14px;
+}
+
+
+/* ========================
+   NAV
+======================== */
+
+nav {
+  position: sticky;
+
+  top: 0;
+
+  z-index: 1000;
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  padding: 12px;
+
+  background:
+    rgba(1,9,16,.94);
+
+  border-bottom:
+    1px solid rgba(70,210,255,.20);
+
+  backdrop-filter: blur(8px);
+}
+
+nav a {
+  color: #dff8ff;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  padding:
+    10px 15px;
+
+  border:
+    1px solid rgba(70,210,255,.22);
+
+  border-radius:
+    8px;
+
+  background:
+    rgba(7,34,49,.76);
+}
+
+nav a:hover {
+  border-color:
+    rgba(70,220,255,.60);
+
+  background:
+    rgba(10,60,80,.88);
+}
+
+
+/* ========================
+   CONTAINER
+======================== */
+
+.container {
+  width:
+    min(1250px, 94%);
+
+  margin:
+    30px auto 70px;
+}
+
+
+/* ========================
+   STATUS
+======================== */
+
+.status-bar {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 28px;
+
+  color: #43eb92;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  letter-spacing: .8px;
+}
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: #43eb92;
+
+  box-shadow:
+    0 0 12px #43eb92;
+}
+
+
+/* ========================
+   CONTINENTE
+======================== */
+
+.continente {
+  margin-bottom: 32px;
+}
+
+.continente h2 {
+  margin:
+    0 0 12px;
+
+  padding-bottom:
+    9px;
+
+  font-size:
+    21px;
+
+  color:
+    #ffffff;
+
+  border-bottom:
+    1px solid rgba(70,210,255,.20);
+}
+
+
+/* ========================
+   GRIGLIA
+======================== */
+
+.stazioni-mondo {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 10px;
+}
+
+
+/* ========================
+   SISMOGRAFO
+======================== */
+
+.sismo-world {
+  display: grid;
+
+  grid-template-columns:
+    170px minmax(0,1fr);
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding:
+    9px 11px;
+
+  background:
+    linear-gradient(
+      100deg,
+      rgba(7,29,43,.94),
+      rgba(2,14,23,.92)
+    );
+
+  border:
+    1px solid rgba(70,210,255,.18);
+
+  border-radius:
+    9px;
+
+  box-shadow:
+    0 5px 15px rgba(0,0,0,.25);
+}
+
+.sismo-world:hover {
+  border-color:
+    rgba(70,220,255,.48);
+}
+
+.sismo-info strong {
+  display: block;
+
+  color: #ffffff;
+
+  font-size: 13px;
+
+  margin-bottom: 4px;
+}
+
+.sismo-info span {
+  display: block;
+
+  color: #69dfff;
+
+  font-family:
+    Consolas,
+    monospace;
+
+  font-size: 9px;
+
+  margin-bottom: 4px;
+}
+
+.stato-live {
+  color: #44e990 !important;
+
+  font-size: 8px !important;
+
+  font-family:
+    Arial,
+    sans-serif !important;
+
+  font-weight: 900;
+}
+
+
+/* ========================
+   CANVAS
+======================== */
+
+.world-canvas {
+  width: 100%;
+
+  height: 55px;
+
+  display: block;
+
+  background: #01080d;
+
+  border:
+    1px solid rgba(70,190,225,.18);
+
+  border-radius:
+    5px;
+}
+
+
+/* ========================
+   LEGENDA
+======================== */
+
+.legenda {
+  margin:
+    30px auto;
+
+  padding:
+    14px 18px;
+
+  max-width:
+    700px;
+
+  text-align: center;
+
+  background:
+    rgba(2,18,29,.85);
+
+  border:
+    1px solid rgba(70,210,255,.18);
+
+  border-radius:
+    10px;
+
+  font-size:
+    12px;
+
+  color:
+    #bed5df;
+}
+
+.bianco {
+  color: white;
+}
+
+.arancio {
+  color: #ff9d22;
+}
+
+.rosso {
+  color: #ff3030;
+}
+
+
+/* ========================
+   MOBILE
+======================== */
+
+@media (max-width: 850px) {
+
+  .stazioni-mondo {
+    grid-template-columns:
+      1fr;
+  }
+
+}
+
+@media (max-width: 550px) {
+
+  .sismo-world {
+    grid-template-columns:
+      1fr;
+  }
+
+  header h1 {
+    font-size:
+      25px;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<header>
+
+  <h1>
+    🌍 Sismografi Mondo
+  </h1>
+
+  <p>
+    Monitoraggio delle principali stazioni sismiche
+    internazionali in tempo reale
+  </p>
+
+</header>
+
+
+<nav>
+
+  <a href="index.html">
+    🏠 Home
+  </a>
+
+  <a href="sismografi.html">
+    🌋🇮🇹 Campi Flegrei e Italia
+  </a>
+
+  <a href="sismografi_mondo.html">
+    🌍 Mondo
+  </a>
+
+</nav>
+
+
+<main class="container">
+
+  <div class="status-bar">
+
+    <span class="status-dot"></span>
+
+    SISTEMA MONITORAGGIO MONDIALE ATTIVO
+
+  </div>
+
+
+  <!-- EUROPA -->
+
+  <section class="continente">
+
+    <h2>🇪🇺 Europa</h2>
+
+    <div class="stazioni-mondo">
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇬🇷 Grecia</strong>
+          <span id="info-world-GRECIA">
+            Stazione da collegare
+          </span>
+          <span class="stato-live">
+            ● LIVE
+          </span>
+        </div>
+
+        <canvas
+          id="world-GRECIA"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇮🇸 Islanda</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-ISLANDA"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇹🇷 Turchia</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-TURCHIA"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇪🇸 Spagna</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-SPAGNA"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- AMERICHE -->
+
+  <section class="continente">
+
+    <h2>🌎 Americhe</h2>
+
+    <div class="stazioni-mondo">
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇺🇸 California</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-CALIFORNIA"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇲🇽 Messico</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-MESSICO"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇨🇱 Cile</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-CILE"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇻🇪 Venezuela</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-VENEZUELA"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- ASIA E OCEANIA -->
+
+  <section class="continente">
+
+    <h2>🌏 Asia e Oceania</h2>
+
+    <div class="stazioni-mondo">
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇯🇵 Giappone</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-GIAPPONE"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇮🇩 Indonesia</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-INDONESIA"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇵🇬 Papua Nuova Guinea</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-PAPUA"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇳🇿 Nuova Zelanda</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-NUOVAZELANDA"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- AFRICA -->
+
+  <section class="continente">
+
+    <h2>🌍 Africa</h2>
+
+    <div class="stazioni-mondo">
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇪🇹 Etiopia</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-ETIOPIA"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+
+      <article class="sismo-world">
+
+        <div class="sismo-info">
+          <strong>🇿🇦 Sudafrica</strong>
+          <span>Stazione da collegare</span>
+          <span class="stato-live">● LIVE</span>
+        </div>
+
+        <canvas
+          id="world-SUDAFRICA"
+          class="world-canvas">
+        </canvas>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <div class="legenda">
+
+    <strong>Legenda:</strong>
+
+    <span class="bianco">
+      ⚪ normale
+    </span>
+
+    &nbsp; • &nbsp;
+
+    <span class="arancio">
+      🟠 movimento elevato
+    </span>
+
+    &nbsp; • &nbsp;
+
+    <span class="rosso">
+      🔴 terremoto confermato
+    </span>
+
+  </div>
+
+</main>
+
+</body>
+</html>

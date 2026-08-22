@@ -1,0 +1,4247 @@
+nano ~/news-terremoti-sito/sismografi.html<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sismografi in tempo reale | News Terremoti Mondo e Italia</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #eef5f9;
+      color: #082d4c;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0b3656, #176c9d);
+      color: white;
+      text-align: center;
+      padding: 45px 20px;
+    }
+
+    header h1 {
+      margin: 0 0 12px;
+      font-size: 38px;
+    }
+
+    header p {
+      margin: 0 auto;
+      max-width: 800px;
+      line-height: 1.6;
+      font-size: 17px;
+    }
+
+    nav {
+      background: white;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+
+    nav a {
+      color: #083455;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 15px;
+    }
+
+    .container {
+      width: min(1200px, 92%);
+      margin: auto;
+    }
+
+    .intro {
+      text-align: center;
+      padding: 45px 10px 25px;
+    }
+
+    .intro h2 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .live {
+      display: inline-block;
+      background: #dcf8eb;
+      color: #087a4c;
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .filtri {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 25px 0 35px;
+    }
+
+    .filtri button {
+      border: 0;
+      background: white;
+      color: #083455;
+      padding: 12px 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 3px 10px rgba(0,0,0,.08);
+    }
+
+    .filtri button:hover {
+      background: #0d6595;
+      color: white;
+    }
+
+    .zona {
+      margin-bottom: 45px;
+    }
+
+    .zona h2 {
+      border-bottom: 2px solid #d4e3ec;
+      padding-bottom: 12px;
+    }
+
+    .stazioni {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+.principali {
+  margin-bottom: 45px;
+}
+
+.principali-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.sismo-grande {
+  background: white;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 6px 22px rgba(0,0,0,.08);
+}
+
+.sismo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.sismo-header h2 {
+  margin: 0;
+}
+
+.sismo-header p {
+  margin: 3px 0 0;
+  color: #617789;
+}
+
+.badge-live {
+  background: #dcf8eb;
+  color: #087a4c;
+  padding: 7px 11px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.grafico-grande {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.grafico-grande img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.info-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  color: #617789;
+  font-size: 13px;
+}
+
+.monitoraggio-vulcanico {
+  margin: 45px 0;
+}
+
+.monitor-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+
+.monitor-card {
+  background: white;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 5px 18px rgba(0,0,0,.07);
+  min-width: 0;
+}
+
+.monitor-placeholder {
+  margin-top: 15px;
+  height: 260px;
+  background: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.monitor-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 800px) {
+  .principali-grid,
+  .monitor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grafico-grande {
+    height: 230px;
+  }
+}
+
+    .stazione {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 5px 18px rgba(0,0,0,.07);
+    }
+
+    .stazione h3 {
+      margin: 0 0 5px;
+    }
+
+    .codice {
+      color: #617789;
+      font-size: 14px;
+    }
+
+    .sismogramma {
+      margin-top: 18px;
+      height: 150px;
+      background: #071d2c;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6be8ff;
+      font-size: 14px;
+    }
+
+    .stato {
+      margin-top: 12px;
+      color: #078354;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    footer {
+      background: #082d4c;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 29px;
+      }
+
+.lista-sismografi {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.sismo-riga {
+  background: white;
+  border-radius: 5px;
+  padding: 4px 7px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.05);
+  border: 1px solid #dbe6ec;
+}
+
+.sismo-riga {
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+.sismo-riga canvas.sismo-live {
+  display: block;
+  width: 100% !important;
+  height: 55px !important;
+  min-height: 55px !important;
+  max-height: 55px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #ffffff;
+}
+.sismo-titolo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1px;
+}
+
+.sismo-titolo strong {
+  font-size: 13px;
+  color: #082d4c;
+}
+
+.sismo-titolo span {
+  font-size: 10px;
+  color: #617789;
+}
+
+.sismo-riga img {
+  display: block;
+  width: 100%;
+  height: 70px;
+  object-fit: fill;
+  background: white;
+}
+
+@media (max-width: 700px) {
+  .sismo-riga img {
+    height: 90px;
+  }
+
+  .sismo-titolo {
+    flex-wrap: wrap;
+  }
+}    
+.sismo-live {
+  display: block;
+  width: 100%;
+  height: 55px !important;
+  min-height: 55px !important;
+  max-height: 55px !important;
+  background: white;
+  border: 1px solid #d8e1e8;
+  box-sizing: border-box;
+}
+
+  </style>
+
+
+<style id="grafica-sismografi-pro">
+
+:root {
+  --bg: #020912;
+  --panel: #071521;
+  --panel2: #0a1d2c;
+  --line: #15394d;
+  --cyan: #48dcff;
+  --green: #39e58c;
+  --text: #eaf8ff;
+  --muted: #8faebe;
+}
+
+body {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(10,90,130,.16), transparent 38%),
+    linear-gradient(180deg,#020a12,#02070d 70%) !important;
+  color: var(--text) !important;
+}
+
+header {
+  background:
+    linear-gradient(180deg,rgba(4,20,32,.98),rgba(2,10,18,.98)) !important;
+  border-bottom: 1px solid #12384d !important;
+}
+
+header h1 {
+  color: #fff !important;
+  text-shadow: 0 0 18px rgba(72,220,255,.25);
+}
+
+header p {
+  color: var(--muted) !important;
+}
+
+.intro {
+  background: transparent !important;
+}
+
+.intro .live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--green) !important;
+  background: rgba(57,229,140,.08);
+  border: 1px solid rgba(57,229,140,.20);
+  padding: 7px 11px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .8px;
+}
+
+.principali {
+  margin-top: 28px;
+}
+
+.principali > h2,
+.monitoraggio-vulcanico > h2 {
+  color: #dff8ff !important;
+  font-size: 24px !important;
+  margin-bottom: 14px !important;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(72,220,255,.18);
+}
+
+.lista-sismografi {
+  gap: 7px !important;
+}
+
+.sismo-riga {
+  position: relative;
+  display: grid !important;
+  grid-template-columns: 185px 1fr !important;
+  align-items: center !important;
+  gap: 12px !important;
+
+  background:
+    linear-gradient(90deg,rgba(8,28,42,.98),rgba(4,18,29,.98)) !important;
+
+  border: 1px solid rgba(72,220,255,.15) !important;
+  border-radius: 9px !important;
+  padding: 8px 10px !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.02),
+    0 5px 14px rgba(0,0,0,.18) !important;
+
+  transition: .2s ease;
+}
+
+.sismo-riga:hover {
+  border-color: rgba(72,220,255,.42) !important;
+  transform: translateX(2px);
+}
+
+.sismo-riga::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  bottom: 9px;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--green);
+  box-shadow: 0 0 9px rgba(57,229,140,.65);
+}
+
+.sismo-titolo {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  margin: 0 !important;
+  padding-left: 8px;
+}
+
+.sismo-titolo strong {
+  color: #ffffff !important;
+  font-size: 14px !important;
+  line-height: 1.1 !important;
+}
+
+.sismo-titolo span {
+  color: #69cce8 !important;
+  font-size: 10px !important;
+  font-family: Consolas, monospace;
+  letter-spacing: .3px;
+}
+
+.sismo-live {
+  width: 100% !important;
+  height: 52px !important;
+  min-height: 52px !important;
+  max-height: 52px !important;
+
+  background:
+    linear-gradient(rgba(65,180,220,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(65,180,220,.035) 1px,transparent 1px),
+    #020b12 !important;
+
+  background-size: 20px 13px !important;
+
+  border: 1px solid #12384d !important;
+  border-radius: 5px !important;
+
+  box-shadow:
+    inset 0 0 16px rgba(0,0,0,.55),
+    0 0 8px rgba(72,220,255,.03);
+}
+
+.monitoraggio-vulcanico {
+  margin-top: 35px !important;
+}
+
+.monitor-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+  gap: 14px !important;
+}
+
+.monitor-card {
+  background:
+    linear-gradient(180deg,rgba(10,29,43,.98),rgba(5,18,29,.98)) !important;
+
+  border: 1px solid rgba(255,120,60,.18) !important;
+  border-radius: 12px !important;
+  padding: 16px !important;
+
+  box-shadow: 0 8px 22px rgba(0,0,0,.22) !important;
+}
+
+.monitor-card h3 {
+  color: #fff !important;
+  margin-top: 0 !important;
+}
+
+.monitor-card p {
+  color: var(--muted) !important;
+}
+
+.monitor-placeholder {
+  height: auto !important;
+  min-height: 70px !important;
+  background: #020b12 !important;
+  border: 1px solid #16394c !important;
+}
+
+.monitor-placeholder .sismo-live {
+  height: 65px !important;
+  min-height: 65px !important;
+  max-height: 65px !important;
+}
+
+.webcam-button {
+  background:
+    linear-gradient(135deg,#0b5474,#0b3448) !important;
+  border: 1px solid rgba(72,220,255,.22);
+  box-shadow: none !important;
+}
+
+footer {
+  background: #01060b !important;
+  border-top: 1px solid #11364a;
+  color: #7896a6 !important;
+}
+
+@media (max-width: 760px) {
+  .sismo-riga {
+    grid-template-columns: 1fr !important;
+  }
+
+  .sismo-titolo {
+    padding-left: 7px;
+  }
+
+  .monitor-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+</style>
+
+
+
+<style id="sismografi-senza-griglia">
+
+.sismo-live {
+  background-image: none !important;
+  background: #01090f !important;
+}
+
+</style>
+
+
+<style id="avviso-scossa-flegrei-css">
+
+.avviso-scossa-flegrei {
+  display: none;
+
+  max-width: 1200px;
+  margin: 0 auto 15px;
+  padding: 14px 20px;
+
+  text-align: center;
+
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #630008,
+      #d51020,
+      #630008
+    );
+
+  border: 2px solid #ff3545;
+  border-radius: 10px;
+
+  box-shadow:
+    0 0 20px rgba(255,30,45,.70);
+
+  text-shadow:
+    0 2px 5px rgba(0,0,0,.9);
+}
+
+.avviso-scossa-flegrei.attivo {
+  display: block;
+
+  animation:
+    lampeggioScossaFlegrei
+    .8s infinite;
+}
+
+@keyframes lampeggioScossaFlegrei {
+
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: .55;
+  }
+
+}
+
+</style>
+
+
+<style id="mini-sismografi-regioni-css">
+
+.regioni-live {
+  max-width: 1200px;
+  margin: 45px auto;
+  padding: 0 15px;
+}
+
+.regioni-live h2 {
+  text-align: center;
+  color: #fff;
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.regioni-live-sub {
+  text-align: center;
+  color: #9cb8c7;
+  font-size: 12px;
+  margin-bottom: 22px;
+}
+
+.regioni-due-colonne {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.colonna-regioni {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.mini-regione {
+  display: grid;
+  grid-template-columns: 145px 1fr;
+  align-items: center;
+  gap: 8px;
+
+  padding: 6px 8px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(7,26,39,.92),
+      rgba(3,14,23,.92)
+    );
+
+  border:
+    1px solid rgba(75,210,245,.16);
+
+  border-radius: 7px;
+}
+
+.mini-regione:hover {
+  border-color: rgba(75,210,245,.45);
+}
+
+.mini-info {
+  min-width: 0;
+}
+
+.mini-zona {
+  display: block;
+
+  color: #6adfff;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: .8px;
+
+  margin-bottom: 2px;
+}
+
+.mini-nome {
+  display: block;
+
+  color: #fff;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mini-stato {
+  display: block;
+
+  color: #42e78d;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  margin-top: 2px;
+}
+
+.mini-canvas {
+  display: block;
+
+  width: 100%;
+  height: 42px;
+
+  background: #01080d;
+
+  border:
+    1px solid rgba(70,180,215,.16);
+
+  border-radius: 4px;
+}
+
+/* Nessuna griglia bianca */
+.mini-canvas {
+  background-image: none !important;
+}
+
+@media (max-width: 800px) {
+
+  .regioni-due-colonne {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .mini-regione {
+    grid-template-columns: 125px 1fr;
+  }
+
+}
+
+</style>
+
+
+<style id="regioni-laterali-css">
+
+/* La sezione regionale occupa tutto lo schermo */
+#regioni-live,
+.regioni-live {
+  position: fixed !important;
+  inset: 0 !important;
+
+  width: 100vw !important;
+  height: 100vh !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  pointer-events: none !important;
+
+  z-index: 50 !important;
+}
+
+/* Nasconde titolo e sottotitolo della sezione regionale */
+.regioni-live > h2,
+.regioni-live > .regioni-live-sub {
+  display: none !important;
+}
+
+
+/* Le due colonne diventano laterali */
+.regioni-due-colonne {
+  display: block !important;
+}
+
+
+/* COLONNA SINISTRA */
+.regioni-due-colonne .colonna-regioni:first-child {
+
+  position: fixed !important;
+
+  left: 8px !important;
+  top: 290px !important;
+  bottom: 20px !important;
+
+  width: 255px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  gap: 5px !important;
+
+  overflow-y: auto !important;
+
+  pointer-events: auto !important;
+
+  z-index: 60 !important;
+}
+
+
+/* COLONNA DESTRA */
+.regioni-due-colonne .colonna-regioni:last-child {
+
+  position: fixed !important;
+
+  right: 8px !important;
+  top: 290px !important;
+  bottom: 20px !important;
+
+  width: 255px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  gap: 5px !important;
+
+  overflow-y: auto !important;
+
+  pointer-events: auto !important;
+
+  z-index: 60 !important;
+}
+
+
+/* Mini riquadro */
+.mini-regione {
+
+  display: grid !important;
+
+  grid-template-columns:
+    90px minmax(0,1fr) !important;
+
+  gap: 5px !important;
+
+  align-items: center !important;
+
+  width: 100% !important;
+
+  min-height: 52px !important;
+
+  padding: 4px 5px !important;
+
+  margin: 0 !important;
+
+  background:
+    rgba(3,18,28,.92) !important;
+
+  border:
+    1px solid rgba(70,210,245,.20)
+    !important;
+
+  border-radius:
+    6px !important;
+
+  box-shadow:
+    0 3px 10px rgba(0,0,0,.25)
+    !important;
+}
+
+
+/* Nome regione */
+.mini-nome {
+
+  font-size:
+    10px !important;
+
+  line-height:
+    1.05 !important;
+
+  white-space:
+    normal !important;
+
+  color:
+    #ffffff !important;
+}
+
+
+/* Nord / Centro / Sud / Isole */
+.mini-zona {
+
+  font-size:
+    7px !important;
+
+  margin-bottom:
+    1px !important;
+
+  color:
+    #5fdcff !important;
+}
+
+
+/* Stato */
+.mini-stato {
+
+  font-size:
+    6px !important;
+
+  margin-top:
+    2px !important;
+
+  color:
+    #41e68b !important;
+}
+
+
+/* Tracciato piccolo */
+.mini-canvas {
+
+  width:
+    100% !important;
+
+  height:
+    42px !important;
+
+  min-height:
+    42px !important;
+
+  max-height:
+    42px !important;
+
+  background:
+    #01080d !important;
+
+  border:
+    1px solid rgba(75,200,235,.16)
+    !important;
+
+  border-radius:
+    4px !important;
+}
+
+
+/* Il contenuto centrale deve avere spazio */
+main.container,
+main,
+.container {
+
+  max-width:
+    1200px !important;
+}
+
+
+/* Evita che i pannelli laterali coprano Campi Flegrei */
+@media (min-width: 1250px) {
+
+  main.container {
+    width:
+      calc(100% - 550px) !important;
+
+    max-width:
+      1200px !important;
+
+    margin-left:
+      auto !important;
+
+    margin-right:
+      auto !important;
+  }
+
+}
+
+
+/* Su schermi più piccoli tornano sotto */
+@media (max-width: 1249px) {
+
+  .regioni-live {
+    position:
+      relative !important;
+
+    width:
+      100% !important;
+
+    height:
+      auto !important;
+
+    inset:
+      auto !important;
+
+    pointer-events:
+      auto !important;
+  }
+
+
+  .regioni-live > h2,
+  .regioni-live > .regioni-live-sub {
+    display:
+      block !important;
+  }
+
+
+  .regioni-due-colonne {
+
+    display:
+      grid !important;
+
+    grid-template-columns:
+      1fr 1fr !important;
+
+    gap:
+      10px !important;
+  }
+
+
+  .regioni-due-colonne
+  .colonna-regioni:first-child,
+
+  .regioni-due-colonne
+  .colonna-regioni:last-child {
+
+    position:
+      static !important;
+
+    width:
+      auto !important;
+
+    overflow:
+      visible !important;
+  }
+
+}
+
+
+/* Telefono */
+@media (max-width: 700px) {
+
+  .regioni-due-colonne {
+    grid-template-columns:
+      1fr !important;
+  }
+
+}
+
+</style>
+
+
+<style id="vesuvio-grande-css">
+
+/* Il blocco Vesuvio occupa tutta la larghezza centrale */
+.monitoraggio-vulcanico .monitor-grid {
+  display: block !important;
+}
+
+/* Card Vesuvio grande come i sismografi principali */
+.monitoraggio-vulcanico .monitor-card:first-child {
+  width: 100% !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
+
+  margin: 0 0 14px 0 !important;
+  padding: 12px 16px !important;
+}
+
+/* Tracciato Vesuvio largo */
+.monitoraggio-vulcanico .monitor-card:first-child .sismo-live,
+.monitoraggio-vulcanico .monitor-card:first-child canvas {
+  display: block !important;
+
+  width: 100% !important;
+
+  height: 105px !important;
+  min-height: 105px !important;
+  max-height: 105px !important;
+
+  box-sizing: border-box !important;
+
+  background: #01090f !important;
+
+  border:
+    1px solid #18506a !important;
+
+  border-radius: 7px !important;
+}
+
+/* Fumarole sotto al Vesuvio */
+.monitoraggio-vulcanico .monitor-card:nth-child(2) {
+  width: 100% !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
+
+  margin-top: 14px !important;
+}
+
+</style>
+
+
+<style id="vesuvio-attaccato-css">
+
+/* Avvicina tutta la sezione Vesuvio ai Campi Flegrei */
+.monitoraggio-vulcanico {
+  margin-top: 6px !important;
+  padding-top: 0 !important;
+}
+
+/* Riduce lo spazio del titolo */
+.monitoraggio-vulcanico > h2 {
+  margin-top: 4px !important;
+  margin-bottom: 6px !important;
+  padding-top: 0 !important;
+  padding-bottom: 6px !important;
+}
+
+/* Vesuvio largo come i sismografi principali */
+.monitoraggio-vulcanico .monitor-grid {
+  display: block !important;
+  margin-top: 0 !important;
+}
+
+.monitoraggio-vulcanico .monitor-card:first-child {
+  width: 100% !important;
+  max-width: none !important;
+
+  margin: 0 !important;
+  padding: 10px 16px !important;
+
+  box-sizing: border-box !important;
+}
+
+/* Tracciato Vesuvio */
+.monitoraggio-vulcanico .monitor-card:first-child .sismo-live,
+.monitoraggio-vulcanico .monitor-card:first-child canvas {
+  width: 100% !important;
+
+  height: 105px !important;
+  min-height: 105px !important;
+  max-height: 105px !important;
+}
+
+/* Fumarole leggermente separate sotto */
+.monitoraggio-vulcanico .monitor-card:nth-child(2) {
+  margin-top: 14px !important;
+}
+
+</style>
+
+
+<style id="banner-regione-terremoto-css">
+
+.banner-regione-terremoto {
+  display: none;
+
+  max-width: 1200px;
+  margin: 0 auto 12px;
+  padding: 13px 18px;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      90deg,
+      #5f0008,
+      #d31626,
+      #5f0008
+    );
+
+  border: 2px solid #ff3040;
+  border-radius: 10px;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 0 18px rgba(255,30,45,.65);
+
+  text-shadow:
+    0 2px 5px rgba(0,0,0,.9);
+}
+
+.banner-regione-terremoto.attivo {
+  display: block;
+  animation: lampeggioBannerRegione .9s infinite;
+}
+
+#bannerRegioneTitolo {
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: .8px;
+}
+
+#bannerRegioneMeta {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #ffd6da;
+}
+
+@keyframes lampeggioBannerRegione {
+  0%,100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: .62;
+  }
+}
+
+</style>
+
+
+<style id="sfondo-napoli-css">
+
+html {
+  min-height: 100%;
+  background: #020b12;
+}
+
+body {
+  min-height: 100vh;
+
+  background:
+    linear-gradient(
+      rgba(0, 12, 20, .68),
+      rgba(0, 12, 20, .82)
+    ),
+    url("/sfondo_napoli.png")
+    center center / cover
+    fixed
+    no-repeat !important;
+
+  color: #f4fbff;
+}
+
+/*
+ * Rende trasparenti le grandi sezioni,
+ * così Napoli rimane visibile dietro.
+ */
+main,
+.regioni-live,
+.monitoraggio-vulcanico {
+  background: transparent !important;
+}
+
+/*
+ * I singoli pannelli restano leggibili.
+ */
+.mini-regione,
+.monitor-card,
+.sismografo-row,
+.sismografo-card {
+  background:
+    rgba(2, 20, 31, .82) !important;
+
+  backdrop-filter:
+    blur(3px);
+
+  -webkit-backdrop-filter:
+    blur(3px);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+  <h1>📡 Sismografi in tempo reale</h1>
+
+  <p>
+    Consulta i tracciati delle stazioni sismiche disponibili
+    sul territorio italiano.
+  </p>
+</header>
+
+<nav>
+  <a href="index.html">🏠 Home</a>
+  
+  <a href="#principali">
+    🌋🇮🇹 Sismografi Campi Flegrei e Italia
+  </a>
+
+  <a href="sismografi_mondo.html">
+    🌍 Sismografi Mondo
+  </a>
+
+</nav>
+
+<main class="container">
+
+<section class="intro">
+
+  <span class="live">● MONITORAGGIO SISMICO E VULCANICO</span>
+
+  <h2>Napoli, Campi Flegrei e Vesuvio</h2>
+
+  <p>
+    Monitoraggio dei principali sismografi e dei parametri vulcanici
+    dell'area napoletana.
+  </p>
+
+</section>
+
+<section class="principali">
+
+  <h2>🌋 Campi Flegrei – Sismografi principali</h2>
+
+  
+
+<div
+  id="testFlegreiContainer"
+  style="
+    text-align:center;
+    margin:12px 0;
+  ">
+
+  <button
+    id="testTerremotoFlegrei"
+    type="button"
+    onclick="testScossaFlegrei()"
+    style="
+      background:#b40000;
+      color:#ffffff;
+      border:1px solid #ff4050;
+      border-radius:8px;
+      padding:11px 20px;
+      font-size:14px;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow:0 0 12px rgba(255,0,20,.35);
+    ">
+    🚨 TEST TERREMOTO CAMPI FLEGREI
+  </button>
+
+</div>
+
+<div
+  id="avvisoScossaFlegrei"
+  class="avviso-scossa-flegrei">
+  🔴 SCOSSA IN CORSO — CAMPI FLEGREI
+</div>
+
+<div class="lista-sismografi">
+
+    <article class="sismo-riga">
+      <div class="sismo-titolo">
+        <strong>Solfatara</strong>
+        <span>IV.CSFT..HHZ</span>
+      </div>
+
+<canvas
+  id="canvas-CSFT"
+  class="sismo-live"
+  data-station="CSFT">
+</canvas>
+
+    </article>
+
+    <article class="sismo-riga">
+      <div class="sismo-titolo">
+        <strong>Pisciarelli</strong>
+        <span>IV.CPIS..HHZ</span>
+      </div>
+<canvas
+  id="canvas-CPIS"
+  class="sismo-live"
+  data-station="CPIS">
+</canvas>
+    </article>
+
+    <article class="sismo-riga">
+      <div class="sismo-titolo">
+        <strong>Bagnoli</strong>
+        <span>IV.CBAG..HHZ</span>
+      </div>
+<canvas
+  id="canvas-CBAG"
+  class="sismo-live"
+  data-station="CBAG">
+</canvas>
+    </article>
+
+    <article class="sismo-riga">
+      <div class="sismo-titolo">
+        <strong>Nisida</strong>
+        <span>IV.CNIS..HHZ</span>
+      </div>
+
+<canvas
+  id="canvas-CNIS"
+  class="sismo-live"
+  data-station="CNIS">
+</canvas>
+    </article>
+
+    <article class="sismo-riga">
+      <div class="sismo-titolo">
+        <strong>Monte Nuovo</strong>
+        <span>IV.CFMN..HHZ</span>
+      </div>
+<canvas
+  id="canvas-CFMN"
+  class="sismo-live"
+  data-station="CFMN">
+</canvas>
+
+    </article>
+
+    <article class="sismo-riga">
+
+      <div class="sismo-titolo">
+        <strong>🌋 Vesuvio</strong>
+        <span>IV.OVO..HHZ</span>
+      </div>
+
+      <canvas
+        id="canvas-OVO"
+        class="sismo-live"
+        data-station="OVO">
+      </canvas>
+
+    </article>
+
+    <article class="sismo-riga">
+
+      <div class="sismo-titolo">
+        <strong>💨 Fumarole Pisciarelli</strong>
+        <span>IV.CPIS..HHZ</span>
+      </div>
+
+      <canvas
+        id="canvas-CPIS-fumarole"
+        class="sismo-live">
+      </canvas>
+
+    </article>
+
+
+
+  </div>
+
+</section>
+
+
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+</main>
+
+
+<section
+  id="sismografi-regioni"
+  class="regioni-live">
+
+<div
+  id="bannerRegioneTerremoto"
+  class="banner-regione-terremoto">
+
+  <div id="bannerRegioneTitolo">
+    🔴 TERREMOTO IN CORSO
+  </div>
+
+  <div id="bannerRegioneMeta"></div>
+
+</div>
+
+
+  <h2>
+    🇮🇹 Monitoraggio sismico regionale
+  </h2>
+
+  <p class="regioni-live-sub">
+    Mini-tracciati delle stazioni rappresentative
+    delle regioni italiane
+  </p>
+
+  <div class="regioni-due-colonne">
+
+    <div class="colonna-regioni">
+
+<div class="mini-regione">
+  <div class="mini-info">
+
+    <span class="mini-zona">
+      Nord
+    </span>
+
+    <span class="mini-nome">
+      Valle d'Aosta
+    </span>
+
+    <span
+      class="mini-stato"
+      id="mini-stato-VDA">
+      ● STAZIONE DA COLLEGARE
+    </span>
+
+  </div>
+
+  <canvas
+    class="mini-canvas"
+    id="mini-VDA">
+  </canvas>
+
+</div>
+
+<div class="mini-regione">
+  <div class="mini-info">
+
+    <span class="mini-zona">
+      Nord
+    </span>
+
+    <span class="mini-nome">
+      Piemonte
+    </span>
+
+    <span
+      class="mini-stato"
+      id="mini-stato-PIE">
+      ● STAZIONE DA COLLEGARE
+    </span>
+
+  </div>
+
+  <canvas
+    class="mini-canvas"
+    id="mini-PIE">
+  </canvas>
+
+</div>
+
+<div class="mini-regione">
+  <div class="mini-info">
+
+    <span class="mini-zona">
+      Nord
+    </span>
+
+    <span class="mini-nome">
+      Liguria
+    </span>
+
+    <span
+      class="mini-stato"
+      id="mini-stato-LIG">
+      ● STAZIONE DA COLLEGARE
+    </span>
+
+  </div>
+
+  <canvas
+    class="mini-canvas"
+    id="mini-LIG">
+  </canvas>
+
+</div>
+
+<div class="mini-regione">
+  <div class="mini-info">
+
+    <span class="mini-zona">
+      Nord
+    </span>
+
+    <span class="mini-nome">
+      Lombardia
+    </span>
+
+    <span
+      class="mini-stato"
+      id="mini-stato-LOM">
+      ● STAZIONE DA COLLEGARE
+    </span>
+
+  </div>
+
+  <canvas
+    class="mini-canvas"
+    id="mini-LOM">
+  </canvas>
+
+</div>
+
+<div class="mini-regione">
+  <div class="mini-info">
+
+    <span class="mini-zona">
+      Nord
+    </span>
+
+    <span class="mini-nome">
+      Trentino-Alto Adige
+    </span>
+
+    <span
+      class="mini-stato"
+      id="mini-stato-TAA">
+      ● STAZIONE DA COLLEGARE
+    </span>
+
+  </div>
+
+  <canvas
+    class="mini-canvas"
+    id="mini-TAA">
+  </canvas>
+
+</div>
+
+<div class="mini-regione">
+  <div class="mini-info">
+
+    <span class="mini-zona">
+      Nord
+    </span>
+
+    <span class="mini-nome">
+      Veneto
+    </span>
+
+    <span
+      class="mini-stato"
+      id="mini-stato-VEN">
+      ● STAZIONE DA COLLEGARE
+    </span>
+
+  </div>
+
+  <canvas
+    class="mini-canvas"
+    id="mini-VEN">
+  </canvas>
+
+</div>
+
+<div class="mini-regione">
+  <div class="mini-info">
+
+    <span class="mini-zona">
+      Nord
+    </span>
+
+    <span class="mini-nome">
+      Friuli-Venezia Giulia
+    </span>
+
+    <span
+      class="mini-stato"
+      id="mini-stato-FVG">
+      ● STAZIONE DA COLLEGARE
+    </span>
+
+  </div>
+
+  <canvas
+    class="mini-canvas"
+    id="mini-FVG">
+  </canvas>
+
+</div>
+
+<div class="mini-regione">
+  <div class="mini-info">
+
+    <span class="mini-zona">
+      Nord
+    </span>
+
+    <span class="mini-nome">
+      Emilia-Romagna
+    </span>
+
+    <span
+      class="mini-stato"
+      id="mini-stato-EMR">
+      ● STAZIONE DA COLLEGARE
+    </span>
+
+  </div>
+
+  <canvas
+    class="mini-canvas"
+    id="mini-EMR">
+  </canvas>
+
+</div>
+
+<div class="mini-regione">
+  <div class="mini-info">
+
+    <span class="mini-zona">
+      Centro
+    </span>
+
+    <span class="mini-nome">
+      Toscana
+    </span>
+
+    <span
+      class="mini-stato"
+      id="mini-stato-TOS">
+      ● STAZIONE DA COLLEGARE
+    </span>
+
+  </div>
+
+  <canvas
+    class="mini-canvas"
+    id="mini-TOS">
+  </canvas>
+
+</div>
+
+<div class="mini-regione">
+  <div class="mini-info">
+
+    <span class="mini-zona">
+      Centro
+    </span>
+
+    <span class="mini-nome">
+      Umbria
+    </span>
+
+    <span
+      class="mini-stato"
+      id="mini-stato-UMB">
+      ● STAZIONE DA COLLEGARE
+    </span>
+
+  </div>
+
+  <canvas
+    class="mini-canvas"
+    id="mini-UMB">
+  </canvas>
+
+</div>
+
+    </div>
+
+    <div class="colonna-regioni">
+
+<div class="mini-regione">
+  <div class="mini-info">
+
+    <span class="mini-zona">
+      Centro
+    </span>
+
+    <span class="mini-nome">
+      Marche
+    </span>
+
+    <span
+      class="mini-stato"
+      id="mini-stato-MAR">
+      ● STAZIONE DA COLLEGARE
+    </span>
+
+  </div>
+
+  <canvas
+    class="mini-canvas"
+    id="mini-MAR">
+  </canvas>
+
+</div>
+
+<div class="mini-regione">
+  <div class="mini-info">
+
+    <span class="mini-zona">
+      Centro
+    </span>
+
+    <span class="mini-nome">
+      Lazio
+    </span>
+
+    <span
+      class="mini-stato"
+      id="mini-stato-LAZ">
+      ● STAZIONE DA COLLEGARE
+    </span>
+
+  </div>
+
+  <canvas
+    class="mini-canvas"
+    id="mini-LAZ">
+  </canvas>
+
+</div>
+
+<div class="mini-regione">
+  <div class="mini-info">
+
+    <span class="mini-zona">
+      Sud
+    </span>
+
+    <span class="mini-nome">
+      Abruzzo
+    </span>
+
+    <span
+      class="mini-stato"
+      id="mini-stato-ABR">
+      ● STAZIONE DA COLLEGARE
+    </span>
+
+  </div>
+
+  <canvas
+    class="mini-canvas"
+    id="mini-ABR">
+  </canvas>
+
+</div>
+
+<div class="mini-regione">
+  <div class="mini-info">
+
+    <span class="mini-zona">
+      Sud
+    </span>
+
+    <span class="mini-nome">
+      Molise
+    </span>
+
+    <span
+      class="mini-stato"
+      id="mini-stato-MOL">
+      ● STAZIONE DA COLLEGARE
+    </span>
+
+  </div>
+
+  <canvas
+    class="mini-canvas"
+    id="mini-MOL">
+  </canvas>
+
+</div>
+
+<div class="mini-regione">
+  <div class="mini-info">
+
+    <span class="mini-zona">
+      Sud
+    </span>
+
+    <span class="mini-nome">
+      Campania
+    </span>
+
+    <span
+      class="mini-stato"
+      id="mini-stato-CAM">
+      ● STAZIONE DA COLLEGARE
+    </span>
+
+  </div>
+
+  <canvas
+    class="mini-canvas"
+    id="mini-CAM">
+  </canvas>
+
+</div>
+
+<div class="mini-regione">
+  <div class="mini-info">
+
+    <span class="mini-zona">
+      Sud
+    </span>
+
+    <span class="mini-nome">
+      Puglia
+    </span>
+
+    <span
+      class="mini-stato"
+      id="mini-stato-PUG">
+      ● STAZIONE DA COLLEGARE
+    </span>
+
+  </div>
+
+  <canvas
+    class="mini-canvas"
+    id="mini-PUG">
+  </canvas>
+
+</div>
+
+<div class="mini-regione">
+  <div class="mini-info">
+
+    <span class="mini-zona">
+      Sud
+    </span>
+
+    <span class="mini-nome">
+      Basilicata
+    </span>
+
+    <span
+      class="mini-stato"
+      id="mini-stato-BAS">
+      ● STAZIONE DA COLLEGARE
+    </span>
+
+  </div>
+
+  <canvas
+    class="mini-canvas"
+    id="mini-BAS">
+  </canvas>
+
+</div>
+
+<div class="mini-regione">
+  <div class="mini-info">
+
+    <span class="mini-zona">
+      Sud
+    </span>
+
+    <span class="mini-nome">
+      Calabria
+    </span>
+
+    <span
+      class="mini-stato"
+      id="mini-stato-CAL">
+      ● STAZIONE DA COLLEGARE
+    </span>
+
+  </div>
+
+  <canvas
+    class="mini-canvas"
+    id="mini-CAL">
+  </canvas>
+
+</div>
+
+<div class="mini-regione">
+  <div class="mini-info">
+
+    <span class="mini-zona">
+      Isole
+    </span>
+
+    <span class="mini-nome">
+      Sicilia
+    </span>
+
+    <span
+      class="mini-stato"
+      id="mini-stato-SIC">
+      ● STAZIONE DA COLLEGARE
+    </span>
+
+  </div>
+
+  <canvas
+    class="mini-canvas"
+    id="mini-SIC">
+  </canvas>
+
+</div>
+
+<div class="mini-regione">
+  <div class="mini-info">
+
+    <span class="mini-zona">
+      Isole
+    </span>
+
+    <span class="mini-nome">
+      Sardegna
+    </span>
+
+    <span
+      class="mini-stato"
+      id="mini-stato-SAR">
+      ● STAZIONE DA COLLEGARE
+    </span>
+
+  </div>
+
+  <canvas
+    class="mini-canvas"
+    id="mini-SAR">
+  </canvas>
+
+</div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  © 2026 News Terremoti Mondo e Italia
+</footer>
+
+<script>
+</script>
+<script>
+function aggiornaImmaginiSismografi() {
+  const timestamp = Date.now();
+
+const immagini = [
+  "CSFT_HHZ.png",
+  "CPIS_HHZ.png",
+  "CBAG_HHZ.png",
+  "CNIS_HHZ.png",
+  "CFMN_HHZ.png",
+  "OVO_HHZ.png"
+];
+
+  document.querySelectorAll("img").forEach(img => {
+    const srcPulito = img.getAttribute("src")?.split("?")[0];
+
+    if (immagini.includes(srcPulito)) {
+      img.src = srcPulito + "?t=" + timestamp;
+    }
+  });
+}
+
+setInterval(
+  aggiornaImmaginiSismografi,
+  60000
+);
+
+aggiornaImmaginiSismografi();
+</script>
+<script>
+const stazioniAttive = [
+  "CSFT",
+  "CPIS",
+  "CBAG",
+  "CNIS",
+  "CFMN",
+  "OVO"
+];
+
+const statoSismografi = {};
+
+const statoScossaFlegrei = {
+  CSFT: false,
+  CPIS: false,
+  CBAG: false,
+  CNIS: false,
+  CFMN: false
+};
+
+
+let flegreiGiaInAllarme = false;
+
+function suonoAllertaFlegrei() {
+  try {
+    const AudioCtx =
+      window.AudioContext ||
+      window.webkitAudioContext;
+
+    const audio = new AudioCtx();
+
+    function tono(freq, inizio, durata) {
+      const osc = audio.createOscillator();
+      const gain = audio.createGain();
+
+      osc.type = "square";
+      osc.frequency.value = freq;
+
+      gain.gain.setValueAtTime(
+        0.0001,
+        audio.currentTime + inizio
+      );
+
+      gain.gain.exponentialRampToValueAtTime(
+        0.18,
+        audio.currentTime + inizio + 0.015
+      );
+
+      gain.gain.exponentialRampToValueAtTime(
+        0.0001,
+        audio.currentTime + inizio + durata
+      );
+
+      osc.connect(gain);
+      gain.connect(audio.destination);
+
+      osc.start(audio.currentTime + inizio);
+      osc.stop(
+        audio.currentTime +
+        inizio +
+        durata +
+        0.02
+      );
+    }
+
+    /*
+      Allarme Campi Flegrei:
+      tono grave + tono medio
+      ripetuto 3 volte
+    */
+    for (let i = 0; i < 3; i++) {
+      const base = i * 0.62;
+
+      tono(
+        520,
+        base,
+        0.20
+      );
+
+      tono(
+        760,
+        base + 0.25,
+        0.24
+      );
+    }
+
+    setTimeout(
+      () => audio.close(),
+      2600
+    );
+
+  } catch (errore) {
+    console.log(
+      "Audio Flegrei non disponibile:",
+      errore
+    );
+  }
+}
+
+function aggiornaAvvisoScossaFlegrei() {
+  /*
+   * Il banner NON viene più attivato
+   * dai semplici picchi dei sismografi.
+   *
+   * Viene gestito esclusivamente
+   * dagli eventi INGV confermati.
+   */
+}
+
+
+
+function preparaCanvas(station) {
+  const canvas = document.getElementById("canvas-" + station);
+
+  if (!canvas) {
+    console.error("Canvas non trovato:", station);
+    return null;
+  }
+
+  const rect = canvas.getBoundingClientRect();
+  const dpr = window.devicePixelRatio || 1;
+
+  const larghezza = Math.max(300, Math.floor(rect.width));
+  const altezza = 55;
+
+  canvas.width = Math.floor(larghezza * dpr);
+  canvas.height = Math.floor(altezza * dpr);
+
+  canvas.style.height = altezza + "px";
+
+  const ctx = canvas.getContext("2d");
+
+  ctx.setTransform(
+    dpr, 0,
+    0, dpr,
+    0, 0
+  );
+
+  return {
+    canvas,
+    ctx,
+    larghezza,
+    altezza
+  };
+}
+
+
+async function scaricaDati(station) {
+  try {
+    const risposta = await fetch(
+      "/api/sismografo/" +
+      station +
+      "?t=" +
+      Date.now()
+    );
+
+    if (!risposta.ok) {
+      throw new Error(
+        "HTTP " + risposta.status
+      );
+    }
+
+    const dati = await risposta.json();
+
+    if (
+      !Array.isArray(dati.samples) ||
+      dati.samples.length < 2
+    ) {
+      throw new Error(
+        "Campioni non disponibili"
+      );
+    }
+
+    if (!statoSismografi[station]) {
+      statoSismografi[station] = {
+        samples: [],
+        indice: 0,
+        visibili: [],
+        ultimoPasso: 0
+      };
+    }
+
+    const stato = statoSismografi[station];
+
+    /*
+      Manteniamo l'indice corrente:
+      quando arrivano nuovi dati non azzeriamo
+      continuamente l'animazione.
+    */
+    stato.samples = dati.samples;
+
+    if (stato.indice >= stato.samples.length) {
+      stato.indice = 0;
+    }
+
+    console.log(
+      "✅ Dati aggiornati",
+      station,
+      dati.samples.length
+    );
+
+  } catch (errore) {
+    console.error(
+      "❌ Errore dati",
+      station,
+      errore
+    );
+  }
+}
+
+
+
+function disegnaCanvasFumarole() {
+  const canvasOrigine =
+    document.getElementById("canvas-CPIS");
+
+  const canvasFumarole =
+    document.getElementById("canvas-CPIS-fumarole");
+
+  if (!canvasOrigine || !canvasFumarole) {
+    return;
+  }
+
+  const rect = canvasFumarole.getBoundingClientRect();
+
+  const width = Math.max(
+    300,
+    Math.floor(rect.width)
+  );
+
+  const height = 55;
+
+  canvasFumarole.width = width;
+  canvasFumarole.height = height;
+
+  const ctx =
+    canvasFumarole.getContext("2d");
+
+  ctx.clearRect(
+    0,
+    0,
+    width,
+    height
+  );
+
+  ctx.drawImage(
+    canvasOrigine,
+    0,
+    0,
+    width,
+    height
+  );
+}
+
+function disegna(station) {
+  const grafica = preparaCanvas(station);
+
+  if (!grafica) {
+    return;
+  }
+
+  const {
+    ctx,
+    larghezza,
+    altezza
+  } = grafica;
+
+  const stato = statoSismografi[station];
+
+  ctx.clearRect(
+    0,
+    0,
+    larghezza,
+    altezza
+  );
+
+  if (
+    !stato ||
+    stato.visibili.length < 2
+  ) {
+    return;
+  }
+
+  ctx.beginPath();
+
+  const punti = stato.visibili;
+
+  punti.forEach((valore, indice) => {
+    const x =
+      (indice /
+        Math.max(1, punti.length - 1)) *
+      larghezza;
+
+    const y =
+      (altezza / 2) -
+      valore * altezza * 0.43;
+
+    if (indice === 0) {
+      ctx.moveTo(x, y);
+    } else {
+      ctx.lineTo(x, y);
+    }
+  });
+
+  
+  /*
+   * Rilevamento di un picco anomalo nel tracciato.
+   * Serve per evidenziare graficamente un possibile
+   * evento sismico. Non sostituisce una conferma INGV.
+   */
+  const valoriAssoluti = punti
+    .map(v => Math.abs(Number(v) || 0))
+    .sort((a, b) => a - b);
+
+  let segnaleForte = false;
+
+  if (valoriAssoluti.length > 20) {
+
+    const mediana =
+      valoriAssoluti[
+        Math.floor(valoriAssoluti.length / 2)
+      ];
+
+    const picco =
+      valoriAssoluti[
+        valoriAssoluti.length - 1
+      ];
+
+    segnaleForte =
+      picco > 0.55 &&
+      picco > mediana * 6;
+  }
+    if (
+      Object.prototype.hasOwnProperty.call(
+        statoScossaFlegrei,
+        station
+      )
+    ) {
+
+      statoScossaFlegrei[station] =
+        segnaleForte;
+
+      aggiornaAvvisoScossaFlegrei();
+    }
+
+
+
+  
+    /*
+     * Colori del tracciato:
+     * BIANCO = normale
+     * ARANCIONE = movimento elevato
+     * ROSSO = evento INGV confermato
+     */
+
+    const eventoConfermato =
+      stato?.eventoConfermato === true;
+
+    if (eventoConfermato) {
+      ctx.strokeStyle = "#ff2020";
+      ctx.shadowColor = "rgba(255,32,32,.85)";
+      ctx.shadowBlur = 8;
+
+    } else if (segnaleForte) {
+      ctx.strokeStyle = "#ff9d22";
+      ctx.shadowColor = "rgba(255,157,34,.70)";
+      ctx.shadowBlur = 6;
+
+    } else {
+      ctx.strokeStyle = "#f4fbff";
+      ctx.shadowColor = "rgba(255,255,255,.20)";
+      ctx.shadowBlur = 1;
+    }
+
+
+  ctx.lineWidth = 1;
+  ctx.stroke();
+}
+
+
+function animaSismografo(station) {
+  function frame(timestamp) {
+    const stato = statoSismografi[station];
+
+    if (
+      stato &&
+      stato.samples.length
+    ) {
+      /*
+        Circa 4 punti al secondo.
+        I dati API rappresentano circa
+        5 minuti in ~1200 punti.
+      */
+      if (
+        timestamp - stato.ultimoPasso >= 250
+      ) {
+        stato.ultimoPasso = timestamp;
+
+        const valore =
+          stato.samples[stato.indice];
+
+        stato.visibili.push(valore);
+
+        stato.indice++;
+
+        if (
+          stato.indice >=
+          stato.samples.length
+        ) {
+          stato.indice = 0;
+        }
+
+        const canvas =
+          document.getElementById(
+            "canvas-" + station
+          );
+
+        const massimo =
+          canvas
+            ? Math.max(
+                150,
+                Math.floor(
+                  canvas.clientWidth / 2
+                )
+              )
+            : 500;
+
+        while (
+          stato.visibili.length > massimo
+        ) {
+          stato.visibili.shift();
+        }
+      }
+
+      disegna(station);
+    }
+
+    requestAnimationFrame(frame);
+  }
+
+  requestAnimationFrame(frame);
+}
+
+
+async function avviaSismografi() {
+  for (const station of stazioniAttive) {
+    statoSismografi[station] = {
+      samples: [],
+      indice: 0,
+      visibili: [],
+      ultimoPasso: 0,
+      movimentoPrecedente: false,
+      eventoConfermato: false
+    };
+
+    await scaricaDati(station);
+
+    animaSismografo(station);
+  }
+}
+
+
+// Aggiorna i dati reali ogni 10 secondi
+setInterval(() => {
+  stazioniAttive.forEach(station => {
+    scaricaDati(station);
+  });
+}, 10000);
+
+
+// Ridisegna correttamente dopo resize
+window.addEventListener("resize", () => {
+  stazioniAttive.forEach(station => {
+    disegna(station);
+  });
+});
+
+
+
+setInterval(
+  disegnaCanvasFumarole,
+  100
+);
+
+avviaSismografi();
+</script>
+
+
+<script id="mini-sismografi-regioni-js">
+
+const REGIONI_LIVE = {
+  VDA: ["MRGE", "Valle d'Aosta"],
+  PIE: ["MONC", "Piemonte"],
+  LIG: ["QLNO", "Liguria"],
+  LOM: ["MILN", "Lombardia"],
+  TAA: ["APPI", "Trentino-Alto Adige"],
+  VEN: ["VENL", "Veneto"],
+  FVG: ["STAL", "Friuli-Venezia Giulia"],
+  EMR: ["FIU", "Emilia-Romagna"],
+  TOS: ["FIR", "Toscana"],
+  UMB: ["MURB", "Umbria"],
+
+  MAR: ["AOI", "Marche"],
+  LAZ: ["ROM9", "Lazio"],
+  ABR: ["FAGN", "Abruzzo"],
+  MOL: ["BSSO", "Molise"],
+  CAM: ["CMTS", "Campania"],
+  PUG: ["AMUR", "Puglia"],
+  BAS: ["PZUN", "Basilicata"],
+  CAL: ["SELL", "Calabria"],
+  SIC: ["RESU", "Sicilia"],
+  SAR: ["BULT", "Sardegna"]
+};
+
+const statoMiniRegioni = {};
+
+const FREQUENZE_REGIONI = {
+  VDA: 520,
+  PIE: 540,
+  LIG: 560,
+  LOM: 580,
+  TAA: 600,
+  VEN: 620,
+  FVG: 640,
+  EMR: 660,
+  TOS: 680,
+  UMB: 700,
+
+  MAR: 720,
+  LAZ: 740,
+  ABR: 760,
+  MOL: 780,
+  CAM: 800,
+  PUG: 820,
+  BAS: 840,
+  CAL: 860,
+  SIC: 880,
+  SAR: 900
+};
+
+function bipRegione(codice) {
+  try {
+    const AudioCtx =
+      window.AudioContext ||
+      window.webkitAudioContext;
+
+    const audio = new AudioCtx();
+
+    const osc =
+      audio.createOscillator();
+
+    const gain =
+      audio.createGain();
+
+    osc.type = "sine";
+
+    osc.frequency.value =
+      FREQUENZE_REGIONI[codice] || 700;
+
+    gain.gain.setValueAtTime(
+      0.0001,
+      audio.currentTime
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+      0.18,
+      audio.currentTime + 0.02
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+      0.0001,
+      audio.currentTime + 0.22
+    );
+
+    osc.connect(gain);
+    gain.connect(audio.destination);
+
+    osc.start();
+    osc.stop(
+      audio.currentTime + 0.24
+    );
+
+    setTimeout(
+      () => audio.close(),
+      500
+    );
+
+  } catch (errore) {
+    console.log(
+      "Audio regione non disponibile:",
+      errore
+    );
+  }
+}
+
+
+
+async function scaricaMiniRegione(codice) {
+  const configurazione = REGIONI_LIVE[codice];
+  if (!configurazione) return;
+
+  const [station] = configurazione;
+
+  const statoEl =
+    document.getElementById(
+      "mini-stato-" + codice
+    );
+
+  try {
+    const risposta = await fetch(
+      "/api/sismografo/" +
+      station +
+      "?t=" +
+      Date.now()
+    );
+
+    if (!risposta.ok) {
+      throw new Error(
+        "HTTP " + risposta.status
+      );
+    }
+
+    const dati = await risposta.json();
+
+    if (
+      !Array.isArray(dati.samples) ||
+      dati.samples.length < 2
+    ) {
+      throw new Error(
+        "Campioni non disponibili"
+      );
+    }
+
+    const stato =
+      statoMiniRegioni[codice];
+
+    stato.samples =
+      dati.samples;
+
+    if (
+      stato.indice >=
+      stato.samples.length
+    ) {
+      stato.indice = 0;
+    }
+
+    if (statoEl) {
+      statoEl.textContent =
+        "● LIVE • IV." +
+        station +
+        ".." +
+        dati.channel;
+
+      statoEl.style.color =
+        "#42e78d";
+    }
+
+  } catch (errore) {
+
+    console.error(
+      "Mini regione " +
+      codice,
+      errore
+    );
+
+    if (statoEl) {
+      statoEl.textContent =
+        "● DATI NON DISPONIBILI";
+
+      statoEl.style.color =
+        "#ff9d22";
+    }
+  }
+}
+
+
+function disegnaMiniRegione(codice) {
+
+  const canvas =
+    document.getElementById(
+      "mini-" + codice
+    );
+
+  const stato =
+    statoMiniRegioni[codice];
+
+  if (
+    !canvas ||
+    !stato
+  ) {
+    return;
+  }
+
+  const width =
+    Math.max(
+      80,
+      Math.floor(
+        canvas.clientWidth
+      )
+    );
+
+  const height = 42;
+
+  canvas.width =
+    width;
+
+  canvas.height =
+    height;
+
+  const ctx =
+    canvas.getContext("2d");
+
+  ctx.clearRect(
+    0,
+    0,
+    width,
+    height
+  );
+
+  if (
+    stato.visibili.length < 2
+  ) {
+    return;
+  }
+
+
+  const assoluti =
+    stato.visibili
+      .map(v => Math.abs(Number(v) || 0))
+      .sort((a, b) => a - b);
+
+  let movimentoElevato = false;
+
+  if (assoluti.length > 20) {
+
+    const mediana =
+      assoluti[
+        Math.floor(
+          assoluti.length / 2
+        )
+      ];
+
+    const picco =
+      assoluti[
+        assoluti.length - 1
+      ];
+
+    movimentoElevato =
+      picco > 0.55 &&
+      picco > mediana * 6;
+  }
+
+  /*
+    Fa il bip SOLO quando passa
+    da normale a movimento elevato.
+  */
+  if (
+    movimentoElevato &&
+    !stato.movimentoPrecedente
+  ) {
+    bipRegione(codice);
+  }
+
+  stato.movimentoPrecedente =
+    movimentoElevato;
+
+  ctx.beginPath();
+
+  for (
+    let i = 0;
+    i < stato.visibili.length;
+    i++
+  ) {
+    const x =
+      (i /
+        Math.max(
+          1,
+          stato.visibili.length - 1
+        )) *
+      width;
+
+    const y =
+      (height / 2) -
+      stato.visibili[i] *
+      height *
+      0.40;
+
+    if (i === 0) {
+      ctx.moveTo(x, y);
+    } else {
+      ctx.lineTo(x, y);
+    }
+  }
+
+  ctx.strokeStyle =
+    stato.eventoConfermato
+      ? "#ff2020"
+      : movimentoElevato
+        ? "#ff9d22"
+        : "#f4fbff";
+
+  ctx.shadowColor =
+    stato.eventoConfermato
+      ? "rgba(255,32,32,.85)"
+      : movimentoElevato
+        ? "rgba(255,157,34,.55)"
+        : "rgba(255,255,255,.12)";
+
+  ctx.shadowBlur =
+    stato.eventoConfermato
+      ? 7
+      : movimentoElevato
+        ? 4
+        : 0;
+
+  ctx.lineWidth = 1;
+
+  ctx.stroke();
+}
+
+
+function animaMiniRegione(codice) {
+
+  function frame(timestamp) {
+
+    const stato =
+      statoMiniRegioni[codice];
+
+    const canvas =
+      document.getElementById(
+        "mini-" + codice
+      );
+
+    if (
+      stato &&
+      canvas &&
+      stato.samples.length
+    ) {
+
+      /*
+        Aggiunge un nuovo punto
+        circa ogni 220 ms.
+      */
+      if (
+        timestamp -
+        stato.ultimoPasso >= 220
+      ) {
+
+        stato.ultimoPasso =
+          timestamp;
+
+        stato.visibili.push(
+          stato.samples[
+            stato.indice
+          ]
+        );
+
+        stato.indice++;
+
+        if (
+          stato.indice >=
+          stato.samples.length
+        ) {
+          stato.indice = 0;
+        }
+
+        /*
+          Mantiene una finestra
+          scorrevole continua.
+        */
+        const massimo =
+          Math.max(
+            120,
+            Math.floor(
+              canvas.clientWidth
+            )
+          );
+
+        while (
+          stato.visibili.length >
+          massimo
+        ) {
+          stato.visibili.shift();
+        }
+      }
+
+      disegnaMiniRegione(
+        codice
+      );
+    }
+
+    requestAnimationFrame(
+      frame
+    );
+  }
+
+  requestAnimationFrame(
+    frame
+  );
+}
+
+
+async function avviaMiniRegioni() {
+
+  for (
+    const codice of
+    Object.keys(REGIONI_LIVE)
+  ) {
+
+    statoMiniRegioni[codice] = {
+      samples: [],
+      indice: 0,
+      visibili: [],
+      ultimoPasso: 0
+    };
+
+    await scaricaMiniRegione(
+      codice
+    );
+
+    animaMiniRegione(
+      codice
+    );
+  }
+}
+
+
+/*
+  Aggiorna i dati reali
+  ogni 15 secondi
+  senza fermare lo scorrimento.
+*/
+setInterval(() => {
+
+  Object.keys(
+    REGIONI_LIVE
+  ).forEach(
+    codice => {
+      scaricaMiniRegione(
+        codice
+      );
+    }
+  );
+
+}, 15000);
+
+
+avviaMiniRegioni();
+
+</script>
+
+
+
+<script id="eventi-ingv-regioni-js">
+
+/*
+ * ======================================================
+ * TERREMOTI REALI CONFERMATI INGV
+ *
+ * Bianco    = normale
+ * Arancione = movimento elevato del sismografo
+ * Rosso     = evento realmente pubblicato da INGV
+ * ======================================================
+ */
+
+const STAZIONI_REGIONALI_POSIZIONE = {
+  VDA: [45.74, 7.32],
+  PIE: [45.05, 7.67],
+  LIG: [44.40, 8.93],
+  LOM: [45.47, 9.19],
+  TAA: [46.50, 11.35],
+  VEN: [45.44, 12.33],
+  FVG: [46.07, 13.24],
+  EMR: [44.49, 11.34],
+
+  TOS: [43.77, 11.25],
+  UMB: [43.11, 12.39],
+  MAR: [43.62, 13.52],
+  LAZ: [41.90, 12.50],
+
+  ABR: [42.35, 13.40],
+  MOL: [41.56, 14.66],
+  CAM: [40.85, 14.27],
+  PUG: [41.12, 16.87],
+  BAS: [40.64, 15.80],
+  CAL: [38.91, 16.59],
+
+  SIC: [37.50, 14.00],
+  SAR: [40.12, 9.01]
+};
+
+
+const NOMI_REGIONI_ALLARME = {
+  VDA: "Valle d'Aosta",
+  PIE: "Piemonte",
+  LIG: "Liguria",
+  LOM: "Lombardia",
+  TAA: "Trentino-Alto Adige",
+  VEN: "Veneto",
+  FVG: "Friuli-Venezia Giulia",
+  EMR: "Emilia-Romagna",
+
+  TOS: "Toscana",
+  UMB: "Umbria",
+  MAR: "Marche",
+  LAZ: "Lazio",
+
+  ABR: "Abruzzo",
+  MOL: "Molise",
+  CAM: "Campania",
+  PUG: "Puglia",
+  BAS: "Basilicata",
+  CAL: "Calabria",
+
+  SIC: "Sicilia",
+  SAR: "Sardegna"
+};
+
+
+const eventiINGVVisti = new Set();
+
+let ingvInizializzato = false;
+
+
+/*
+ * Distanza fra epicentro e regione.
+ */
+function distanzaKm(lat1, lon1, lat2, lon2) {
+
+  const R = 6371;
+
+  const rad = v =>
+    v * Math.PI / 180;
+
+  const dLat =
+    rad(lat2 - lat1);
+
+  const dLon =
+    rad(lon2 - lon1);
+
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(rad(lat1)) *
+    Math.cos(rad(lat2)) *
+    Math.sin(dLon / 2) ** 2;
+
+  return (
+    2 *
+    R *
+    Math.asin(Math.sqrt(a))
+  );
+}
+
+
+/*
+ * Trova il sismografo regionale
+ * più vicino all'epicentro.
+ */
+function regionePiuVicina(lat, lon) {
+
+  let migliore = null;
+  let distanzaMigliore = Infinity;
+
+  for (
+    const [codice, posizione]
+    of Object.entries(
+      STAZIONI_REGIONALI_POSIZIONE
+    )
+  ) {
+
+    const [rLat, rLon] =
+      posizione;
+
+    const km =
+      distanzaKm(
+        lat,
+        lon,
+        rLat,
+        rLon
+      );
+
+    if (km < distanzaMigliore) {
+
+      distanzaMigliore = km;
+      migliore = codice;
+
+    }
+  }
+
+  return {
+    codice: migliore,
+    distanza: distanzaMigliore
+  };
+}
+
+
+/*
+ * Suono allarme sismico:
+ * BI-BIP ripetuto tre volte.
+ */
+function suonoTerremotoConfermato() {
+
+  try {
+
+    const AudioCtx =
+      window.AudioContext ||
+      window.webkitAudioContext;
+
+    const audio =
+      new AudioCtx();
+
+
+    function tono(
+      frequenza,
+      inizio,
+      durata
+    ) {
+
+      const osc =
+        audio.createOscillator();
+
+      const gain =
+        audio.createGain();
+
+      osc.type =
+        "square";
+
+      osc.frequency.value =
+        frequenza;
+
+
+      gain.gain.setValueAtTime(
+        0.0001,
+        audio.currentTime + inizio
+      );
+
+      gain.gain.exponentialRampToValueAtTime(
+        0.16,
+        audio.currentTime + inizio + 0.015
+      );
+
+      gain.gain.exponentialRampToValueAtTime(
+        0.0001,
+        audio.currentTime + inizio + durata
+      );
+
+
+      osc.connect(gain);
+
+      gain.connect(
+        audio.destination
+      );
+
+
+      osc.start(
+        audio.currentTime + inizio
+      );
+
+      osc.stop(
+        audio.currentTime +
+        inizio +
+        durata +
+        0.02
+      );
+    }
+
+
+    for (
+      let i = 0;
+      i < 3;
+      i++
+    ) {
+
+      const base =
+        i * 0.55;
+
+      tono(
+        780,
+        base,
+        0.16
+      );
+
+      tono(
+        1120,
+        base + 0.21,
+        0.22
+      );
+
+    }
+
+
+    setTimeout(
+      () => audio.close(),
+      2500
+    );
+
+  } catch (errore) {
+
+    console.log(
+      "Audio allarme non disponibile",
+      errore
+    );
+
+  }
+}
+
+
+/*
+ * Evidenzia in rosso il mini-tracciato
+ * regionale coinvolto.
+ */
+
+let timerBannerRegione = null;
+
+function mostraBannerRegione(
+  codice,
+  evento
+) {
+
+  const banner =
+    document.getElementById(
+      "bannerRegioneTerremoto"
+    );
+
+  const titolo =
+    document.getElementById(
+      "bannerRegioneTitolo"
+    );
+
+  const meta =
+    document.getElementById(
+      "bannerRegioneMeta"
+    );
+
+  if (!banner || !titolo || !meta) {
+    return;
+  }
+
+  const nomeRegione =
+    NOMI_REGIONI_ALLARME[codice] ||
+    codice;
+
+  titolo.textContent =
+    "🔴 TERREMOTO IN CORSO — " +
+    nomeRegione.toUpperCase();
+
+  meta.textContent =
+    "M " +
+    Number(evento.mag).toFixed(1) +
+    " • Profondità " +
+    Number(evento.profondita || 0).toFixed(1) +
+    " km";
+
+  banner.classList.add(
+    "attivo"
+  );
+
+  if (timerBannerRegione) {
+    clearTimeout(
+      timerBannerRegione
+    );
+  }
+
+  timerBannerRegione =
+    setTimeout(() => {
+
+      banner.classList.remove(
+        "attivo"
+      );
+
+    }, 30000);
+}
+
+function attivaEventoConfermato(
+  codice,
+  evento
+) {
+
+  const stato =
+    statoMiniRegioni[codice];
+
+  if (!stato) {
+    return;
+  }
+
+
+  stato.eventoConfermato = true;
+
+
+  const canvas =
+    document.getElementById(
+      "mini-" + codice
+    );
+
+  const statoEl =
+    document.getElementById(
+      "mini-stato-" + codice
+    );
+
+
+  if (canvas) {
+
+    canvas.style.border =
+      "2px solid #ff2020";
+
+    canvas.style.boxShadow =
+      "0 0 14px rgba(255,32,32,.75)";
+
+  }
+
+
+  if (statoEl) {
+
+    statoEl.textContent =
+      "🔴 TERREMOTO INGV • M " +
+      Number(evento.mag)
+        .toFixed(1);
+
+    statoEl.style.color =
+      "#ff3030";
+
+  }
+
+
+  mostraBannerRegione(
+    codice,
+    evento
+  );
+
+  riproduciAllarmeTerremoto();
+
+
+  /*
+   * Mantiene lo stato rosso
+   * per 90 secondi.
+   */
+  setTimeout(() => {
+
+    stato.eventoConfermato =
+      false;
+
+    if (canvas) {
+
+      canvas.style.border =
+        "1px solid rgba(75,200,235,.16)";
+
+      canvas.style.boxShadow =
+        "none";
+
+    }
+
+    if (statoEl) {
+
+      const configurazione =
+        REGIONI_LIVE[codice];
+
+      if (configurazione) {
+
+        statoEl.textContent =
+          "● LIVE • IV." +
+          configurazione[0];
+
+      }
+
+      statoEl.style.color =
+        "#42e78d";
+
+    }
+
+  }, 90000);
+
+}
+
+
+/*
+ * Controlla gli eventi INGV
+ * degli ultimi 10 minuti.
+ */
+async function controllaEventiINGVRegioni() {
+
+  try {
+
+    const fine =
+      new Date();
+
+    const inizio =
+      new Date(
+        fine.getTime() -
+        10 * 60 * 1000
+      );
+
+
+    const formatta = data =>
+      data
+        .toISOString()
+        .replace(
+          /\.\d{3}Z$/,
+          ""
+        );
+
+
+    const url =
+      "https://webservices.ingv.it/fdsnws/event/1/query" +
+      "?starttime=" +
+      encodeURIComponent(
+        formatta(inizio)
+      ) +
+      "&endtime=" +
+      encodeURIComponent(
+        formatta(fine)
+      ) +
+      "&minlat=35" +
+      "&maxlat=48" +
+      "&minlon=6" +
+      "&maxlon=19" +
+      "&minmag=1.0" +
+      "&format=geojson" +
+      "&orderby=time";
+
+
+    const risposta =
+      await fetch(
+        url +
+        "&nocache=" +
+        Date.now()
+      );
+
+
+    if (!risposta.ok) {
+
+      console.error(
+        "INGV HTTP",
+        risposta.status
+      );
+
+      return;
+    }
+
+
+    const dati =
+      await risposta.json();
+
+
+    const eventi =
+      dati.features || [];
+
+
+    /*
+     * Al primo caricamento memorizziamo
+     * gli eventi esistenti.
+     *
+     * Così non parte l'allarme
+     * per terremoti già avvenuti.
+     */
+    if (!ingvInizializzato) {
+
+      eventi.forEach(evento => {
+
+        const id =
+          evento.id ||
+          String(
+            evento.properties?.time
+          );
+
+        eventiINGVVisti.add(id);
+
+      });
+
+
+      ingvInizializzato =
+        true;
+
+      console.log(
+        "✅ Monitoraggio terremoti INGV regionale attivo"
+      );
+
+      return;
+    }
+
+
+    for (
+      const evento
+      of eventi
+    ) {
+
+      const id =
+        evento.id ||
+        String(
+          evento.properties?.time
+        );
+
+
+      if (
+        eventiINGVVisti.has(id)
+      ) {
+        continue;
+      }
+
+
+      eventiINGVVisti.add(id);
+
+
+      const coordinate =
+        evento.geometry
+          ?.coordinates;
+
+
+      if (
+        !coordinate ||
+        coordinate.length < 2
+      ) {
+        continue;
+      }
+
+
+      const lon =
+        Number(coordinate[0]);
+
+      const lat =
+        Number(coordinate[1]);
+
+      const profondita =
+        Number(
+          coordinate[2] || 0
+        );
+
+      const magnitudo =
+        Number(
+          evento.properties?.mag || 0
+        );
+
+
+      const risultato =
+        regionePiuVicina(
+          lat,
+          lon
+        );
+
+
+      if (!risultato.codice) {
+        continue;
+      }
+
+
+      /*
+       * Evitiamo di associare eventi
+       * troppo lontani dal territorio
+       * della regione selezionata.
+       */
+      if (
+        risultato.distanza > 180
+      ) {
+        continue;
+      }
+
+
+      console.log(
+        "🚨 TERREMOTO INGV",
+        "M" + magnitudo,
+        NOMI_REGIONI_ALLARME[
+          risultato.codice
+        ],
+        "prof.",
+        profondita,
+        "km"
+      );
+
+
+      attivaEventoConfermato(
+        risultato.codice,
+        {
+          mag: magnitudo,
+          lat,
+          lon,
+          profondita,
+          place:
+            evento.properties?.place ||
+            ""
+        }
+      );
+
+    }
+
+
+  } catch (errore) {
+
+    console.error(
+      "Errore monitoraggio INGV:",
+      errore
+    );
+
+  }
+
+}
+
+
+/*
+ * Primo controllo.
+ */
+controllaEventiINGVRegioni();
+
+
+/*
+ * Nuovo controllo ogni 20 secondi.
+ */
+setInterval(
+  controllaEventiINGVRegioni,
+  20000
+);
+
+</script>
+
+
+<script id="flegrei-ingv-confermato-js">
+
+(() => {
+
+  /*
+   * Coordinate indicative del centro
+   * dell'area dei Campi Flegrei.
+   */
+  const FLEGREI_LAT = 40.827;
+  const FLEGREI_LON = 14.139;
+
+  /*
+   * Consideriamo eventi entro 25 km
+   * dal centro dell'area flegrea.
+   */
+  const RAGGIO_FLEGREI_KM = 25;
+
+  const eventiFlegreiVisti =
+    new Set();
+
+  let flegreiINGVInizializzato =
+    false;
+
+  let timerFlegrei =
+    null;
+
+
+  function distanzaFlegreiKm(
+    lat1,
+    lon1,
+    lat2,
+    lon2
+  ) {
+
+    const R = 6371;
+
+    const rad =
+      valore =>
+        valore *
+        Math.PI /
+        180;
+
+    const dLat =
+      rad(lat2 - lat1);
+
+    const dLon =
+      rad(lon2 - lon1);
+
+    const a =
+      Math.sin(dLat / 2) ** 2 +
+      Math.cos(rad(lat1)) *
+      Math.cos(rad(lat2)) *
+      Math.sin(dLon / 2) ** 2;
+
+    return (
+      2 *
+      R *
+      Math.asin(
+        Math.sqrt(a)
+      )
+    );
+  }
+
+
+  function mostraScossaFlegreiINGV(
+    evento
+  ) {
+
+    const banner =
+      document.getElementById(
+        "avvisoScossaFlegrei"
+      );
+
+    if (banner) {
+
+      banner.innerHTML =
+        "🔴 SCOSSA IN CORSO — CAMPI FLEGREI" +
+        "<br>" +
+        '<span style="' +
+        'font-size:12px;' +
+        'font-weight:600;' +
+        'color:#ffd7da;">' +
+        "M " +
+        Number(evento.mag)
+          .toFixed(1) +
+        " • Profondità " +
+        Number(evento.profondita)
+          .toFixed(1) +
+        " km" +
+        "</span>";
+
+      banner.classList.add(
+        "attivo"
+      );
+    }
+
+
+    /*
+     * Le stazioni centrali dei Campi Flegrei
+     * diventano rosse.
+     */
+    [
+      "CSFT",
+      "CPIS",
+      "CBAG",
+      "CNIS",
+      "CFMN"
+    ].forEach(station => {
+
+      if (
+        window.statoSismografi &&
+        statoSismografi[station]
+      ) {
+
+        statoSismografi[
+          station
+        ].eventoConfermato =
+          true;
+      }
+
+    });
+
+
+    /*
+     * Suono dedicato Flegrei.
+     */
+    if (
+      typeof suonoAllertaFlegrei
+      === "function"
+    ) {
+
+      riproduciAllarmeTerremoto();
+
+    }
+
+
+    if (timerFlegrei) {
+      clearTimeout(
+        timerFlegrei
+      );
+    }
+
+
+    /*
+     * Dopo 30 secondi
+     * torna allo stato normale.
+     */
+    timerFlegrei =
+      setTimeout(() => {
+
+        if (banner) {
+
+          banner.classList.remove(
+            "attivo"
+          );
+
+        }
+
+
+        [
+          "CSFT",
+          "CPIS",
+          "CBAG",
+          "CNIS",
+          "CFMN"
+        ].forEach(station => {
+
+          if (
+            window.statoSismografi &&
+            statoSismografi[station]
+          ) {
+
+            statoSismografi[
+              station
+            ].eventoConfermato =
+              false;
+          }
+
+        });
+
+      }, 30000);
+
+  }
+
+
+
+  window.testScossaFlegrei = function() {
+
+    console.log(
+      "🧪 TEST CAMPI FLEGREI"
+    );
+
+    /*
+     * Audio lanciato direttamente dal click.
+     */
+    const audio =
+      document.getElementById(
+        "audioAllarmeTerremoto"
+      );
+
+    if (audio) {
+
+      audio.currentTime = 0;
+      audio.volume = 1.0;
+
+      audio.play().catch(
+        errore => {
+          console.error(
+            "❌ Audio non partito:",
+            errore
+          );
+        }
+      );
+
+    } else {
+
+      console.error(
+        "❌ Elemento audio non trovato"
+      );
+
+    }
+
+    mostraScossaFlegreiINGV({
+      mag: 3.6,
+      profondita: 4.2,
+      lat: 40.827,
+      lon: 14.139
+    });
+
+  };
+
+
+  async function controllaFlegreiINGV() {
+
+    try {
+
+      const fine =
+        new Date();
+
+      const inizio =
+        new Date(
+          fine.getTime() -
+          10 * 60 * 1000
+        );
+
+
+      const formatta =
+        data =>
+          data
+            .toISOString()
+            .replace(
+              /\.\d{3}Z$/,
+              ""
+            );
+
+
+      /*
+       * Query geografica stretta
+       * attorno a Napoli/Pozzuoli.
+       */
+      const url =
+        "https://webservices.ingv.it/fdsnws/event/1/query" +
+        "?starttime=" +
+        encodeURIComponent(
+          formatta(inizio)
+        ) +
+        "&endtime=" +
+        encodeURIComponent(
+          formatta(fine)
+        ) +
+        "&minlat=40.65" +
+        "&maxlat=41.00" +
+        "&minlon=13.90" +
+        "&maxlon=14.40" +
+        "&minmag=0.0" +
+        "&format=geojson" +
+        "&orderby=time" +
+        "&nocache=" +
+        Date.now();
+
+
+      const risposta =
+        await fetch(url);
+
+
+      if (!risposta.ok) {
+
+        console.error(
+          "INGV Flegrei HTTP",
+          risposta.status
+        );
+
+        return;
+      }
+
+
+      const dati =
+        await risposta.json();
+
+
+      const eventi =
+        dati.features || [];
+
+
+      /*
+       * Primo controllo:
+       * memorizza gli eventi già presenti
+       * senza generare allarmi vecchi.
+       */
+      if (
+        !flegreiINGVInizializzato
+      ) {
+
+        eventi.forEach(
+          evento => {
+
+            const id =
+              evento.id ||
+              String(
+                evento
+                  .properties
+                  ?.time
+              );
+
+            eventiFlegreiVisti.add(
+              id
+            );
+
+          }
+        );
+
+        flegreiINGVInizializzato =
+          true;
+
+        console.log(
+          "✅ Monitor INGV Campi Flegrei attivo"
+        );
+
+        return;
+      }
+
+
+      for (
+        const evento of eventi
+      ) {
+
+        const id =
+          evento.id ||
+          String(
+            evento
+              .properties
+              ?.time
+          );
+
+
+        if (
+          eventiFlegreiVisti
+            .has(id)
+        ) {
+
+          continue;
+        }
+
+
+        eventiFlegreiVisti.add(
+          id
+        );
+
+
+        const coordinate =
+          evento.geometry
+            ?.coordinates;
+
+
+        if (
+          !coordinate ||
+          coordinate.length < 2
+        ) {
+
+          continue;
+        }
+
+
+        const lon =
+          Number(
+            coordinate[0]
+          );
+
+        const lat =
+          Number(
+            coordinate[1]
+          );
+
+        const profondita =
+          Number(
+            coordinate[2] || 0
+          );
+
+        const mag =
+          Number(
+            evento
+              .properties
+              ?.mag || 0
+          );
+
+
+        const distanza =
+          distanzaFlegreiKm(
+            lat,
+            lon,
+            FLEGREI_LAT,
+            FLEGREI_LON
+          );
+
+
+        /*
+         * Fuori dal raggio Flegrei:
+         * nessun allarme Flegrei.
+         */
+        if (
+          distanza >
+          RAGGIO_FLEGREI_KM
+        ) {
+
+          continue;
+        }
+
+
+        console.log(
+          "🔴 NUOVO EVENTO INGV CAMPI FLEGREI",
+          "M" + mag,
+          "distanza",
+          distanza.toFixed(1),
+          "km"
+        );
+
+
+        mostraScossaFlegreiINGV({
+          mag,
+          profondita,
+          lat,
+          lon
+        });
+
+      }
+
+
+    } catch (errore) {
+
+      console.error(
+        "Errore monitor Flegrei:",
+        errore
+      );
+
+    }
+
+  }
+
+
+  controllaFlegreiINGV();
+
+
+  /*
+   * Controllo ogni 20 secondi.
+   */
+  setInterval(
+    controllaFlegreiINGV,
+    20000
+  );
+
+})();
+
+</script>
+
+
+<script id="allarme-terremoto-unico-js">
+
+let ultimoAllarmeTerremoto = 0;
+
+function riproduciAllarmeTerremoto() {
+
+  /*
+   * Protezione contro doppi allarmi:
+   * non riproduce nuovamente il suono
+   * entro 5 secondi.
+   */
+  const adesso = Date.now();
+
+  if (
+    adesso - ultimoAllarmeTerremoto
+    < 5000
+  ) {
+    return;
+  }
+
+  ultimoAllarmeTerremoto = adesso;
+
+  try {
+
+    const audio =
+      new Audio(
+        "/allarme_terremoto.wav?t=" +
+        Date.now()
+      );
+
+    audio.volume = 1.0;
+
+    audio.play().catch(
+      errore => {
+        console.log(
+          "Audio bloccato dal browser:",
+          errore
+        );
+      }
+    );
+
+  } catch (errore) {
+
+    console.error(
+      "Errore allarme terremoto:",
+      errore
+    );
+
+  }
+}
+
+
+/*
+ * Manteniamo compatibilità con
+ * le funzioni già presenti nel sito.
+ */
+
+window.suonoTerremotoConfermato =
+  riproduciAllarmeTerremoto;
+
+window.suonoAllertaFlegrei =
+  riproduciAllarmeTerremoto;
+
+window.suonoAllertaVesuvio =
+  riproduciAllarmeTerremoto;
+
+</script>
+
+
+<audio
+  id="audioAllarmeTerremoto"
+  preload="auto">
+  <source
+    src="/allarme_terremoto.wav"
+    type="audio/wav">
+</audio>
+
+</body>
+</html>
