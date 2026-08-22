@@ -1,0 +1,19 @@
+name: Keep Render Awake
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  keep-awake:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping Render
+        run: |
+          echo "Ping Render..."
+          curl -fsS --max-time 30 \
+            https://news-terremoti-sito.onrender.com/ \
+            -o /dev/null
+          echo "Render raggiunto correttamente"
