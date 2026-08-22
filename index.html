@@ -5107,6 +5107,78 @@ avviaSismografo("sismoItalia", 0.8);
 </script>
 <!-- FINE FIREBASE ANALYTICS -->
 
+
+
+<!-- FIREBASE CONTATORE VISUALIZZAZIONI -->
+<script type="module">
+  import {
+    getFirestore,
+    doc,
+    runTransaction
+  } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+  const db = getFirestore();
+
+  const contatoreRef = doc(db, "stats", "site");
+
+  async function aggiornaVisualizzazioni() {
+    try {
+      const nuovoTotale = await runTransaction(db, async (transaction) => {
+        const snapshot = await transaction.get(contatoreRef);
+
+        if (!snapshot.exists()) {
+          transaction.set(contatoreRef, { views: 1 });
+          return 1;
+        }
+
+        const views = Number(snapshot.data().views || 0) + 1;
+
+        transaction.update(contatoreRef, {
+          views: views
+        });
+
+        return views;
+      });
+
+      let elemento = document.getElementById("visualizzazioni-sito");
+
+      if (!elemento) {
+        elemento = document.createElement("div");
+        elemento.id = "visualizzazioni-sito";
+
+        elemento.style.cssText = `
+          position: fixed;
+          bottom: 15px;
+          left: 15px;
+          z-index: 99999;
+          padding: 8px 14px;
+          border-radius: 20px;
+          background: rgba(0,0,0,0.75);
+          color: white;
+          font-size: 14px;
+          font-family: Arial, sans-serif;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+        `;
+
+        document.body.appendChild(elemento);
+      }
+
+      elemento.textContent =
+        "👁️ Visualizzazioni: " +
+        nuovoTotale.toLocaleString("it-IT");
+
+    } catch (errore) {
+      console.error(
+        "Errore contatore visualizzazioni Firebase:",
+        errore
+      );
+    }
+  }
+
+  aggiornaVisualizzazioni();
+</script>
+<!-- FINE FIREBASE CONTATORE VISUALIZZAZIONI -->
+
 </body>
 </html>
 
