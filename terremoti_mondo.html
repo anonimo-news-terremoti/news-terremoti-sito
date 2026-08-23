@@ -1,107 +1,763 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aggiornamenti Terremoti Mondo - Anonimo News</title>
+
+<title>Ultimi Terremoti Mondo - Anonimo News</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #eef5f9;
-    color: #082d4c;
+
+* {
+    box-sizing: border-box;
 }
 
+body {
+    margin: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: #eaf8ff;
+
+    background-image:
+        linear-gradient(
+            rgba(1, 8, 15, 0.32),
+            rgba(1, 8, 15, 0.48)
+        ),
+        url("sfondo-sismologia.png");
+
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* HEADER */
+
 header {
-    background: linear-gradient(135deg, #0b3656, #176c9d);
-    color: white;
     text-align: center;
-    padding: 35px 20px;
+
+    padding:
+        25px 20px 35px;
+
+    color: #b8d9e3;
 }
 
 .logo {
-    width: min(300px, 80vw);
-    max-height: 190px;
+    width:
+        min(260px, 75vw);
+
+    max-height: 170px;
+
     object-fit: contain;
 }
 
 h1 {
-    margin: 15px 0 8px;
+    margin:
+        10px 0 8px;
+
+    font-size:
+        clamp(28px, 5vw, 46px);
+
+    color: #b8d9e3;
 }
 
 .sottotitolo {
     margin: 0;
-    opacity: .9;
+
+    color: #789baa;
+
+    font-size: 16px;
 }
+
+/* CONTENITORE */
 
 .contenitore {
     max-width: 1100px;
+
     margin: auto;
-    padding: 30px 20px;
+
+    padding:
+        30px 20px 50px;
 }
+
+/* TITOLO */
 
 .titolo-sezione {
     text-align: center;
-    color: #082d4c;
-    margin-bottom: 25px;
+
+    color: #9fcbd9;
+
+    margin:
+        0 0 25px;
+
+    font-size: 28px;
 }
 
-.box {
-    background: white;
-    border-radius: 18px;
-    padding: 25px;
-    margin-bottom: 20px;
-    box-shadow: 0 5px 20px rgba(0,0,0,.12);
-}
+/* STATO */
 
-.btn {
-    display: inline-block;
-    padding: 12px 22px;
-    border-radius: 25px;
-    background: #176c9d;
-    color: white;
-    text-decoration: none;
+.stato-live {
+
+    width: fit-content;
+
+    margin:
+        0 auto 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding:
+        8px 16px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(5,30,45,.75);
+
+    border:
+        1px solid rgba(80,160,190,.25);
+
+    color: #86b8c8;
+
+    font-size: 13px;
+
     font-weight: bold;
 }
 
-.btn:hover {
-    background: #0b3656;
+.pallino-live {
+
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #55a9c5;
+
+    box-shadow:
+        0 0 8px rgba(70,170,205,.6);
+
 }
+
+/* LISTA */
+
+.lista-terremoti {
+
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    counter-reset: evento;
+}
+
+/* EVENTO */
+
+.terremoto {
+
+    position: relative;
+
+    display: grid !important;
+
+    grid-template-columns:
+        110px 1fr !important;
+
+    min-height:
+        110px;
+
+    padding: 0 !important;
+
+    margin: 0 !important;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(7,35,52,.94),
+            rgba(5,23,36,.91)
+        ) !important;
+
+    border:
+        1px solid rgba(80,170,205,.45) !important;
+
+    border-left:
+        4px solid #4c9fbd !important;
+
+    border-radius:
+        12px !important;
+
+    box-shadow:
+        0 5px 18px rgba(0,0,0,.35);
+
+    counter-increment:
+        evento;
+
+    transition:
+        .2s ease;
+}
+
+.terremoto:hover {
+
+    transform:
+        translateY(-1px);
+
+    border-color:
+        rgba(90,185,215,.55) !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(9,42,61,.97),
+            rgba(6,28,43,.95)
+        ) !important;
+}
+
+/* NUMERO */
+
+.terremoto::before {
+
+    content:
+        counter(evento);
+
+    position: absolute;
+
+    top: 7px;
+    left: 9px;
+
+    color:
+        rgba(150,200,215,.45);
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    z-index:
+        3;
+}
+
+/* MAGNITUDO */
+
+.riga-principale {
+
+    display:
+        contents !important;
+}
+
+.magnitudo {
+
+    grid-column:
+        1;
+
+    grid-row:
+        1 / span 3;
+
+    min-height:
+        110px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(19,70,94,.96),
+            rgba(8,40,58,.96)
+        ) !important;
+
+    border-right:
+        1px solid rgba(90,180,215,.25);
+
+    color:
+        #8fd0e2 !important;
+
+    font-size:
+        26px !important;
+
+    font-weight:
+        800 !important;
+}
+
+/* LOCALITA */
+
+.localita {
+
+    grid-column:
+        2;
+
+    padding:
+        16px 18px 5px !important;
+
+    color:
+        #b8d9e3 !important;
+
+    font-size:
+        17px !important;
+
+    font-weight:
+        700 !important;
+
+    line-height:
+        1.3;
+}
+
+/* DATI */
+
+.dati {
+
+    grid-column:
+        2;
+
+    display:
+        flex !important;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        7px;
+
+    padding:
+        4px 18px 7px !important;
+}
+
+.dato {
+
+    padding:
+        5px 9px !important;
+
+    background:
+        rgba(90,160,190,.10) !important;
+
+    border:
+        1px solid rgba(100,180,205,.20) !important;
+
+    border-radius:
+        6px !important;
+
+    color:
+        #91b8c5 !important;
+
+    font-size:
+        11px !important;
+
+    font-weight:
+        600 !important;
+}
+
+/* TEMPO */
+
+.tempo {
+
+    grid-column:
+        2;
+
+    padding:
+        0 18px 10px !important;
+
+    color:
+        #6f96a5 !important;
+
+    font-size:
+        10px !important;
+}
+
+/* CARICAMENTO */
+
+.caricamento,
+.errore,
+.nessun-evento {
+
+    max-width:
+        1000px;
+
+    margin:
+        0 auto;
+
+    padding:
+        30px;
+
+    text-align:
+        center;
+
+    color:
+        #91b8c5;
+
+    background:
+        rgba(7,35,52,.90);
+
+    border:
+        1px solid rgba(80,170,205,.30);
+
+    border-radius:
+        12px;
+}
+
+/* HOME */
+
+.btn-home {
+
+    display:
+        block;
+
+    width:
+        fit-content;
+
+    margin:
+        30px auto 0;
+
+    padding:
+        13px 25px;
+
+    border-radius:
+        25px;
+
+    background:
+        #123e58;
+
+    border:
+        1px solid rgba(90,180,215,.35);
+
+    color:
+        #9fcbd9;
+
+    text-decoration:
+        none;
+
+    font-weight:
+        bold;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .contenitore {
+        padding:
+            25px 12px 40px;
+    }
+
+    .terremoto {
+
+        grid-template-columns:
+            85px 1fr !important;
+
+        min-height:
+            105px;
+    }
+
+    .magnitudo {
+
+        min-height:
+            105px;
+
+        font-size:
+            22px !important;
+    }
+
+    .localita {
+
+        font-size:
+            15px !important;
+
+        padding:
+            13px 12px 4px !important;
+    }
+
+    .dati {
+
+        padding:
+            3px 12px 6px !important;
+    }
+
+    .dato {
+
+        font-size:
+            10px !important;
+    }
+
+    .tempo {
+
+        padding-left:
+            12px !important;
+    }
+
+}
+
 </style>
+
 </head>
 
 <body>
 
 <header>
-    <img class="logo" src="logo-animono-news-web.png"
-         alt="Anonimo News Terremoti">
 
-    <h1>🌍 Aggiornamenti Terremoti Mondo</h1>
+    <img
+        class="logo"
+        src="logo-animono-news-web.png"
+        alt="Anonimo News">
+
+    <h1>🌍 Ultimi Terremoti Mondo</h1>
 
     <p class="sottotitolo">
-        Aggiornamenti sugli eventi sismici più importanti nel mondo
+        Eventi sismici registrati nel mondo in tempo reale
     </p>
+
 </header>
+
 
 <main class="contenitore">
 
     <h2 class="titolo-sezione">
-        🔴 Ultimi aggiornamenti sismici
+        🔵 Ultimi eventi sismici
     </h2>
 
-    <div class="box">
-        <p>
-            Questa pagina sarà dedicata agli aggiornamenti sui terremoti
-            registrati nel mondo.
-        </p>
+    <div class="stato-live">
+
+        <span class="pallino-live"></span>
+
+        DATI USGS — AGGIORNAMENTO AUTOMATICO
+
     </div>
 
-    <a class="btn" href="index.html">
+
+    <div
+        id="listaTerremoti"
+        class="lista-terremoti">
+
+        <div class="caricamento">
+
+            ⏳ Caricamento degli ultimi terremoti...
+
+        </div>
+
+    </div>
+
+
+    <a
+        class="btn-home"
+        href="index.html">
+
         ← Torna alla Home
+
     </a>
 
 </main>
+
+
+<script>
+
+const lista =
+    document.getElementById(
+        "listaTerremoti"
+    );
+
+
+async function caricaTerremotiMondo() {
+
+    try {
+
+        const risposta =
+            await fetch(
+                "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
+            );
+
+
+        if (!risposta.ok) {
+
+            throw new Error(
+                "USGS HTTP " +
+                risposta.status
+            );
+
+        }
+
+
+        const dati =
+            await risposta.json();
+
+
+        const eventi =
+            (dati.features || [])
+            .sort(
+                (a,b) =>
+                    (b.properties?.time || 0)
+                    -
+                    (a.properties?.time || 0)
+            )
+            .slice(0, 10);
+
+
+        if (!eventi.length) {
+
+            lista.innerHTML = `
+                <div class="nessun-evento">
+                    Nessun terremoto disponibile.
+                </div>
+            `;
+
+            return;
+        }
+
+
+        lista.innerHTML = "";
+
+
+        eventi.forEach(
+            evento => {
+
+                const p =
+                    evento.properties || {};
+
+                const coordinate =
+                    evento.geometry?.coordinates || [];
+
+
+                const magnitudo =
+                    p.mag !== null &&
+                    p.mag !== undefined
+                        ? Number(p.mag).toFixed(1)
+                        : "N/D";
+
+
+                const profondita =
+                    coordinate[2] !== undefined
+                        ? Number(
+                            coordinate[2]
+                          ).toFixed(1)
+                          + " km"
+                        : "N/D";
+
+
+                const localita =
+                    p.place ||
+                    "Località non disponibile";
+
+
+                const tempo =
+                    p.time
+                        ? new Intl.DateTimeFormat(
+                            "it-IT",
+                            {
+                                dateStyle: "short",
+                                timeStyle: "medium"
+                            }
+                          ).format(
+                            new Date(p.time)
+                          )
+                        : "N/D";
+
+
+                const elemento =
+                    document.createElement(
+                        "article"
+                    );
+
+
+                elemento.className =
+                    "terremoto";
+
+
+                elemento.innerHTML = `
+
+                    <div class="riga-principale">
+
+                        <div class="magnitudo">
+                            M ${magnitudo}
+                        </div>
+
+                        <div class="localita">
+                            📍 ${localita}
+                        </div>
+
+                    </div>
+
+                    <div class="dati">
+
+                        <div class="dato">
+                            📏 Profondità:
+                            ${profondita}
+                        </div>
+
+                        <div class="dato">
+                            🕒 ${tempo}
+                        </div>
+
+                    </div>
+
+                    <div class="tempo">
+                        Fonte: USGS
+                    </div>
+
+                `;
+
+
+                lista.appendChild(
+                    elemento
+                );
+
+            }
+        );
+
+
+    } catch (errore) {
+
+        console.error(
+            "Errore USGS:",
+            errore
+        );
+
+
+        lista.innerHTML = `
+            <div class="errore">
+
+                ⚠️ I dati USGS
+                momentaneamente non sono disponibili.
+
+                <br><br>
+
+                Riproveremo automaticamente.
+
+            </div>
+        `;
+
+    }
+
+}
+
+
+/* Primo caricamento */
+
+caricaTerremotiMondo();
+
+
+/* Aggiornamento ogni 60 secondi */
+
+setInterval(
+    caricaTerremotiMondo,
+    60000
+);
+
+</script>
 
 </body>
 </html>

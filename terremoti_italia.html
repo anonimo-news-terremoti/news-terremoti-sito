@@ -3,105 +3,1503 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aggiornamenti Terremoti Italia - Anonimo News</title>
+
+<title>Ultimi Terremoti Italia - Anonimo News</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #eef5f9;
-    color: #082d4c;
+
+* {
+    box-sizing: border-box;
 }
 
+body {
+    margin: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: #eaf8ff;
+
+    background-image:
+        linear-gradient(
+            rgba(1, 8, 15, 0.32),
+            rgba(1, 8, 15, 0.48)
+        ),
+        url("sfondo-sismologia.png");
+
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* HEADER */
+
 header {
-    background: linear-gradient(135deg, #0b3656, #176c9d);
     color: white;
     text-align: center;
-    padding: 35px 20px;
+    padding: 25px 20px 35px;
 }
 
 .logo {
-    width: min(300px, 80vw);
-    max-height: 190px;
+    width: min(260px, 75vw);
+    max-height: 170px;
     object-fit: contain;
 }
 
 h1 {
-    margin: 15px 0 8px;
+    margin: 10px 0 8px;
+    font-size: clamp(28px, 5vw, 46px);
 }
 
 .sottotitolo {
     margin: 0;
     opacity: .9;
+    font-size: 16px;
 }
+
+/* CONTENITORE */
 
 .contenitore {
     max-width: 1100px;
     margin: auto;
-    padding: 30px 20px;
+    padding: 30px 20px 50px;
 }
+
+/* TITOLO */
 
 .titolo-sezione {
     text-align: center;
-    color: #082d4c;
-    margin-bottom: 25px;
-}
-
-.box {
-    background: white;
-    border-radius: 18px;
-    padding: 25px;
-    margin-bottom: 20px;
-    box-shadow: 0 5px 20px rgba(0,0,0,.12);
-}
-
-.btn {
-    display: inline-block;
-    padding: 12px 22px;
-    border-radius: 25px;
-    background: #176c9d;
     color: white;
-    text-decoration: none;
-    font-weight: bold;
+    margin: 0 0 25px;
+    font-size: 28px;
 }
 
-.btn:hover {
-    background: #0b3656;
+/* STATO LIVE */
+
+.stato-live {
+    width: fit-content;
+    margin: 0 auto 25px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 16px;
+
+    border-radius: 30px;
+
+    background: rgba(0,0,0,.25);
+    color: white;
+
+    font-weight: bold;
+    font-size: 13px;
 }
+
+.pallino-live {
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #39e66b;
+
+    box-shadow: 0 0 12px #39e66b;
+
+    animation: pulsazione 1.5s infinite;
+}
+
+@keyframes pulsazione {
+
+    0%,100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: .45;
+        transform: scale(.75);
+    }
+}
+
+/* LISTA */
+
+.lista-terremoti {
+    display: grid;
+    gap: 16px;
+}
+
+/* EVENTO */
+
+.terremoto {
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 6px 22px rgba(0,0,0,.12);
+
+    border-left: 6px solid #176c9d;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.terremoto:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 28px rgba(0,0,0,.18);
+}
+
+.riga-principale {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.magnitudo {
+    font-size: 25px;
+    font-weight: 900;
+    color: #c62828;
+}
+
+.localita {
+    flex: 1;
+    font-size: 18px;
+    font-weight: 800;
+    color: #082d4c;
+}
+
+.dati {
+    margin-top: 12px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.dato {
+    padding: 7px 11px;
+
+    border-radius: 10px;
+
+    background: #eef5f9;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.tempo {
+    margin-top: 12px;
+
+    color: #5c7180;
+
+    font-size: 13px;
+}
+
+/* CARICAMENTO */
+
+.caricamento,
+.errore,
+.nessun-evento {
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 6px 22px rgba(0,0,0,.12);
+}
+
+/* PULSANTE HOME */
+
+.btn-home {
+    display: block;
+
+    width: fit-content;
+
+    margin: 30px auto 0;
+
+    padding: 13px 25px;
+
+    border-radius: 25px;
+
+    background: #176c9d;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: .2s;
+}
+
+.btn-home:hover {
+    background: #0b3656;
+    transform: translateY(-2px);
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+    .contenitore {
+        padding: 25px 12px 40px;
+    }
+
+    .terremoto {
+        padding: 16px;
+    }
+
+    .magnitudo {
+        font-size: 22px;
+    }
+
+    .localita {
+        font-size: 16px;
+    }
+
+}
+
 </style>
+
+
+
+
+
+
+
+
+
+
+<style id="stile-sismico-blu">
+
+/* ==========================================
+   MONITORAGGIO SISMICO
+   STILE BLU NOTTE
+   ========================================== */
+
+.lista-terremoti {
+    max-width: 1000px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    counter-reset: evento;
+}
+
+/* SCHEDA */
+
+.terremoto {
+    position: relative;
+
+    display: grid !important;
+    grid-template-columns: 125px 1fr !important;
+
+    min-height: 115px;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    overflow: hidden;
+
+    background:
+        rgba(7, 27, 42, .94) !important;
+
+    border:
+        1px solid rgba(90, 170, 205, .35) !important;
+
+    border-left:
+        4px solid #4b9fc3 !important;
+
+    border-radius: 10px !important;
+
+    box-shadow:
+        0 5px 18px rgba(0,0,0,.28) !important;
+
+    counter-increment: evento;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease !important;
+}
+
+.terremoto:hover {
+    background:
+        rgba(10, 38, 57, .97) !important;
+
+    border-color:
+        rgba(110, 190, 220, .55) !important;
+
+    transform: translateY(-1px);
+}
+
+/* NUMERO */
+
+.terremoto::before {
+    content: counter(evento);
+
+    position: absolute;
+
+    top: 7px;
+    left: 9px;
+
+    color: rgba(210,230,240,.55);
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* MAGNITUDO */
+
+.riga-principale {
+    display: contents !important;
+}
+
+.magnitudo {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+
+    min-height: 115px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            #123e58,
+            #0b2b40
+        ) !important;
+
+    border-right:
+        1px solid rgba(100,180,215,.25);
+
+    color: #f3f7f9 !important;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size: 27px !important;
+    font-weight: 800 !important;
+
+    letter-spacing: -.5px;
+
+    text-shadow: none !important;
+}
+
+/* LOCALITÀ */
+
+.localita {
+    grid-column: 2;
+
+    padding:
+        16px 20px 5px !important;
+
+    color:
+        #f1f5f7 !important;
+
+    font-size:
+        18px !important;
+
+    font-weight:
+        700 !important;
+
+    line-height: 1.3;
+
+    text-shadow: none !important;
+}
+
+/* DATI */
+
+.dati {
+    grid-column: 2;
+
+    display: flex !important;
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    padding:
+        4px 20px 7px !important;
+}
+
+.dato {
+    padding:
+        5px 9px !important;
+
+    background:
+        rgba(180,210,225,.08) !important;
+
+    border:
+        1px solid rgba(180,210,225,.18) !important;
+
+    border-radius: 5px !important;
+
+    color:
+        #c8d8df !important;
+
+    font-size:
+        11px !important;
+
+    font-weight:
+        600 !important;
+}
+
+/* DATA / FONTE */
+
+.tempo {
+    grid-column: 2;
+
+    padding:
+        0 20px 11px !important;
+
+    color:
+        #91a8b5 !important;
+
+    font-size:
+        10px !important;
+
+    text-shadow: none !important;
+}
+
+/* EVENTO PIÙ RECENTE */
+
+.terremoto:nth-child(1) {
+    border-left-color:
+        #6fb7d5 !important;
+}
+
+.terremoto:nth-child(1) .magnitudo {
+    background:
+        linear-gradient(
+            180deg,
+            #174b67,
+            #0d3045
+        ) !important;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .terremoto {
+        grid-template-columns:
+            90px 1fr !important;
+
+        min-height:
+            108px;
+    }
+
+    .magnitudo {
+        min-height:
+            108px;
+
+        font-size:
+            22px !important;
+    }
+
+    .localita {
+        padding:
+            13px 13px 4px !important;
+
+        font-size:
+            15px !important;
+    }
+
+    .dati {
+        padding:
+            3px 13px 6px !important;
+
+        gap: 5px;
+    }
+
+    .dato {
+        font-size:
+            10px !important;
+
+        padding:
+            4px 7px !important;
+    }
+
+    .tempo {
+        padding:
+            0 13px 9px !important;
+    }
+}
+
+</style>
+
+
+<style id="schede-blu-senza-bianco">
+
+/* ==========================================
+   SCHEDE BLU — NIENTE BIANCO PURO
+   ========================================== */
+
+.terremoto {
+    background:
+        rgba(5, 25, 40, .94) !important;
+
+    border:
+        1px solid rgba(75, 160, 195, .38) !important;
+
+    border-left:
+        4px solid #4d9fbd !important;
+
+    box-shadow:
+        0 5px 18px rgba(0,0,0,.30) !important;
+}
+
+/* Magnitudo */
+
+.magnitudo {
+    background:
+        linear-gradient(
+            180deg,
+            #164b67,
+            #0b2d43
+        ) !important;
+
+    color:
+        #a9d8e8 !important;
+
+    border-right:
+        1px solid rgba(100,180,210,.22) !important;
+}
+
+/* Località */
+
+.localita {
+    color:
+        #b9dce8 !important;
+
+    text-shadow: none !important;
+}
+
+/* Dati */
+
+.dato {
+    background:
+        rgba(90,160,190,.09) !important;
+
+    border:
+        1px solid rgba(100,175,200,.18) !important;
+
+    color:
+        #9fc4d1 !important;
+
+    box-shadow: none !important;
+}
+
+/* Data e fonte */
+
+.tempo {
+    color:
+        #7695a3 !important;
+
+    text-shadow: none !important;
+}
+
+/* Hover */
+
+.terremoto:hover {
+    background:
+        rgba(7, 34, 52, .97) !important;
+
+    border-color:
+        rgba(95,180,215,.48) !important;
+}
+
+</style>
+
+
+<style id="eventi-senza-riquadro">
+
+/* ELIMINA COMPLETAMENTE IL RIQUADRO */
+
+.terremoto {
+    display: grid !important;
+    grid-template-columns: 110px 1fr !important;
+
+    background: transparent !important;
+
+    border: none !important;
+    border-left: none !important;
+    border-radius: 0 !important;
+
+    box-shadow: none !important;
+
+    min-height: 90px !important;
+
+    margin: 0 !important;
+    padding: 12px 0 !important;
+
+    overflow: visible !important;
+}
+
+/* Niente effetto al passaggio */
+
+.terremoto:hover {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+/* Magnitudo */
+
+.magnitudo {
+    background: transparent !important;
+    border: none !important;
+
+    min-height: 90px !important;
+
+    color: #8fd3e8 !important;
+
+    font-size: 26px !important;
+
+    text-shadow:
+        0 2px 5px rgba(0,0,0,.8) !important;
+}
+
+/* Località */
+
+.localita {
+    padding: 10px 15px 4px !important;
+
+    color: #b9dce8 !important;
+
+    font-size: 18px !important;
+
+    text-shadow:
+        0 2px 5px rgba(0,0,0,.85) !important;
+}
+
+/* Informazioni */
+
+.dati {
+    padding: 3px 15px 5px !important;
+}
+
+.dato {
+    background: transparent !important;
+
+    border: none !important;
+
+    padding: 3px 0 !important;
+
+    color: #91b8c6 !important;
+}
+
+/* Data */
+
+.tempo {
+    padding: 0 15px 5px !important;
+
+    color: #7195a3 !important;
+}
+
+/* Rimuove elementi decorativi */
+
+.terremoto::before,
+.terremoto::after {
+    display: none !important;
+}
+
+@media (max-width: 650px) {
+
+    .terremoto {
+        grid-template-columns: 85px 1fr !important;
+    }
+
+    .magnitudo {
+        min-height: 80px !important;
+        font-size: 22px !important;
+    }
+
+    .localita {
+        font-size: 15px !important;
+        padding-left: 10px !important;
+    }
+
+    .dati,
+    .tempo {
+        padding-left: 10px !important;
+    }
+
+}
+
+</style>
+
 </head>
 
 <body>
 
 <header>
-    <img class="logo" src="logo-animono-news-web.png"
-         alt="Anonimo News Terremoti">
 
-    <h1>🇮🇹 Aggiornamenti Terremoti Italia</h1>
+    <img
+        class="logo"
+        src="logo-animono-news-web.png"
+        alt="Anonimo News">
+
+    <h1>🇮🇹 Ultimi Terremoti Italia</h1>
 
     <p class="sottotitolo">
-        Aggiornamenti sugli eventi sismici registrati in Italia
+        Eventi sismici registrati in Italia in tempo reale
     </p>
+
 </header>
+
 
 <main class="contenitore">
 
     <h2 class="titolo-sezione">
-        🔴 Ultimi aggiornamenti sismici
+        🔴 Ultimi eventi sismici
     </h2>
 
-    <div class="box">
-        <p>
-            Questa pagina sarà dedicata agli aggiornamenti sui terremoti
-            registrati sul territorio italiano.
-        </p>
+    <div class="stato-live">
+        <span class="pallino-live"></span>
+        DATI INGV — AGGIORNAMENTO AUTOMATICO
     </div>
 
-    <a class="btn" href="index.html">
+    <div
+        id="listaTerremoti"
+        class="lista-terremoti">
+
+        <div class="caricamento">
+            ⏳ Caricamento degli ultimi terremoti...
+        </div>
+
+    </div>
+
+    <a
+        class="btn-home"
+        href="index.html">
+
         ← Torna alla Home
+
     </a>
 
 </main>
 
+
+<script>
+
+const lista =
+    document.getElementById(
+        "listaTerremoti"
+    );
+
+
+function formattaData(timestamp) {
+
+    return new Intl.DateTimeFormat(
+        "it-IT",
+        {
+            dateStyle: "short",
+            timeStyle: "medium"
+        }
+    ).format(
+        new Date(timestamp)
+    );
+
+}
+
+
+async function caricaTerremotiItalia() {
+
+    try {
+
+        lista.innerHTML = `
+            <div class="caricamento">
+                ⏳ Aggiornamento dati INGV...
+            </div>
+        `;
+
+
+        const fine =
+            new Date();
+
+
+        const inizio =
+            new Date(
+                fine.getTime()
+                -
+                24 * 60 * 60 * 1000
+            );
+
+
+        const formatta =
+            data =>
+                data
+                .toISOString()
+                .replace(
+                    /\.\d{3}Z$/,
+                    ""
+                );
+
+
+        const url =
+            "https://webservices.ingv.it/fdsnws/event/1/query" +
+
+            "?starttime=" +
+            encodeURIComponent(
+                formatta(inizio)
+            ) +
+
+            "&endtime=" +
+            encodeURIComponent(
+                formatta(fine)
+            ) +
+
+            "&minlat=35" +
+            "&maxlat=48" +
+
+            "&minlon=6" +
+            "&maxlon=19" +
+
+            "&format=geojson" +
+
+            "&orderby=time";
+
+
+        const risposta =
+            await fetch(url);
+
+
+        if (!risposta.ok) {
+
+            throw new Error(
+                "INGV HTTP " +
+                risposta.status
+            );
+
+        }
+
+
+        const dati =
+            await risposta.json();
+
+
+        const eventi =
+            (dati.features || [])
+            .sort(
+                (a,b) =>
+                    (b.properties?.time || 0)
+                    -
+                    (a.properties?.time || 0)
+            )
+            .slice(0, 10);
+
+
+        if (!eventi.length) {
+
+            lista.innerHTML = `
+                <div class="nessun-evento">
+                    ℹ️ Nessun terremoto trovato
+                    nelle ultime 24 ore.
+                </div>
+            `;
+
+            return;
+
+        }
+
+
+        lista.innerHTML = "";
+
+
+        eventi.forEach(
+            evento => {
+
+                const p =
+                    evento.properties || {};
+
+                const coordinate =
+                    evento.geometry?.coordinates || [];
+
+
+                const magnitudo =
+                    p.mag !== null &&
+                    p.mag !== undefined
+                        ? Number(p.mag).toFixed(1)
+                        : "N/D";
+
+
+                const profondita =
+                    coordinate[2] !== undefined
+                        ? Number(
+                            coordinate[2]
+                          ).toFixed(1)
+                          + " km"
+                        : "N/D";
+
+
+                const localita =
+                    p.place ||
+                    "Località non disponibile";
+
+
+                const tempo =
+                    p.time
+                        ? formattaData(
+                            p.time
+                          )
+                        : "N/D";
+
+
+                const elemento =
+                    document.createElement(
+                        "article"
+                    );
+
+
+                elemento.className =
+                    "terremoto";
+
+
+                elemento.innerHTML = `
+
+                    <div class="riga-principale">
+
+                        <div class="magnitudo">
+                            M ${magnitudo}
+                        </div>
+
+                        <div class="localita">
+                            📍 ${localita}
+                        </div>
+
+                    </div>
+
+                    <div class="dati">
+
+                        <div class="dato">
+                            📏 Profondità:
+                            ${profondita}
+                        </div>
+
+                        <div class="dato">
+                            🕒 ${tempo}
+                        </div>
+
+                    </div>
+
+                    <div class="tempo">
+                        Fonte: INGV
+                    </div>
+
+                `;
+
+
+                lista.appendChild(
+                    elemento
+                );
+
+            }
+        );
+
+
+    } catch (errore) {
+
+        console.error(
+            "Errore INGV:",
+            errore
+        );
+
+
+        lista.innerHTML = `
+            <div class="errore">
+                ⚠️ I dati INGV
+                momentaneamente non sono disponibili.
+                <br><br>
+                Riproveremo automaticamente.
+            </div>
+        `;
+
+    }
+
+}
+
+
+/* Primo caricamento */
+
+caricaTerremotiItalia();
+
+
+/* Aggiornamento automatico ogni 60 secondi */
+
+setInterval(
+    caricaTerremotiItalia,
+    60000
+);
+
+</script>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+<style id="stile-professionale-eventi">
+
+/* ==========================================
+   EVENTI SISMICI — STILE PROFESSIONALE
+   ========================================== */
+
+.lista-terremoti {
+    width: min(980px, 100%);
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* SINGOLO EVENTO */
+
+.terremoto {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 112px 1fr;
+
+    min-height: 118px;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    overflow: hidden;
+
+    background: #ffffff !important;
+
+    border: 1px solid #dce7ed !important;
+    border-left: 4px solid #176c9d !important;
+
+    border-radius: 12px !important;
+
+    box-shadow:
+        0 3px 12px rgba(8,45,76,.07) !important;
+
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        border-color .18s ease !important;
+}
+
+.terremoto:hover {
+    transform: translateY(-2px) !important;
+
+    box-shadow:
+        0 8px 22px rgba(8,45,76,.12) !important;
+
+    border-color: #b9d4e2 !important;
+}
+
+/* NUMERO EVENTO */
+
+.terremoto::before {
+    content: counter(evento);
+    counter-increment: evento;
+
+    position: absolute;
+
+    top: 8px;
+    left: 10px;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    color: rgba(255,255,255,.65);
+
+    z-index: 3;
+}
+
+.lista-terremoti {
+    counter-reset: evento;
+}
+
+/* MAGNITUDO */
+
+.riga-principale {
+    display: contents !important;
+}
+
+.magnitudo {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+
+    min-height: 118px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 !important;
+
+    background:
+        linear-gradient(
+            180deg,
+            #155d83,
+            #0b3656
+        );
+
+    color: white !important;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    font-size: 27px !important;
+    font-weight: 800 !important;
+
+    letter-spacing: -1px;
+}
+
+/* LOCALITÀ */
+
+.localita {
+    grid-column: 2;
+
+    padding:
+        18px 20px 5px !important;
+
+    margin: 0 !important;
+
+    color: #173d54 !important;
+
+    font-size: 18px !important;
+
+    font-weight: 700 !important;
+
+    line-height: 1.3;
+}
+
+/* DATI SECONDARI */
+
+.dati {
+    grid-column: 2;
+
+    display: flex !important;
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    padding:
+        4px 20px 7px !important;
+
+    margin: 0 !important;
+}
+
+.dato {
+    padding:
+        5px 9px !important;
+
+    background: #f3f7f9 !important;
+
+    border:
+        1px solid #e2ebef !important;
+
+    border-radius: 6px !important;
+
+    color: #526b79 !important;
+
+    font-size: 11px !important;
+
+    font-weight: 600 !important;
+}
+
+/* FONTE */
+
+.tempo {
+    grid-column: 2;
+
+    padding:
+        0 20px 12px !important;
+
+    margin: 0 !important;
+
+    color: #91a0a8 !important;
+
+    font-size: 10px !important;
+
+    letter-spacing: .2px;
+}
+
+/* PRIMEI EVENTI PIÙ IMPORTANTI */
+
+.terremoto:nth-child(1) {
+    border-left-color: #b52b2b !important;
+}
+
+.terremoto:nth-child(1) .magnitudo {
+    background:
+        linear-gradient(
+            180deg,
+            #a82d2d,
+            #751d1d
+        );
+}
+
+.terremoto:nth-child(2) {
+    border-left-color: #c75c28 !important;
+}
+
+.terremoto:nth-child(2) .magnitudo {
+    background:
+        linear-gradient(
+            180deg,
+            #b85a2a,
+            #81401f
+        );
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+    .terremoto {
+        grid-template-columns: 88px 1fr;
+        min-height: 112px;
+    }
+
+    .magnitudo {
+        min-height: 112px;
+        font-size: 22px !important;
+    }
+
+    .localita {
+        padding:
+            15px 13px 4px !important;
+
+        font-size: 15px !important;
+    }
+
+    .dati {
+        padding:
+            4px 13px 6px !important;
+    }
+
+    .tempo {
+        padding:
+            0 13px 10px !important;
+    }
+
+}
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style id="schede-finali-blu">
+
+/* ==========================================
+   SCHEDE TERREMOTI
+   STESSA STRUTTURA - NIENTE BIANCO
+   ========================================== */
+
+.terremoto {
+    display: grid !important;
+    grid-template-columns: 110px 1fr !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(7,35,52,.94),
+            rgba(5,23,36,.91)
+        ) !important;
+
+    border: 1px solid rgba(80,170,205,.45) !important;
+
+    border-left: 4px solid #4c9fbd !important;
+
+    border-radius: 12px !important;
+
+    box-shadow:
+        0 5px 18px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(120,200,225,.08) !important;
+
+    overflow: hidden !important;
+
+    min-height: 110px !important;
+
+    color: #a9cbd6 !important;
+}
+
+/* MAGNITUDO A SINISTRA */
+
+.magnitudo {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(19,70,94,.96),
+            rgba(8,40,58,.96)
+        ) !important;
+
+    border-right:
+        1px solid rgba(90,180,215,.25) !important;
+
+    color: #8fd0e2 !important;
+
+    min-height: 110px !important;
+
+    font-size: 26px !important;
+
+    font-weight: 800 !important;
+
+    text-shadow:
+        0 2px 5px rgba(0,0,0,.7) !important;
+}
+
+/* LOCALITÀ */
+
+.localita {
+    color: #b8d9e3 !important;
+
+    font-size: 17px !important;
+
+    font-weight: 700 !important;
+
+    padding: 16px 18px 5px !important;
+
+    text-shadow:
+        0 2px 4px rgba(0,0,0,.8) !important;
+}
+
+/* INFORMAZIONI */
+
+.dati {
+    padding: 4px 18px 7px !important;
+
+    display: flex !important;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+}
+
+.dato {
+    background:
+        rgba(90,160,190,.10) !important;
+
+    border:
+        1px solid rgba(100,180,205,.20) !important;
+
+    border-radius: 6px !important;
+
+    color: #91b8c5 !important;
+
+    padding: 5px 9px !important;
+
+    font-size: 11px !important;
+}
+
+/* DATA / FONTE */
+
+.tempo {
+    color: #6f96a5 !important;
+
+    padding: 0 18px 10px !important;
+
+    font-size: 10px !important;
+
+    text-shadow: none !important;
+}
+
+/* NUMERO */
+
+.terremoto::before {
+    color: rgba(150,200,215,.45) !important;
+}
+
+/* NESSUN EFFETTO BIANCO */
+
+.terremoto:hover {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(9,42,61,.97),
+            rgba(6,28,43,.95)
+        ) !important;
+
+    border-color:
+        rgba(90,185,215,.55) !important;
+
+    box-shadow:
+        0 7px 22px rgba(0,0,0,.42) !important;
+
+    transform: translateY(-1px) !important;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .terremoto {
+        grid-template-columns: 85px 1fr !important;
+    }
+
+    .magnitudo {
+        min-height: 105px !important;
+        font-size: 22px !important;
+    }
+
+    .localita {
+        font-size: 15px !important;
+        padding: 13px 12px 4px !important;
+    }
+
+    .dati {
+        padding: 3px 12px 6px !important;
+    }
+
+    .dato {
+        font-size: 10px !important;
+    }
+
+    .tempo {
+        padding-left: 12px !important;
+    }
+}
+
+</style>
+
