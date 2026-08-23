@@ -1,43 +1,248 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chat Community - Anonimo News</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;color:#eaf8ff;background:linear-gradient(rgba(1,8,15,.5),rgba(1,8,15,.65)),url("sfondo-sismologia.png") center/cover fixed no-repeat}
-header{text-align:center;padding:22px 15px;background:rgba(2,18,30,.82);border-bottom:1px solid #24556b}
-.logo{width:min(220px,70vw);max-height:110px;object-fit:contain}h1{margin:8px 0;font-size:25px}.sub{color:#9eb9c4;font-size:13px}
-.chat{width:min(900px,96%);margin:20px auto;background:rgba(3,18,29,.76);border:1px solid rgba(100,190,220,.22);border-radius:20px;overflow:hidden;box-shadow:0 15px 45px #0008}
-.head{padding:15px;background:#020c15dd;border-bottom:1px solid #24556b}.online{color:#39e58c;font-weight:bold}
-.messages{min-height:430px;max-height:62vh;overflow:auto;padding:20px 14px}.empty{text-align:center;color:#7894a0;padding:100px 10px}
-.msg{max-width:78%;margin:10px 0;padding:11px 13px;border-radius:16px;background:#0f2d3dcc;border:1px solid #64bedc22}.mine{margin-left:auto;background:#085277cc}.meta{font-size:11px;color:#9fc1cc;margin-bottom:6px}.text{font-size:14px;line-height:1.45;white-space:pre-wrap}.msg img{display:block;max-width:100%;max-height:320px;margin-top:9px;border-radius:12px}.time{font-size:9px;color:#668692;text-align:right;margin-top:6px}
-.composer{padding:12px;background:#020c15ee;border-top:1px solid #64bedc2b}.row{display:flex;gap:8px;align-items:flex-end}input,textarea{width:100%;background:#091f2ccc;color:white;border:1px solid #78c8e633;border-radius:13px;padding:11px;outline:none}input{max-width:190px}textarea{min-height:48px;resize:vertical}.actions{display:flex;gap:8px;align-items:center;margin-top:8px}.btn{border:0;border-radius:12px;padding:10px 14px;font-weight:bold;cursor:pointer}.photo{background:#16465b;color:#bcecff}.send{background:#147fb2;color:white;min-width:105px}.back{display:block;text-align:center;color:#bcecff;text-decoration:none;font-weight:bold;margin:0 auto 25px}.note{width:min(900px,96%);margin:14px auto 0;padding:10px;text-align:center;color:#91abb5;font-size:11px}
-@media(max-width:650px){.row{flex-direction:column;align-items:stretch}input{max-width:none}.msg{max-width:90%}}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif}
+body{color:#eaf8ff;background:linear-gradient(rgba(1,8,15,.50),rgba(1,8,15,.64)),url("sfondo-sismologia.png") center top/cover fixed no-repeat}
+header{text-align:center;padding:22px 15px 18px;background:rgba(2,18,30,.84);border-bottom:1px solid rgba(80,190,230,.25)}
+.logo{width:min(220px,70vw);max-height:110px;object-fit:contain}
+h1{margin:8px 0 4px;font-size:25px}.sub{margin:0;color:#9eb9c4;font-size:13px}
+.note{width:min(900px,96%);margin:14px auto 0;padding:10px 13px;border-radius:12px;background:rgba(2,18,30,.72);color:#91abb5;font-size:11px;text-align:center}
+.chat{width:min(900px,96%);margin:18px auto 20px;background:rgba(3,18,29,.76);border:1px solid rgba(100,190,220,.22);border-radius:20px;overflow:hidden;box-shadow:0 15px 45px rgba(0,0,0,.35)}
+.head{display:flex;align-items:center;gap:10px;padding:15px 17px;background:rgba(2,12,21,.88);border-bottom:1px solid rgba(100,190,220,.18)}
+.dot{width:11px;height:11px;border-radius:50%;background:#39e58c;box-shadow:0 0 12px rgba(57,229,140,.75)}
+.head-title{font-weight:800}.head-sub{font-size:11px;color:#88aebb;margin-top:2px}
+.messages{min-height:430px;max-height:62vh;overflow-y:auto;padding:18px 14px 25px}
+.empty{text-align:center;color:#7894a0;padding:95px 15px}
+.msg{max-width:78%;margin:10px 0;padding:11px 13px;border-radius:16px;background:rgba(15,45,61,.84);border:1px solid rgba(100,190,220,.12);box-shadow:0 5px 18px rgba(0,0,0,.18)}
+.msg.mine{margin-left:auto;background:rgba(8,82,119,.78)}
+.meta{font-size:11px;color:#9fc1cc;margin-bottom:6px}
+.text{font-size:14px;line-height:1.45;white-space:pre-wrap;word-break:break-word}
+.msg img{display:block;max-width:100%;max-height:360px;margin-top:9px;border-radius:12px}
+.time{font-size:9px;color:#668692;text-align:right;margin-top:6px}
+.composer{padding:12px;background:rgba(2,12,21,.90);border-top:1px solid rgba(100,190,220,.16)}
+.row{display:flex;gap:8px;align-items:flex-end}
+input,textarea{width:100%;border:1px solid rgba(120,200,230,.20);background:rgba(9,31,44,.92);color:#eaf8ff;border-radius:13px;padding:11px 12px;outline:none}
+input:focus,textarea:focus{border-color:rgba(70,190,240,.65)}
+.name{max-width:190px}textarea{min-height:48px;max-height:140px;resize:vertical}
+.actions{display:flex;gap:8px;margin-top:8px;align-items:center}
+.btn{border:0;border-radius:12px;padding:10px 14px;cursor:pointer;font-weight:800}
+.photo{background:rgba(70,150,185,.16);color:#bcecff}.send{background:#147fb2;color:#fff;min-width:105px}
+.send:disabled{opacity:.55;cursor:wait}.status{font-size:11px;color:#7896a2;margin-right:auto}
+.preview{display:none;margin-top:8px;font-size:11px;color:#91b8c5}.preview img{width:80px;height:60px;object-fit:cover;border-radius:8px;margin-top:5px}
+.back{display:block;text-align:center;color:#bcecff;text-decoration:none;font-weight:800;margin:0 auto 25px}
+.error{display:none;margin:10px 14px;padding:10px;border-radius:10px;background:rgba(130,35,45,.30);color:#ffc3c9;font-size:11px}
+@media(max-width:650px){.row{flex-direction:column;align-items:stretch}.name{max-width:none}.msg{max-width:90%}.actions{flex-wrap:wrap}.status{width:100%;order:3}}
 </style>
 </head>
 <body>
 <header>
 <img class="logo" src="logo-animono-news-web.png" alt="Anonimo News">
 <h1>💬 Chat Community</h1>
-<div class="sub">Terremoti • Segnalazioni • Foto • Discussioni</div>
+<p class="sub">Terremoti • Segnalazioni • Foto • Discussioni</p>
 </header>
+
 <div class="note">🚨 Indica sempre la località. Le segnalazioni degli utenti non sono automaticamente verificate.</div>
+
 <section class="chat">
-<div class="head">🌍 <b>Anonimo News — Community</b><br><span class="online">● Community online</span></div>
-<div id="messages" class="messages"><div id="empty" class="empty">💬 Nessun messaggio ancora.<br><small>Sii il primo a scrivere alla community.</small></div></div>
+<div class="head">
+<span class="dot"></span>
+<div>
+<div class="head-title">🌍 Anonimo News — Community</div>
+<div id="connection" class="head-sub">Connessione alla chat...</div>
+</div>
+</div>
+
+<div id="error" class="error"></div>
+<div id="messages" class="messages">
+<div class="empty">💬 Caricamento della community...</div>
+</div>
+
 <div class="composer">
-<div class="row"><input id="name" maxlength="30" placeholder="Nome / nickname"><textarea id="text" maxlength="1000" placeholder="Scrivi un messaggio..."></textarea></div>
-<div class="actions"><label class="btn photo">📷 Foto<input id="photo" type="file" accept="image/*" hidden></label><span id="fileName" style="font-size:11px;color:#7896a2"></span><button id="send" class="btn send">➤ INVIA</button></div>
+<div class="row">
+<input id="name" class="name" maxlength="30" placeholder="Nome / nickname">
+<textarea id="text" maxlength="1000" placeholder="Scrivi un messaggio..."></textarea>
+</div>
+<div class="actions">
+<label class="btn photo">📷 Foto<input id="photo" type="file" accept="image/jpeg,image/png,image/webp" hidden></label>
+<span id="fileName" style="font-size:11px;color:#7896a2"></span>
+<button id="send" class="btn send">➤ INVIA</button>
+<span id="status" class="status"></span>
+</div>
+<div id="preview" class="preview"></div>
 </div>
 </section>
+
 <a class="back" href="index.html">← Torna alla Home</a>
-<script>
-const M=document.getElementById('messages'),E=document.getElementById('empty'),N=document.getElementById('name'),T=document.getElementById('text'),P=document.getElementById('photo'),F=document.getElementById('fileName'),S=document.getElementById('send');
-let photo='';
-P.onchange=()=>{let f=P.files[0];if(!f)return;F.textContent=f.name;let r=new FileReader();r.onload=e=>photo=e.target.result;r.readAsDataURL(f)};
-function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
-function add(){let n=N.value.trim()||'Anonimo',t=T.value.trim();if(!t&&!photo)return alert('Scrivi un messaggio o aggiungi una foto.');E.style.display='none';let d=document.createElement('article');d.className='msg mine';let tm=new Date().toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'});d.innerHTML='<div class="meta">👤 '+esc(n)+'</div>'+(t?'<div class="text">'+esc(t)+'</div>':'')+(photo?'<img src="'+photo+'" alt="Foto">':'')+'<div class="time">'+tm+'</div>';M.appendChild(d);M.scrollTop=M.scrollHeight;T.value='';P.value='';F.textContent='';photo=''}
-S.onclick=add;T.onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();add()}}
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp, limit } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCyrW23MTFRWW0dogA5bDhWBdbN5V4hyo",
+  authDomain: "news-terremoti.firebaseapp.com",
+  projectId: "news-terremoti",
+  storageBucket: "news-terremoti.firebasestorage.app",
+  messagingSenderId: "944750257608",
+  appId: "1:944750257608:web:f0add770fcf35724810cfd",
+  measurementId: "G-WC79E3M0FW"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const M=document.getElementById("messages");
+const N=document.getElementById("name");
+const T=document.getElementById("text");
+const P=document.getElementById("photo");
+const F=document.getElementById("fileName");
+const S=document.getElementById("send");
+const STATUS=document.getElementById("status");
+const PREVIEW=document.getElementById("preview");
+const CONNECTION=document.getElementById("connection");
+const ERROR=document.getElementById("error");
+
+let selectedFile=null;
+let photoData="";
+
+function esc(s){
+  return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+}
+
+function formatTime(ts){
+  if(!ts) return "adesso";
+  const d=ts.toDate();
+  return d.toLocaleString("it-IT",{day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"});
+}
+
+/* Riduce la foto direttamente nel browser.
+   Non usa Firebase Storage. La foto compressa viene salvata in Firestore. */
+function compressImage(file){
+  return new Promise((resolve,reject)=>{
+    const reader=new FileReader();
+    reader.onerror=()=>reject(new Error("Impossibile leggere la foto."));
+    reader.onload=()=>{
+      const img=new Image();
+      img.onerror=()=>reject(new Error("Formato immagine non valido."));
+      img.onload=()=>{
+        const maxSide=1000;
+        let w=img.width,h=img.height;
+        if(w>maxSide||h>maxSide){
+          const scale=Math.min(maxSide/w,maxSide/h);
+          w=Math.round(w*scale); h=Math.round(h*scale);
+        }
+        const canvas=document.createElement("canvas");
+        canvas.width=w; canvas.height=h;
+        const ctx=canvas.getContext("2d");
+        ctx.drawImage(img,0,0,w,h);
+        const data=canvas.toDataURL("image/jpeg",0.65);
+        if(data.length>650000) {
+          const smaller=canvas.toDataURL("image/jpeg",0.45);
+          resolve(smaller);
+        } else {
+          resolve(data);
+        }
+      };
+      img.src=reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+P.addEventListener("change",async()=>{
+  selectedFile=P.files[0]||null;
+  photoData="";
+  if(!selectedFile){F.textContent="";PREVIEW.style.display="none";return;}
+  if(selectedFile.size>12*1024*1024){
+    alert("La foto è troppo grande. Scegli una foto più piccola.");
+    P.value="";selectedFile=null;F.textContent="";return;
+  }
+  F.textContent=selectedFile.name;
+  STATUS.textContent="Compressione foto...";
+  try{
+    photoData=await compressImage(selectedFile);
+    PREVIEW.style.display="block";
+    PREVIEW.innerHTML='Anteprima:<br><img src="'+photoData+'" alt="Anteprima">';
+    STATUS.textContent="Foto pronta ✓";
+  }catch(e){
+    console.error(e); alert("Non riesco a preparare la foto.");
+    P.value="";selectedFile=null;photoData="";
+  }
+});
+
+const q=query(collection(db,"communityMessages"),orderBy("createdAt","desc"),limit(100));
+
+onSnapshot(q,snapshot=>{
+  M.innerHTML="";
+  if(snapshot.empty){
+    M.innerHTML='<div class="empty">💬 Nessun messaggio ancora.<br><small>Sii il primo a scrivere alla community.</small></div>';
+  }else{
+    [...snapshot.docs].reverse().forEach(docSnap=>{
+      const d=docSnap.data();
+      const article=document.createElement("article");
+      article.className="msg";
+      const img=d.photoURL ? '<img src="'+esc(d.photoURL)+'" alt="Foto condivisa" loading="lazy">' : "";
+      article.innerHTML=
+        '<div class="meta">👤 '+esc(d.name||"Anonimo")+
+        (d.location ? ' · 📍 '+esc(d.location) : '')+
+        '</div>'+
+        (d.text ? '<div class="text">'+esc(d.text)+'</div>' : '')+
+        img+
+        '<div class="time">'+esc(formatTime(d.createdAt))+'</div>';
+      M.appendChild(article);
+    });
+    M.scrollTop=M.scrollHeight;
+  }
+  CONNECTION.textContent="● Community online";
+  CONNECTION.style.color="#39e58c";
+},err=>{
+  console.error(err);
+  CONNECTION.textContent="Connessione non disponibile";
+  CONNECTION.style.color="#ff8d96";
+  ERROR.textContent="Impossibile caricare la chat. Controlla le regole Firestore.";
+  ERROR.style.display="block";
+});
+
+S.addEventListener("click",async()=>{
+  const name=N.value.trim()||"Anonimo";
+  const text=T.value.trim();
+
+  if(!text&&!photoData){
+    alert("Scrivi un messaggio oppure aggiungi una foto.");
+    return;
+  }
+
+  S.disabled=true;S.textContent="Invio...";STATUS.textContent="";
+
+  try{
+    await addDoc(collection(db,"communityMessages"),{
+      name:name,
+      text:text,
+      photoURL:photoData||"",
+      createdAt:serverTimestamp()
+    });
+
+    T.value="";P.value="";F.textContent="";selectedFile=null;photoData="";
+    PREVIEW.style.display="none";PREVIEW.innerHTML="";
+    STATUS.textContent="Inviato ✓";
+  }catch(err){
+    console.error(err);
+    ERROR.textContent="Invio non riuscito. Controlla le regole Firestore.";
+    ERROR.style.display="block";
+    STATUS.textContent="";
+  }finally{
+    S.disabled=false;S.textContent="➤ INVIA";
+  }
+});
+
+T.addEventListener("keydown",e=>{
+  if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();S.click();}
+});
 </script>
-</body></html>
+</body>
+</html>
