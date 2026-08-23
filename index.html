@@ -3266,6 +3266,496 @@ body > *:not(#lavaVulcanoCanvas) {
 
 </style>
 
+
+<style id="animazione-pulsanti-social">
+
+/* ==========================================
+   TELEGRAM + WHATSAPP
+   ANIMAZIONE PROFESSIONALE
+   ========================================== */
+
+.hero-buttons .telegram,
+.hero-buttons .whatsapp {
+    position: relative;
+    overflow: hidden;
+
+    transform: translateY(0);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        filter .25s ease;
+
+    animation:
+        socialEntrata .8s ease both;
+}
+
+/* Entrata */
+
+.hero-buttons .telegram {
+    animation-delay: .15s;
+}
+
+.hero-buttons .whatsapp {
+    animation-delay: .30s;
+}
+
+@keyframes socialEntrata {
+
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/* Piccolo movimento continuo */
+
+.hero-buttons .telegram {
+    animation:
+        socialEntrata .8s .15s both,
+        socialPulse 3.5s 1.2s ease-in-out infinite;
+}
+
+.hero-buttons .whatsapp {
+    animation:
+        socialEntrata .8s .30s both,
+        socialPulse 3.5s 1.7s ease-in-out infinite;
+}
+
+@keyframes socialPulse {
+
+    0%, 75%, 100% {
+        transform: translateY(0) scale(1);
+    }
+
+    82% {
+        transform: translateY(-2px) scale(1.015);
+    }
+
+    88% {
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+/* Luce che attraversa il pulsante */
+
+.hero-buttons .telegram::after,
+.hero-buttons .whatsapp::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.25),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    animation:
+        socialShine 5s 2s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+@keyframes socialShine {
+
+    0% {
+        left: -120%;
+    }
+
+    20% {
+        left: 130%;
+    }
+
+    100% {
+        left: 130%;
+    }
+
+}
+
+/* Mouse */
+
+.hero-buttons .telegram:hover,
+.hero-buttons .whatsapp:hover {
+
+    transform:
+        translateY(-5px)
+        scale(1.035);
+
+    filter:
+        brightness(1.08);
+
+    box-shadow:
+        0 10px 28px rgba(0,0,0,.35);
+}
+
+/* Click */
+
+.hero-buttons .telegram:active,
+.hero-buttons .whatsapp:active {
+
+    transform:
+        translateY(-1px)
+        scale(.98);
+}
+
+/* Rispetta chi disattiva le animazioni */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .hero-buttons .telegram,
+    .hero-buttons .whatsapp,
+    .hero-buttons .telegram::after,
+    .hero-buttons .whatsapp::after {
+
+        animation: none !important;
+    }
+
+}
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style id="omini-immagini-animate">
+
+.social-omini {
+    display: flex !important;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 90px;
+    margin: 25px auto 15px;
+    padding: 0 20px;
+    background: transparent !important;
+}
+
+.omino-social {
+    position: relative;
+    width: 150px;
+    height: 260px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    text-decoration: none !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    cursor: pointer;
+    transition: transform .3s ease, filter .3s ease;
+}
+
+.omino-social img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: transparent;
+    filter:
+        drop-shadow(0 12px 12px rgba(0,0,0,.35));
+}
+
+/* animazione */
+.telegram.omino-social img {
+    animation: ominoTelegram 3.2s ease-in-out infinite;
+}
+
+.whatsapp.omino-social img {
+    animation: ominoWhatsapp 3.2s .5s ease-in-out infinite;
+}
+
+@keyframes ominoTelegram {
+    0%,100% {
+        transform: translateY(0) rotate(-1deg);
+    }
+    50% {
+        transform: translateY(-9px) rotate(1.5deg);
+    }
+}
+
+@keyframes ominoWhatsapp {
+    0%,100% {
+        transform: translateY(0) rotate(1deg);
+    }
+    50% {
+        transform: translateY(-9px) rotate(-1.5deg);
+    }
+}
+
+/* hover */
+.omino-social:hover {
+    transform: translateY(-8px) scale(1.04);
+    filter: brightness(1.08);
+}
+
+/* nome */
+.nome-social {
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    color: #ffffff !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    white-space: nowrap;
+
+    text-shadow:
+        0 2px 7px rgba(0,0,0,.95);
+}
+
+@media (max-width: 700px) {
+    .social-omini {
+        gap: 5px;
+        padding: 0;
+    }
+
+    .omino-social {
+        width: 145px;
+        height: 210px;
+    }
+
+    .nome-social {
+        font-size: 11px;
+    }
+}
+
+</style>
+
+
+<style id="fix-omini-no-crop">
+
+/* Gli omini devono essere sempre completamente visibili */
+.social-omini,
+.omino-social,
+.omino-social img {
+    overflow: visible !important;
+}
+
+.social-omini {
+    height: auto !important;
+    min-height: 360px !important;
+    align-items: flex-start !important;
+}
+
+.omino-social {
+    height: 360px !important;
+    overflow: visible !important;
+}
+
+.omino-social img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    overflow: visible !important;
+}
+
+</style>
+
+
+<style id="animazione-omini-camminata">
+
+.omino-social img {
+    transform-origin: 50% 88%;
+    will-change: transform;
+}
+
+/* TELEGRAM */
+.omino-social.telegram img {
+    animation: camminataTelegram 2.8s ease-in-out infinite;
+}
+
+/* WHATSAPP */
+.omino-social.whatsapp img {
+    animation: camminataWhatsapp 2.8s ease-in-out infinite;
+    animation-delay: .35s;
+}
+
+
+/* =====================================================
+   TELEGRAM — PASSO SINISTRO / DESTRO
+   ===================================================== */
+
+@keyframes camminataTelegram {
+
+    0% {
+        transform:
+            translate(0, 0)
+            rotate(-2deg);
+    }
+
+    12% {
+        transform:
+            translate(-5px, -4px)
+            rotate(2deg);
+    }
+
+    25% {
+        transform:
+            translate(-8px, 0)
+            rotate(4deg);
+    }
+
+    37% {
+        transform:
+            translate(-3px, -7px)
+            rotate(-2deg);
+    }
+
+    50% {
+        transform:
+            translate(5px, 0)
+            rotate(-4deg);
+    }
+
+    62% {
+        transform:
+            translate(8px, -5px)
+            rotate(2deg);
+    }
+
+    75% {
+        transform:
+            translate(4px, 0)
+            rotate(4deg);
+    }
+
+    87% {
+        transform:
+            translate(-3px, -6px)
+            rotate(-1deg);
+    }
+
+    100% {
+        transform:
+            translate(0, 0)
+            rotate(-2deg);
+    }
+}
+
+
+/* =====================================================
+   WHATSAPP — MOVIMENTO SFALSATO
+   ===================================================== */
+
+@keyframes camminataWhatsapp {
+
+    0% {
+        transform:
+            translate(0, 0)
+            rotate(2deg);
+    }
+
+    12% {
+        transform:
+            translate(5px, -5px)
+            rotate(-2deg);
+    }
+
+    25% {
+        transform:
+            translate(8px, 0)
+            rotate(-4deg);
+    }
+
+    37% {
+        transform:
+            translate(3px, -7px)
+            rotate(2deg);
+    }
+
+    50% {
+        transform:
+            translate(-5px, 0)
+            rotate(4deg);
+    }
+
+    62% {
+        transform:
+            translate(-8px, -5px)
+            rotate(-2deg);
+    }
+
+    75% {
+        transform:
+            translate(-4px, 0)
+            rotate(-4deg);
+    }
+
+    87% {
+        transform:
+            translate(3px, -6px)
+            rotate(1deg);
+    }
+
+    100% {
+        transform:
+            translate(0, 0)
+            rotate(2deg);
+    }
+}
+
+
+/* Hover */
+
+.omino-social:hover img {
+    animation-play-state: paused;
+
+    transform:
+        translateY(-10px)
+        scale(1.04);
+
+    transition:
+        transform .25s ease;
+}
+
+
+/* Riduce il movimento se richiesto dal browser */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .omino-social img {
+        animation: none !important;
+    }
+
+}
+
+</style>
+
 </head>
 
 <body>
@@ -3382,23 +3872,41 @@ body > *:not(#lavaVulcanoCanvas) {
 
       </p>
 
-      <div class="hero-buttons">
-        <a
-          class="btn telegram"
-          href="https://t.me/+LqqCE0aOEjQ0Zjgy"
-          target="_blank">
-          📲 Telegram
-        </a>
+      
 
-        <a
-          class="btn whatsapp"
-          href="https://chat.whatsapp.com/FcTdSeS16GJ5qx9UVmAo2c"
-          target="_blank">
-          💬 WhatsApp
-        </a>
-      </div>
-    </div>
-  </header>
+<div class="hero-buttons social-omini">
+
+  <a
+    class="omino-social telegram"
+    href="https://t.me/+LqqCE0aOEjQ0Zjgy"
+    target="_blank"
+    aria-label="Entra nella community Telegram">
+
+    <img
+      src="omino-telegram.png"
+      alt="Community Telegram">
+
+    <span class="nome-social">TELEGRAM</span>
+
+  </a>
+
+  <a
+    class="omino-social whatsapp"
+    href="https://chat.whatsapp.com/FcTdSeS16GJ5qx9UVmAo2c"
+    target="_blank"
+    aria-label="Entra nella community WhatsApp">
+
+    <img
+      src="omino-whatsapp.png"
+      alt="Community WhatsApp">
+
+    <span class="nome-social">WHATSAPP</span>
+
+  </a>
+
+</div>
+</div>
+</header>
 
   
 
@@ -3429,15 +3937,18 @@ body > *:not(#lavaVulcanoCanvas) {
       margin:auto;
   ">
 
-    <a href="terremoti_italia.html" class="btn"
-       style="
-       padding:16px 25px;
-       border-radius:30px;
-       font-weight:bold;
-       text-decoration:none;
-       ">
-       🇮🇹 AGGIORNAMENTI TERREMOTI ITALIA
-    </a>
+    <a href="terremoti_italia.html"
+   class="btn pulsante-italia-professionale">
+
+   <span class="pulsante-italia-icona">🇮🇹</span>
+
+   <span class="pulsante-italia-titolo">
+     AGGIORNAMENTI TERREMOTI ITALIA
+   </span>
+
+
+
+</a>
 
     <a href="terremoti_mondo.html" class="btn"
        style="
@@ -5833,3 +6344,5 @@ header .hero img {
 }
 
 </style>
+
+
