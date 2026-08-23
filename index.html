@@ -3313,13 +3313,7 @@ body > *:not(#lavaVulcanoCanvas) {
 
 
 <canvas id="lavaVulcanoCanvas"></canvas>
-
-
-  <div class="topbar">
-    📡 Portale informativo indipendente dedicato al monitoraggio sismico
-  </div>
-
-  <header>
+<header>
     <div class="hero">
 
       <img
@@ -3335,7 +3329,31 @@ body > *:not(#lavaVulcanoCanvas) {
         "
       >
 
-      <h1>🌍 News Terremoti Mondo e Italia</h1>
+      <div class="titolo-news-professionale">
+  <h1>
+    <span class="titolo-principale">NEWS TERREMOTI</span>
+    <span class="titolo-secondario">MONDO E ITALIA</span>
+  </h1>
+  <div class="titolo-linea"></div>
+
+
+
+
+<!-- DESCRIZIONE HOME -->
+<div class="descrizione-home">
+  <h2>Benvenuti su Anonimo News</h2>
+
+  <p>
+    Un portale informativo dedicato al monitoraggio degli eventi
+    sismici e vulcanici, con aggiornamenti dall'Italia e dal mondo,
+    sismografi in tempo reale e una community dove condividere
+    informazioni e segnalazioni.
+  </p>
+</div>
+<!-- FINE DESCRIZIONE HOME -->
+
+
+</div>
 
       <div style="
         display:inline-flex;
@@ -3361,9 +3379,7 @@ body > *:not(#lavaVulcanoCanvas) {
       </div>
 
       <p>
-        Aggiornamenti su terremoti, attività sismica e vulcanica,
-        con particolare attenzione a Italia, Napoli, Campi Flegrei
-        e agli eventi più importanti nel mondo.
+
       </p>
 
       <div class="hero-buttons">
@@ -3387,7 +3403,6 @@ body > *:not(#lavaVulcanoCanvas) {
   
 
   <main>
-
 <!-- MENU PRINCIPALE HOME -->
 <section id="home-menu-principale" style="
     padding: 35px 20px 25px;
@@ -5216,6 +5231,605 @@ avviaSismografo("sismoItalia", 0.8);
 #allertaMeta,
 #allertaFonte {
     display: none !important;
+}
+
+</style>
+
+
+
+<style id="grafica-nuovi-pulsanti-home">
+
+/* =====================================================
+   NUOVA GRAFICA PULSANTI HOME
+   ===================================================== */
+
+#home-menu-principale {
+    padding: 35px 18px 45px !important;
+}
+
+#home-menu-principale h2 {
+    letter-spacing: .3px;
+}
+
+/* contenitori dei pulsanti */
+#home-menu-principale > div,
+#home-menu-principale .home-pulsanti {
+    position: relative;
+}
+
+/* tutti i pulsanti */
+#home-menu-principale a.btn {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    min-height: 62px !important;
+    padding: 15px 26px !important;
+
+    border-radius: 18px !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.20),
+            rgba(255,255,255,.07)
+        ) !important;
+
+    border: 1px solid rgba(255,255,255,.42) !important;
+
+    color: #ffffff !important;
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    letter-spacing: .25px !important;
+
+    text-decoration: none !important;
+
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.28),
+        inset 0 1px 0 rgba(255,255,255,.20) !important;
+
+    transition:
+        transform .22s ease,
+        box-shadow .22s ease,
+        background .22s ease,
+        border-color .22s ease !important;
+
+    overflow: hidden !important;
+}
+
+/* riflesso luminoso */
+#home-menu-principale a.btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 70%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.22),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+    transition: left .55s ease;
+}
+
+/* hover */
+#home-menu-principale a.btn:hover {
+    transform: translateY(-5px) scale(1.02) !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(30,180,255,.40),
+            rgba(255,255,255,.12)
+        ) !important;
+
+    border-color: rgba(255,255,255,.75) !important;
+
+    box-shadow:
+        0 14px 35px rgba(0,0,0,.40),
+        0 0 22px rgba(60,210,255,.28),
+        inset 0 1px 0 rgba(255,255,255,.30) !important;
+}
+
+#home-menu-principale a.btn:hover::before {
+    left: 150%;
+}
+
+/* click */
+#home-menu-principale a.btn:active {
+    transform: translateY(-1px) scale(.98) !important;
+}
+
+/* Primo gruppo: Italia / Mondo */
+#home-menu-principale a[href="terremoti_italia.html"],
+#home-menu-principale a[href="terremoti_mondo.html"] {
+    min-width: 310px !important;
+    min-height: 72px !important;
+    font-size: 17px !important;
+}
+
+/* Italia */
+#home-menu-principale a[href="terremoti_italia.html"] {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,120,255,.34),
+            rgba(255,255,255,.10)
+        ) !important;
+}
+
+/* Mondo */
+#home-menu-principale a[href="terremoti_mondo.html"] {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(30,170,220,.34),
+            rgba(255,255,255,.10)
+        ) !important;
+}
+
+/* Sismografi */
+#home-menu-principale a[href*="sismografi.html"],
+#home-menu-principale a[href="sismografi_mondo.html"] {
+    min-width: 245px !important;
+}
+
+/* Chat */
+#home-menu-principale a[href="chat.html"] {
+    min-width: 245px !important;
+}
+
+/* mobile */
+@media (max-width: 700px) {
+
+    #home-menu-principale {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+
+    #home-menu-principale a.btn {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 500px !important;
+        box-sizing: border-box !important;
+    }
+
+    #home-menu-principale h2 {
+        font-size: 26px !important;
+    }
+}
+
+</style>
+
+
+
+
+<style id="grafica-community-home">
+
+/* =====================================================
+   COMMUNITY TELEGRAM / WHATSAPP
+   ===================================================== */
+
+.hero-buttons a.btn.telegram,
+.hero-buttons a.btn.whatsapp {
+    min-width: 290px !important;
+    min-height: 78px !important;
+    padding: 14px 30px !important;
+
+    display: inline-flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 4px !important;
+
+    border-radius: 22px !important;
+
+    font-size: 18px !important;
+    font-weight: 900 !important;
+
+    text-transform: uppercase !important;
+
+    box-sizing: border-box !important;
+}
+
+/* icona */
+.community-social-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    margin-bottom: 2px;
+}
+
+/* testo piccolo sotto */
+.community-social-name {
+    font-size: 13px;
+    font-weight: 700;
+    opacity: .90;
+    text-transform: none;
+}
+
+/* Telegram */
+.hero-buttons a.btn.telegram {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(35,158,220,.78),
+            rgba(20,110,170,.58)
+        ) !important;
+
+    border-color: rgba(120,220,255,.80) !important;
+
+    box-shadow:
+        0 10px 30px rgba(0,80,140,.35),
+        inset 0 1px 0 rgba(255,255,255,.30) !important;
+}
+
+/* WhatsApp */
+.hero-buttons a.btn.whatsapp {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(35,190,95,.78),
+            rgba(15,125,65,.58)
+        ) !important;
+
+    border-color: rgba(120,255,170,.80) !important;
+
+    box-shadow:
+        0 10px 30px rgba(0,100,50,.35),
+        inset 0 1px 0 rgba(255,255,255,.30) !important;
+}
+
+/* hover Telegram */
+.hero-buttons a.btn.telegram:hover {
+    box-shadow:
+        0 16px 38px rgba(0,100,170,.45),
+        0 0 25px rgba(50,190,255,.35) !important;
+}
+
+/* hover WhatsApp */
+.hero-buttons a.btn.whatsapp:hover {
+    box-shadow:
+        0 16px 38px rgba(0,130,60,.45),
+        0 0 25px rgba(50,255,130,.30) !important;
+}
+
+/* mobile */
+@media (max-width: 700px) {
+
+    .hero-buttons a.btn.telegram,
+    .hero-buttons a.btn.whatsapp {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 480px !important;
+    }
+
+}
+
+</style>
+
+
+
+
+<style id="titolo-community-home">
+
+/* Titolo sopra Telegram e WhatsApp */
+.hero-buttons:has(a.btn.telegram) {
+    position: relative;
+    padding-top: 65px !important;
+}
+
+.hero-buttons:has(a.btn.telegram)::before {
+    content: "💬 COMMUNITY";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    text-align: center;
+
+    color: white;
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 2px 7px rgba(0,0,0,.95),
+        0 0 18px rgba(50,210,255,.55);
+}
+
+</style>
+
+
+
+
+<style id="descrizione-home-grafica">
+
+.descrizione-home {
+    width: min(900px, calc(100% - 30px));
+    margin: 5px auto 10px;
+    padding: 24px 28px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.15),
+            rgba(255,255,255,.06)
+        );
+
+    border: 1px solid rgba(255,255,255,.30);
+    border-radius: 22px;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.22),
+        inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+.descrizione-home h2 {
+    margin: 0 0 10px;
+
+    color: white;
+    font-size: 25px;
+    font-weight: 900;
+
+    text-shadow:
+        0 2px 7px rgba(0,0,0,.9),
+        0 0 15px rgba(50,210,255,.45);
+}
+
+.descrizione-home p {
+    margin: 0 auto;
+
+    max-width: 780px;
+
+    color: rgba(255,255,255,.94);
+
+    font-size: 16px;
+    line-height: 1.65;
+
+    text-shadow:
+        0 1px 4px rgba(0,0,0,.85);
+}
+
+@media (max-width: 700px) {
+
+    .descrizione-home {
+        padding: 20px 18px;
+    }
+
+    .descrizione-home h2 {
+        font-size: 22px;
+    }
+
+    .descrizione-home p {
+        font-size: 15px;
+        line-height: 1.55;
+    }
+}
+
+</style>
+
+
+
+
+<style id="titolo-professionale-home">
+
+header .hero h1 {
+    font-family:
+        "Montserrat",
+        "Segoe UI",
+        Arial,
+        sans-serif !important;
+
+    font-size: clamp(32px, 5vw, 56px) !important;
+
+    font-weight: 900 !important;
+
+    letter-spacing: -0.8px !important;
+
+    line-height: 1.08 !important;
+
+    color: #ffffff !important;
+
+    text-align: center !important;
+
+    margin: 10px auto 14px !important;
+
+    text-shadow:
+        0 3px 10px rgba(0,0,0,.85),
+        0 0 24px rgba(60,210,255,.25) !important;
+}
+
+</style>
+
+
+
+
+<style id="titolo-stile-professionale">
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+.titolo-news-professionale {
+    text-align: center;
+    margin: 12px auto 24px;
+}
+
+.titolo-news-professionale h1 {
+    margin: 0 !important;
+    padding: 0 !important;
+
+    font-family: "Manrope", "Segoe UI", Arial, sans-serif !important;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    line-height: 1.05 !important;
+}
+
+.titolo-principale {
+    font-size: clamp(34px, 5.5vw, 58px);
+
+    font-weight: 800;
+
+    letter-spacing: -1.8px;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 3px 12px rgba(0,0,0,.65);
+}
+
+.titolo-secondario {
+    margin-top: 8px;
+
+    font-size: clamp(14px, 2vw, 21px);
+
+    font-weight: 500;
+
+    letter-spacing: 8px;
+
+    color: rgba(255,255,255,.78);
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 2px 6px rgba(0,0,0,.6);
+}
+
+.titolo-linea {
+    width: 180px;
+    height: 1px;
+
+    margin: 18px auto 0;
+
+    background: rgba(255,255,255,.75);
+
+    box-shadow:
+        0 0 8px rgba(255,255,255,.25);
+}
+
+@media (max-width: 700px) {
+
+    .titolo-principale {
+        font-size: 34px;
+        letter-spacing: -1px;
+    }
+
+    .titolo-secondario {
+        font-size: 13px;
+        letter-spacing: 4px;
+    }
+
+    .titolo-linea {
+        width: 140px;
+        margin-top: 14px;
+    }
+}
+
+</style>
+
+
+
+
+<style id="logo-titolo-piu-alto">
+
+/* Porta logo e titolo verso l'alto */
+header {
+    padding-top: 5px !important;
+    margin-top: 0 !important;
+}
+
+header .hero {
+    padding-top: 5px !important;
+    margin-top: 0 !important;
+}
+
+header .hero img {
+    margin-top: -10px !important;
+    margin-bottom: 12px !important;
+}
+
+/* Titolo più vicino al logo */
+.titolo-news-professionale {
+    margin-top: 0 !important;
+    margin-bottom: 16px !important;
+}
+
+/* Se il vecchio h1 è ancora presente */
+header .hero > h1 {
+    margin-top: 0 !important;
+}
+
+</style>
+
+
+
+
+<style id="logo-titolo-ancora-piu-alto">
+
+header {
+    padding-top: 0 !important;
+    margin-top: -25px !important;
+}
+
+header .hero {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+header .hero img {
+    margin-top: -25px !important;
+    margin-bottom: 8px !important;
+}
+
+.titolo-news-professionale {
+    margin-top: -5px !important;
+    margin-bottom: 12px !important;
+}
+
+</style>
+
+
+
+
+<style id="logo-titolo-posizione-visibile">
+
+header {
+    padding-top: 25px !important;
+    margin-top: 0 !important;
+}
+
+header .hero {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+header .hero img {
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+}
+
+.titolo-news-professionale {
+    margin-top: 0 !important;
+    margin-bottom: 18px !important;
 }
 
 </style>
