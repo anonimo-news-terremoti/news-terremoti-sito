@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chat Community - Anonimo News</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;color:#eaf8ff;background:linear-gradient(rgba(1,8,15,.5),rgba(1,8,15,.65)),url("sfondo-sismologia.png") center/cover fixed no-repeat}
+header{text-align:center;padding:22px 15px;background:rgba(2,18,30,.82);border-bottom:1px solid #24556b}
+.logo{width:min(220px,70vw);max-height:110px;object-fit:contain}h1{margin:8px 0;font-size:25px}.sub{color:#9eb9c4;font-size:13px}
+.chat{width:min(900px,96%);margin:20px auto;background:rgba(3,18,29,.76);border:1px solid rgba(100,190,220,.22);border-radius:20px;overflow:hidden;box-shadow:0 15px 45px #0008}
+.head{padding:15px;background:#020c15dd;border-bottom:1px solid #24556b}.online{color:#39e58c;font-weight:bold}
+.messages{min-height:430px;max-height:62vh;overflow:auto;padding:20px 14px}.empty{text-align:center;color:#7894a0;padding:100px 10px}
+.msg{max-width:78%;margin:10px 0;padding:11px 13px;border-radius:16px;background:#0f2d3dcc;border:1px solid #64bedc22}.mine{margin-left:auto;background:#085277cc}.meta{font-size:11px;color:#9fc1cc;margin-bottom:6px}.text{font-size:14px;line-height:1.45;white-space:pre-wrap}.msg img{display:block;max-width:100%;max-height:320px;margin-top:9px;border-radius:12px}.time{font-size:9px;color:#668692;text-align:right;margin-top:6px}
+.composer{padding:12px;background:#020c15ee;border-top:1px solid #64bedc2b}.row{display:flex;gap:8px;align-items:flex-end}input,textarea{width:100%;background:#091f2ccc;color:white;border:1px solid #78c8e633;border-radius:13px;padding:11px;outline:none}input{max-width:190px}textarea{min-height:48px;resize:vertical}.actions{display:flex;gap:8px;align-items:center;margin-top:8px}.btn{border:0;border-radius:12px;padding:10px 14px;font-weight:bold;cursor:pointer}.photo{background:#16465b;color:#bcecff}.send{background:#147fb2;color:white;min-width:105px}.back{display:block;text-align:center;color:#bcecff;text-decoration:none;font-weight:bold;margin:0 auto 25px}.note{width:min(900px,96%);margin:14px auto 0;padding:10px;text-align:center;color:#91abb5;font-size:11px}
+@media(max-width:650px){.row{flex-direction:column;align-items:stretch}input{max-width:none}.msg{max-width:90%}}
+</style>
+</head>
+<body>
+<header>
+<img class="logo" src="logo-animono-news-web.png" alt="Anonimo News">
+<h1>💬 Chat Community</h1>
+<div class="sub">Terremoti • Segnalazioni • Foto • Discussioni</div>
+</header>
+<div class="note">🚨 Indica sempre la località. Le segnalazioni degli utenti non sono automaticamente verificate.</div>
+<section class="chat">
+<div class="head">🌍 <b>Anonimo News — Community</b><br><span class="online">● Community online</span></div>
+<div id="messages" class="messages"><div id="empty" class="empty">💬 Nessun messaggio ancora.<br><small>Sii il primo a scrivere alla community.</small></div></div>
+<div class="composer">
+<div class="row"><input id="name" maxlength="30" placeholder="Nome / nickname"><textarea id="text" maxlength="1000" placeholder="Scrivi un messaggio..."></textarea></div>
+<div class="actions"><label class="btn photo">📷 Foto<input id="photo" type="file" accept="image/*" hidden></label><span id="fileName" style="font-size:11px;color:#7896a2"></span><button id="send" class="btn send">➤ INVIA</button></div>
+</div>
+</section>
+<a class="back" href="index.html">← Torna alla Home</a>
+<script>
+const M=document.getElementById('messages'),E=document.getElementById('empty'),N=document.getElementById('name'),T=document.getElementById('text'),P=document.getElementById('photo'),F=document.getElementById('fileName'),S=document.getElementById('send');
+let photo='';
+P.onchange=()=>{let f=P.files[0];if(!f)return;F.textContent=f.name;let r=new FileReader();r.onload=e=>photo=e.target.result;r.readAsDataURL(f)};
+function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
+function add(){let n=N.value.trim()||'Anonimo',t=T.value.trim();if(!t&&!photo)return alert('Scrivi un messaggio o aggiungi una foto.');E.style.display='none';let d=document.createElement('article');d.className='msg mine';let tm=new Date().toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'});d.innerHTML='<div class="meta">👤 '+esc(n)+'</div>'+(t?'<div class="text">'+esc(t)+'</div>':'')+(photo?'<img src="'+photo+'" alt="Foto">':'')+'<div class="time">'+tm+'</div>';M.appendChild(d);M.scrollTop=M.scrollHeight;T.value='';P.value='';F.textContent='';photo=''}
+S.onclick=add;T.onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();add()}}
+</script>
+</body></html>
