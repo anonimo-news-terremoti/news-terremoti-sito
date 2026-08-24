@@ -5127,7 +5127,7 @@ async function aggiornaTickerTerremotiItalia() {
 
     const risposta =
       await fetch(
-        "/api/ultimi-terremoti-italia?t=" +
+        "https://news-terremoti-sito.onrender.com/api/ultimi-terremoti-italia?t=" +
         Date.now(),
         {
           cache: "no-store"
