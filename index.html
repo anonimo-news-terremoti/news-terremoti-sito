@@ -4022,12 +4022,391 @@ body > *:not(#lavaVulcanoCanvas) {
 
 </section>
 <!-- FINE MENU PRINCIPALE HOME -->
+
+<!-- HOME LIVE GOOGLE PLAY -->
+<section id="homeLiveTerremoti" class="home-live-terremoti">
+  <div class="home-live-intestazione">
+    <span class="home-live-punto"></span>
+    <div>
+      <h2>Terremoti aggiornati in tempo reale</h2>
+      <p>
+        Dati sismici ufficiali aggiornati automaticamente.
+        Ogni evento mostra data, ora e fonte originale.
+      </p>
+    </div>
+  </div>
+
+  <div class="home-live-aggiornamento"
+       id="homeLiveAggiornamento">
+    Caricamento degli eventi più recenti…
+  </div>
+
+  <div class="home-live-colonne">
+    <article class="home-live-box">
+      <h3>🇮🇹 Ultimi terremoti in Italia</h3>
+      <p class="home-live-fonte">
+        Fonte ufficiale:
+        <a href="https://terremoti.ingv.it/"
+           target="_blank"
+           rel="noopener">INGV</a>
+      </p>
+      <div id="homeLiveItalia" class="home-live-lista">
+        Caricamento dati INGV…
+      </div>
+      <a class="home-live-pulsante"
+         href="terremoti_italia.html">
+        Tutti gli eventi in Italia
+      </a>
+    </article>
+
+    <article class="home-live-box">
+      <h3>🌍 Ultimi terremoti nel mondo</h3>
+      <p class="home-live-fonte">
+        Fonte ufficiale:
+        <a href="https://earthquake.usgs.gov/"
+           target="_blank"
+           rel="noopener">USGS</a>
+      </p>
+      <div id="homeLiveMondo" class="home-live-lista">
+        Caricamento dati USGS…
+      </div>
+      <a class="home-live-pulsante"
+         href="terremoti_mondo.html">
+        Tutti gli eventi nel mondo
+      </a>
+    </article>
+  </div>
+
+  <div class="home-live-contatti">
+    <strong>Contatti della redazione</strong>
+    <a href="contatti.html">Informazioni e contatti</a>
+    <a href="mailto:anonimonews23@gmail.com">
+      anonimonews23@gmail.com
+    </a>
+  </div>
+</section>
+
+<style id="home-live-google-play-css">
+.home-live-terremoti{
+  width:min(1180px,94%);
+  margin:15px auto 50px;
+  padding:24px;
+  box-sizing:border-box;
+  border:1px solid rgba(59,213,255,.28);
+  border-radius:22px;
+  background:rgba(3,17,28,.88);
+  box-shadow:0 14px 40px rgba(0,0,0,.30);
+  color:#eefaff;
+}
+.home-live-intestazione{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin-bottom:12px;
+}
+.home-live-intestazione h2{
+  margin:0 0 6px;
+  color:#fff;
+  font-size:clamp(1.45rem,4vw,2.1rem);
+}
+.home-live-intestazione p{
+  margin:0;
+  color:#cbe6ef;
+  line-height:1.55;
+}
+.home-live-punto{
+  width:12px;
+  height:12px;
+  margin-top:9px;
+  flex:0 0 auto;
+  border-radius:50%;
+  background:#39e68a;
+  box-shadow:0 0 14px #39e68a;
+}
+.home-live-aggiornamento{
+  margin:14px 0 20px;
+  color:#71dcff;
+  font-size:.9rem;
+  font-weight:700;
+}
+.home-live-colonne{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+.home-live-box{
+  padding:18px;
+  border:1px solid rgba(80,210,255,.20);
+  border-radius:16px;
+  background:rgba(0,10,18,.72);
+}
+.home-live-box h3{
+  margin:0 0 5px;
+  color:#fff;
+}
+.home-live-fonte{
+  margin:0 0 14px;
+  color:#b9dce8;
+  font-size:.82rem;
+}
+.home-live-fonte a,
+.home-live-contatti a{
+  color:#61ddff;
+  font-weight:700;
+}
+.home-live-lista{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+  min-height:120px;
+}
+.home-live-evento{
+  padding:11px 12px;
+  border-left:4px solid #ff3c50;
+  border-radius:9px;
+  background:rgba(255,255,255,.055);
+}
+.home-live-evento strong{
+  color:#fff;
+}
+.home-live-dettagli{
+  margin-top:5px;
+  color:#c8e0e8;
+  font-size:.82rem;
+  line-height:1.45;
+}
+.home-live-sorgente{
+  display:inline-block;
+  margin-top:6px;
+  color:#62ddff;
+  font-size:.78rem;
+  font-weight:700;
+}
+.home-live-pulsante{
+  display:inline-block;
+  margin-top:17px;
+  padding:10px 15px;
+  border-radius:22px;
+  background:#087ca1;
+  color:#fff;
+  text-decoration:none;
+  font-weight:800;
+}
+.home-live-errore{
+  padding:14px;
+  border:1px solid rgba(255,174,49,.35);
+  border-radius:10px;
+  color:#ffe1a6;
+  background:rgba(255,140,0,.08);
+}
+.home-live-contatti{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 18px;
+  align-items:center;
+  margin-top:20px;
+  padding-top:18px;
+  border-top:1px solid rgba(80,210,255,.18);
+}
+@media(max-width:760px){
+  .home-live-colonne{
+    grid-template-columns:1fr;
+  }
+  .home-live-terremoti{
+    padding:16px;
+  }
+}
+</style>
+
+<script id="home-live-google-play-js">
+(() => {
+  const API =
+    "https://news-terremoti-sito.onrender.com";
+
+  const pulisci = valore =>
+    String(valore ?? "")
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+
+  const dataEvento = valore => {
+    const data = new Date(valore);
+
+    if (Number.isNaN(data.getTime())) {
+      return "Data non disponibile";
+    }
+
+    return data.toLocaleString(
+      "it-IT",
+      {
+        dateStyle:"short",
+        timeStyle:"medium"
+      }
+    );
+  };
+
+  function mostraEventi(
+    elemento,
+    eventi,
+    fonte
+  ) {
+    if (!eventi.length) {
+      elemento.innerHTML =
+        '<div class="home-live-errore">' +
+        'Nessun evento recente disponibile. ' +
+        'Fonte consultabile: ' + fonte +
+        '</div>';
+      return;
+    }
+
+    elemento.innerHTML =
+      eventi.slice(0,5).map(evento => {
+        const p = evento.properties || {};
+        const c = evento.geometry?.coordinates || [];
+
+        const magnitudo =
+          Number(p.mag ?? 0).toFixed(1);
+
+        const profondita =
+          Number(c[2] ?? 0).toFixed(1);
+
+        const luogo =
+          pulisci(
+            p.place || "Località non specificata"
+          );
+
+        const collegamento =
+          p.url ||
+          (
+            fonte === "INGV"
+              ? "https://terremoti.ingv.it/"
+              : "https://earthquake.usgs.gov/"
+          );
+
+        return `
+          <div class="home-live-evento">
+            <strong>
+              M ${magnitudo} — ${luogo}
+            </strong>
+
+            <div class="home-live-dettagli">
+              🕒 ${dataEvento(p.time)}
+              <br>
+              📏 Profondità ${profondita} km
+            </div>
+
+            <a class="home-live-sorgente"
+               href="${pulisci(collegamento)}"
+               target="_blank"
+               rel="noopener">
+              Fonte: ${fonte}
+            </a>
+          </div>
+        `;
+      }).join("");
+  }
+
+  async function carica(
+    percorso,
+    elemento,
+    fonte
+  ) {
+    try {
+      const risposta = await fetch(
+        API + percorso + "?t=" + Date.now(),
+        {cache:"no-store"}
+      );
+
+      if (!risposta.ok) {
+        throw new Error(
+          "HTTP " + risposta.status
+        );
+      }
+
+      const dati = await risposta.json();
+
+      mostraEventi(
+        elemento,
+        Array.isArray(dati.features)
+          ? dati.features
+          : [],
+        fonte
+      );
+
+      return true;
+
+    } catch (errore) {
+      console.error(
+        "Home live " + fonte,
+        errore
+      );
+
+      elemento.innerHTML =
+        '<div class="home-live-errore">' +
+        'Servizio temporaneamente non disponibile. ' +
+        'I dati ufficiali restano consultabili dalla fonte ' +
+        fonte +
+        '.</div>';
+
+      return false;
+    }
+  }
+
+  async function aggiornaHomeLive() {
+    const italia =
+      document.getElementById("homeLiveItalia");
+
+    const mondo =
+      document.getElementById("homeLiveMondo");
+
+    const aggiornamento =
+      document.getElementById(
+        "homeLiveAggiornamento"
+      );
+
+    if (!italia || !mondo) return;
+
+    const risultati = await Promise.all([
+      carica(
+        "/api/ultimi-terremoti-italia",
+        italia,
+        "INGV"
+      ),
+      carica(
+        "/api/ultimi-terremoti-mondo",
+        mondo,
+        "USGS"
+      )
+    ]);
+
+    aggiornamento.textContent =
+      "Ultimo aggiornamento: " +
+      new Date().toLocaleString("it-IT") +
+      (
+        risultati.every(Boolean)
+          ? " • Dati ricevuti correttamente"
+          : " • Aggiornamento parziale"
+      );
+  }
+
+  aggiornaHomeLive();
+
+  setInterval(
+    aggiornaHomeLive,
+    60000
+  );
+})();
+</script>
+
 </main>
 
   <footer>
     <p><strong>🌍 News Terremoti Mondo e Italia</strong></p>
     <p>Informazione • Monitoraggio • Community</p>
-    <p>© 2026 News Terremoti Mondo e Italia</p>
+    <p><a href="contatti.html" style="color:#61ddff;font-weight:bold;">Contatti e informazioni</a></p>
+<p>© 2026 News Terremoti Mondo e Italia</p>
   </footer>
 
   <script>
