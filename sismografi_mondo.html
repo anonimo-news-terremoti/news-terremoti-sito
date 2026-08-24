@@ -2077,7 +2077,7 @@ async function controllaTerremotiMondo() {
 
     const risposta =
       await fetch(
-        "/api/ultimi-terremoti-mondo?t=" +
+        "https://news-terremoti-sito.onrender.com/api/ultimi-terremoti-mondo?t=" +
         Date.now()
       );
 
@@ -2239,7 +2239,7 @@ async function aggiornaTickerTerremotiMondo() {
 
     const risposta =
       await fetch(
-        "/api/ultimi-terremoti-mondo?t=" +
+        "https://news-terremoti-sito.onrender.com/api/ultimi-terremoti-mondo?t=" +
         Date.now(),
         {
           cache: "no-store"
