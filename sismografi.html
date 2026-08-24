@@ -3923,7 +3923,7 @@ async function controllaEventiINGVRegioni() {
 
 
     const dati =
-      await leggiJSONSicuro(risposta, "INGV");
+      await risposta.json();
 
 
     const eventi =
