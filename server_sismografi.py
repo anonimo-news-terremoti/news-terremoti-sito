@@ -179,7 +179,7 @@ STAZIONI_MONDO = {
     "PAPUA": {
         "source": "GEOFON",
         "base": "https://geofon.gfz.de/fdsnws",
-        "net": "GE", "sta": "PMG", "loc": "10", "cha": "HHZ"
+        "net": "GE", "sta": "PMG", "loc": "10", "cha": "BHZ"
     },
     "NUOVAZELANDA": {
         "source": "IRIS",
