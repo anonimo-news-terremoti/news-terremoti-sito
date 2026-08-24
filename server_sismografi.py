@@ -179,7 +179,8 @@ STAZIONI_MONDO = {
     "PAPUA": {
         "source": "GEOFON",
         "base": "https://geofon.gfz.de/fdsnws",
-        "net": "GE", "sta": "PMG", "loc": "10", "cha": "BHZ"
+        "net": "GE", "sta": "PMG", "loc": "10", "cha": "BHZ",
+        "minutes": 30
     },
     "NUOVAZELANDA": {
         "source": "IRIS",
@@ -329,7 +330,15 @@ def api_sismografo_mondo(codice):
         return {"error": "Stazione mondo non trovata"}, 404
 
     fine = datetime.now(timezone.utc)
-    inizio = fine - timedelta(minutes=5)
+
+    minuti_tracciato = cfg.get(
+        "minutes",
+        5
+    )
+
+    inizio = fine - timedelta(
+        minutes=minuti_tracciato
+    )
 
     params = {
         "net": cfg["net"],
