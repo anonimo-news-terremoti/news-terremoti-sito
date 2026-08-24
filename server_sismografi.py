@@ -148,7 +148,7 @@ STAZIONI_MONDO = {
     "CALIFORNIA": {
         "source": "SCEDC",
         "base": "https://service.scedc.caltech.edu/fdsnws",
-        "net": "CI", "sta": "SBC", "loc": "*", "cha": "HHZ"
+        "net": "CI", "sta": "ABL", "loc": "--", "cha": "HHZ"
     },
     "MESSICO": {
         "source": "IRIS",
@@ -179,7 +179,7 @@ STAZIONI_MONDO = {
     "PAPUA": {
         "source": "GEOFON",
         "base": "https://geofon.gfz.de/fdsnws",
-        "net": "GE", "sta": "PMG", "loc": "*", "cha": "BHZ"
+        "net": "GE", "sta": "PMG", "loc": "10", "cha": "HHZ"
     },
     "NUOVAZELANDA": {
         "source": "IRIS",
