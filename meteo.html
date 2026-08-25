@@ -699,6 +699,42 @@
       to { transform:rotate(360deg); }
     }
 
+
+    .map-wip-badge {
+      position: absolute;
+      top: 74px;
+      right: 16px;
+      z-index: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(4, 20, 35, 0.88);
+      border: 1px solid rgba(118, 214, 255, 0.32);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+      color: #eaf8ff;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.35px;
+      backdrop-filter: blur(6px);
+      pointer-events: none;
+    }
+
+    .map-wip-spinner {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid rgba(115, 212, 255, 0.25);
+      border-top-color: #74d8ff;
+      animation: mapWipSpin 0.9s linear infinite;
+      flex: 0 0 auto;
+    }
+
+    @keyframes mapWipSpin {
+      to { transform: rotate(360deg); }
+    }
+
     .bottom-bar {
       max-width: 1560px;
       margin: 0 auto 28px;
@@ -773,6 +809,17 @@
       .side { padding:16px; }
       .weather-news-list { max-height:440px; }
       .weather-news-side { padding:12px; }
+      .map-wip-badge {
+        top: 64px;
+        right: 10px;
+        padding: 8px 11px;
+        font-size: 10px;
+        gap: 8px;
+      }
+      .map-wip-spinner {
+        width: 14px;
+        height: 14px;
+      }
       .bottom-bar { margin:0 12px 20px; }
     }
   </style>
@@ -857,6 +904,11 @@
         <span class="dot red"></span>
         <span><strong>Allerta Grave</strong><small>Fenomeni molto intensi</small></span>
       </div>
+    </div>
+
+    <div class="map-wip-badge" aria-label="Works in progress">
+      <span class="map-wip-spinner" aria-hidden="true"></span>
+      <span>WORKS IN PROGRESS</span>
     </div>
 
     <div id="map"></div>
