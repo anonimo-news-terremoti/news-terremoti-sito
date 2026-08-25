@@ -126,7 +126,7 @@
       max-width: 1560px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 300px minmax(0, 1fr) 350px;
+      grid-template-columns: 300px minmax(0, 1fr) 300px;
       gap: 18px;
       padding: 18px 22px 16px;
       align-items: stretch;
@@ -472,6 +472,46 @@
     .orange-text { color:#ffad42; }
     .red-text { color:#ff6666; }
 
+    .map-alert-legend {
+      display:flex;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+      padding:12px 16px;
+      background:linear-gradient(180deg, rgba(5,24,42,.98), rgba(3,17,31,.96));
+      border-bottom:1px solid rgba(104,196,255,.25);
+    }
+
+    .map-alert-title {
+      color:#ffffff;
+      font-weight:950;
+      font-size:14px;
+      margin-right:2px;
+      white-space:nowrap;
+    }
+
+    .map-alert-item {
+      display:flex;
+      align-items:center;
+      gap:9px;
+      color:#e2f4ff;
+      font-size:13px;
+      line-height:1.15;
+      white-space:nowrap;
+    }
+
+    .map-alert-item strong {
+      display:block;
+      font-size:13px;
+    }
+
+    .map-alert-item small {
+      display:block;
+      margin-top:2px;
+      color:#a9cadb;
+      font-size:10px;
+    }
+
     .legend, .radar-info {
       margin-top:14px;
       padding:16px;
@@ -485,8 +525,143 @@
     .dot.orange { background:#ff8c00; color:#ff8c00; }
     .dot.red { background:#ff2525; color:#ff2525; }
     .radar-info { color:#cbe9f8; line-height:1.5; }
+    .webcam-side {
+      padding: 14px;
+      align-self: start;
+      min-width: 0;
+    }
 
-    .bottom-bar {
+    .webcam-side-head {
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:12px;
+      padding-bottom:11px;
+      border-bottom:1px solid rgba(91,196,255,.16);
+    }
+
+    .webcam-side-head h2 {
+      margin:0;
+      font-size:18px;
+      color:#fff;
+      line-height:1.2;
+    }
+
+    .webcam-side-head p {
+      margin:5px 0 0;
+      color:#9fc3d5;
+      font-size:10px;
+      line-height:1.35;
+    }
+
+    .webcam-live-badge {
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 9px;
+      border-radius:999px;
+      border:1px solid rgba(60,255,125,.28);
+      background:rgba(18,100,53,.20);
+      color:#baffcf;
+      font-size:10px;
+      font-weight:950;
+      letter-spacing:.45px;
+      white-space:nowrap;
+    }
+
+    .webcam-live-badge span {
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:#24ee69;
+      box-shadow:0 0 10px #24ee69;
+    }
+
+    .webcam-grid-side {
+      display:grid;
+      grid-template-columns:1fr;
+      gap:9px;
+    }
+
+    .webcam-view-card {
+      overflow:hidden;
+      border-radius:13px;
+      background:linear-gradient(145deg,rgba(10,43,68,.96),rgba(3,20,35,.96));
+      border:1px solid rgba(90,195,255,.20);
+      box-shadow:0 8px 20px rgba(0,0,0,.22);
+    }
+
+    .webcam-view-head {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:8px;
+      padding:9px 10px;
+      border-bottom:1px solid rgba(90,195,255,.16);
+      background:rgba(4,22,38,.94);
+    }
+
+    .webcam-view-head strong {
+      color:#fff;
+      font-size:12px;
+      font-weight:950;
+    }
+
+    .webcam-view-head span {
+      color:#8fb8cc;
+      font-size:9px;
+      white-space:nowrap;
+    }
+
+    .webcam-frame {
+      position:relative;
+      width:100%;
+      aspect-ratio:16/10;
+      background:#000;
+      overflow:hidden;
+    }
+
+
+    .webcam-frame::after {
+      content:"Se il flusso è temporaneamente offline, riprova tra qualche minuto.";
+      position:absolute;
+      left:8px;
+      right:8px;
+      bottom:5px;
+      z-index:0;
+      color:#7fa4b7;
+      font-size:8px;
+      text-align:center;
+      pointer-events:none;
+    }
+
+    .webcam-frame iframe {
+      z-index:1;
+      background:#050b12;
+    }
+
+    .webcam-frame iframe {
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
+    }
+
+    .webcam-frame-page iframe {
+      background:#fff;
+    }
+
+.webcam-source-note {
+      margin-top:9px;
+      color:#779cad;
+      font-size:9px;
+      text-align:right;
+    }
+
+.bottom-bar {
       max-width: 1560px;
       margin: 0 auto 28px;
       padding: 15px 18px;
@@ -519,11 +694,28 @@
       .brand-logo { width:128px; }
       nav { display:none; }
       .main-grid { grid-template-columns:1fr; padding:12px; }
+      .webcam-side { width:100%; }
+      .webcam-grid-side { grid-template-columns:repeat(2,minmax(0,1fr)); }
       .map-panel { min-height:540px; }
       #map { min-height:540px; height:540px; }
       .hero { padding-top:26px; }
     }
     @media (max-width: 560px) {
+      .map-alert-legend {
+        gap:10px 14px;
+        padding:10px 12px;
+      }
+      .map-alert-title {
+        width:100%;
+        font-size:13px;
+      }
+      .map-alert-item {
+        flex:1 1 120px;
+        font-size:12px;
+      }
+      .map-alert-item strong {
+        font-size:12px;
+      }
       .map-search-box {
         margin: 10px;
         padding: 12px;
@@ -541,6 +733,7 @@
       .map-panel { min-height:470px; }
       #map { min-height:470px; height:470px; }
       .side { padding:16px; }
+      .webcam-grid-side { grid-template-columns:1fr; }
       .bottom-bar { margin:0 12px 20px; }
     }
   </style>
@@ -607,6 +800,26 @@
   </aside>
 
   <div class="panel map-panel">
+
+    <div class="map-alert-legend" aria-label="Livelli automatici di allerta">
+      <div class="map-alert-title">Livelli automatici</div>
+
+      <div class="map-alert-item">
+        <span class="dot blue"></span>
+        <span><strong>Allerta Leggera</strong><small>Fenomeni moderati</small></span>
+      </div>
+
+      <div class="map-alert-item">
+        <span class="dot orange"></span>
+        <span><strong>Allerta Media</strong><small>Temporali forti</small></span>
+      </div>
+
+      <div class="map-alert-item">
+        <span class="dot red"></span>
+        <span><strong>Allerta Grave</strong><small>Fenomeni molto intensi</small></span>
+      </div>
+    </div>
+
     <div id="map"></div>
 
     <div class="city-search-box map-search-box">
@@ -629,56 +842,103 @@
     </div>
   </div>
 
-  <div class="panel side">
+  <aside class="panel webcam-side" aria-label="Webcam Meteo Live">
+    <div class="webcam-side-head">
+      <div>
+        <h2>📹 Webcam Meteo Live</h2>
+        <p>Napoli, Roma, Milano, Bologna e Palermo</p>
+      </div>
+      <span class="webcam-live-badge"><span></span> LIVE</span>
+    </div>
 
-    <h2>⚠ Avviso Radar News Terremoti</h2>
+    <div class="webcam-grid webcam-grid-side">
 
-    <div class="legend">
-
-      <strong>Livelli automatici</strong>
-
-      <div class="legend-row">
-        <div class="dot blue"></div>
-        <div>
-          <strong>Allerta Leggera</strong><br>
-          Fenomeni moderati
+      <div class="webcam-view-card">
+        <div class="webcam-view-head">
+          <strong>🌋 Napoli</strong>
+          <span>Napoli live</span>
+        </div>
+        <div class="webcam-frame">
+          <iframe
+            src="https://live.panoramica.it/campania/napoli/?share=1"
+            title="Webcam Napoli"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin">
+          </iframe>
         </div>
       </div>
 
-      <div class="legend-row">
-        <div class="dot orange"></div>
-        <div>
-          <strong>Allerta Media</strong><br>
-          Temporali forti
+      <div class="webcam-view-card">
+        <div class="webcam-view-head">
+          <strong>🏛️ Roma</strong>
+          <span>Piazza Venezia</span>
+        </div>
+        <div class="webcam-frame">
+          <iframe
+            src="https://webcams.windy.com/webcams/public/embed/player?forceFullScreenOnOverlayPlay=false&interactive=true&loop=false&playerType=day&webcamId=1600351836"
+            title="Webcam Roma Piazza Venezia"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin">
+          </iframe>
         </div>
       </div>
 
-      <div class="legend-row">
-        <div class="dot red"></div>
-        <div>
-          <strong>Allerta Grave</strong><br>
-          Fenomeni molto intensi
+      <div class="webcam-view-card">
+        <div class="webcam-view-head">
+          <strong>🏙️ Milano</strong>
+          <span>Skyline</span>
+        </div>
+        <div class="webcam-frame">
+          <iframe
+            src="https://live.panoramica.it/lombardia/milanoskyline/?share=1"
+            title="Webcam Milano Skyline"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="webcam-view-card">
+        <div class="webcam-view-head">
+          <strong>🗼 Bologna</strong>
+          <span>Zona Fiera</span>
+        </div>
+        <div class="webcam-frame webcam-frame-page">
+          <iframe
+            src="https://opencctv.org/cameras/italy/emilia-romagna/bologna/bologna-fair-north-entrance-italy-74471"
+            title="Webcam Bologna"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="webcam-view-card">
+        <div class="webcam-view-head">
+          <strong>⚓ Palermo</strong>
+          <span>Teatro Massimo</span>
+        </div>
+        <div class="webcam-frame">
+          <iframe
+            src="https://webcams.windy.com/webcams/public/embed/player?forceFullScreenOnOverlayPlay=false&interactive=true&loop=false&playerType=day&webcamId=1426189579"
+            title="Webcam Palermo Teatro Massimo"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin">
+          </iframe>
         </div>
       </div>
 
     </div>
 
-    <div class="radar-info">
-
-      <strong>ℹ Informazioni</strong><br><br>
-
-      Il radar si aggiorna automaticamente quando RainViewer pubblica un nuovo fotogramma.
-      <strong>News Terremoti</strong> mostrerà separatamente gli avvisi automatici.
-
-      <br><br>
-
-      Non sostituiscono le allerte ufficiali della
-      Protezione Civile.<br><br>
-      <strong>Dati radar: RainViewer.</strong>
-
+    <div class="webcam-source-note">
+      Webcam incorporate direttamente · sorgenti: Panoramica, Windy e OpenCCTV
     </div>
-
-  </div>
+  </aside>
 
 </div>
 
