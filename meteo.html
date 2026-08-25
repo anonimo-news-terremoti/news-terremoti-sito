@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Radar Meteo Live Italia - News Terremoti</title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  >
+
+  <style>
+    * { box-sizing: border-box; }
+    html { background:#020914; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: #fff;
+      background:
+        linear-gradient(rgba(1,10,22,.60), rgba(1,10,22,.82)),
+        url("sfondo-sismologia.png") center top / cover fixed no-repeat,
+        #020914;
+    }
+
+    body::before {
+      content:"";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(0,191,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,191,255,.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.7), transparent 85%);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      min-height: 68px;
+      padding: 10px 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      background: rgba(2,12,28,.92);
+      border-bottom: 1px solid rgba(66,190,255,.25);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 28px rgba(0,0,0,.28);
+    }
+
+    .logo-link { display:flex; align-items:center; text-decoration:none; min-width:0; }
+    .brand-logo { width: 154px; height: auto; display:block; filter: drop-shadow(0 0 14px rgba(0,160,255,.22)); }
+
+    nav { display:flex; align-items:center; gap: 8px; flex-wrap:wrap; justify-content:flex-end; }
+    nav a {
+      color: #dff4ff;
+      text-decoration: none;
+      padding: 10px 13px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .2px;
+      transition: .2s ease;
+      border: 1px solid transparent;
+    }
+    nav a:hover, nav a.active {
+      color:#fff;
+      background: rgba(20,119,255,.14);
+      border-color: rgba(73,171,255,.34);
+      box-shadow: inset 0 0 22px rgba(20,119,255,.08);
+    }
+
+    .hero {
+      position: relative;
+      max-width: 1520px;
+      margin: 0 auto;
+      padding: 36px 24px 24px;
+      text-align: center;
+    }
+    .hero::after {
+      content:"";
+      display:block;
+      width:120px;
+      height:1px;
+      margin:18px auto 0;
+      background:linear-gradient(90deg,transparent,#8fdcff,transparent);
+    }
+    .hero-logo { width:min(330px,72vw); height:auto; margin:0 auto 12px; display:block; filter: drop-shadow(0 0 22px rgba(0,174,255,.30)); }
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(32px, 4vw, 58px);
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: 1.2px;
+      text-shadow: 0 4px 18px rgba(0,0,0,.55);
+    }
+    .hero p {
+      margin: 11px auto 0;
+      max-width: 760px;
+      color:#c6e9fb;
+      font-size: 17px;
+      line-height:1.5;
+    }
+    .live-pill {
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      margin-top:18px;
+      padding:9px 14px;
+      border-radius:999px;
+      background:rgba(8,25,45,.72);
+      border:1px solid rgba(139,210,255,.23);
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:.5px;
+      box-shadow:0 8px 28px rgba(0,0,0,.22);
+    }
+    .live-dot { width:10px; height:10px; border-radius:50%; background:#20f46b; box-shadow:0 0 14px #20f46b; }
+
+    .main-grid {
+      max-width: 1560px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 350px;
+      gap: 18px;
+      padding: 18px 22px 16px;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(14,31,51,.86), rgba(5,17,31,.88));
+      border: 1px solid rgba(167,206,232,.34);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.05),
+        0 16px 48px rgba(0,0,0,.33),
+        0 0 0 1px rgba(0,98,176,.05);
+      backdrop-filter: blur(10px);
+    }
+
+    #map { width:100%; height:660px; background:#071625; }
+    .leaflet-container { font-family: Inter, Arial, sans-serif; }
+    .leaflet-control-zoom a { background:#07192c !important; color:#fff !important; border-color:#355a78 !important; }
+    .leaflet-control-attribution { background:rgba(2,10,20,.7)!important; color:#c7e8f7!important; }
+    .leaflet-control-attribution a { color:#71c8ff!important; }
+
+    .side { padding:20px; }
+    .side h2 { margin:0 0 16px; font-size:20px; letter-spacing:.3px; }
+
+    .status-box {
+      padding:18px;
+      border-radius:15px;
+      margin-bottom:15px;
+      border:1px solid rgba(74,161,255,.72);
+      background:linear-gradient(135deg, rgba(23,92,173,.22), rgba(7,24,43,.66));
+      box-shadow: inset 0 0 26px rgba(43,139,255,.07);
+    }
+    .status-box.orange { border-color:#ff9b2f; background:linear-gradient(135deg,rgba(255,140,0,.20),rgba(50,26,4,.40)); }
+    .status-box.red { border-color:#ff4b4b; background:linear-gradient(135deg,rgba(255,45,45,.20),rgba(61,10,10,.38)); }
+    .alert-title { font-weight:950; font-size:22px; margin-bottom:8px; }
+    .blue-text { color:#63b3ff; }
+    .orange-text { color:#ffad42; }
+    .red-text { color:#ff6666; }
+
+    .legend, .radar-info {
+      margin-top:14px;
+      padding:16px;
+      border-radius:14px;
+      background:rgba(2,13,25,.72);
+      border:1px solid rgba(120,181,222,.18);
+    }
+    .legend-row { display:flex; align-items:center; gap:11px; margin:12px 0; color:#d9effb; }
+    .dot { width:16px; height:16px; border-radius:50%; flex:0 0 auto; box-shadow:0 0 12px currentColor; }
+    .dot.blue { background:#3388ff; color:#3388ff; }
+    .dot.orange { background:#ff8c00; color:#ff8c00; }
+    .dot.red { background:#ff2525; color:#ff2525; }
+    .radar-info { color:#cbe9f8; line-height:1.5; }
+
+    .bottom-bar {
+      max-width: 1560px;
+      margin: 0 auto 28px;
+      padding: 15px 18px;
+      background: linear-gradient(180deg, rgba(14,31,51,.88), rgba(5,17,31,.90));
+      border: 1px solid rgba(167,206,232,.28);
+      border-radius: 18px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+      box-shadow:0 12px 35px rgba(0,0,0,.28);
+    }
+
+    button {
+      border:0;
+      color:#fff;
+      padding:12px 18px;
+      border-radius:11px;
+      font-weight:900;
+      cursor:pointer;
+      background:linear-gradient(135deg,#6d3af2,#8a45ef);
+      box-shadow:0 8px 22px rgba(106,58,242,.26), inset 0 1px 0 rgba(255,255,255,.18);
+      transition:.2s ease;
+    }
+    button:hover { transform: translateY(-1px); filter:brightness(1.08); }
+    #prevBtn,#nextBtn { min-width:46px; padding-inline:14px; background:linear-gradient(135deg,#0b66c8,#1389df); }
+    .time { font-weight:900; color:#8bd1ff; }
+
+    @media (max-width: 980px) {
+      header { align-items:flex-start; }
+      .brand-logo { width:128px; }
+      nav { display:none; }
+      .main-grid { grid-template-columns:1fr; padding:12px; }
+      #map { height:540px; }
+      .hero { padding-top:26px; }
+    }
+    @media (max-width: 560px) {
+      header { padding:10px 14px; }
+      .hero { padding:24px 14px 18px; }
+      .hero h1 { font-size:34px; }
+      .hero p { font-size:15px; }
+      #map { height:470px; }
+      .side { padding:16px; }
+      .bottom-bar { margin:0 12px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a class="logo-link" href="index.html" aria-label="Torna alla home">
+    <img class="brand-logo" src="logo-animono-news-web.png" alt="Anonimo News Terremoti">
+  </a>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="terremoti_italia.html">Terremoti Italia</a>
+    <a href="terremoti_mondo.html">Terremoti Mondo</a>
+    <a class="active" href="meteo.html">Radar Meteo</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <img class="hero-logo" src="logo-animono-news-web.png" alt="Anonimo News Terremoti">
+  <h1>RADAR METEO LIVE ITALIA</h1>
+  <p>Monitoraggio delle precipitazioni e dei temporali in tempo quasi reale, nello stesso stile del portale News Terremoti.</p>
+  <div class="live-pill"><span class="live-dot"></span> MONITORAGGIO ATTIVO</div>
+</section>
+
+<div class="main-grid">
+
+  <div class="panel">
+    <div id="map"></div>
+  </div>
+
+  <div class="panel side">
+
+    <h2>⚠ Avviso Radar News Terremoti</h2>
+
+    <div id="alertBox" class="status-box">
+      <div id="alertTitle" class="alert-title blue-text">
+        🔵 ALLERTA LEGGERA
+      </div>
+
+      <div id="alertText">
+        Monitoraggio radar attivo.
+      </div>
+    </div>
+
+    <div class="legend">
+
+      <strong>Livelli automatici</strong>
+
+      <div class="legend-row">
+        <div class="dot blue"></div>
+        <div>
+          <strong>Allerta Leggera</strong><br>
+          Fenomeni moderati
+        </div>
+      </div>
+
+      <div class="legend-row">
+        <div class="dot orange"></div>
+        <div>
+          <strong>Allerta Media</strong><br>
+          Temporali forti
+        </div>
+      </div>
+
+      <div class="legend-row">
+        <div class="dot red"></div>
+        <div>
+          <strong>Allerta Grave</strong><br>
+          Fenomeni molto intensi
+        </div>
+      </div>
+
+    </div>
+
+    <div class="radar-info">
+
+      <strong>ℹ Informazioni</strong><br><br>
+
+      Gli avvisi colorati sono generati dal sistema
+      <strong>News Terremoti</strong> analizzando il radar.
+
+      <br><br>
+
+      Non sostituiscono le allerte ufficiali della
+      Protezione Civile.
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="bottom-bar">
+
+  <button id="playBtn">
+    ▶ Avvia radar
+  </button>
+
+  <button id="prevBtn">
+    ◀
+  </button>
+
+  <button id="nextBtn">
+    ▶
+  </button>
+
+  <div>
+    Radar:
+    <span id="frameTime" class="time">
+      caricamento...
+    </span>
+  </div>
+
+</div>
+
+
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+
+<script>
+
+const map = L.map("map", {
+  center: [42.1, 12.5],
+  zoom: 6,
+  minZoom: 4,
+  maxZoom: 12
+});
+
+
+L.tileLayer(
+  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+  {
+    attribution: "© OpenStreetMap"
+  }
+).addTo(map);
+
+
+let radarFrames = [];
+let radarLayer = null;
+let currentFrame = 0;
+
+let playing = false;
+let timer = null;
+
+
+/* ================================
+   CARICAMENTO RADAR RAINVIEWER
+================================ */
+
+async function loadRadar() {
+
+  try {
+
+    const response = await fetch(
+      "https://api.rainviewer.com/public/weather-maps.json"
+    );
+
+    const data = await response.json();
+
+    radarFrames = data.radar.past;
+
+    if (!radarFrames.length) {
+      throw new Error("Nessun dato radar disponibile");
+    }
+
+    currentFrame = radarFrames.length - 1;
+
+    showFrame(currentFrame);
+
+  } catch (error) {
+
+    console.error(error);
+
+    document.getElementById("frameTime").textContent =
+      "Radar momentaneamente non disponibile";
+
+  }
+
+}
+
+
+/* ================================
+   MOSTRA FOTOGRAMMA RADAR
+================================ */
+
+function showFrame(index) {
+
+  if (!radarFrames.length) return;
+
+  if (radarLayer) {
+    map.removeLayer(radarLayer);
+  }
+
+  const frame = radarFrames[index];
+
+  radarLayer = L.tileLayer(
+
+    "https://tilecache.rainviewer.com" +
+    frame.path +
+    "/256/{z}/{x}/{y}/2/1_1.png",
+
+    {
+      opacity: 0.72,
+      zIndex: 10
+    }
+
+  ).addTo(map);
+
+
+  const date = new Date(frame.time * 1000);
+
+  document.getElementById("frameTime").textContent =
+    date.toLocaleString("it-IT");
+
+
+  analyzeRadar(index);
+
+}
+
+
+/* ================================
+   SISTEMA ALLERTA
+================================ */
+
+function analyzeRadar(index) {
+
+  /*
+    VERSIONE 1
+
+    Per ora simuliamo il livello
+    in base all'ultimo fotogramma.
+
+    Nel prossimo passaggio collegheremo
+    l'analisi vera della precipitazione
+    su Campania / Italia.
+  */
+
+
+  const minutesOld =
+    (Date.now() / 1000 - radarFrames[index].time) / 60;
+
+
+  if (minutesOld < 15) {
+
+    setAlert(
+      "blue",
+      "🔵 ALLERTA LEGGERA",
+      "Radar aggiornato. Monitoraggio dei temporali attivo."
+    );
+
+  } else {
+
+    setAlert(
+      "blue",
+      "🔵 MONITORAGGIO",
+      "Analisi radar in corso."
+    );
+
+  }
+
+}
+
+
+/* ================================
+   CAMBIA LIVELLO ALLERTA
+================================ */
+
+function setAlert(level, title, message) {
+
+  const box =
+    document.getElementById("alertBox");
+
+  const titleEl =
+    document.getElementById("alertTitle");
+
+  const text =
+    document.getElementById("alertText");
+
+
+  box.className = "status-box";
+  titleEl.className = "alert-title";
+
+
+  if (level === "blue") {
+
+    titleEl.classList.add("blue-text");
+
+  }
+
+
+  if (level === "orange") {
+
+    box.classList.add("orange");
+    titleEl.classList.add("orange-text");
+
+  }
+
+
+  if (level === "red") {
+
+    box.classList.add("red");
+    titleEl.classList.add("red-text");
+
+  }
+
+
+  titleEl.textContent = title;
+  text.textContent = message;
+
+}
+
+
+/* ================================
+   RADAR PLAY
+================================ */
+
+document
+.getElementById("playBtn")
+.addEventListener("click", function () {
+
+  playing = !playing;
+
+
+  if (playing) {
+
+    this.textContent = "⏸ Pausa radar";
+
+    timer = setInterval(() => {
+
+      currentFrame++;
+
+      if (currentFrame >= radarFrames.length) {
+        currentFrame = 0;
+      }
+
+      showFrame(currentFrame);
+
+    }, 900);
+
+
+  } else {
+
+    this.textContent = "▶ Avvia radar";
+
+    clearInterval(timer);
+
+  }
+
+});
+
+
+/* ================================
+   FRAME PRECEDENTE
+================================ */
+
+document
+.getElementById("prevBtn")
+.addEventListener("click", function () {
+
+  if (!radarFrames.length) return;
+
+  currentFrame--;
+
+  if (currentFrame < 0) {
+    currentFrame = radarFrames.length - 1;
+  }
+
+  showFrame(currentFrame);
+
+});
+
+
+/* ================================
+   FRAME SUCCESSIVO
+================================ */
+
+document
+.getElementById("nextBtn")
+.addEventListener("click", function () {
+
+  if (!radarFrames.length) return;
+
+  currentFrame++;
+
+  if (currentFrame >= radarFrames.length) {
+    currentFrame = 0;
+  }
+
+  showFrame(currentFrame);
+
+});
+
+
+loadRadar();
+
+</script>
+
+</body>
+</html>

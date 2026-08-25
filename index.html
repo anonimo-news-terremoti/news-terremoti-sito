@@ -4143,6 +4143,16 @@ body > *:not(#lavaVulcanoCanvas) {
        🌍 AGGIORNAMENTI TERREMOTI MONDO
     </a>
 
+    <a href="meteo.html" class="btn"
+       style="
+       padding:16px 25px;
+       border-radius:30px;
+       font-weight:bold;
+       text-decoration:none;
+       ">
+       🌦️ RADAR METEO ITALIA
+    </a>
+
   </div>
 
   <h2 style="
@@ -6594,7 +6604,8 @@ avviaSismografo("sismoItalia", 0.8);
 
 /* Primo gruppo: Italia / Mondo */
 #home-menu-principale a[href="terremoti_italia.html"],
-#home-menu-principale a[href="terremoti_mondo.html"] {
+#home-menu-principale a[href="terremoti_mondo.html"],
+#home-menu-principale a[href="meteo.html"] {
     min-width: 310px !important;
     min-height: 72px !important;
     font-size: 17px !important;
@@ -6616,6 +6627,17 @@ avviaSismografo("sismoItalia", 0.8);
         linear-gradient(
             135deg,
             rgba(30,170,220,.34),
+            rgba(255,255,255,.10)
+        ) !important;
+}
+
+/* Meteo */
+#home-menu-principale a[href="meteo.html"] {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(72,160,255,.36),
+            rgba(0,188,212,.18),
             rgba(255,255,255,.10)
         ) !important;
 }
