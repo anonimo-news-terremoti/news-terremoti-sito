@@ -126,7 +126,7 @@
       max-width: 1560px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 300px minmax(0, 1fr) 300px;
+      grid-template-columns: 300px minmax(0, 1fr) 340px;
       gap: 18px;
       padding: 18px 22px 16px;
       align-items: stretch;
@@ -525,143 +525,181 @@
     .dot.orange { background:#ff8c00; color:#ff8c00; }
     .dot.red { background:#ff2525; color:#ff2525; }
     .radar-info { color:#cbe9f8; line-height:1.5; }
-    .webcam-side {
+
+    .weather-news-side {
       padding: 14px;
       align-self: start;
       min-width: 0;
+      max-height: 820px;
+      overflow: hidden;
     }
 
-    .webcam-side-head {
+    .weather-news-head {
       display:flex;
       align-items:flex-start;
       justify-content:space-between;
       gap:10px;
-      margin-bottom:12px;
-      padding-bottom:11px;
-      border-bottom:1px solid rgba(91,196,255,.16);
+      padding:3px 2px 12px;
+      border-bottom:1px solid rgba(91,196,255,.18);
     }
 
-    .webcam-side-head h2 {
+    .weather-news-head h2 {
       margin:0;
-      font-size:18px;
       color:#fff;
+      font-size:19px;
       line-height:1.2;
     }
 
-    .webcam-side-head p {
+    .weather-news-head p {
       margin:5px 0 0;
-      color:#9fc3d5;
-      font-size:10px;
-      line-height:1.35;
+      color:#91b9cc;
+      font-size:10.5px;
     }
 
-    .webcam-live-badge {
+    .weather-news-live {
       display:inline-flex;
       align-items:center;
       gap:6px;
       padding:6px 9px;
       border-radius:999px;
-      border:1px solid rgba(60,255,125,.28);
-      background:rgba(18,100,53,.20);
-      color:#baffcf;
+      border:1px solid rgba(49,255,118,.26);
+      background:rgba(19,110,55,.18);
+      color:#baffce;
       font-size:10px;
       font-weight:950;
       letter-spacing:.45px;
       white-space:nowrap;
     }
 
-    .webcam-live-badge span {
+    .weather-news-live span {
       width:8px;
       height:8px;
       border-radius:50%;
-      background:#24ee69;
-      box-shadow:0 0 10px #24ee69;
+      background:#25ef69;
+      box-shadow:0 0 11px #25ef69;
+      animation:newsLivePulse 1.4s ease-in-out infinite alternate;
     }
 
-    .webcam-grid-side {
+    @keyframes newsLivePulse {
+      from { opacity:.55; transform:scale(.88); }
+      to { opacity:1; transform:scale(1.08); }
+    }
+
+    .weather-news-status {
+      margin:10px 0 8px;
+      color:#7fa9bd;
+      font-size:9.5px;
+      line-height:1.35;
+    }
+
+    .weather-news-list {
       display:grid;
-      grid-template-columns:1fr;
-      gap:9px;
+      gap:8px;
+      max-height:670px;
+      overflow:auto;
+      padding-right:3px;
+      scrollbar-width:thin;
+      scrollbar-color:#20577a transparent;
     }
 
-    .webcam-view-card {
-      overflow:hidden;
-      border-radius:13px;
-      background:linear-gradient(145deg,rgba(10,43,68,.96),rgba(3,20,35,.96));
-      border:1px solid rgba(90,195,255,.20);
-      box-shadow:0 8px 20px rgba(0,0,0,.22);
+    .weather-news-item {
+      display:block;
+      padding:11px 11px 10px;
+      border-radius:12px;
+      text-decoration:none;
+      background:linear-gradient(145deg,rgba(10,43,68,.91),rgba(3,20,35,.94));
+      border:1px solid rgba(89,192,247,.17);
+      box-shadow:0 7px 19px rgba(0,0,0,.18);
+      transition:transform .16s ease,border-color .16s ease,background .16s ease;
     }
 
-    .webcam-view-head {
+    .weather-news-item:hover {
+      transform:translateY(-1px);
+      border-color:rgba(87,211,255,.48);
+      background:linear-gradient(145deg,rgba(13,54,83,.97),rgba(4,25,43,.97));
+    }
+
+    .weather-news-title {
+      color:#f5fbff;
+      font-size:12.5px;
+      font-weight:850;
+      line-height:1.38;
+    }
+
+    .weather-news-meta {
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:8px;
-      padding:9px 10px;
-      border-bottom:1px solid rgba(90,195,255,.16);
-      background:rgba(4,22,38,.94);
-    }
-
-    .webcam-view-head strong {
-      color:#fff;
-      font-size:12px;
-      font-weight:950;
-    }
-
-    .webcam-view-head span {
-      color:#8fb8cc;
+      margin-top:8px;
+      color:#7fa7bb;
       font-size:9px;
+    }
+
+    .weather-news-source {
+      color:#63d3ff;
+      font-weight:800;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      max-width:66%;
+    }
+
+    .weather-news-time {
       white-space:nowrap;
     }
 
-    .webcam-frame {
-      position:relative;
-      width:100%;
-      aspect-ratio:16/10;
-      background:#000;
-      overflow:hidden;
-    }
-
-
-    .webcam-frame::after {
-      content:"Se il flusso è temporaneamente offline, riprova tra qualche minuto.";
-      position:absolute;
-      left:8px;
-      right:8px;
-      bottom:5px;
-      z-index:0;
-      color:#7fa4b7;
-      font-size:8px;
+    .weather-news-loading,
+    .weather-news-error {
+      padding:20px 10px;
+      color:#8eb4c7;
+      font-size:12px;
+      line-height:1.5;
       text-align:center;
-      pointer-events:none;
+      border-radius:12px;
+      background:rgba(4,22,38,.55);
+      border:1px dashed rgba(95,190,240,.18);
     }
 
-    .webcam-frame iframe {
-      z-index:1;
-      background:#050b12;
+    .weather-news-error {
+      color:#ffb2b2;
     }
 
-    .webcam-frame iframe {
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      border:0;
-      display:block;
-    }
-
-    .webcam-frame-page iframe {
-      background:#fff;
-    }
-
-.webcam-source-note {
-      margin-top:9px;
-      color:#779cad;
+    .weather-news-footer {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:8px;
+      margin-top:10px;
+      padding-top:9px;
+      border-top:1px solid rgba(91,196,255,.12);
+      color:#769aad;
       font-size:9px;
-      text-align:right;
     }
 
-.bottom-bar {
+    #weatherNewsRefresh {
+      width:31px;
+      height:31px;
+      min-width:31px;
+      padding:0;
+      border-radius:9px;
+      border:1px solid rgba(94,200,255,.24);
+      background:rgba(7,41,65,.88);
+      color:#86dcff;
+      font-size:17px;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    #weatherNewsRefresh.loading {
+      animation:newsSpin .8s linear infinite;
+    }
+
+    @keyframes newsSpin {
+      to { transform:rotate(360deg); }
+    }
+
+    .bottom-bar {
       max-width: 1560px;
       margin: 0 auto 28px;
       padding: 15px 18px;
@@ -694,8 +732,8 @@
       .brand-logo { width:128px; }
       nav { display:none; }
       .main-grid { grid-template-columns:1fr; padding:12px; }
-      .webcam-side { width:100%; }
-      .webcam-grid-side { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .weather-news-side { width:100%; max-height:none; }
+      .weather-news-list { max-height:520px; }
       .map-panel { min-height:540px; }
       #map { min-height:540px; height:540px; }
       .hero { padding-top:26px; }
@@ -733,7 +771,8 @@
       .map-panel { min-height:470px; }
       #map { min-height:470px; height:470px; }
       .side { padding:16px; }
-      .webcam-grid-side { grid-template-columns:1fr; }
+      .weather-news-list { max-height:440px; }
+      .weather-news-side { padding:12px; }
       .bottom-bar { margin:0 12px 20px; }
     }
   </style>
@@ -842,105 +881,31 @@
     </div>
   </div>
 
-  <aside class="panel webcam-side" aria-label="Webcam Meteo Live">
-    <div class="webcam-side-head">
+  <aside class="panel weather-news-side" aria-label="Ultime notizie meteo">
+    <div class="weather-news-head">
       <div>
-        <h2>📹 Webcam Meteo Live</h2>
-        <p>Napoli, Roma, Milano, Bologna e Palermo</p>
+        <h2>📰 Notizie Meteo Live</h2>
+        <p>Ultime notizie meteo dall'Italia</p>
       </div>
-      <span class="webcam-live-badge"><span></span> LIVE</span>
+      <span class="weather-news-live"><span></span> LIVE</span>
     </div>
 
-    <div class="webcam-grid webcam-grid-side">
-
-      <div class="webcam-view-card">
-        <div class="webcam-view-head">
-          <strong>🌋 Napoli</strong>
-          <span>Napoli live</span>
-        </div>
-        <div class="webcam-frame">
-          <iframe
-            src="https://live.panoramica.it/campania/napoli/?share=1"
-            title="Webcam Napoli"
-            loading="lazy"
-            allowfullscreen
-            referrerpolicy="strict-origin-when-cross-origin">
-          </iframe>
-        </div>
-      </div>
-
-      <div class="webcam-view-card">
-        <div class="webcam-view-head">
-          <strong>🏛️ Roma</strong>
-          <span>Piazza Venezia</span>
-        </div>
-        <div class="webcam-frame">
-          <iframe
-            src="https://webcams.windy.com/webcams/public/embed/player?forceFullScreenOnOverlayPlay=false&interactive=true&loop=false&playerType=day&webcamId=1600351836"
-            title="Webcam Roma Piazza Venezia"
-            loading="lazy"
-            allowfullscreen
-            referrerpolicy="strict-origin-when-cross-origin">
-          </iframe>
-        </div>
-      </div>
-
-      <div class="webcam-view-card">
-        <div class="webcam-view-head">
-          <strong>🏙️ Milano</strong>
-          <span>Skyline</span>
-        </div>
-        <div class="webcam-frame">
-          <iframe
-            src="https://live.panoramica.it/lombardia/milanoskyline/?share=1"
-            title="Webcam Milano Skyline"
-            loading="lazy"
-            allowfullscreen
-            referrerpolicy="strict-origin-when-cross-origin">
-          </iframe>
-        </div>
-      </div>
-
-      <div class="webcam-view-card">
-        <div class="webcam-view-head">
-          <strong>🗼 Bologna</strong>
-          <span>Zona Fiera</span>
-        </div>
-        <div class="webcam-frame webcam-frame-page">
-          <iframe
-            src="https://opencctv.org/cameras/italy/emilia-romagna/bologna/bologna-fair-north-entrance-italy-74471"
-            title="Webcam Bologna"
-            loading="lazy"
-            allowfullscreen
-            referrerpolicy="strict-origin-when-cross-origin">
-          </iframe>
-        </div>
-      </div>
-
-      <div class="webcam-view-card">
-        <div class="webcam-view-head">
-          <strong>⚓ Palermo</strong>
-          <span>Teatro Massimo</span>
-        </div>
-        <div class="webcam-frame">
-          <iframe
-            src="https://webcams.windy.com/webcams/public/embed/player?forceFullScreenOnOverlayPlay=false&interactive=true&loop=false&playerType=day&webcamId=1426189579"
-            title="Webcam Palermo Teatro Massimo"
-            loading="lazy"
-            allowfullscreen
-            referrerpolicy="strict-origin-when-cross-origin">
-          </iframe>
-        </div>
-      </div>
-
+    <div id="weatherNewsStatus" class="weather-news-status">
+      Caricamento ultime notizie...
     </div>
 
-    <div class="webcam-source-note">
-      Webcam incorporate direttamente · sorgenti: Panoramica, Windy e OpenCCTV
+    <div id="weatherNewsList" class="weather-news-list" aria-live="polite">
+      <div class="weather-news-loading">Connessione alle fonti meteo...</div>
+    </div>
+
+    <div class="weather-news-footer">
+      <span id="weatherNewsUpdated">Aggiornamento in corso...</span>
+      <button id="weatherNewsRefresh" type="button" title="Aggiorna notizie">↻</button>
     </div>
   </aside>
 
 </div>
+
 
 <div class="bottom-bar">
 
@@ -1660,6 +1625,203 @@ if (weatherToggle && weatherDropdownContent) {
   });
 }
 
+
+/* ================================
+   NOTIZIE METEO LIVE
+================================ */
+
+const WEATHER_NEWS_REFRESH_MS = 300000; // ogni 5 minuti
+const WEATHER_NEWS_FEED =
+  "https://news.google.com/rss/search?q=%28meteo%20OR%20maltempo%20OR%20temporali%20OR%20%22allerta%20meteo%22%29%20Italia&hl=it&gl=IT&ceid=IT%3Ait";
+
+let weatherNewsTimer = null;
+let weatherNewsLoading = false;
+
+function cleanNewsTitle(title) {
+  return String(title || "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function splitNewsTitle(title) {
+  const cleaned = cleanNewsTitle(title);
+  const parts = cleaned.split(" - ");
+  if (parts.length > 1) {
+    const source = parts.pop().trim();
+    return {
+      title: parts.join(" - ").trim(),
+      source
+    };
+  }
+  return { title: cleaned, source: "Google News" };
+}
+
+function formatNewsTime(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "ora";
+
+  const now = Date.now();
+  const diffMinutes = Math.max(0, Math.round((now - date.getTime()) / 60000));
+
+  if (diffMinutes < 2) return "adesso";
+  if (diffMinutes < 60) return `${diffMinutes} min fa`;
+
+  const hours = Math.round(diffMinutes / 60);
+  if (hours < 24) return `${hours} h fa`;
+
+  return date.toLocaleDateString("it-IT", {
+    day: "2-digit",
+    month: "2-digit"
+  });
+}
+
+function renderWeatherNews(items) {
+  const list = document.getElementById("weatherNewsList");
+  if (!list) return;
+
+  list.replaceChildren();
+
+  items.slice(0, 6).forEach(item => {
+    const parsed = splitNewsTitle(item.title);
+    const link = document.createElement("a");
+    link.className = "weather-news-item";
+    link.href = item.link || "#";
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+
+    const title = document.createElement("div");
+    title.className = "weather-news-title";
+    title.textContent = parsed.title || "Aggiornamento meteo";
+
+    const meta = document.createElement("div");
+    meta.className = "weather-news-meta";
+
+    const source = document.createElement("span");
+    source.className = "weather-news-source";
+    source.textContent = item.source || parsed.source || "Google News";
+
+    const time = document.createElement("span");
+    time.className = "weather-news-time";
+    time.textContent = formatNewsTime(item.pubDate);
+
+    meta.append(source, time);
+    link.append(title, meta);
+    list.appendChild(link);
+  });
+
+  if (!list.children.length) {
+    const empty = document.createElement("div");
+    empty.className = "weather-news-error";
+    empty.textContent = "Nessuna notizia meteo disponibile in questo momento.";
+    list.appendChild(empty);
+  }
+}
+
+async function fetchWeatherNewsRss2Json() {
+  const endpoint =
+    "https://api.rss2json.com/v1/api.json?rss_url=" +
+    encodeURIComponent(WEATHER_NEWS_FEED);
+
+  const response = await fetch(endpoint, { cache: "no-store" });
+  if (!response.ok) {
+    throw new Error("RSS2JSON HTTP " + response.status);
+  }
+
+  const data = await response.json();
+  if (data.status !== "ok" || !Array.isArray(data.items)) {
+    throw new Error(data.message || "Risposta RSS non valida");
+  }
+
+  return data.items.map(item => ({
+    title: item.title,
+    link: item.link,
+    pubDate: item.pubDate,
+    source: item.author || ""
+  }));
+}
+
+async function fetchWeatherNewsFallback() {
+  const proxy =
+    "https://api.allorigins.win/raw?url=" +
+    encodeURIComponent(WEATHER_NEWS_FEED);
+
+  const response = await fetch(proxy, { cache: "no-store" });
+  if (!response.ok) {
+    throw new Error("Proxy RSS HTTP " + response.status);
+  }
+
+  const xmlText = await response.text();
+  const xml = new DOMParser().parseFromString(xmlText, "text/xml");
+
+  if (xml.querySelector("parsererror")) {
+    throw new Error("Feed RSS non leggibile");
+  }
+
+  return [...xml.querySelectorAll("item")].map(item => ({
+    title: item.querySelector("title")?.textContent || "",
+    link: item.querySelector("link")?.textContent || "",
+    pubDate: item.querySelector("pubDate")?.textContent || "",
+    source: item.querySelector("source")?.textContent || ""
+  }));
+}
+
+async function updateWeatherNews() {
+  if (weatherNewsLoading) return;
+
+  weatherNewsLoading = true;
+
+  const status = document.getElementById("weatherNewsStatus");
+  const updated = document.getElementById("weatherNewsUpdated");
+  const refreshBtn = document.getElementById("weatherNewsRefresh");
+
+  if (status) status.textContent = "Ricerca ultime notizie meteo...";
+  if (refreshBtn) refreshBtn.classList.add("loading");
+
+  try {
+    let items;
+
+    try {
+      items = await fetchWeatherNewsRss2Json();
+    } catch (primaryError) {
+      console.warn("Fonte RSS primaria non disponibile:", primaryError);
+      items = await fetchWeatherNewsFallback();
+    }
+
+    renderWeatherNews(items);
+
+    const now = new Date();
+    if (status) {
+      status.textContent =
+        "Notizie da Google News · aggiornamento automatico ogni 5 minuti";
+    }
+    if (updated) {
+      updated.textContent =
+        "Aggiornato alle " +
+        now.toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit" });
+    }
+
+  } catch (error) {
+    console.error("Errore notizie meteo:", error);
+
+    const list = document.getElementById("weatherNewsList");
+    if (list) {
+      list.innerHTML =
+        '<div class="weather-news-error">Notizie momentaneamente non disponibili.<br>Riprovo automaticamente tra pochi minuti.</div>';
+    }
+
+    if (status) status.textContent = "Collegamento alle fonti temporaneamente non disponibile";
+    if (updated) updated.textContent = "Nuovo tentativo automatico tra 5 minuti";
+  } finally {
+    weatherNewsLoading = false;
+    if (refreshBtn) refreshBtn.classList.remove("loading");
+  }
+}
+
+const weatherNewsRefresh = document.getElementById("weatherNewsRefresh");
+if (weatherNewsRefresh) {
+  weatherNewsRefresh.addEventListener("click", updateWeatherNews);
+}
+
 /* ================================
    AVVIO
 ================================ */
@@ -1668,7 +1830,8 @@ if (weatherToggle && weatherDropdownContent) {
 
   await Promise.all([
     loadRadar(true),
-    updateCurrentWeather()
+    updateCurrentWeather(),
+    updateWeatherNews()
   ]);
 
   // Avvia automaticamente l'animazione storica recente.
@@ -1683,6 +1846,10 @@ if (weatherToggle && weatherDropdownContent) {
   weatherRefreshTimer = setInterval(() => {
     updateCurrentWeather();
   }, WEATHER_REFRESH_MS);
+
+  weatherNewsTimer = setInterval(() => {
+    updateWeatherNews();
+  }, WEATHER_NEWS_REFRESH_MS);
 
 })();
 
