@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Recensioni Anonimo News</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(0,130,180,.16), transparent 35%),
+        linear-gradient(180deg, #020912, #04131f);
+      color: #eaf8ff;
+      min-height: 100vh;
+    }
+
+    .wrap {
+      width: min(1050px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 35px 0 55px;
+    }
+
+    .top {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .top h1 {
+      margin: 0 0 10px;
+      font-size: clamp(30px, 6vw, 48px);
+      color: white;
+      text-shadow: 0 0 18px rgba(70,210,255,.35);
+    }
+
+    .top p {
+      margin: 0;
+      color: #b8d4e0;
+    }
+
+    .summary {
+      text-align: center;
+      margin: 24px auto 30px;
+      padding: 20px;
+      max-width: 500px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(7,28,43,.94),
+          rgba(3,16,27,.94)
+        );
+
+      border:
+        1px solid rgba(80,210,255,.20);
+
+      border-radius: 18px;
+
+      box-shadow:
+        0 12px 30px rgba(0,0,0,.28);
+    }
+
+    .media {
+      font-size: 32px;
+      font-weight: 900;
+      color: #ffd54a;
+    }
+
+    .totale {
+      margin-top: 5px;
+      color: #bdd6e2;
+      font-size: 14px;
+    }
+
+    .reviews {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .review {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(7,28,43,.94),
+          rgba(3,16,27,.94)
+        );
+
+      border:
+        1px solid rgba(80,210,255,.20);
+
+      border-radius: 16px;
+
+      padding: 18px;
+
+      box-shadow:
+        0 8px 24px rgba(0,0,0,.28);
+    }
+
+    .review-stars {
+      color: #ffd54a;
+      font-size: 20px;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .review-name {
+      font-size: 17px;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 8px;
+    }
+
+    .review-text {
+      color: #cce2ed;
+      font-size: 14px;
+      line-height: 1.55;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .review-date {
+      color: #7fa0b3;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 35px;
+      color: #8da9b7;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      text-decoration: none;
+
+      padding: 13px 20px;
+
+      border-radius: 12px;
+
+      font-weight: 800;
+
+      color: white;
+
+      border:
+        1px solid rgba(255,255,255,.16);
+
+      cursor: pointer;
+    }
+
+    .btn-feedback {
+      background:
+        linear-gradient(
+          135deg,
+          #7b4cff,
+          #4f2cb8
+        );
+    }
+
+    .btn-home {
+      background:
+        linear-gradient(
+          135deg,
+          #0e7db2,
+          #07527d
+        );
+    }
+
+    @media (max-width: 600px) {
+      .wrap {
+        width: min(100% - 18px, 1050px);
+      }
+
+      .actions .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+  <div class="top">
+    <h1>⭐ Recensioni Anonimo News</h1>
+    <p>
+      Le recensioni pubblicate sono state approvate
+      dall'amministratore.
+    </p>
+  </div>
+
+
+  <div id="summary" class="summary" style="display:none;">
+    <div id="media" class="media"></div>
+    <div id="totale" class="totale"></div>
+  </div>
+
+
+  <div id="reviews" class="reviews">
+    <div class="empty">
+      Caricamento recensioni...
+    </div>
+  </div>
+
+
+  <div class="actions">
+
+    <a
+      class="btn btn-feedback"
+      href="index.html#feedback-top-wrap"
+    >
+      ⭐ Lascia un feedback
+    </a>
+
+    <a
+      class="btn btn-home"
+      href="index.html"
+    >
+      🏠 Torna alla Home
+    </a>
+
+  </div>
+
+</div>
+
+
+<script type="module">
+
+  import {
+    initializeApp
+  } from
+  "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+
+  import {
+    getFirestore,
+    collection,
+    query,
+    where,
+    onSnapshot
+  } from
+  "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+  const firebaseConfig = {
+
+    apiKey:
+      "AIzaSyCrW23TMFTFRWWOdogA5bDhWBdbN5V4hyo",
+
+    authDomain:
+      "news-terremoti.firebaseapp.com",
+
+    projectId:
+      "news-terremoti",
+
+    storageBucket:
+      "news-terremoti.firebasestorage.app",
+
+    messagingSenderId:
+      "944750257608",
+
+    appId:
+      "1:944750257608:web:f0add770fcf35724810cfd",
+
+    measurementId:
+      "G-WC79E3M0FW"
+
+  };
+
+
+  const app =
+    initializeApp(firebaseConfig);
+
+
+  const db =
+    getFirestore(app);
+
+
+  const reviewsBox =
+    document.getElementById("reviews");
+
+  const summary =
+    document.getElementById("summary");
+
+  const mediaEl =
+    document.getElementById("media");
+
+  const totaleEl =
+    document.getElementById("totale");
+
+
+  const q = query(
+
+    collection(
+      db,
+      "recensioni"
+    ),
+
+    where(
+      "approved",
+      "==",
+      true
+    )
+
+  );
+
+
+  onSnapshot(
+
+    q,
+
+    snapshot => {
+
+      const recensioni = [];
+
+
+      snapshot.forEach(
+        docSnap => {
+
+          recensioni.push({
+            id: docSnap.id,
+            ...docSnap.data()
+          });
+
+        }
+      );
+
+
+      recensioni.sort(
+        (a, b) => {
+
+          const ta =
+            a.data &&
+            typeof a.data.toMillis === "function"
+              ? a.data.toMillis()
+              : 0;
+
+          const tb =
+            b.data &&
+            typeof b.data.toMillis === "function"
+              ? b.data.toMillis()
+              : 0;
+
+          return tb - ta;
+
+        }
+      );
+
+
+      reviewsBox.innerHTML = "";
+
+
+      if (!recensioni.length) {
+
+        summary.style.display =
+          "none";
+
+        reviewsBox.innerHTML = `
+          <div class="empty">
+            Non ci sono ancora recensioni pubblicate.
+          </div>
+        `;
+
+        return;
+
+      }
+
+
+      const somma =
+        recensioni.reduce(
+          (tot, r) =>
+            tot +
+            Number(r.stelle || 0),
+          0
+        );
+
+
+      const media =
+        somma /
+        recensioni.length;
+
+
+      summary.style.display =
+        "block";
+
+
+      mediaEl.textContent =
+        "⭐ " +
+        media.toFixed(1) +
+        " / 5";
+
+
+      totaleEl.textContent =
+        recensioni.length +
+        (
+          recensioni.length === 1
+            ? " recensione"
+            : " recensioni"
+        );
+
+
+      recensioni.forEach(
+        r => {
+
+          const card =
+            document.createElement(
+              "div"
+            );
+
+          card.className =
+            "review";
+
+
+          const stars =
+            document.createElement(
+              "div"
+            );
+
+          stars.className =
+            "review-stars";
+
+          stars.textContent =
+            "⭐".repeat(
+              Math.max(
+                1,
+                Math.min(
+                  5,
+                  Number(r.stelle || 1)
+                )
+              )
+            );
+
+
+          const nome =
+            document.createElement(
+              "div"
+            );
+
+          nome.className =
+            "review-name";
+
+          nome.textContent =
+            r.nome ||
+            "Utente";
+
+
+          const testo =
+            document.createElement(
+              "div"
+            );
+
+          testo.className =
+            "review-text";
+
+          testo.textContent =
+            r.commento ||
+            "";
+
+
+          const data =
+            document.createElement(
+              "div"
+            );
+
+          data.className =
+            "review-date";
+
+
+          if (
+            r.data &&
+            typeof r.data.toDate ===
+              "function"
+          ) {
+
+            data.textContent =
+              r.data
+                .toDate()
+                .toLocaleString(
+                  "it-IT"
+                );
+
+          }
+
+
+          card.appendChild(
+            stars
+          );
+
+          card.appendChild(
+            nome
+          );
+
+          card.appendChild(
+            testo
+          );
+
+          card.appendChild(
+            data
+          );
+
+
+          reviewsBox.appendChild(
+            card
+          );
+
+        }
+      );
+
+    },
+
+    errore => {
+
+      console.error(
+        "Errore caricamento recensioni:",
+        errore
+      );
+
+      reviewsBox.innerHTML = `
+        <div class="empty">
+          Errore nel caricamento delle recensioni.
+        </div>
+      `;
+
+    }
+
+  );
+
+</script>
+
+</body>
+</html>

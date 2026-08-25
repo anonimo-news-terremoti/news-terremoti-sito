@@ -3759,6 +3759,104 @@ body > *:not(#lavaVulcanoCanvas) {
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<style id="feedback-popup-css">
+#feedback-open-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:14px 24px;
+  border-radius:14px;
+  border:1px solid rgba(173,120,255,.45);
+  background:linear-gradient(135deg,#7b4cff,#4f2cb8);
+  color:#fff;
+  font-size:17px;
+  font-weight:800;
+  text-decoration:none;
+  cursor:pointer;
+  box-shadow:0 0 18px rgba(123,76,255,.35),0 8px 20px rgba(0,0,0,.30);
+}
+#feedback-modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(0,0,0,.72);
+  z-index:99999;
+}
+#feedback-modal.visibile{display:flex;}
+#feedback-box{
+  width:min(520px,100%);
+  background:linear-gradient(180deg,#071522,#04101a);
+  color:#eefaff;
+  border:1px solid rgba(90,210,255,.24);
+  border-radius:18px;
+  padding:22px;
+  box-shadow:0 20px 60px rgba(0,0,0,.55);
+}
+#feedback-box h3{margin:0 0 6px;font-size:24px;}
+#feedback-box p{margin:0 0 18px;color:#aac5d3;}
+.feedback-field{margin-bottom:14px;text-align:left;}
+.feedback-field label{display:block;margin-bottom:6px;font-weight:700;}
+.feedback-field input,
+.feedback-field textarea{
+  width:100%;
+  padding:12px 13px;
+  border-radius:10px;
+  border:1px solid #1e4f69;
+  background:#06131d;
+  color:#fff;
+  font-size:16px;
+  outline:none;
+}
+.feedback-field textarea{min-height:120px;resize:vertical;}
+#feedback-stars{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.feedback-star{
+  appearance:none;
+  border:0;
+  background:transparent;
+  font-size:34px;
+  line-height:1;
+  cursor:pointer;
+  filter:grayscale(1);
+  opacity:.45;
+  padding:0;
+}
+.feedback-star.attiva{filter:none;opacity:1;}
+.feedback-actions{
+  display:flex;
+  gap:10px;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+  margin-top:16px;
+}
+.feedback-actions button{
+  border:0;
+  border-radius:10px;
+  padding:11px 16px;
+  font-weight:800;
+  cursor:pointer;
+}
+#feedback-cancel{background:#1d2c36;color:#fff;}
+#feedback-send{background:#10a36d;color:#fff;}
+#feedback-msg{margin-top:12px;font-size:13px;color:#9fd8be;min-height:18px;}
+#feedback-top-wrap{
+  text-align:center;
+  margin:10px 0 14px;
+}
+@media (max-width:600px){
+  #feedback-box{padding:18px;}
+  .feedback-star{font-size:31px;}
+}
+</style>
+
 </head>
 
 <body>
@@ -3871,7 +3969,26 @@ body > *:not(#lavaVulcanoCanvas) {
         MONITORAGGIO ATTIVO
       </div>
 
-      <!-- SOSTIENI APP E SITO -->
+      
+<div id="feedback-top-wrap">
+  <button id="feedback-open-btn" type="button">⭐ LASCIA UN FEEDBACK</button>
+
+  <a href="recensioni.html"
+     style="
+       display:inline-block;
+       margin-left:8px;
+       padding:11px 16px;
+       border-radius:10px;
+       background:linear-gradient(135deg,#7b4cff,#4f2cb8);
+       color:white;
+       text-decoration:none;
+       font-weight:800;
+     ">
+    ⭐ RECENSIONI
+  </a>
+</div>
+
+<!-- SOSTIENI APP E SITO -->
 <div id="sostieni-app" style="
   text-align:center;
   margin:25px 0 30px;
@@ -6048,6 +6165,176 @@ avviaSismografo("sismoItalia", 0.8);
   aggiornaVisualizzazioni();
 </script>
 <!-- FINE FIREBASE CONTATORE VISUALIZZAZIONI -->
+
+
+<div id="feedback-modal" aria-hidden="true">
+  <div id="feedback-box" role="dialog" aria-modal="true" aria-labelledby="feedback-title">
+    <h3 id="feedback-title">Lascia un feedback</h3>
+    <p>Inserisci il tuo nome, scegli le stelle e scrivi il tuo commento.</p>
+
+    <div class="feedback-field">
+      <label for="feedback-name">Nome</label>
+      <input id="feedback-name" type="text" maxlength="80" placeholder="Il tuo nome" required>
+    </div>
+
+    <div class="feedback-field">
+      <label>Valutazione</label>
+      <div id="feedback-stars" aria-label="Valutazione da 1 a 5 stelle">
+        <button type="button" class="feedback-star" data-value="1" aria-label="1 stella">⭐</button>
+        <button type="button" class="feedback-star" data-value="2" aria-label="2 stelle">⭐</button>
+        <button type="button" class="feedback-star" data-value="3" aria-label="3 stelle">⭐</button>
+        <button type="button" class="feedback-star" data-value="4" aria-label="4 stelle">⭐</button>
+        <button type="button" class="feedback-star" data-value="5" aria-label="5 stelle">⭐</button>
+      </div>
+    </div>
+
+    <div class="feedback-field">
+      <label for="feedback-text">Feedback</label>
+      <textarea id="feedback-text" maxlength="1000" placeholder="Scrivi qui il tuo feedback..." required></textarea>
+    </div>
+
+    <div class="feedback-actions">
+      <button id="feedback-cancel" type="button">Annulla</button>
+      <button id="feedback-send" type="button">Invia feedback</button>
+    </div>
+    <div id="feedback-msg" aria-live="polite"></div>
+  </div>
+</div>
+
+<script id="feedback-popup-js">
+(() => {
+  const openBtn = document.getElementById('feedback-open-btn');
+  const modal = document.getElementById('feedback-modal');
+  const cancelBtn = document.getElementById('feedback-cancel');
+  const sendBtn = document.getElementById('feedback-send');
+  const nameInput = document.getElementById('feedback-name');
+  const textInput = document.getElementById('feedback-text');
+  const msg = document.getElementById('feedback-msg');
+  const stars = [...document.querySelectorAll('.feedback-star')];
+  if (!openBtn || !modal) return;
+
+  let rating = 0;
+
+  const aggiornaStelle = () => {
+    stars.forEach((s, i) => s.classList.toggle('attiva', i < rating));
+  };
+
+  const chiudi = () => {
+    modal.classList.remove('visibile');
+    modal.setAttribute('aria-hidden','true');
+  };
+
+  openBtn.addEventListener('click', () => {
+    modal.classList.add('visibile');
+    modal.setAttribute('aria-hidden','false');
+    msg.textContent = '';
+    setTimeout(() => nameInput.focus(), 50);
+  });
+
+  cancelBtn.addEventListener('click', chiudi);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) chiudi();
+  });
+
+  stars.forEach(star => {
+    star.addEventListener('click', () => {
+      rating = Number(star.dataset.value || 0);
+      aggiornaStelle();
+    });
+  });
+
+  sendBtn.addEventListener('click', () => {
+    const nome = nameInput.value.trim();
+    const testo = textInput.value.trim();
+
+    if (!nome) {
+      msg.textContent = 'Inserisci il tuo nome.';
+      nameInput.focus();
+      return;
+    }
+    if (!rating) {
+      msg.textContent = 'Seleziona una valutazione da 1 a 5 stelle.';
+      return;
+    }
+    if (!testo) {
+      msg.textContent = 'Scrivi il tuo feedback.';
+      textInput.focus();
+      return;
+    }
+
+    sendBtn.disabled = true;
+    sendBtn.textContent = 'Invio...';
+    msg.textContent = 'Invio del feedback in corso...';
+
+    window.salvaRecensioneFirebase(nome, rating, testo)
+    .then(() => fetch('https://formspree.io/f/mljryqna', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        nome: nome,
+        valutazione: rating + '/5',
+        stelle: '⭐'.repeat(rating),
+        feedback: testo,
+        pagina: window.location.href
+      })
+    }))
+    .then(async response => {
+      if (!response.ok) throw new Error('Invio non riuscito');
+
+      msg.textContent = '✅ Grazie! Il tuo feedback è stato inviato e sarà pubblicato dopo l’approvazione.';
+
+      nameInput.value = '';
+      textInput.value = '';
+      rating = 0;
+      aggiornaStelle();
+
+      setTimeout(() => {
+        chiudi();
+        msg.textContent = '';
+      }, 1800);
+    })
+    .catch(() => {
+      msg.textContent = '❌ Non è stato possibile inviare il feedback. Riprova.';
+    })
+    .finally(() => {
+      sendBtn.disabled = false;
+      sendBtn.textContent = 'Invia feedback';
+    });
+  });
+})();
+</script>
+
+
+<!-- SALVATAGGIO RECENSIONI FIREBASE -->
+<script type="module">
+  import {
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+  const dbFeedback = getFirestore();
+
+  window.salvaRecensioneFirebase = async function(nome, stelle, commento) {
+
+    await addDoc(
+      collection(dbFeedback, "recensioni"),
+      {
+        nome: nome,
+        stelle: Number(stelle),
+        commento: commento,
+        approved: false,
+        data: serverTimestamp()
+      }
+    );
+
+  };
+</script>
+<!-- FINE SALVATAGGIO RECENSIONI FIREBASE -->
 
 </body>
 </html>
