@@ -138,6 +138,53 @@
       min-height: 760px;
     }
 
+    .weather-dropdown {
+      padding: 0 !important;
+      overflow: hidden;
+      align-self: start;
+    }
+
+    .weather-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 18px;
+      border: 0;
+      background: linear-gradient(135deg, rgba(7,42,68,.96), rgba(5,24,42,.96));
+      color: #ffffff;
+      font: inherit;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: .3px;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .weather-toggle:hover {
+      background: linear-gradient(135deg, rgba(10,57,89,.98), rgba(6,31,52,.98));
+    }
+
+    .weather-toggle-arrow {
+      color: #74d8ff;
+      font-size: 18px;
+      transition: transform .25s ease;
+    }
+
+    .weather-toggle[aria-expanded="true"] .weather-toggle-arrow {
+      transform: rotate(180deg);
+    }
+
+    .weather-dropdown-content {
+      display: none;
+      padding: 0 18px 18px;
+    }
+
+    .weather-dropdown-content.open {
+      display: block;
+    }
+
     .weather-side {
       padding: 18px;
       min-width: 0;
@@ -467,8 +514,7 @@
     button:hover { transform: translateY(-1px); filter:brightness(1.08); }
     #prevBtn,#nextBtn { min-width:46px; padding-inline:14px; background:linear-gradient(135deg,#0b66c8,#1389df); }
     .time { font-weight:900; color:#8bd1ff; }
-
-    @media (max-width: 980px) {
+@media (max-width: 980px) {
       header { align-items:flex-start; }
       .brand-logo { width:128px; }
       nav { display:none; }
@@ -535,11 +581,17 @@
 
 <div class="main-grid">
 
-  <aside class="panel weather-side" aria-label="Condizioni meteo attuali">
-    <h2>🌤️ Meteo in tempo reale</h2>
-    <p class="weather-sub">Condizioni attuali nelle principali città italiane. Aggiornamento automatico ogni 3 minuti.</p>
+  <aside class="panel weather-side weather-dropdown" aria-label="Condizioni meteo attuali">
+    <button id="weatherToggle" class="weather-toggle" type="button"
+            aria-expanded="false" aria-controls="weatherDropdownContent">
+      <span>🌤️ Meteo in tempo reale</span>
+      <span id="weatherToggleArrow" class="weather-toggle-arrow">▼</span>
+    </button>
 
-    <div class="weather-radar-clock">
+    <div id="weatherDropdownContent" class="weather-dropdown-content">
+      <p class="weather-sub">Condizioni attuali nelle principali città italiane. Aggiornamento automatico ogni 3 minuti.</p>
+
+      <div class="weather-radar-clock">
       <strong>🛰️ Fotogramma radar:</strong><br>
       <span id="weatherRadarTime">caricamento...</span>
     </div>
@@ -550,6 +602,7 @@
 
     <div id="weatherUpdated" class="weather-updated">
       Collegamento al servizio meteo in corso...
+    </div>
     </div>
   </aside>
 
@@ -579,16 +632,6 @@
   <div class="panel side">
 
     <h2>⚠ Avviso Radar News Terremoti</h2>
-
-    <div id="alertBox" class="status-box">
-      <div id="alertTitle" class="alert-title blue-text">
-        🔵 ALLERTA LEGGERA
-      </div>
-
-      <div id="alertText">
-        Connessione al radar in corso...
-      </div>
-    </div>
 
     <div class="legend">
 
@@ -659,7 +702,6 @@
       caricamento...
     </span>
   </div>
-
 </div>
 
 
@@ -896,6 +938,10 @@ function setAlert(level, title, message) {
   const box = document.getElementById("alertBox");
   const titleEl = document.getElementById("alertTitle");
   const text = document.getElementById("alertText");
+
+  // Il riquadro laterale di monitoraggio è stato rimosso.
+  // Le allerte temporale continuano a comparire al centro dello schermo.
+  if (!box || !titleEl || !text) return;
 
   box.className = "status-box";
   titleEl.className = "alert-title";
@@ -1331,7 +1377,6 @@ if (stormAlertOverlay) {
     if (event.target === stormAlertOverlay) hideStormAlert();
   });
 }
-
 const citySearchBtn = document.getElementById("citySearchBtn");
 const citySearchInput = document.getElementById("citySearchInput");
 if (citySearchBtn) citySearchBtn.addEventListener("click", searchCityWeather);
@@ -1341,6 +1386,17 @@ if (citySearchInput) {
       event.preventDefault();
       searchCityWeather();
     }
+  });
+}
+
+
+const weatherToggle = document.getElementById("weatherToggle");
+const weatherDropdownContent = document.getElementById("weatherDropdownContent");
+
+if (weatherToggle && weatherDropdownContent) {
+  weatherToggle.addEventListener("click", () => {
+    const isOpen = weatherDropdownContent.classList.toggle("open");
+    weatherToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
   });
 }
 
