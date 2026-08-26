@@ -49,7 +49,7 @@
   <main>
     <section class="hero">
       <h1>📰 NEWS GUERRA &amp; GEOPOLITICA</h1>
-      <p>Notizie dal canale Telegram News Anonimo, divise automaticamente per area e complete di foto o video quando disponibili.</p>
+      <p>Tutte le notizie pubblicate sul canale Telegram News Anonimo, complete di foto e video quando disponibili.</p>
       <div class="live"><span class="dot"></span>AGGIORNAMENTO AUTOMATICO</div>
     </section>
 
@@ -81,7 +81,7 @@
         </section>
 
         <section id="world" class="group" hidden>
-          <div class="group-head"><div><h3>⚠️ Altri conflitti nel mondo</h3><p>Guerre, crisi e tensioni internazionali</p></div><span id="world-count" class="count"></span></div>
+          <div class="group-head"><div><h3>📰 Tutte le notizie</h3><p>Tutto ciò che viene pubblicato sul canale News Anonimo</p></div><span id="world-count" class="count"></span></div>
           <div id="world-cards" class="cards"></div>
         </section>
       </div>
@@ -274,34 +274,30 @@
     }
 
     function render(posts) {
-      const buckets = Object.fromEntries(CATEGORIES.map(category => [category.key,[]]));
+      const panel = document.getElementById("world");
+      const list = document.getElementById("world-cards");
 
-      posts.forEach(post => {
-        const category = categoryFor(post);
-        if (category) buckets[category.key].push(post);
-      });
+      document.getElementById("ukraine").hidden = true;
+      document.getElementById("middleeast").hidden = true;
 
-      let total = 0;
+      list.replaceChildren();
 
-      CATEGORIES.forEach(category => {
-        const items = buckets[category.key];
-        const panel = document.getElementById(category.key);
-        const list = document.getElementById(`${category.key}-cards`);
+      panel.hidden = !posts.length;
 
-        list.replaceChildren();
-        panel.hidden = !items.length;
-        document.getElementById(`${category.key}-count`).textContent =
-          items.length === 1 ? "1 notizia" : `${items.length} notizie`;
+      document.getElementById("world-count").textContent =
+        posts.length === 1 ? "1 notizia" : `${posts.length} notizie`;
 
-        items.slice(0,10).forEach(item => list.append(card(category,item)));
-        total += items.length;
+      posts.forEach(item => {
+        list.append(card({tag:"NEWS"}, item));
       });
 
       const empty = document.getElementById("empty");
-      empty.hidden = total > 0;
+
+      empty.hidden = posts.length > 0;
       empty.className = "message";
-      empty.textContent = "Non ci sono ancora notizie di guerra classificate dal canale Telegram.";
-      return total;
+      empty.textContent = "Non ci sono ancora notizie pubblicate sul canale Telegram.";
+
+      return posts.length;
     }
 
     async function refresh() {
@@ -318,8 +314,8 @@
         const total = render(albums(await getPosts()));
 
         status.textContent = total
-          ? "Notizie divise per area · foto e video sono visibili direttamente nella scheda"
-          : "Nessuna notizia di guerra classificata in questo momento";
+          ? "Tutte le notizie del canale · foto e video sono visibili direttamente nella scheda"
+          : "Nessuna notizia disponibile in questo momento";
 
         updated.textContent =
           `Ultimo controllo: ${new Date().toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"})}`;
