@@ -7,11 +7,18 @@ import {
   orderBy,
   onSnapshot,
   serverTimestamp,
-  limit
+  limit,
+  deleteDoc,
+  doc
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
+import {
+  getAuth,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCyrW23MTFRWW0dogA5bDhWBdbN5V4hyo",
+  apiKey: "AIzaSyCrW23TMFTFRWWOdogA5bDhWBdbN5V4hyo",
   authDomain: "news-terremoti.firebaseapp.com",
   projectId: "news-terremoti",
   storageBucket: "news-terremoti.firebasestorage.app",
@@ -22,6 +29,10 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
+
+const ADMIN_UID = "V720CwqUJOh1DpHcoXq8bnhxo9k1";
+let adminLogged = false;
 
 const COMMENTS = collection(db, "guerra_comments");
 
@@ -123,6 +134,23 @@ style.textContent = `
   font-size:10px;
 }
 
+.guerra-comment-delete{
+  display:block;
+  margin-top:8px;
+  padding:6px 10px;
+  border:1px solid rgba(255,80,80,.35);
+  border-radius:7px;
+  background:#8b1d28;
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.guerra-comment-delete:hover{
+  background:#b52735;
+}
+
 @media(max-width:650px){
   .guerra-comment-form{
     grid-template-columns:1fr;
@@ -191,6 +219,31 @@ function renderBox(postId){
     date.textContent = formatDate(comment.createdAt);
 
     row.append(name,text,date);
+
+    if(adminLogged){
+      const del = document.createElement("button");
+      del.className = "guerra-comment-delete";
+      del.textContent = "🗑️ Elimina";
+
+      del.addEventListener("click", async () => {
+        if(!confirm("Eliminare definitivamente questo commento?")) return;
+
+        del.disabled = true;
+        del.textContent = "Eliminazione...";
+
+        try{
+          await deleteDoc(doc(db, "guerra_comments", comment.id));
+        }catch(error){
+          console.error("Errore eliminazione commento:", error);
+          alert("❌ Impossibile eliminare il commento.");
+          del.disabled = false;
+          del.textContent = "🗑️ Elimina";
+        }
+      });
+
+      row.append(del);
+    }
+
     list.append(row);
   });
 }
@@ -319,6 +372,11 @@ const observer = new MutationObserver(() => {
 observer.observe(document.body,{
   childList:true,
   subtree:true
+});
+
+onAuthStateChanged(auth,user => {
+  adminLogged = !!(user && user.uid === ADMIN_UID);
+  renderAll();
 });
 
 const q = query(
