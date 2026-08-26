@@ -2403,38 +2403,26 @@ function telegramParsePublicPage(htmlText) {
 }
 
 async function fetchLatestTelegramPosts() {
-  let lastError = null;
+  const response = await fetch('/api/telegram?ts=' + Date.now(), {
+    cache: 'no-store',
+    headers: { 'Accept': 'application/json' }
+  });
 
-  for (const feedUrl of TELEGRAM_RSS_FEEDS) {
+  if (!response.ok) {
+    let detail = '';
     try {
-      const body = await telegramFetchText(feedUrl);
-      const items = telegramParseRss(body);
-
-      if (items.length) {
-        return items.slice(0, 5);
-      }
-    } catch (error) {
-      lastError = error;
-      console.warn("Feed Telegram non disponibile:", feedUrl, error);
-    }
+      const errorData = await response.json();
+      detail = errorData?.error ? ': ' + errorData.error : '';
+    } catch (_) {}
+    throw new Error('API Telegram HTTP ' + response.status + detail);
   }
 
-  // Ultimo tentativo: pagina pubblica Telegram.
-  try {
-    const telegramPage =
-      "https://t.me/s/" + encodeURIComponent(TELEGRAM_CHANNEL);
-
-    const body = await telegramFetchText(telegramPage);
-    const items = telegramParsePublicPage(body);
-
-    if (items.length) {
-      return items.slice(-5).reverse();
-    }
-  } catch (error) {
-    lastError = error;
+  const data = await response.json();
+  if (!data || !Array.isArray(data.posts)) {
+    throw new Error('Risposta API Telegram non valida');
   }
 
-  throw lastError || new Error("Nessun post Telegram disponibile");
+  return data.posts.slice(0, 5);
 }
 
 function renderTelegramPosts(items) {
@@ -2497,7 +2485,7 @@ async function updateTelegramNews() {
 
     if (status) {
       status.textContent =
-        "Canale Telegram @NEWSANONIMO · controllo automatico ogni 2 minuti";
+        "Canale Telegram @NEWSANONIMO · aggiornamento tramite server ogni 2 minuti";
     }
 
     if (updated) {
@@ -2519,7 +2507,7 @@ async function updateTelegramNews() {
 
     if (status) {
       status.textContent =
-        "Collegamento al feed Telegram temporaneamente non disponibile";
+        "Servizio Telegram temporaneamente non disponibile";
     }
 
     if (updated) {
