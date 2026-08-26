@@ -454,6 +454,62 @@
     .leaflet-control-attribution { background:rgba(2,10,20,.7)!important; color:#c7e8f7!important; }
     .leaflet-control-attribution a { color:#71c8ff!important; }
 
+    /* Meteo direttamente sulla mappa */
+    .map-weather-divicon {
+      background: transparent !important;
+      border: 0 !important;
+    }
+
+    .map-weather-badge {
+      display:inline-block;
+      color:#ffffff;
+      font-family:Inter,Arial,sans-serif;
+      font-size:12px;
+      font-weight:950;
+      line-height:1;
+      text-shadow:
+        0 1px 3px rgba(0,0,0,.95),
+        0 0 5px rgba(0,0,0,.75);
+      transform:translate(-50%,-50%);
+      white-space:nowrap;
+      pointer-events:auto;
+      cursor:pointer;
+    }
+
+    .map-weather-temp {
+      color:#ffffff;
+      font-size:12px;
+      font-weight:950;
+    }
+
+    .map-weather-popup {
+      min-width:180px;
+      color:#102130;
+      line-height:1.45;
+    }
+
+    .map-weather-popup strong {
+      font-size:14px;
+    }
+
+    .map-weather-popup .mwp-desc {
+      margin:4px 0 7px;
+      font-weight:700;
+    }
+
+    .map-weather-popup .mwp-meta {
+      font-size:12px;
+    }
+
+    @media (max-width:560px) {
+      .map-weather-badge {
+        font-size:11px;
+      }
+      .map-weather-temp {
+        font-size:11px;
+      }
+    }
+
     .side { padding:20px; }
     .side h2 { margin:0 0 16px; font-size:20px; letter-spacing:.3px; }
 
@@ -735,6 +791,251 @@
       to { transform: rotate(360deg); }
     }
 
+
+    /* Ultimi post Telegram */
+    .telegram-news-section {
+      max-width: 1560px;
+      margin: 8px auto 34px;
+      padding: 0 22px;
+    }
+
+    .telegram-news-panel {
+      overflow: hidden;
+      border-radius: 18px;
+      background: linear-gradient(145deg, rgba(5,27,47,.95), rgba(2,15,29,.96));
+      border: 1px solid rgba(84,190,255,.25);
+      box-shadow: 0 18px 45px rgba(0,0,0,.30);
+    }
+
+    .telegram-news-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 16px 18px;
+      border-bottom: 1px solid rgba(89,195,255,.17);
+      background: linear-gradient(135deg, rgba(9,49,77,.92), rgba(5,26,45,.94));
+    }
+
+    .telegram-news-title-wrap {
+      min-width: 0;
+    }
+
+    .telegram-news-head h2 {
+      margin: 0;
+      color: #fff;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .telegram-news-head p {
+      margin: 5px 0 0;
+      color: #93bdd0;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    .telegram-live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      flex: 0 0 auto;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(44,213,255,.30);
+      background: rgba(23,111,150,.18);
+      color: #a9eaff;
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: .5px;
+    }
+
+    .telegram-live-badge span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #29c8ff;
+      box-shadow: 0 0 11px #29c8ff;
+      animation: telegramLivePulse 1.25s ease-in-out infinite alternate;
+    }
+
+    @keyframes telegramLivePulse {
+      from { opacity: .45; transform: scale(.88); }
+      to { opacity: 1; transform: scale(1.08); }
+    }
+
+    .telegram-news-status {
+      padding: 9px 18px 0;
+      color: #789fb2;
+      font-size: 9.5px;
+    }
+
+    .telegram-news-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      padding: 14px 16px 16px;
+    }
+
+    .telegram-news-item {
+      min-width: 0;
+      min-height: 145px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 13px;
+      border-radius: 14px;
+      text-decoration: none;
+      background: linear-gradient(145deg, rgba(9,40,64,.92), rgba(3,20,35,.95));
+      border: 1px solid rgba(90,190,239,.17);
+      box-shadow: 0 8px 22px rgba(0,0,0,.18);
+      transition: transform .16s ease, border-color .16s ease, background .16s ease;
+    }
+
+    .telegram-news-item:hover {
+      transform: translateY(-2px);
+      border-color: rgba(76,205,255,.48);
+      background: linear-gradient(145deg, rgba(12,51,79,.97), rgba(4,25,43,.98));
+    }
+
+    .telegram-news-text {
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 6;
+      color: #eef9ff;
+      font-size: 12px;
+      font-weight: 760;
+      line-height: 1.43;
+      word-break: break-word;
+    }
+
+    .telegram-news-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 7px;
+      margin-top: 11px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(94,185,230,.10);
+      color: #789faf;
+      font-size: 9px;
+    }
+
+    .telegram-news-channel {
+      color: #49cfff;
+      font-weight: 850;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .telegram-news-time {
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
+
+    .telegram-news-loading,
+    .telegram-news-error {
+      grid-column: 1 / -1;
+      padding: 24px 14px;
+      border-radius: 13px;
+      background: rgba(3,19,33,.58);
+      border: 1px dashed rgba(84,190,245,.18);
+      color: #91b5c6;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .telegram-news-error {
+      color: #ffc1c1;
+    }
+
+    .telegram-news-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 0 16px 14px;
+      color: #6f96a8;
+      font-size: 9.5px;
+    }
+
+    .telegram-news-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .telegram-channel-link,
+    #telegramNewsRefresh {
+      border: 1px solid rgba(67,200,255,.26);
+      border-radius: 9px;
+      background: rgba(5,45,72,.84);
+      color: #8ee3ff;
+      font-size: 10px;
+      font-weight: 850;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .telegram-channel-link {
+      padding: 8px 10px;
+    }
+
+    #telegramNewsRefresh {
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      font-size: 17px;
+    }
+
+    #telegramNewsRefresh.loading {
+      animation: telegramSpin .8s linear infinite;
+    }
+
+    @keyframes telegramSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 1180px) {
+      .telegram-news-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .telegram-news-section {
+        padding: 0 12px;
+        margin-bottom: 24px;
+      }
+      .telegram-news-grid {
+        grid-template-columns: 1fr;
+        padding: 12px;
+      }
+      .telegram-news-item {
+        min-height: 112px;
+      }
+      .telegram-news-head {
+        align-items: flex-start;
+        padding: 14px;
+      }
+      .telegram-news-head h2 {
+        font-size: 17px;
+      }
+      .telegram-news-status {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+      .telegram-news-bottom {
+        padding-left: 12px;
+        padding-right: 12px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
     .bottom-bar {
       max-width: 1560px;
       margin: 0 auto 28px;
@@ -981,6 +1282,40 @@
   </div>
 </div>
 
+<section class="telegram-news-section" aria-label="Ultime notizie dal canale Telegram Breaking News Anonimo">
+  <div class="telegram-news-panel">
+    <div class="telegram-news-head">
+      <div class="telegram-news-title-wrap">
+        <h2>📢 Ultime dal canale Telegram</h2>
+        <p>Breaking News Anonimo · ultimi 5 aggiornamenti pubblicati</p>
+      </div>
+      <span class="telegram-live-badge"><span></span> LIVE</span>
+    </div>
+
+    <div id="telegramNewsStatus" class="telegram-news-status">
+      Collegamento a @NEWSANONIMO...
+    </div>
+
+    <div id="telegramNewsGrid" class="telegram-news-grid" aria-live="polite">
+      <div class="telegram-news-loading">Caricamento degli ultimi post Telegram...</div>
+    </div>
+
+    <div class="telegram-news-bottom">
+      <span id="telegramNewsUpdated">Aggiornamento in corso...</span>
+
+      <div class="telegram-news-actions">
+        <a class="telegram-channel-link"
+           href="https://t.me/NEWSANONIMO"
+           target="_blank"
+           rel="noopener noreferrer">
+          Apri canale Telegram ↗
+        </a>
+        <button id="telegramNewsRefresh" type="button" title="Aggiorna i post">↻</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <script
   src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
@@ -1026,6 +1361,7 @@ let selectedCity = null;
 let selectedCityWeather = null;
 let selectedCityMarker = null;
 let searchInProgress = false;
+let weatherMapMarkers = [];
 
 const weatherCities = [
   { name: "Napoli",  lat: 40.8518, lon: 14.2681 },
@@ -1462,6 +1798,63 @@ function renderWeatherCards(items) {
   }).join("");
 }
 
+
+function escapeMapWeatherText(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function renderWeatherOnMap(items) {
+  weatherMapMarkers.forEach(marker => {
+    if (map.hasLayer(marker)) map.removeLayer(marker);
+  });
+  weatherMapMarkers = [];
+
+  items.forEach(item => {
+    if (!Number.isFinite(item.lat) || !Number.isFinite(item.lon)) return;
+
+    const city = escapeMapWeatherText(item.name);
+    const icon = escapeMapWeatherText(item.icon || "🌤️");
+    const desc = escapeMapWeatherText(item.desc || "Condizioni meteo");
+    const temp = item.temp === null ? "--°" : Math.round(item.temp) + "°";
+    const rain = item.rain === null ? "--" : item.rain.toFixed(1) + " mm";
+    const wind = item.wind === null ? "--" : Math.round(item.wind) + " km/h";
+
+    const badgeHtml = `
+      <div class="map-weather-badge">
+        <span class="map-weather-temp">${temp}</span>
+      </div>`;
+
+    const marker = L.marker([item.lat, item.lon], {
+      icon: L.divIcon({
+        className: "map-weather-divicon",
+        html: badgeHtml,
+        iconSize: [1, 1],
+        iconAnchor: [0, 0]
+      }),
+      zIndexOffset: 700
+    }).addTo(map);
+
+    marker.bindPopup(`
+      <div class="map-weather-popup">
+        <strong>${icon} ${city} · ${temp}</strong>
+        <div class="mwp-desc">${desc}</div>
+        <div class="mwp-meta">
+          🌧️ Pioggia: ${rain}<br>
+          💨 Vento: ${wind}<br>
+          🕒 Aggiornamento automatico ogni 3 minuti
+        </div>
+      </div>
+    `);
+
+    weatherMapMarkers.push(marker);
+  });
+}
+
 function hideStormAlert() {
   const overlay = document.getElementById("stormAlertOverlay");
   if (overlay) overlay.classList.remove("visible");
@@ -1548,7 +1941,9 @@ async function updateCurrentWeather() {
       }
     }
 
-    evaluateWeatherAlerts(selectedItem ? [...items, selectedItem] : items);
+    const mapWeatherItems = selectedItem ? [...items, selectedItem] : items;
+    renderWeatherOnMap(mapWeatherItems);
+    evaluateWeatherAlerts(mapWeatherItems);
 
     if (updated) {
       updated.textContent =
@@ -1874,6 +2269,273 @@ if (weatherNewsRefresh) {
   weatherNewsRefresh.addEventListener("click", updateWeatherNews);
 }
 
+
+/* ================================
+   ULTIMI 5 POST TELEGRAM
+================================ */
+
+const TELEGRAM_NEWS_REFRESH_MS = 120000; // controllo ogni 2 minuti
+const TELEGRAM_CHANNEL = "NEWSANONIMO";
+
+const TELEGRAM_RSS_FEEDS = [
+  "https://rsshub.isrss.com/telegram/channel/NEWSANONIMO",
+  "https://rsshub.tandav.me/telegram/channel/NEWSANONIMO",
+  "https://rsshub.yfi.moe/telegram/channel/NEWSANONIMO",
+  "https://tg.i-c-a.su/rss/NEWSANONIMO"
+];
+
+let telegramNewsTimer = null;
+let telegramNewsLoading = false;
+
+function telegramStripHtml(html) {
+  const doc = new DOMParser().parseFromString(String(html || ""), "text/html");
+  return (doc.body.textContent || "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function telegramShortText(value, max = 360) {
+  const clean = telegramStripHtml(value);
+  if (!clean) return "Nuovo aggiornamento pubblicato sul canale.";
+  return clean.length > max ? clean.slice(0, max - 1).trim() + "…" : clean;
+}
+
+function telegramFormatTime(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "recente";
+
+  const diff = Math.max(0, Math.floor((Date.now() - date.getTime()) / 60000));
+  if (diff < 2) return "adesso";
+  if (diff < 60) return `${diff} min fa`;
+
+  const hours = Math.floor(diff / 60);
+  if (hours < 24) return `${hours} h fa`;
+
+  return date.toLocaleDateString("it-IT", {
+    day: "2-digit",
+    month: "2-digit"
+  });
+}
+
+async function telegramFetchText(url) {
+  // Primo tentativo diretto.
+  try {
+    const direct = await fetch(url, { cache: "no-store" });
+    if (direct.ok) {
+      const body = await direct.text();
+      if (body && body.length > 100) return body;
+    }
+  } catch (_) {}
+
+  // Fallback CORS tramite proxy pubblico.
+  const proxy =
+    "https://api.allorigins.win/raw?url=" +
+    encodeURIComponent(url + (url.includes("?") ? "&" : "?") + "_=" + Date.now());
+
+  const response = await fetch(proxy, { cache: "no-store" });
+  if (!response.ok) {
+    throw new Error("Feed non raggiungibile: " + response.status);
+  }
+
+  return await response.text();
+}
+
+function telegramParseRss(xmlText) {
+  const xml = new DOMParser().parseFromString(xmlText, "text/xml");
+  if (xml.querySelector("parsererror")) {
+    throw new Error("RSS non valido");
+  }
+
+  const items = [...xml.querySelectorAll("item, entry")];
+
+  return items.map(item => {
+    const title =
+      item.querySelector("title")?.textContent || "";
+
+    const description =
+      item.querySelector("description")?.textContent ||
+      item.querySelector("content")?.textContent ||
+      item.querySelector("summary")?.textContent || "";
+
+    let link = item.querySelector("link")?.textContent || "";
+    const linkNode = item.querySelector("link[href]");
+    if (linkNode?.getAttribute("href")) {
+      link = linkNode.getAttribute("href");
+    }
+
+    const pubDate =
+      item.querySelector("pubDate")?.textContent ||
+      item.querySelector("published")?.textContent ||
+      item.querySelector("updated")?.textContent || "";
+
+    const text = telegramShortText(
+      description && telegramStripHtml(description).length > 20
+        ? description
+        : title
+    );
+
+    return { text, link, pubDate };
+  }).filter(item => item.text);
+}
+
+function telegramParsePublicPage(htmlText) {
+  const doc = new DOMParser().parseFromString(htmlText, "text/html");
+  const messages = [...doc.querySelectorAll(".tgme_widget_message_wrap")];
+
+  return messages.map(wrap => {
+    const textEl = wrap.querySelector(".tgme_widget_message_text");
+    const dateLink = wrap.querySelector(".tgme_widget_message_date");
+    const timeEl = dateLink?.querySelector("time");
+
+    const mediaCaption =
+      wrap.querySelector(".tgme_widget_message_caption")?.textContent || "";
+
+    const text = telegramShortText(
+      textEl?.textContent || mediaCaption || "Nuovo contenuto multimediale pubblicato"
+    );
+
+    return {
+      text,
+      link: dateLink?.getAttribute("href") || "https://t.me/NEWSANONIMO",
+      pubDate: timeEl?.getAttribute("datetime") || ""
+    };
+  }).filter(item => item.text);
+}
+
+async function fetchLatestTelegramPosts() {
+  let lastError = null;
+
+  for (const feedUrl of TELEGRAM_RSS_FEEDS) {
+    try {
+      const body = await telegramFetchText(feedUrl);
+      const items = telegramParseRss(body);
+
+      if (items.length) {
+        return items.slice(0, 5);
+      }
+    } catch (error) {
+      lastError = error;
+      console.warn("Feed Telegram non disponibile:", feedUrl, error);
+    }
+  }
+
+  // Ultimo tentativo: pagina pubblica Telegram.
+  try {
+    const telegramPage =
+      "https://t.me/s/" + encodeURIComponent(TELEGRAM_CHANNEL);
+
+    const body = await telegramFetchText(telegramPage);
+    const items = telegramParsePublicPage(body);
+
+    if (items.length) {
+      return items.slice(-5).reverse();
+    }
+  } catch (error) {
+    lastError = error;
+  }
+
+  throw lastError || new Error("Nessun post Telegram disponibile");
+}
+
+function renderTelegramPosts(items) {
+  const grid = document.getElementById("telegramNewsGrid");
+  if (!grid) return;
+
+  grid.replaceChildren();
+
+  items.slice(0, 5).forEach(item => {
+    const card = document.createElement("a");
+    card.className = "telegram-news-item";
+    card.href = item.link || "https://t.me/NEWSANONIMO";
+    card.target = "_blank";
+    card.rel = "noopener noreferrer";
+
+    const body = document.createElement("div");
+    body.className = "telegram-news-text";
+    body.textContent = item.text;
+
+    const meta = document.createElement("div");
+    meta.className = "telegram-news-meta";
+
+    const channel = document.createElement("span");
+    channel.className = "telegram-news-channel";
+    channel.textContent = "@NEWSANONIMO";
+
+    const time = document.createElement("span");
+    time.className = "telegram-news-time";
+    time.textContent = telegramFormatTime(item.pubDate);
+
+    meta.append(channel, time);
+    card.append(body, meta);
+    grid.appendChild(card);
+  });
+
+  if (!grid.children.length) {
+    const empty = document.createElement("div");
+    empty.className = "telegram-news-error";
+    empty.textContent = "Nessun post disponibile in questo momento.";
+    grid.appendChild(empty);
+  }
+}
+
+async function updateTelegramNews() {
+  if (telegramNewsLoading) return;
+  telegramNewsLoading = true;
+
+  const status = document.getElementById("telegramNewsStatus");
+  const updated = document.getElementById("telegramNewsUpdated");
+  const refresh = document.getElementById("telegramNewsRefresh");
+
+  if (status) status.textContent = "Ricerca degli ultimi 5 post di @NEWSANONIMO...";
+  if (refresh) refresh.classList.add("loading");
+
+  try {
+    const posts = await fetchLatestTelegramPosts();
+    renderTelegramPosts(posts);
+
+    const now = new Date();
+
+    if (status) {
+      status.textContent =
+        "Canale Telegram @NEWSANONIMO · controllo automatico ogni 2 minuti";
+    }
+
+    if (updated) {
+      updated.textContent =
+        "Ultimo controllo: " +
+        now.toLocaleTimeString("it-IT", {
+          hour: "2-digit",
+          minute: "2-digit"
+        });
+    }
+  } catch (error) {
+    console.error("Errore aggiornamento Telegram:", error);
+
+    const grid = document.getElementById("telegramNewsGrid");
+    if (grid) {
+      grid.innerHTML =
+        '<div class="telegram-news-error">Gli ultimi post Telegram sono momentaneamente non disponibili.<br>Il sito riproverà automaticamente.</div>';
+    }
+
+    if (status) {
+      status.textContent =
+        "Collegamento al feed Telegram temporaneamente non disponibile";
+    }
+
+    if (updated) {
+      updated.textContent = "Nuovo tentativo automatico tra 2 minuti";
+    }
+  } finally {
+    telegramNewsLoading = false;
+    if (refresh) refresh.classList.remove("loading");
+  }
+}
+
+const telegramNewsRefresh = document.getElementById("telegramNewsRefresh");
+if (telegramNewsRefresh) {
+  telegramNewsRefresh.addEventListener("click", updateTelegramNews);
+}
+
 /* ================================
    AVVIO
 ================================ */
@@ -1883,7 +2545,8 @@ if (weatherNewsRefresh) {
   await Promise.all([
     loadRadar(true),
     updateCurrentWeather(),
-    updateWeatherNews()
+    updateWeatherNews(),
+    updateTelegramNews()
   ]);
 
   // Avvia automaticamente l'animazione storica recente.
@@ -1902,6 +2565,10 @@ if (weatherNewsRefresh) {
   weatherNewsTimer = setInterval(() => {
     updateWeatherNews();
   }, WEATHER_NEWS_REFRESH_MS);
+
+  telegramNewsTimer = setInterval(() => {
+    updateTelegramNews();
+  }, TELEGRAM_NEWS_REFRESH_MS);
 
 })();
 
