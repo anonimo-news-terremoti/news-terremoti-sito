@@ -366,8 +366,8 @@
   <section class="hero">
     <h1>📰 NEWS GUERRA & GEOPOLITICA</h1>
     <p>
-      Aggiornamenti dai principali fronti internazionali. Le notizie vengono aggregate
-      automaticamente e rimandano sempre alla fonte originale.
+      Aggiornamenti dai principali fronti internazionali pubblicati dal canale
+      Telegram News Anonimo e disponibili in tempo reale sul sito.
     </p>
 
     <div class="live-pill">
@@ -389,28 +389,28 @@
       <div class="panel-head">
         <div>
           <h2 id="feedTitle">📰 Ultime notizie</h2>
-          <p>Fonti giornalistiche raccolte tramite Google News</p>
+          <p>Post pubblicati automaticamente dal canale Telegram News Anonimo</p>
         </div>
 
         <button id="refreshBtn" class="refresh-btn" type="button" title="Aggiorna">↻</button>
       </div>
 
-      <div id="status" class="status">Caricamento notizie...</div>
+      <div id="status" class="status">Caricamento notizie da Telegram...</div>
 
       <div id="newsGrid" class="news-grid" aria-live="polite">
-        <div class="message">Connessione alle fonti di informazione...</div>
+        <div class="message">Connessione al canale Telegram...</div>
       </div>
 
       <div class="panel-foot">
         <span id="updated">Aggiornamento in corso...</span>
-        <span>Controllo automatico ogni 5 minuti</span>
+        <span>Controllo automatico ogni minuto</span>
       </div>
     </section>
 
     <div class="notice">
-      ⚠️ <strong>Nota:</strong> questa pagina aggrega titoli provenienti da fonti esterne.
+      ⚠️ <strong>Nota:</strong> le notizie sono riprese dal canale Telegram News Anonimo.
       In situazioni di guerra le informazioni possono cambiare rapidamente o risultare
-      contraddittorie. Apri sempre la fonte originale e confronta più fonti prima di
+      contraddittorie. Apri il post originale e confronta più fonti prima di
       considerare confermato un evento.
     </div>
 
@@ -422,23 +422,25 @@
 </footer>
 
 <script>
-const REFRESH_MS = 300000;
+const REFRESH_MS = 60000;
+const TELEGRAM_FEED_URL =
+  "https://wispy-cherry-f5bftelegram-news-anonimo.twitchfratv1.workers.dev/posts";
 
 const FEEDS = {
   ukraine: {
     title: "🇺🇦 Ucraina / Russia",
     tag: "UCRAINA / RUSSIA",
-    q: '(Ucraina OR Russia OR Kiev OR Mosca) (guerra OR attacco OR fronte)'
+    match: /\b(ucraina|russia|kiev|kyiv|mosca|kremlino|zelensky|putin|donbas|crimea)\b/i
   },
   middleeast: {
     title: "🌐 Medio Oriente",
     tag: "MEDIO ORIENTE",
-    q: '("Medio Oriente" OR Gaza OR Israele OR Iran OR Libano OR Siria) (guerra OR attacco OR conflitto)'
+    match: /\b(medio oriente|gaza|israele|iran|libano|siria|palestina|hezbollah|hamas|houthi|yemen|hormuz)\b/i
   },
   world: {
     title: "⚠️ Conflitti nel mondo",
     tag: "CONFLITTI MONDO",
-    q: '(guerra OR conflitto OR attacco militare OR bombardamento) mondo'
+    match: /\b(guerra|conflitto|attacco|militare|bombardamento|missile|drone|esercito|tregua|invasione|nato)\b/i
   }
 };
 
@@ -446,26 +448,17 @@ let activeFeed = "all";
 let refreshTimer = null;
 let loading = false;
 
-function googleRss(query) {
-  return "https://news.google.com/rss/search?q=" +
-    encodeURIComponent(query) +
-    "&hl=it&gl=IT&ceid=IT:it";
+function cleanText(text) {
+  return String(text || "").replace(/\s+/g, " ").trim();
 }
 
-function cleanTitle(title) {
-  return String(title || "").replace(/\s+/g, " ").trim();
+function isFeedMatch(item, key) {
+  return key === "all" || FEEDS[key].match.test(item.text);
 }
 
-function splitTitle(raw) {
-  const title = cleanTitle(raw);
-  const idx = title.lastIndexOf(" - ");
-  if (idx > 10) {
-    return {
-      title: title.slice(0, idx).trim(),
-      source: title.slice(idx + 3).trim()
-    };
-  }
-  return { title, source: "Fonte" };
+function getTag(item) {
+  const matched = Object.keys(FEEDS).find(key => FEEDS[key].match.test(item.text));
+  return matched ? FEEDS[matched].tag : "NEWS DAL MONDO";
 }
 
 function relativeTime(value) {
@@ -482,74 +475,29 @@ function relativeTime(value) {
   return d.toLocaleDateString("it-IT", { day:"2-digit", month:"2-digit" });
 }
 
-async function fetchViaRss2Json(feedUrl) {
-  const endpoint =
-    "https://api.rss2json.com/v1/api.json?rss_url=" +
-    encodeURIComponent(feedUrl) +
-    "&_=" + Date.now();
-
-  const r = await fetch(endpoint, { cache:"no-store" });
-  if (!r.ok) throw new Error("RSS2JSON HTTP " + r.status);
-
-  const data = await r.json();
-  if (data.status !== "ok" || !Array.isArray(data.items)) {
-    throw new Error("RSS2JSON risposta non valida");
-  }
-
-  return data.items.map(item => ({
-    title: item.title || "",
-    link: item.link || "",
-    pubDate: item.pubDate || "",
-    author: item.author || ""
-  }));
-}
-
-async function fetchViaAllOrigins(feedUrl) {
-  const proxy =
-    "https://api.allorigins.win/raw?url=" +
-    encodeURIComponent(feedUrl + "&_=" + Date.now());
-
-  const r = await fetch(proxy, { cache:"no-store" });
-  if (!r.ok) throw new Error("AllOrigins HTTP " + r.status);
-
-  const xmlText = await r.text();
-  const xml = new DOMParser().parseFromString(xmlText, "text/xml");
-
-  if (xml.querySelector("parsererror")) throw new Error("RSS non valido");
-
-  return [...xml.querySelectorAll("item")].map(item => ({
-    title: item.querySelector("title")?.textContent || "",
-    link: item.querySelector("link")?.textContent || "",
-    pubDate: item.querySelector("pubDate")?.textContent || "",
-    author:
-      item.querySelector("source")?.textContent ||
-      item.querySelector("author")?.textContent || ""
-  }));
-}
-
-async function fetchFeed(key) {
-  const feed = FEEDS[key];
-  const url = googleRss(feed.q);
-
-  let items;
-  try {
-    items = await fetchViaRss2Json(url);
-  } catch (e) {
-    console.warn("rss2json fallito", e);
-    items = await fetchViaAllOrigins(url);
-  }
-
-  return items.map(item => ({ ...item, feedKey:key }));
-}
-
-function dedupe(items) {
-  const seen = new Set();
-  return items.filter(item => {
-    const key = cleanTitle(item.title).toLowerCase();
-    if (!key || seen.has(key)) return false;
-    seen.add(key);
-    return true;
+async function fetchTelegramPosts() {
+  const response = await fetch(`${TELEGRAM_FEED_URL}?t=${Date.now()}`, {
+    cache: "no-store"
   });
+
+  if (!response.ok) {
+    throw new Error("Feed Telegram HTTP " + response.status);
+  }
+
+  const data = await response.json();
+  if (!data.ok || !Array.isArray(data.posts)) {
+    throw new Error("Risposta Telegram non valida");
+  }
+
+  return data.posts
+    .map(post => ({
+      id: post.id,
+      text: cleanText(post.text),
+      link: post.link || "https://t.me/NEWSANONIMO",
+      date: post.date || new Date().toISOString(),
+      type: post.type || "text"
+    }))
+    .filter(post => post.text);
 }
 
 function render(items) {
@@ -565,9 +513,6 @@ function render(items) {
   }
 
   items.slice(0, 15).forEach(item => {
-    const feed = FEEDS[item.feedKey];
-    const parsed = splitTitle(item.title);
-
     const card = document.createElement("a");
     card.className = "news-card";
     card.href = item.link || "#";
@@ -576,21 +521,21 @@ function render(items) {
 
     const tag = document.createElement("span");
     tag.className = "news-tag";
-    tag.textContent = feed.tag;
+    tag.textContent = getTag(item);
 
     const title = document.createElement("div");
     title.className = "news-title";
-    title.textContent = parsed.title;
+    title.textContent = item.text;
 
     const meta = document.createElement("div");
     meta.className = "news-meta";
 
     const source = document.createElement("span");
     source.className = "news-source";
-    source.textContent = parsed.source || item.author || "Fonte";
+    source.textContent = "Telegram · News Anonimo";
 
     const time = document.createElement("span");
-    time.textContent = relativeTime(item.pubDate);
+    time.textContent = relativeTime(item.date);
 
     meta.append(source, time);
     card.append(tag, title, meta);
@@ -609,31 +554,28 @@ async function updateNews() {
   const feedTitle = document.getElementById("feedTitle");
 
   refreshBtn.classList.add("loading");
-  status.textContent = "Ricerca degli ultimi aggiornamenti...";
+  status.textContent = "Caricamento degli aggiornamenti da Telegram...";
 
   try {
-    let items = [];
-
-    if (activeFeed === "all") {
-      feedTitle.textContent = "📰 Ultime notizie";
-      const groups = await Promise.all(
-        Object.keys(FEEDS).map(key => fetchFeed(key).catch(() => []))
-      );
-
-      items = groups.flat();
-      items.sort((a,b) => new Date(b.pubDate) - new Date(a.pubDate));
-      items = dedupe(items);
-    } else {
-      feedTitle.textContent = FEEDS[activeFeed].title;
-      items = dedupe(await fetchFeed(activeFeed));
+    const posts = await fetchTelegramPosts();
+    if (!posts.length) {
+      render([]);
+      status.textContent = "Non ci sono ancora notizie Telegram da mostrare";
+      updated.textContent = "In attesa del prossimo aggiornamento";
+      return;
     }
 
-    if (!items.length) throw new Error("Nessun feed disponibile");
+    const items = posts.filter(post => isFeedMatch(post, activeFeed));
+
+    feedTitle.textContent =
+      activeFeed === "all" ? "📰 Ultime notizie da Telegram" : FEEDS[activeFeed].title;
 
     render(items);
 
     status.textContent =
-      "Notizie aggiornate · apri una scheda per consultare la fonte originale";
+      items.length
+        ? "Notizie aggiornate dal canale Telegram · apri una scheda per vedere il post originale"
+        : "Nessuna notizia disponibile in questa categoria al momento";
 
     updated.textContent =
       "Ultimo controllo: " +
@@ -646,9 +588,9 @@ async function updateNews() {
     console.error(e);
 
     grid.innerHTML =
-      '<div class="message error">Notizie momentaneamente non disponibili.<br>Il sito riproverà automaticamente tra pochi minuti.</div>';
+      '<div class="message error">Notizie Telegram momentaneamente non disponibili.<br>Il sito riproverà automaticamente tra un minuto.</div>';
 
-    status.textContent = "Servizio notizie temporaneamente non disponibile";
+    status.textContent = "Servizio Telegram temporaneamente non disponibile";
     updated.textContent = "Nuovo tentativo automatico previsto";
   } finally {
     loading = false;
