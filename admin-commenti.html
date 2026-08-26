@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Amministratore Commenti</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(180deg,#020912,#04131f);
+  color:#fff;
+}
+
+.box{
+  width:min(420px,calc(100% - 30px));
+  padding:28px;
+  border:1px solid #174b65;
+  border-radius:18px;
+  background:#071522;
+  box-shadow:0 20px 50px rgba(0,0,0,.35);
+}
+
+h1{
+  margin-top:0;
+  text-align:center;
+}
+
+label{
+  display:block;
+  margin:16px 0 6px;
+  font-weight:800;
+}
+
+input{
+  width:100%;
+  padding:13px;
+  border:1px solid #235773;
+  border-radius:10px;
+  background:#04111b;
+  color:#fff;
+  font-size:16px;
+}
+
+button{
+  width:100%;
+  margin-top:20px;
+  padding:13px;
+  border:0;
+  border-radius:10px;
+  background:#0b82b5;
+  color:#fff;
+  font-weight:900;
+  font-size:16px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#1098d0;
+}
+
+#msg{
+  min-height:22px;
+  margin-top:14px;
+  text-align:center;
+  font-size:14px;
+}
+
+.apri{
+  display:none;
+  margin-top:12px;
+  text-align:center;
+  color:#71dcff;
+  font-weight:800;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h1>🔐 Gestione Commenti</h1>
+
+  <label>Nome utente</label>
+  <input id="username" autocomplete="username">
+
+  <label>Password</label>
+  <input id="password" type="password" autocomplete="current-password">
+
+  <button id="login">Accedi</button>
+
+  <div id="msg"></div>
+
+  <a id="apri" class="apri" href="guerra.html">
+    📰 Apri notizie e gestisci commenti
+  </a>
+</div>
+
+<script type="module">
+
+import { initializeApp } from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged
+} from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCrW23TMFTFRWWOdogA5bDhWBdbN5V4hyo",
+  authDomain: "news-terremoti.firebaseapp.com",
+  projectId: "news-terremoti",
+  storageBucket: "news-terremoti.firebasestorage.app",
+  messagingSenderId: "944750257608",
+  appId: "1:944750257608:web:f0add770fcf35724810cfd"
+};
+
+const SECOND_ADMIN_UID = "JCqSeAnDCjTlsSYVOx74zr8dwGH3";
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+const username = document.getElementById("username");
+const password = document.getElementById("password");
+const login = document.getElementById("login");
+const msg = document.getElementById("msg");
+const apri = document.getElementById("apri");
+
+login.addEventListener("click", async () => {
+
+  if(username.value.trim().toLowerCase() !== "admin"){
+    msg.textContent = "❌ Nome utente non valido";
+    return;
+  }
+
+  login.disabled = true;
+  msg.textContent = "Accesso...";
+
+  try{
+
+    const cred = await signInWithEmailAndPassword(
+      auth,
+      "admincommenti@anonimonews.local",
+      password.value
+    );
+
+    if(cred.user.uid !== SECOND_ADMIN_UID){
+      throw new Error("Utente non autorizzato");
+    }
+
+    msg.textContent = "✅ Accesso amministratore riuscito";
+    apri.style.display = "block";
+
+  }catch(error){
+    console.error(error);
+    msg.textContent = "❌ Nome utente o password errati";
+  }finally{
+    login.disabled = false;
+  }
+});
+
+onAuthStateChanged(auth,user=>{
+  if(user && user.uid === SECOND_ADMIN_UID){
+    msg.textContent = "✅ Amministratore collegato";
+    apri.style.display = "block";
+  }
+});
+
+</script>
+
+</body>
+</html>

@@ -11,7 +11,27 @@
     header{position:sticky;top:0;z-index:10;min-height:70px;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px;background:rgba(2,12,28,.95);border-bottom:1px solid rgba(66,190,255,.24);backdrop-filter:blur(14px)}
     .brand-logo{width:154px;height:auto;display:block;filter:drop-shadow(0 0 13px rgba(0,160,255,.22))} nav{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:wrap} nav a{padding:9px 11px;border:1px solid transparent;border-radius:9px;color:#dff4ff;text-decoration:none;font-size:13px;font-weight:800} nav a:hover,nav a.active{color:#fff;background:rgba(20,119,255,.14);border-color:rgba(73,171,255,.34)}
     main{max-width:1180px;margin:auto;padding:34px 18px 42px}.hero{text-align:center}.hero h1{margin:0;font-size:clamp(30px,5vw,56px);line-height:1.05;text-shadow:0 0 24px rgba(61,186,255,.2)}.hero p{max-width:760px;margin:14px auto;color:#a9cad9;line-height:1.55}.live{display:inline-flex;align-items:center;gap:8px;margin-top:8px;padding:8px 13px;border:1px solid rgba(87,205,255,.25);border-radius:999px;background:rgba(7,35,54,.8);color:#bfefff;font-size:11px;font-weight:900}.dot{width:8px;height:8px;border-radius:50%;background:#28dd76;box-shadow:0 0 12px #28dd76}
-    .feed{margin-top:24px;overflow:hidden;border:1px solid rgba(77,187,242,.25);border-radius:20px;background:linear-gradient(160deg,rgba(6,28,45,.97),rgba(2,15,27,.98));box-shadow:0 20px 55px rgba(0,0,0,.3)}.feed-head{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 20px;border-bottom:1px solid rgba(90,196,244,.15);background:linear-gradient(135deg,rgba(8,44,67,.91),rgba(3,23,39,.92))}.feed-head h2{margin:0;font-size:20px}.feed-head p{margin:5px 0 0;color:#8cb0c1;font-size:11px}.refresh{width:40px;height:40px;border:1px solid rgba(70,199,255,.34);border-radius:11px;background:#073d61;color:#9be9ff;font-size:21px;cursor:pointer}.refresh.loading{animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+    .feed{margin-top:24px;overflow:hidden;border:1px solid rgba(77,187,242,.25);border-radius:20px;background:linear-gradient(160deg,rgba(6,28,45,.97),rgba(2,15,27,.98));box-shadow:0 20px 55px rgba(0,0,0,.3)}.feed-head{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 20px;border-bottom:1px solid rgba(90,196,244,.15);background:linear-gradient(135deg,rgba(8,44,67,.91),rgba(3,23,39,.92))}.feed-head h2{margin:0;font-size:20px}.feed-head p{margin:5px 0 0;color:#8cb0c1;font-size:11px}.feed-actions{display:flex;align-items:center;gap:8px}
+.admin-comments-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:40px;
+  padding:9px 13px;
+  border:1px solid rgba(70,199,255,.34);
+  border-radius:11px;
+  background:#073d61;
+  color:#bceeff;
+  text-decoration:none;
+  font-size:11px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.admin-comments-button:hover{
+  background:#07557f;
+  color:#fff;
+}
+.refresh{width:40px;height:40px;border:1px solid rgba(70,199,255,.34);border-radius:11px;background:#073d61;color:#9be9ff;font-size:21px;cursor:pointer}.refresh.loading{animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
     #status{padding:11px 18px 0;color:#83b4c9;font-size:11px}.groups{display:grid;gap:18px;padding:18px}.group{overflow:hidden;border:1px solid rgba(84,184,231,.2);border-radius:16px;background:rgba(2,18,31,.48)}.group[hidden]{display:none}.group-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid rgba(84,184,231,.13);background:rgba(8,46,71,.48)}.group-head h3{margin:0;font-size:17px}.group-head p{margin:4px 0 0;color:#8db2c3;font-size:10px}.count{padding:6px 9px;border:1px solid rgba(92,205,255,.24);border-radius:999px;color:#9be5ff;background:rgba(32,155,211,.13);font-size:10px;font-weight:900;white-space:nowrap}.cards{display:grid;gap:14px;padding:14px}
     .card{overflow:hidden;border:1px solid rgba(84,184,231,.2);border-radius:15px;background:linear-gradient(145deg,rgba(9,40,63,.96),rgba(3,19,33,.98))}.gallery{display:grid;gap:4px;overflow:hidden;background:#07121d;border-bottom:1px solid rgba(111,207,255,.14)}.gallery.one{grid-template-columns:1fr}.gallery.two,.gallery.many{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery.many .tile:first-child{grid-column:1/-1;aspect-ratio:16/8.7}.tile{position:relative;overflow:hidden;aspect-ratio:16/9;background:#0a1722}.tile img,.tile video{display:block;width:100%;height:100%;object-fit:contain;background:#0a1722}.tile video{cursor:pointer}.video-label,.more{position:absolute;z-index:1;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:900;text-shadow:0 1px 5px #000}.video-label{right:10px;bottom:10px;padding:6px 8px;border:1px solid rgba(255,255,255,.25);border-radius:999px;background:rgba(2,13,24,.76);font-size:10px}.more{inset:0;background:rgba(1,11,21,.58);font-size:28px}.card-body{padding:15px 16px 16px}.kicker{display:flex;justify-content:space-between;align-items:center;gap:12px}.tag{padding:5px 8px;border:1px solid rgba(255,110,83,.22);border-radius:999px;color:#ffc0b1;background:rgba(255,101,76,.12);font-size:9px;font-weight:950;letter-spacing:.3px}.time{color:#7db3ca;font-size:11px;font-weight:800}.text{margin:11px 0 13px;color:#f4fbff;font-size:clamp(16px,1.5vw,21px);font-weight:700;line-height:1.43;white-space:pre-wrap}.meta{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:11px;border-top:1px solid rgba(102,190,230,.12);color:#69d7ff;font-size:10px;font-weight:800}.open{padding:8px 10px;border:1px solid rgba(75,201,255,.25);border-radius:9px;color:#a8ebff;background:rgba(8,54,84,.55);text-decoration:none}.open:hover{color:#fff;border-color:rgba(99,216,255,.6)}
     .message{padding:34px 20px;border:1px dashed rgba(75,185,235,.24);border-radius:14px;color:#9bc5d6;background:rgba(3,18,31,.56);text-align:center;line-height:1.6}.message.error{color:#ffc0c0}.foot{display:flex;justify-content:space-between;gap:10px;padding:0 18px 17px;color:#769eaf;font-size:10px}.notice{margin-top:16px;padding:14px 16px;border:1px solid rgba(255,199,61,.2);border-radius:13px;color:#e3cf8f;background:rgba(90,73,8,.18);font-size:11px;line-height:1.55}footer{padding:28px 15px;color:#6b93a5;text-align:center;font-size:11px}
@@ -39,7 +59,10 @@
           <h2>📰 Notizie da Telegram</h2>
           <p>Foto, video e testo pubblicati automaticamente dal canale News Anonimo</p>
         </div>
-        <button id="refresh" class="refresh" type="button" title="Aggiorna">↻</button>
+        <div class="feed-actions">
+          <a class="admin-comments-button" href="admin-commenti.html">🔐 ADMIN COMMENTI</a>
+          <button id="refresh" class="refresh" type="button" title="Aggiorna">↻</button>
+        </div>
       </div>
 
       <div id="status">Caricamento notizie da Telegram...</div>

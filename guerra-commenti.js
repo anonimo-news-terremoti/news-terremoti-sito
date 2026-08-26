@@ -32,6 +32,7 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 
 const ADMIN_UID = "V720CwqUJOh1DpHcoXq8bnhxo9k1";
+const COMMENT_ADMIN_UID = "JCqSeAnDCjTlsSYVOx74zr8dwGH3";
 let adminLogged = false;
 
 const COMMENTS = collection(db, "guerra_comments");
@@ -375,7 +376,13 @@ observer.observe(document.body,{
 });
 
 onAuthStateChanged(auth,user => {
-  adminLogged = !!(user && user.uid === ADMIN_UID);
+  adminLogged = !!(
+    user &&
+    (
+      user.uid === ADMIN_UID ||
+      user.uid === COMMENT_ADMIN_UID
+    )
+  );
   renderAll();
 });
 
