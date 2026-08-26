@@ -1,616 +1,407 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>News Guerra & Geopolitica - News Terremoti</title>
-  <meta name="description" content="Ultime notizie su guerre, Ucraina, Russia, Medio Oriente, crisi internazionali e geopolitica.">
-
+  <meta name="description" content="Notizie su Ucraina, Russia, Medio Oriente e conflitti internazionali dal canale Telegram News Anonimo.">
   <style>
-    * { box-sizing: border-box; }
-    html { background:#020914; }
-    body {
-      margin:0;
-      min-height:100vh;
-      font-family:Inter,Arial,Helvetica,sans-serif;
-      color:#eef9ff;
-      background:
-        linear-gradient(rgba(1,10,22,.72), rgba(1,10,22,.93)),
-        url("sfondo-sismologia.png") center top / cover fixed no-repeat,
-        #020914;
-    }
-
-    body::before {
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      background:
-        linear-gradient(rgba(0,191,255,.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,191,255,.03) 1px, transparent 1px);
-      background-size:44px 44px;
-      mask-image:linear-gradient(to bottom, rgba(0,0,0,.7), transparent 88%);
-    }
-
-    header {
-      position:sticky;
-      top:0;
-      z-index:1000;
-      min-height:68px;
-      padding:10px 24px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-      background:rgba(2,12,28,.94);
-      border-bottom:1px solid rgba(66,190,255,.24);
-      backdrop-filter:blur(14px);
-    }
-
-    .brand-logo {
-      width:154px;
-      height:auto;
-      display:block;
-      filter:drop-shadow(0 0 13px rgba(0,160,255,.22));
-    }
-
-    nav {
-      display:flex;
-      align-items:center;
-      gap:7px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-
-    nav a {
-      color:#dff4ff;
-      text-decoration:none;
-      padding:9px 11px;
-      border-radius:9px;
-      font-size:13px;
-      font-weight:850;
-      border:1px solid transparent;
-    }
-
-    nav a:hover,
-    nav a.active {
-      color:white;
-      background:rgba(20,119,255,.14);
-      border-color:rgba(73,171,255,.34);
-    }
-
-    .hero {
-      max-width:1450px;
-      margin:0 auto;
-      padding:42px 22px 24px;
-      text-align:center;
-    }
-
-    .hero h1 {
-      margin:0;
-      font-size:clamp(34px,5vw,64px);
-      line-height:1.02;
-      font-weight:950;
-      letter-spacing:.4px;
-      text-shadow:0 0 24px rgba(61,186,255,.18);
-    }
-
-    .hero p {
-      max-width:820px;
-      margin:14px auto 0;
-      color:#a9cad9;
-      font-size:16px;
-      line-height:1.55;
-    }
-
-    .live-pill {
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      margin-top:18px;
-      padding:8px 13px;
-      border-radius:999px;
-      background:rgba(7,35,54,.8);
-      border:1px solid rgba(87,205,255,.25);
-      color:#bfefff;
-      font-size:11px;
-      font-weight:900;
-      letter-spacing:.4px;
-    }
-
-    .live-dot {
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:#28dd76;
-      box-shadow:0 0 12px #28dd76;
-      animation:pulse 1.1s infinite alternate;
-    }
-
-    @keyframes pulse {
-      from { opacity:.45; transform:scale(.9); }
-      to { opacity:1; transform:scale(1.08); }
-    }
-
-    .wrap {
-      max-width:1450px;
-      margin:0 auto 40px;
-      padding:0 22px;
-    }
-
-    .toolbar {
-      display:flex;
-      gap:9px;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:center;
-      margin:4px 0 20px;
-    }
-
-    .filter-btn {
-      border:1px solid rgba(83,192,242,.24);
-      background:rgba(6,30,48,.88);
-      color:#b9ddec;
-      padding:10px 14px;
-      border-radius:999px;
-      cursor:pointer;
-      font-size:12px;
-      font-weight:900;
-      transition:.16s;
-    }
-
-    .filter-btn:hover,
-    .filter-btn.active {
-      background:linear-gradient(135deg,#0d6b9a,#07456b);
-      border-color:#4acfff;
-      color:white;
-      box-shadow:0 0 16px rgba(34,181,246,.18);
-    }
-
-    .panel {
-      overflow:hidden;
-      border-radius:20px;
-      background:linear-gradient(160deg,rgba(6,28,45,.97),rgba(2,15,27,.98));
-      border:1px solid rgba(77,187,242,.23);
-      box-shadow:0 20px 55px rgba(0,0,0,.30);
-    }
-
-    .panel-head {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      padding:18px 20px;
-      border-bottom:1px solid rgba(90,196,244,.14);
-      background:linear-gradient(135deg,rgba(8,44,67,.91),rgba(3,23,39,.92));
-    }
-
-    .panel-head h2 {
-      margin:0;
-      font-size:20px;
-    }
-
-    .panel-head p {
-      margin:5px 0 0;
-      color:#87adbf;
-      font-size:11px;
-    }
-
-    .refresh-btn {
-      width:38px;
-      height:38px;
-      flex:0 0 auto;
-      border-radius:11px;
-      border:1px solid rgba(70,199,255,.28);
-      background:rgba(8,53,82,.84);
-      color:#8be3ff;
-      font-size:20px;
-      cursor:pointer;
-    }
-
-    .refresh-btn.loading {
-      animation:spin .8s linear infinite;
-    }
-
-    @keyframes spin { to { transform:rotate(360deg); } }
-
-    .status {
-      padding:10px 20px 0;
-      color:#739aad;
-      font-size:10px;
-    }
-
-    .news-grid {
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:12px;
-      padding:16px;
-    }
-
-    .news-card {
-      display:flex;
-      flex-direction:column;
-      min-height:180px;
-      padding:15px;
-      border-radius:15px;
-      text-decoration:none;
-      background:linear-gradient(145deg,rgba(9,40,63,.92),rgba(3,19,33,.96));
-      border:1px solid rgba(84,184,231,.16);
-      transition:transform .16s ease,border-color .16s ease,background .16s ease;
-    }
-
-    .news-card:hover {
-      transform:translateY(-2px);
-      border-color:rgba(64,204,255,.48);
-      background:linear-gradient(145deg,rgba(12,51,79,.98),rgba(4,25,43,.98));
-    }
-
-    .news-tag {
-      align-self:flex-start;
-      padding:5px 8px;
-      border-radius:999px;
-      background:rgba(255,101,76,.11);
-      border:1px solid rgba(255,110,83,.19);
-      color:#ffb7a7;
-      font-size:9px;
-      font-weight:950;
-      letter-spacing:.3px;
-    }
-
-    .news-title {
-      margin:11px 0 9px;
-      color:#f2fbff;
-      font-size:14px;
-      line-height:1.38;
-      font-weight:850;
-    }
-
-    .news-meta {
-      margin-top:auto;
-      padding-top:11px;
-      border-top:1px solid rgba(102,190,230,.10);
-      display:flex;
-      justify-content:space-between;
-      gap:8px;
-      color:#779faf;
-      font-size:9.5px;
-    }
-
-    .news-source {
-      color:#62d5ff;
-      font-weight:850;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
-    }
-
-    .message {
-      grid-column:1/-1;
-      padding:34px 20px;
-      text-align:center;
-      color:#88adbd;
-      border-radius:14px;
-      border:1px dashed rgba(75,185,235,.20);
-      background:rgba(3,18,31,.56);
-      line-height:1.6;
-    }
-
-    .message.error { color:#ffc0c0; }
-
-    .panel-foot {
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      padding:0 18px 16px;
-      color:#6e95a7;
-      font-size:9.5px;
-    }
-
-    .notice {
-      margin-top:16px;
-      padding:14px 16px;
-      border-radius:13px;
-      background:rgba(90,73,8,.18);
-      border:1px solid rgba(255,199,61,.18);
-      color:#d9c889;
-      font-size:11px;
-      line-height:1.55;
-    }
-
-    footer {
-      padding:30px 20px 36px;
-      text-align:center;
-      color:#64889a;
-      font-size:11px;
-    }
-
-    @media (max-width:1000px) {
-      .news-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-    }
-
-    @media (max-width:720px) {
-      header {
-        position:relative;
-        flex-direction:column;
-        align-items:center;
-        padding:12px;
-      }
-      nav { justify-content:center; }
-      .news-grid { grid-template-columns:1fr; padding:12px; }
-      .news-card { min-height:145px; }
-      .hero { padding-top:30px; }
-      .panel-head { align-items:flex-start; }
-    }
+    *{box-sizing:border-box} html{background:#020914} body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;color:#ecf8ff;background:linear-gradient(rgba(1,10,22,.76),rgba(1,10,22,.94)),url("sfondo-sismologia.png") center top/cover fixed,#020914}
+    body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(rgba(0,191,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,191,255,.025) 1px,transparent 1px);background-size:44px 44px}
+    header{position:sticky;top:0;z-index:10;min-height:70px;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px;background:rgba(2,12,28,.95);border-bottom:1px solid rgba(66,190,255,.24);backdrop-filter:blur(14px)}
+    .brand-logo{width:154px;height:auto;display:block;filter:drop-shadow(0 0 13px rgba(0,160,255,.22))} nav{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:wrap} nav a{padding:9px 11px;border:1px solid transparent;border-radius:9px;color:#dff4ff;text-decoration:none;font-size:13px;font-weight:800} nav a:hover,nav a.active{color:#fff;background:rgba(20,119,255,.14);border-color:rgba(73,171,255,.34)}
+    main{max-width:1180px;margin:auto;padding:34px 18px 42px}.hero{text-align:center}.hero h1{margin:0;font-size:clamp(30px,5vw,56px);line-height:1.05;text-shadow:0 0 24px rgba(61,186,255,.2)}.hero p{max-width:760px;margin:14px auto;color:#a9cad9;line-height:1.55}.live{display:inline-flex;align-items:center;gap:8px;margin-top:8px;padding:8px 13px;border:1px solid rgba(87,205,255,.25);border-radius:999px;background:rgba(7,35,54,.8);color:#bfefff;font-size:11px;font-weight:900}.dot{width:8px;height:8px;border-radius:50%;background:#28dd76;box-shadow:0 0 12px #28dd76}
+    .feed{margin-top:24px;overflow:hidden;border:1px solid rgba(77,187,242,.25);border-radius:20px;background:linear-gradient(160deg,rgba(6,28,45,.97),rgba(2,15,27,.98));box-shadow:0 20px 55px rgba(0,0,0,.3)}.feed-head{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 20px;border-bottom:1px solid rgba(90,196,244,.15);background:linear-gradient(135deg,rgba(8,44,67,.91),rgba(3,23,39,.92))}.feed-head h2{margin:0;font-size:20px}.feed-head p{margin:5px 0 0;color:#8cb0c1;font-size:11px}.refresh{width:40px;height:40px;border:1px solid rgba(70,199,255,.34);border-radius:11px;background:#073d61;color:#9be9ff;font-size:21px;cursor:pointer}.refresh.loading{animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+    #status{padding:11px 18px 0;color:#83b4c9;font-size:11px}.groups{display:grid;gap:18px;padding:18px}.group{overflow:hidden;border:1px solid rgba(84,184,231,.2);border-radius:16px;background:rgba(2,18,31,.48)}.group[hidden]{display:none}.group-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid rgba(84,184,231,.13);background:rgba(8,46,71,.48)}.group-head h3{margin:0;font-size:17px}.group-head p{margin:4px 0 0;color:#8db2c3;font-size:10px}.count{padding:6px 9px;border:1px solid rgba(92,205,255,.24);border-radius:999px;color:#9be5ff;background:rgba(32,155,211,.13);font-size:10px;font-weight:900;white-space:nowrap}.cards{display:grid;gap:14px;padding:14px}
+    .card{overflow:hidden;border:1px solid rgba(84,184,231,.2);border-radius:15px;background:linear-gradient(145deg,rgba(9,40,63,.96),rgba(3,19,33,.98))}.gallery{display:grid;gap:4px;overflow:hidden;background:#07121d;border-bottom:1px solid rgba(111,207,255,.14)}.gallery.one{grid-template-columns:1fr}.gallery.two,.gallery.many{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery.many .tile:first-child{grid-column:1/-1;aspect-ratio:16/8.7}.tile{position:relative;overflow:hidden;aspect-ratio:16/9;background:#0a1722}.tile img,.tile video{display:block;width:100%;height:100%;object-fit:contain;background:#0a1722}.tile video{cursor:pointer}.video-label,.more{position:absolute;z-index:1;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:900;text-shadow:0 1px 5px #000}.video-label{right:10px;bottom:10px;padding:6px 8px;border:1px solid rgba(255,255,255,.25);border-radius:999px;background:rgba(2,13,24,.76);font-size:10px}.more{inset:0;background:rgba(1,11,21,.58);font-size:28px}.card-body{padding:15px 16px 16px}.kicker{display:flex;justify-content:space-between;align-items:center;gap:12px}.tag{padding:5px 8px;border:1px solid rgba(255,110,83,.22);border-radius:999px;color:#ffc0b1;background:rgba(255,101,76,.12);font-size:9px;font-weight:950;letter-spacing:.3px}.time{color:#7db3ca;font-size:11px;font-weight:800}.text{margin:11px 0 13px;color:#f4fbff;font-size:clamp(16px,1.5vw,21px);font-weight:700;line-height:1.43;white-space:pre-wrap}.meta{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:11px;border-top:1px solid rgba(102,190,230,.12);color:#69d7ff;font-size:10px;font-weight:800}.open{padding:8px 10px;border:1px solid rgba(75,201,255,.25);border-radius:9px;color:#a8ebff;background:rgba(8,54,84,.55);text-decoration:none}.open:hover{color:#fff;border-color:rgba(99,216,255,.6)}
+    .message{padding:34px 20px;border:1px dashed rgba(75,185,235,.24);border-radius:14px;color:#9bc5d6;background:rgba(3,18,31,.56);text-align:center;line-height:1.6}.message.error{color:#ffc0c0}.foot{display:flex;justify-content:space-between;gap:10px;padding:0 18px 17px;color:#769eaf;font-size:10px}.notice{margin-top:16px;padding:14px 16px;border:1px solid rgba(255,199,61,.2);border-radius:13px;color:#e3cf8f;background:rgba(90,73,8,.18);font-size:11px;line-height:1.55}footer{padding:28px 15px;color:#6b93a5;text-align:center;font-size:11px}
+    @media(max-width:720px){header{position:relative;flex-direction:column;padding:12px}nav{justify-content:center}.feed-head{align-items:flex-start}.groups{padding:12px}.cards{padding:10px}.gallery.many .tile:first-child{aspect-ratio:16/9}.card-body{padding:13px}.text{font-size:17px}.foot{flex-direction:column}.meta{align-items:flex-start;flex-direction:column}}
   </style>
 </head>
-
 <body>
+  <header>
+    <a href="index.html"><img class="brand-logo" src="logo-animono-news-web.png" alt="News Terremoti"></a>
+    <nav>
+      <a href="index.html">HOME</a><a href="terremoti_italia.html">ITALIA</a><a href="terremoti_mondo.html">MONDO</a><a href="sismografi.html">SISMOGRAFI</a><a href="meteo.html">🌦️ METEO</a><a class="active" href="guerra.html">📰 NEWS GUERRA</a>
+    </nav>
+  </header>
 
-<header>
-  <a href="index.html">
-    <img src="logo-animono-news-web.png" alt="News Terremoti" class="brand-logo">
-  </a>
-
-  <nav>
-    <a href="index.html">HOME</a>
-    <a href="terremoti_italia.html">ITALIA</a>
-    <a href="terremoti_mondo.html">MONDO</a>
-    <a href="sismografi.html">SISMOGRAFI</a>
-    <a href="meteo.html">🌦️ METEO</a>
-    <a href="guerra.html" class="active">📰 NEWS GUERRA</a>
-  </nav>
-</header>
-
-<main>
-  <section class="hero">
-    <h1>📰 NEWS GUERRA & GEOPOLITICA</h1>
-    <p>
-      Aggiornamenti dai principali fronti internazionali pubblicati dal canale
-      Telegram News Anonimo e disponibili in tempo reale sul sito.
-    </p>
-
-    <div class="live-pill">
-      <span class="live-dot"></span>
-      AGGIORNAMENTO AUTOMATICO
-    </div>
-  </section>
-
-  <div class="wrap">
-
-    <div class="toolbar">
-      <button class="filter-btn active" data-feed="all">🌍 Tutte</button>
-      <button class="filter-btn" data-feed="ukraine">🇺🇦 Ucraina / Russia</button>
-      <button class="filter-btn" data-feed="middleeast">🌐 Medio Oriente</button>
-      <button class="filter-btn" data-feed="world">⚠️ Conflitti nel mondo</button>
-    </div>
-
-    <section class="panel">
-      <div class="panel-head">
-        <div>
-          <h2 id="feedTitle">📰 Ultime notizie</h2>
-          <p>Post pubblicati automaticamente dal canale Telegram News Anonimo</p>
-        </div>
-
-        <button id="refreshBtn" class="refresh-btn" type="button" title="Aggiorna">↻</button>
-      </div>
-
-      <div id="status" class="status">Caricamento notizie da Telegram...</div>
-
-      <div id="newsGrid" class="news-grid" aria-live="polite">
-        <div class="message">Connessione al canale Telegram...</div>
-      </div>
-
-      <div class="panel-foot">
-        <span id="updated">Aggiornamento in corso...</span>
-        <span>Controllo automatico ogni minuto</span>
-      </div>
+  <main>
+    <section class="hero">
+      <h1>📰 NEWS GUERRA &amp; GEOPOLITICA</h1>
+      <p>Notizie dal canale Telegram News Anonimo, divise automaticamente per area e complete di foto o video quando disponibili.</p>
+      <div class="live"><span class="dot"></span>AGGIORNAMENTO AUTOMATICO</div>
     </section>
 
-    <div class="notice">
-      ⚠️ <strong>Nota:</strong> le notizie sono riprese dal canale Telegram News Anonimo.
-      In situazioni di guerra le informazioni possono cambiare rapidamente o risultare
-      contraddittorie. Apri il post originale e confronta più fonti prima di
-      considerare confermato un evento.
-    </div>
+    <section class="feed">
+      <div class="feed-head">
+        <div>
+          <h2>📰 Notizie da Telegram</h2>
+          <p>Foto, video e testo pubblicati automaticamente dal canale News Anonimo</p>
+        </div>
+        <button id="refresh" class="refresh" type="button" title="Aggiorna">↻</button>
+      </div>
 
-  </div>
-</main>
+      <div id="status">Caricamento notizie da Telegram...</div>
 
-<footer>
-  News Terremoti · Sezione Guerra & Geopolitica · Aggregatore informativo
-</footer>
+      <div class="groups" aria-live="polite">
+        <div id="empty" class="message">Caricamento notizie di guerra...</div>
 
-<script>
-const REFRESH_MS = 60000;
-const TELEGRAM_FEED_URL =
-  "https://wispy-cherry-f5bftelegram-news-anonimo.twitchfratv1.workers.dev/posts";
+        <section id="ukraine" class="group" hidden>
+          <div class="group-head"><div><h3>🇺🇦 Ucraina / Russia</h3><p>Aggiornamenti sul fronte russo-ucraino</p></div><span id="ukraine-count" class="count"></span></div>
+          <div id="ukraine-cards" class="cards"></div>
+        </section>
 
-const FEEDS = {
-  ukraine: {
-    title: "🇺🇦 Ucraina / Russia",
-    tag: "UCRAINA / RUSSIA",
-    match: /\b(ucraina|russia|kiev|kyiv|mosca|kremlino|zelensky|putin|donbas|crimea)\b/i
-  },
-  middleeast: {
-    title: "🌐 Medio Oriente",
-    tag: "MEDIO ORIENTE",
-    match: /\b(medio oriente|gaza|israele|iran|libano|siria|palestina|hezbollah|hamas|houthi|yemen|hormuz)\b/i
-  },
-  world: {
-    title: "⚠️ Conflitti nel mondo",
-    tag: "CONFLITTI MONDO",
-    match: /\b(guerra|conflitto|attacco|militare|bombardamento|missile|drone|esercito|tregua|invasione|nato)\b/i
-  }
-};
+        <section id="middleeast" class="group" hidden>
+          <div class="group-head"><div><h3>🌐 Medio Oriente</h3><p>Israele, Gaza, Iran, Libano, Siria e area regionale</p></div><span id="middleeast-count" class="count"></span></div>
+          <div id="middleeast-cards" class="cards"></div>
+        </section>
 
-let activeFeed = "all";
-let refreshTimer = null;
-let loading = false;
+        <section id="world" class="group" hidden>
+          <div class="group-head"><div><h3>⚠️ Altri conflitti nel mondo</h3><p>Guerre, crisi e tensioni internazionali</p></div><span id="world-count" class="count"></span></div>
+          <div id="world-cards" class="cards"></div>
+        </section>
+      </div>
 
-function cleanText(text) {
-  return String(text || "").replace(/\s+/g, " ").trim();
-}
+      <div class="foot"><span id="updated">Aggiornamento in corso...</span><span>Controllo automatico ogni minuto</span></div>
+    </section>
 
-function isFeedMatch(item, key) {
-  return key === "all" || FEEDS[key].match.test(item.text);
-}
+    <div class="notice">⚠️ <strong>Nota:</strong> le notizie sono riprese dal canale Telegram News Anonimo. In situazioni di guerra le informazioni possono cambiare rapidamente: apri sempre il post originale e confronta più fonti.</div>
+  </main>
 
-function getTag(item) {
-  const matched = Object.keys(FEEDS).find(key => FEEDS[key].match.test(item.text));
-  return matched ? FEEDS[matched].tag : "NEWS DAL MONDO";
-}
+  <footer>News Terremoti · Sezione Guerra &amp; Geopolitica · Aggregatore informativo</footer>
 
-function relativeTime(value) {
-  const d = new Date(value);
-  if (Number.isNaN(d.getTime())) return "recente";
+  <script>
+    const BASE = "https://wispy-cherry-f5bftelegram-news-anonimo.twitchfratv1.workers.dev";
+    const REFRESH_MS = 60000;
+    const CATEGORIES = [
+      { key:"ukraine", tag:"UCRAINA / RUSSIA", re:/\b(ucraina|russia|kiev|kyiv|mosca|kremlino|zelensky|putin|donbas|crimea)\b/i },
+      { key:"middleeast", tag:"MEDIO ORIENTE", re:/\b(medio oriente|gaza|israele|iran|libano|siria|palestina|hezbollah|hamas|houthi|yemen|hormuz|qatar|giordania|iraq)\b/i },
+      { key:"world", tag:"CONFLITTI MONDO", re:/\b(guerra|conflitto|attacco|militare|bombardamento|missile|drone|esercito|tregua|invasione|nato|raid|scontri|offensiva)\b/i }
+    ];
+    let loading = false;
 
-  const min = Math.max(0, Math.floor((Date.now() - d.getTime()) / 60000));
-  if (min < 2) return "adesso";
-  if (min < 60) return min + " min fa";
-
-  const h = Math.floor(min / 60);
-  if (h < 24) return h + " h fa";
-
-  return d.toLocaleDateString("it-IT", { day:"2-digit", month:"2-digit" });
-}
-
-async function fetchTelegramPosts() {
-  const response = await fetch(`${TELEGRAM_FEED_URL}?t=${Date.now()}`, {
-    cache: "no-store"
-  });
-
-  if (!response.ok) {
-    throw new Error("Feed Telegram HTTP " + response.status);
-  }
-
-  const data = await response.json();
-  if (!data.ok || !Array.isArray(data.posts)) {
-    throw new Error("Risposta Telegram non valida");
-  }
-
-  return data.posts
-    .map(post => ({
-      id: post.id,
-      text: cleanText(post.text),
-      link: post.link || "https://t.me/NEWSANONIMO",
-      date: post.date || new Date().toISOString(),
-      type: post.type || "text"
-    }))
-    .filter(post => post.text);
-}
-
-function render(items) {
-  const grid = document.getElementById("newsGrid");
-  grid.replaceChildren();
-
-  if (!items.length) {
-    const el = document.createElement("div");
-    el.className = "message";
-    el.textContent = "Nessuna notizia disponibile in questo momento.";
-    grid.appendChild(el);
-    return;
-  }
-
-  items.slice(0, 15).forEach(item => {
-    const card = document.createElement("a");
-    card.className = "news-card";
-    card.href = item.link || "#";
-    card.target = "_blank";
-    card.rel = "noopener noreferrer";
-
-    const tag = document.createElement("span");
-    tag.className = "news-tag";
-    tag.textContent = getTag(item);
-
-    const title = document.createElement("div");
-    title.className = "news-title";
-    title.textContent = item.text;
-
-    const meta = document.createElement("div");
-    meta.className = "news-meta";
-
-    const source = document.createElement("span");
-    source.className = "news-source";
-    source.textContent = "Telegram · News Anonimo";
-
-    const time = document.createElement("span");
-    time.textContent = relativeTime(item.date);
-
-    meta.append(source, time);
-    card.append(tag, title, meta);
-    grid.appendChild(card);
-  });
-}
-
-async function updateNews() {
-  if (loading) return;
-  loading = true;
-
-  const grid = document.getElementById("newsGrid");
-  const status = document.getElementById("status");
-  const updated = document.getElementById("updated");
-  const refreshBtn = document.getElementById("refreshBtn");
-  const feedTitle = document.getElementById("feedTitle");
-
-  refreshBtn.classList.add("loading");
-  status.textContent = "Caricamento degli aggiornamenti da Telegram...";
-
-  try {
-    const posts = await fetchTelegramPosts();
-    if (!posts.length) {
-      render([]);
-      status.textContent = "Non ci sono ancora notizie Telegram da mostrare";
-      updated.textContent = "In attesa del prossimo aggiornamento";
-      return;
+    function cleanText(value) {
+      let text = String(value || "").replace(/\r\n/g,"\n").replace(/\r/g,"\n").trim();
+      const promo = text.search(/segui i canali ufficiali:|sostieni il canale/i);
+      if (promo > 0) text = text.slice(0, promo).trim();
+      return text;
     }
 
-    const items = posts.filter(post => isFeedMatch(post, activeFeed));
+    function relativeTime(value) {
+      const date = new Date(value);
+      const min = Math.max(0, Math.floor((Date.now() - date) / 60000));
+      if (Number.isNaN(date.getTime())) return "recente";
+      if (min < 2) return "adesso";
+      if (min < 60) return `${min} min fa`;
+      const hours = Math.floor(min / 60);
+      if (hours < 24) return `${hours} h fa`;
+      return date.toLocaleDateString("it-IT",{day:"2-digit",month:"2-digit"});
+    }
 
-    feedTitle.textContent =
-      activeFeed === "all" ? "📰 Ultime notizie da Telegram" : FEEDS[activeFeed].title;
+    function mediaUrl(media) {
+      return `${BASE}/media?fileId=${encodeURIComponent(media.fileId)}`;
+    }
 
-    render(items);
+    function categoryFor(item) {
+      return CATEGORIES.find(category => category.re.test(item.text));
+    }
 
-    status.textContent =
-      items.length
-        ? "Notizie aggiornate dal canale Telegram · apri una scheda per vedere il post originale"
-        : "Nessuna notizia disponibile in questa categoria al momento";
+    function validMedia(media) {
+      const kind = String(media?.kind || "").toLowerCase();
+      const fileId = String(media?.fileId || "");
+      return fileId && ["photo","video","animation"].includes(kind)
+        ? {kind,fileId,mimeType:String(media.mimeType || "")}
+        : null;
+    }
 
-    updated.textContent =
-      "Ultimo controllo: " +
-      new Date().toLocaleTimeString("it-IT", {
-        hour:"2-digit",
-        minute:"2-digit"
+    async function getPosts() {
+      const response = await fetch(`${BASE}/posts?t=${Date.now()}`,{cache:"no-store"});
+      const data = await response.json();
+
+      if (!response.ok || !data.ok || !Array.isArray(data.posts)) {
+        throw new Error("Feed non disponibile");
+      }
+
+      return data.posts.map(post => ({
+        id:post.id,
+        text:cleanText(post.text),
+        link:post.link || "https://t.me/NEWSANONIMO",
+        date:post.date || new Date().toISOString(),
+        mediaGroupId:post.mediaGroupId || null,
+        media:(post.media || []).map(validMedia).filter(Boolean)
+      })).filter(post => post.text || post.media.length);
+    }
+
+    function albums(posts) {
+      const grouped = new Map();
+
+      posts.slice().sort((a,b) => Number(a.id) - Number(b.id)).forEach(post => {
+        const key = post.mediaGroupId ? `album:${post.mediaGroupId}` : `post:${post.id}`;
+        const item = grouped.get(key) || {
+          id:post.id,text:post.text,link:post.link,date:post.date,media:[]
+        };
+
+        if (post.text.length > item.text.length) {
+          item.text = post.text;
+          item.link = post.link;
+        }
+
+        if (new Date(post.date) > new Date(item.date)) item.date = post.date;
+
+        post.media.forEach(media => {
+          if (!item.media.some(saved => saved.fileId === media.fileId)) {
+            item.media.push(media);
+          }
+        });
+
+        grouped.set(key,item);
       });
 
-  } catch (e) {
-    console.error(e);
+      return [...grouped.values()].sort((a,b) => new Date(b.date) - new Date(a.date));
+    }
 
-    grid.innerHTML =
-      '<div class="message error">Notizie Telegram momentaneamente non disponibili.<br>Il sito riproverà automaticamente tra un minuto.</div>';
+    function gallery(item) {
+      const media = item.media.slice(0,4);
+      const element = document.createElement("div");
+      element.className = `gallery ${media.length === 1 ? "one" : media.length === 2 ? "two" : "many"}`;
 
-    status.textContent = "Servizio Telegram temporaneamente non disponibile";
-    updated.textContent = "Nuovo tentativo automatico previsto";
-  } finally {
-    loading = false;
-    refreshBtn.classList.remove("loading");
-  }
+      media.forEach((entry,index) => {
+        const tile = document.createElement("div");
+        tile.className = "tile";
+
+        const isVideo = entry.kind === "video" ||
+          (entry.kind === "animation" && !entry.mimeType.startsWith("image/"));
+
+        if (isVideo) {
+          const node = document.createElement("video");
+          node.src = mediaUrl(entry);
+          node.controls = true;
+          node.preload = "metadata";
+          node.playsInline = true;
+          tile.append(node);
+
+          const label = document.createElement("span");
+          label.className = "video-label";
+          label.textContent = "▶ VIDEO";
+          tile.append(label);
+        } else {
+          const node = document.createElement("img");
+          node.src = mediaUrl(entry);
+          node.loading = "lazy";
+          node.alt = "Immagine della notizia Telegram";
+          tile.append(node);
+        }
+
+        if (index === media.length - 1 && item.media.length > media.length) {
+          const more = document.createElement("span");
+          more.className = "more";
+          more.textContent = `+${item.media.length - media.length}`;
+          tile.append(more);
+        }
+
+        element.append(tile);
+      });
+
+      return element;
+    }
+
+    function card(category,item) {
+      const element = document.createElement("article");
+      element.className = "card";
+
+      if (item.media.length) element.append(gallery(item));
+
+      const body = document.createElement("div");
+      body.className = "card-body";
+
+      const kicker = document.createElement("div");
+      kicker.className = "kicker";
+
+      const tag = document.createElement("span");
+      tag.className = "tag";
+      tag.textContent = category.tag;
+
+      const time = document.createElement("span");
+      time.className = "time";
+      time.textContent = relativeTime(item.date);
+      kicker.append(tag,time);
+
+      const text = document.createElement("div");
+      text.className = "text";
+      text.textContent = item.text || "Aggiornamento multimediale dal canale Telegram.";
+
+      const meta = document.createElement("div");
+      meta.className = "meta";
+
+      const source = document.createElement("span");
+      source.textContent = "Telegram · News Anonimo";
+
+      const open = document.createElement("a");
+      open.className = "open";
+      open.href = item.link;
+      open.target = "_blank";
+      open.rel = "noopener noreferrer";
+      open.textContent = "Apri su Telegram ↗";
+
+      meta.append(source,open);
+      body.append(kicker,text,meta);
+      element.append(body);
+      return element;
+    }
+
+    function render(posts) {
+      const buckets = Object.fromEntries(CATEGORIES.map(category => [category.key,[]]));
+
+      posts.forEach(post => {
+        const category = categoryFor(post);
+        if (category) buckets[category.key].push(post);
+      });
+
+      let total = 0;
+
+      CATEGORIES.forEach(category => {
+        const items = buckets[category.key];
+        const panel = document.getElementById(category.key);
+        const list = document.getElementById(`${category.key}-cards`);
+
+        list.replaceChildren();
+        panel.hidden = !items.length;
+        document.getElementById(`${category.key}-count`).textContent =
+          items.length === 1 ? "1 notizia" : `${items.length} notizie`;
+
+        items.slice(0,10).forEach(item => list.append(card(category,item)));
+        total += items.length;
+      });
+
+      const empty = document.getElementById("empty");
+      empty.hidden = total > 0;
+      empty.className = "message";
+      empty.textContent = "Non ci sono ancora notizie di guerra classificate dal canale Telegram.";
+      return total;
+    }
+
+    async function refresh() {
+      if (loading) return;
+      loading = true;
+
+      const button = document.getElementById("refresh");
+      const status = document.getElementById("status");
+      const updated = document.getElementById("updated");
+      button.classList.add("loading");
+      status.textContent = "Caricamento aggiornamenti da Telegram...";
+
+      try {
+        const total = render(albums(await getPosts()));
+
+        status.textContent = total
+          ? "Notizie divise per area · foto e video sono visibili direttamente nella scheda"
+          : "Nessuna notizia di guerra classificata in questo momento";
+
+        updated.textContent =
+          `Ultimo controllo: ${new Date().toLocaleTimeString("it-IT",{hour:"2-digit",minute:"2-digit"})}`;
+      } catch (error) {
+        console.error(error);
+        const empty = document.getElementById("empty");
+        empty.hidden = false;
+        empty.className = "message error";
+        empty.textContent = "Notizie Telegram momentaneamente non disponibili. Nuovo tentativo tra un minuto.";
+        status.textContent = "Servizio Telegram temporaneamente non disponibile";
+      } finally {
+        loading = false;
+        button.classList.remove("loading");
+      }
+    }
+
+    document.getElementById("refresh").addEventListener("click",refresh);
+    refresh();
+    setInterval(refresh,REFRESH_MS);
+  </script>
+
+<style>
+#photoViewer{
+  position:fixed;inset:0;z-index:99999;display:none;
+  align-items:center;justify-content:center;
+  background:#000;padding:0;
 }
+#photoViewer.active{display:flex}
+#photoViewerImage{
+  width:100vw;
+  height:100vh;
+  max-width:none;
+  max-height:none;
+  object-fit:contain;
+  transform:scale(1);
+  transition:transform .2s ease;
+  cursor:zoom-in;
+}
+.photoViewerControls{
+  position:fixed;bottom:20px;left:50%;
+  transform:translateX(-50%);
+  display:flex;gap:10px;z-index:100001;
+}
+.photoViewerControls button,#photoViewerClose{
+  width:48px;height:48px;border:1px solid rgba(255,255,255,.35);
+  border-radius:50%;background:rgba(5,25,40,.9);
+  color:white;font-size:22px;font-weight:bold;cursor:pointer;
+}
+#photoViewerClose{
+  position:fixed;top:15px;right:15px;z-index:100002;
+}
+.gallery img{cursor:zoom-in}
+</style>
 
-document.querySelectorAll(".filter-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    activeFeed = btn.dataset.feed;
-    updateNews();
+<div id="photoViewer">
+  <button id="photoViewerClose">✕</button>
+  <img id="photoViewerImage" src="" alt="Foto ingrandita">
+  <div class="photoViewerControls">
+    <button id="zoomOut">−</button>
+    <button id="zoomReset">↺</button>
+    <button id="zoomIn">+</button>
+  </div>
+</div>
+
+<script>
+(() => {
+  const viewer = document.getElementById("photoViewer");
+  const viewerImage = document.getElementById("photoViewerImage");
+  const closeBtn = document.getElementById("photoViewerClose");
+  const zoomInBtn = document.getElementById("zoomIn");
+  const zoomOutBtn = document.getElementById("zoomOut");
+  const resetBtn = document.getElementById("zoomReset");
+  let zoom = 1;
+
+  function setZoom(v){
+    zoom = Math.max(1, Math.min(v, 4));
+    viewerImage.style.transform = `scale(${zoom})`;
+  }
+
+  document.addEventListener("click", e => {
+    const img = e.target.closest(".gallery img");
+    if(!img) return;
+    viewerImage.src = img.src;
+    viewer.classList.add("active");
+    document.body.style.overflow = "hidden";
+    setZoom(1);
   });
-});
 
-document.getElementById("refreshBtn").addEventListener("click", updateNews);
+  zoomInBtn.onclick = e => { e.stopPropagation(); setZoom(zoom + .5); };
+  zoomOutBtn.onclick = e => { e.stopPropagation(); setZoom(zoom - .5); };
+  resetBtn.onclick = e => { e.stopPropagation(); setZoom(1); };
 
-updateNews();
-refreshTimer = setInterval(updateNews, REFRESH_MS);
+  function closeViewer(){
+    viewer.classList.remove("active");
+    document.body.style.overflow = "";
+    viewerImage.src = "";
+    setZoom(1);
+  }
+
+  closeBtn.onclick = closeViewer;
+  viewer.onclick = e => { if(e.target === viewer) closeViewer(); };
+  document.addEventListener("keydown", e => {
+    if(e.key === "Escape") closeViewer();
+  });
+})();
 </script>
 
 </body>
