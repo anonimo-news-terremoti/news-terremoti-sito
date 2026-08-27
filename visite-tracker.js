@@ -121,7 +121,7 @@ async function geo() {
   try {
     const r =
       await fetch(
-        "/api/geo",
+        "https://anonimo-geo.twitchfratv1.workers.dev",
         { cache: "no-store" }
       );
 
