@@ -139,7 +139,7 @@ async function geo() {
 async function visitorInfo() {
   try {
     const r = await fetch(
-      "/api/visitor-info",
+      "https://anonimo-visitor-info.twitchfratv1.workers.dev",
       {
         cache: "no-store"
       }
