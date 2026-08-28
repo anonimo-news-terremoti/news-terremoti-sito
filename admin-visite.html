@@ -464,6 +464,7 @@ function tabellaOnline(lista) {
       <thead>
         <tr>
           <th>Stato</th>
+          <th>IP</th>
           <th>Località</th>
           <th>Dispositivo</th>
           <th>Browser</th>
@@ -480,6 +481,12 @@ function tabellaOnline(lista) {
 
           <td class="online-dot">
             ● Online
+          </td>
+
+          <td>
+            <span class="badge">
+              ${v.ip || "N/D"}
+            </span>
           </td>
 
           <td>
@@ -537,6 +544,7 @@ function tabellaVisite(lista) {
       <thead>
         <tr>
           <th>Ora</th>
+          <th>IP</th>
           <th>Località</th>
           <th>Dispositivo</th>
           <th>Pagina</th>
@@ -551,6 +559,12 @@ function tabellaVisite(lista) {
 
           <td>
             ${ora(v.createdAtMs)}
+          </td>
+
+          <td>
+            <span class="badge">
+              ${v.ip || "N/D"}
+            </span>
           </td>
 
           <td>

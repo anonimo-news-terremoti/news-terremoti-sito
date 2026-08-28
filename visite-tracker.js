@@ -136,16 +136,45 @@ async function geo() {
 }
 
 
+async function visitorInfo() {
+  try {
+    const r = await fetch(
+      "/api/visitor-info",
+      {
+        cache: "no-store"
+      }
+    );
+
+    if (!r.ok) {
+      return {};
+    }
+
+    return await r.json();
+
+  } catch {
+    return {};
+  }
+}
+
+
 async function avviaTracker() {
 
   try {
 
     const sid = sessione();
-    const g = await geo();
+
+    const [g, visitor] =
+      await Promise.all([
+        geo(),
+        visitorInfo()
+      ]);
+
     const adesso = Date.now();
 
     const dati = {
       sessionId: sid,
+
+      ip: visitor.ip || "",
 
       page: pagina(),
       path: location.pathname,
