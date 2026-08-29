@@ -2,345 +2,190 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width,initial-scale=1">
-
-<title>Radar Visitatori - Anonimo News</title>
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Radar Visitatori 2.0 - Anonimo News</title>
 <style>
-*{
-  box-sizing:border-box;
+*{box-sizing:border-box}
+:root{
+  --bg:#030811; --panel:#07111f; --panel2:#0b1b2e; --line:#183a5a;
+  --cyan:#63dbff; --green:#42ff91; --muted:#8ca6bd; --text:#eef6ff;
+  --blue:#1689ff; --violet:#a986ff; --gold:#ffd166; --red:#ff6b7a;
 }
-
 body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  color:#eef6ff;
-  background:
-    radial-gradient(circle at top,#122847 0,#07111f 40%,#030811 100%);
+  margin:0; font-family:Arial,Helvetica,sans-serif; color:var(--text);
+  background:radial-gradient(circle at top,#122847 0,#07111f 40%,#030811 100%);
   min-height:100vh;
 }
-
+button,input,select{font:inherit}
 .login{
-  max-width:430px;
-  margin:10vh auto;
-  background:#0a1628;
-  border:1px solid #1f4b78;
-  border-radius:22px;
-  padding:28px;
-  box-shadow:0 20px 60px #0008;
+  max-width:430px; margin:10vh auto; background:#0a1628; border:1px solid #1f4b78;
+  border-radius:22px; padding:28px; box-shadow:0 20px 60px #0008;
 }
-
-.login h1{
-  margin-top:0;
-  color:#50d7ff;
+.login h1{margin-top:0;color:#50d7ff}
+.login input{
+  width:100%; padding:14px; margin:7px 0; border-radius:12px; border:1px solid #295277;
+  background:#07111f; color:white; font-size:16px;
 }
-
-input{
-  width:100%;
-  padding:14px;
-  margin:7px 0;
-  border-radius:12px;
-  border:1px solid #295277;
-  background:#07111f;
-  color:white;
-  font-size:16px;
-}
-
 button{
-  padding:12px 18px;
-  border:0;
-  border-radius:12px;
-  background:#1689ff;
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
+  padding:12px 18px; border:0; border-radius:12px; background:var(--blue); color:white;
+  font-weight:bold; cursor:pointer;
 }
-
-#login-btn{
-  width:100%;
-  margin-top:10px;
-}
-
-#login-msg{
-  margin-top:12px;
-  color:#ff7885;
-}
-
-#admin-area{
-  display:none;
-  padding:24px;
-  max-width:1500px;
-  margin:auto;
-}
-
-.top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  margin-bottom:22px;
-}
-
-.top h1{
-  margin:0;
-  font-size:30px;
-}
-
-.live{
-  color:#5aff9b;
-  font-size:14px;
-}
-
-.live::before{
-  content:"";
-  display:inline-block;
-  width:9px;
-  height:9px;
-  border-radius:50%;
-  background:#31ff83;
-  box-shadow:0 0 12px #31ff83;
-  margin-right:7px;
-}
-
-.cards{
-  display:grid;
-  grid-template-columns:
-    repeat(4,minmax(180px,1fr));
-  gap:16px;
-}
-
-.card{
-  background:linear-gradient(145deg,#0c1c32,#07111f);
-  border:1px solid #183a5a;
-  border-radius:18px;
-  padding:20px;
-  box-shadow:0 12px 30px #0004;
-}
-
-.card .titolo{
-  color:#8ca6bd;
-  font-size:13px;
-  text-transform:uppercase;
-}
-
-.numero{
-  margin-top:7px;
-  font-size:38px;
-  font-weight:900;
-  color:#63dbff;
-}
-
-.grande{
-  margin-top:18px;
-  background:#07111fdd;
-  border:1px solid #183a5a;
-  border-radius:18px;
-  overflow:hidden;
-}
-
-.grande h2{
-  margin:0;
-  padding:18px;
-  border-bottom:1px solid #183a5a;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-}
-
-th,td{
-  padding:13px 16px;
-  border-bottom:1px solid #102a42;
-  text-align:left;
-  font-size:14px;
-}
-
-th{
-  color:#62d9ff;
-}
-
-.badge{
-  display:inline-block;
-  background:#123459;
-  border-radius:999px;
-  padding:5px 9px;
-}
-
-.online-dot{
-  color:#42ff91;
-}
-
-.vuoto{
-  padding:30px;
-  text-align:center;
-  color:#7d94a8;
-}
-
-@media(max-width:850px){
-  .cards{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .top{
-    align-items:flex-start;
-    flex-direction:column;
-  }
-
-  table{
-    min-width:800px;
-  }
-
-  .grande{
-    overflow:auto;
-  }
-}
+button:focus,input:focus,select:focus{outline:2px solid var(--cyan);outline-offset:2px}
+#login-btn{width:100%;margin-top:10px}
+#login-msg{margin-top:12px;color:#ff7885;min-height:20px}
+#admin-area{display:none;padding:24px;max-width:1600px;margin:auto}
+.top{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:20px}
+.top h1{margin:0;font-size:30px}
+.subtitle{color:var(--muted);margin-top:5px;font-size:13px}
+.live{color:#5aff9b;font-size:14px;margin-top:7px}
+.live::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:#31ff83;box-shadow:0 0 12px #31ff83;margin-right:7px}
+.top-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sync{font-size:12px;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(6,minmax(155px,1fr));gap:14px}
+.card{background:linear-gradient(145deg,#0c1c32,#07111f);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 12px 30px #0004;min-width:0}
+.card .titolo{color:var(--muted);font-size:12px;text-transform:uppercase;line-height:1.35}
+.numero{margin-top:7px;font-size:34px;font-weight:900;color:var(--cyan);word-break:break-word}
+.numero.green{color:var(--green)} .numero.violet{color:var(--violet)} .numero.gold{color:var(--gold)}
+.small-note{font-size:11px;color:var(--muted);margin-top:4px}
+.grande{margin-top:16px;background:#07111fdd;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.grande h2{margin:0;padding:16px 18px;border-bottom:1px solid var(--line);font-size:20px}
+.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.section-head h2{padding:0;border:0}
+.tools{display:grid;grid-template-columns:minmax(220px,2fr) repeat(3,minmax(150px,1fr)) auto;gap:10px;width:100%}
+.tools input,.tools select{min-height:44px;border-radius:10px;border:1px solid #295277;background:#06101d;color:white;padding:10px 12px;width:100%}
+.tools button{min-height:44px;background:#123459}
+.dashboard-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:16px;margin-top:16px}
+.mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:16px}
+.mini-card{background:#091a2d;border:1px solid #173b5d;border-radius:14px;padding:14px;min-height:155px}
+.mini-card h3{font-size:15px;margin:0 0 10px;color:#d9efff}
+.rank{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid #122c46;font-size:13px}
+.rank:last-child{border-bottom:0}.rank span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:72%}.rank b{color:var(--cyan)}
+.table-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse;min-width:980px}
+th,td{padding:12px 14px;border-bottom:1px solid #102a42;text-align:left;font-size:13px;vertical-align:top}
+th{color:#62d9ff;background:#07111f;position:sticky;top:0;z-index:2}
+.badge{display:inline-block;background:#123459;border-radius:999px;padding:5px 9px;max-width:340px;word-break:break-word}
+.badge.alt{background:#1c2940}.badge.good{background:#0f4730;color:#a8ffd0}.badge.warn{background:#4a3a13;color:#ffe09a}
+.online-dot{color:var(--green)}
+.vuoto{padding:30px;text-align:center;color:#7d94a8}
+.muted{color:var(--muted)}
+.detail{padding:16px 18px;display:none}
+.detail.visible{display:block}
+.detail-grid{display:grid;grid-template-columns:repeat(4,minmax(140px,1fr));gap:10px}
+.detail-item{background:#091a2d;border:1px solid #173b5d;border-radius:12px;padding:11px;min-width:0}
+.detail-item small{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;margin-bottom:5px}.detail-item strong{word-break:break-word;font-size:13px}
+.detail-pages{margin-top:12px;background:#091a2d;border:1px solid #173b5d;border-radius:12px;padding:12px}
+.btn-detail{padding:7px 10px;border-radius:9px;background:#123459;font-size:12px}
+.statusbar{display:flex;gap:14px;flex-wrap:wrap;padding:12px 18px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+.notice{margin-top:16px;padding:14px 16px;border:1px solid #4b3d1d;background:#251e0c;color:#f7df9b;border-radius:14px;font-size:12px;line-height:1.5}
+.error{color:#ff8994;padding:12px 18px}
+@media(max-width:1200px){.cards{grid-template-columns:repeat(3,1fr)}.dashboard-grid{grid-template-columns:1fr}.tools{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:760px){#admin-area{padding:14px}.cards{grid-template-columns:1fr 1fr}.top{align-items:flex-start;flex-direction:column}.tools{grid-template-columns:1fr}.detail-grid{grid-template-columns:1fr 1fr}.mini-grid{grid-template-columns:1fr}.numero{font-size:30px}}
 </style>
 </head>
-
 <body>
 
 <div id="login-area" class="login">
-
   <h1>🔐 Radar Visitatori</h1>
-
-  <p>
-    Accesso riservato
-    all'amministratore.
-  </p>
-
-  <input
-    id="email"
-    type="email"
-    placeholder="Email">
-
-  <input
-    id="password"
-    type="password"
-    placeholder="Password">
-
-  <button id="login-btn">
-    Accedi
-  </button>
-
-  <div id="login-msg"></div>
-
+  <p>Accesso riservato all'amministratore.</p>
+  <input id="email" type="email" placeholder="Email" autocomplete="username">
+  <input id="password" type="password" placeholder="Password" autocomplete="current-password">
+  <button id="login-btn">Accedi</button>
+  <div id="login-msg" aria-live="polite"></div>
 </div>
 
-
 <main id="admin-area">
-
   <div class="top">
-
     <div>
-      <h1>
-        📡 Radar Visitatori Live
-      </h1>
-
-      <div class="live">
-        MONITORAGGIO ATTIVO
-      </div>
+      <h1>📡 Radar Visitatori Live 2.0</h1>
+      <div class="live">MONITORAGGIO ATTIVO</div>
+      <div class="subtitle">Visitatori unici e sessioni sono stime basate sui dati disponibili (ID visitatore quando presente, altrimenti IP + dispositivo/browser).</div>
     </div>
-
-    <button id="logout-btn">
-      Esci
-    </button>
-
+    <div class="top-actions">
+      <span id="sync" class="sync">In attesa dati…</span>
+      <button id="logout-btn">Esci</button>
+    </div>
   </div>
 
-
   <section class="cards">
-
-    <div class="card">
-      <div class="titolo">
-        Online adesso
-      </div>
-      <div id="online" class="numero">
-        0
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="titolo">
-        Visite oggi
-      </div>
-      <div id="oggi" class="numero">
-        0
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="titolo">
-        Ultimi 7 giorni
-      </div>
-      <div id="settimana" class="numero">
-        0
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="titolo">
-        Ultimi 30 giorni
-      </div>
-      <div id="mese" class="numero">
-        0
-      </div>
-    </div>
-
+    <div class="card"><div class="titolo">Online adesso</div><div id="online" class="numero green">0</div><div class="small-note">unici stimati</div></div>
+    <div class="card"><div class="titolo">Visite oggi</div><div id="oggi" class="numero">0</div><div class="small-note">eventi registrati</div></div>
+    <div class="card"><div class="titolo">Visitatori unici oggi</div><div id="unici-oggi" class="numero violet">0</div><div class="small-note">stima</div></div>
+    <div class="card"><div class="titolo">Sessioni oggi</div><div id="sessioni-oggi" class="numero gold">0</div><div class="small-note">30 min inattività</div></div>
+    <div class="card"><div class="titolo">Visite ultimi 7 giorni</div><div id="settimana" class="numero">0</div></div>
+    <div class="card"><div class="titolo">Visite ultimi 30 giorni</div><div id="mese" class="numero">0</div></div>
   </section>
-
 
   <section class="grande">
-
-    <h2>
-      👥 Visitatori online
-    </h2>
-
-    <div id="tabella-online"></div>
-
+    <div class="section-head">
+      <div>
+        <h2>🔎 Filtri e ricerca</h2>
+        <div class="subtitle">Cerca IP, città, pagina, browser o provenienza.</div>
+      </div>
+      <div class="tools">
+        <input id="filtro-testo" type="search" placeholder="Cerca IP, città, pagina…" aria-label="Cerca visite">
+        <select id="filtro-provenienza" aria-label="Filtra provenienza">
+          <option value="">Tutte le provenienze</option>
+          <option value="google">Google</option>
+          <option value="social">Social</option>
+          <option value="diretto">Diretto</option>
+          <option value="altro">Altro</option>
+        </select>
+        <select id="filtro-dispositivo" aria-label="Filtra dispositivo">
+          <option value="">Tutti i dispositivi</option>
+          <option value="mobile">Mobile</option>
+          <option value="desktop">Desktop</option>
+          <option value="tablet">Tablet</option>
+        </select>
+        <select id="filtro-periodo" aria-label="Filtra periodo">
+          <option value="1">Oggi</option>
+          <option value="7">Ultimi 7 giorni</option>
+          <option value="30" selected>Ultimi 30 giorni</option>
+        </select>
+        <button id="reset-filtri" type="button">Azzera filtri</button>
+      </div>
+    </div>
+    <div class="statusbar"><span id="filtro-count">0 visite visualizzate</span><span id="limite-note"></span></div>
   </section>
 
+  <section class="dashboard-grid">
+    <div class="grande" style="margin-top:0">
+      <h2>👥 Visitatori online</h2>
+      <div id="tabella-online" class="table-wrap"></div>
+    </div>
+    <div class="grande" style="margin-top:0">
+      <h2>📊 Panoramica traffico</h2>
+      <div class="mini-grid">
+        <div class="mini-card"><h3>🔗 Provenienze</h3><div id="top-provenienze"></div></div>
+        <div class="mini-card"><h3>📄 Pagine più viste</h3><div id="top-pagine"></div></div>
+        <div class="mini-card"><h3>📍 Località (appross.)</h3><div id="top-localita"></div></div>
+        <div class="mini-card"><h3>📱 Dispositivi</h3><div id="top-dispositivi"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="scheda-dettaglio" class="grande detail" aria-live="polite">
+    <div class="section-head">
+      <h2>🧭 Dettaglio visitatore</h2>
+      <button id="chiudi-dettaglio" type="button" class="btn-detail">Chiudi</button>
+    </div>
+    <div id="dettaglio-contenuto" style="padding:16px 18px"></div>
+  </section>
 
   <section class="grande">
-
-    <h2>
-      🕐 Ultimi accessi
-    </h2>
-
-    <div id="tabella-visite"></div>
-
+    <h2>🕐 Ultimi accessi</h2>
+    <div id="tabella-visite" class="table-wrap"></div>
   </section>
 
+  <div class="notice">
+    🔒 Questo pannello contiene dati tecnici personali (es. IP). La località è solo approssimativa e non identifica una persona. Provider/VPN vengono mostrati solo se tali campi sono già presenti nei dati raccolti; il radar non tenta di ricavare nome e cognome dagli IP.
+  </div>
 </main>
 
-
 <script type="module">
-
-import {
-  initializeApp
-} from
-"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged
-} from
-"https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
-
-import {
-  getFirestore,
-  collection,
-  query,
-  where,
-  orderBy,
-  limit,
-  onSnapshot
-} from
-"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
-
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+import { getFirestore, collection, query, where, orderBy, limit, onSnapshot } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCrW23TMFTFRWWOdogA5bDhWBdbN5V4hyo",
@@ -352,408 +197,267 @@ const firebaseConfig = {
   measurementId: "G-WC79E3M0FW"
 };
 
+const ADMIN_UID = "V720CwqUJOh1DpHcoXq8bnhxo9k1";
+const MAX_VISITE = 5000;
+const SESSION_GAP = 30 * 60 * 1000;
 
-const ADMIN_UID =
-  "V720CwqUJOh1DpHcoXq8bnhxo9k1";
-
-
-const app =
-  initializeApp(firebaseConfig);
-
-const auth =
-  getAuth(app);
-
-const db =
-  getFirestore(app);
-
-const $ =
-  id => document.getElementById(id);
-
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const $ = id => document.getElementById(id);
 
 let stopOnline = null;
 let stopVisite = null;
+let visiteTutte = [];
+let onlineTutti = [];
 
-
-$("login-btn")
-.addEventListener(
-  "click",
-  async () => {
-
-    const email =
-      $("email").value.trim();
-
-    const password =
-      $("password").value;
-
-    $("login-msg").textContent = "";
-
-    try {
-
-      const cred =
-        await signInWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-
-      if (
-        cred.user.uid !== ADMIN_UID
-      ) {
-
-        await signOut(auth);
-
-        throw new Error(
-          "Account non autorizzato"
-        );
-      }
-
-    } catch (errore) {
-
-      $("login-msg").textContent =
-        "❌ Accesso non riuscito";
-    }
+function esc(v){
+  return String(v ?? "").replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]));
+}
+function localita(v){
+  return [v.city,v.region,v.country].filter(Boolean).join(", ") || "N/D";
+}
+function ora(ms){
+  const n = Number(ms);
+  if(!Number.isFinite(n) || n <= 0) return "-";
+  return new Date(n).toLocaleString("it-IT");
+}
+function ts(v){ return Number(v.createdAtMs || v.lastSeenMs || 0) || 0; }
+function deviceClass(v){
+  const s = `${v.device||""} ${v.os||""}`.toLowerCase();
+  if(/tablet|ipad/.test(s)) return "tablet";
+  if(/smartphone|mobile|android|iphone|ios/.test(s)) return "mobile";
+  return "desktop";
+}
+function identityKey(v){
+  const strong = v.visitorId || v.visitor_id || v.clientId || v.client_id || v.fingerprint || v.uid;
+  if(strong) return `id:${strong}`;
+  return `approx:${v.ip||"nd"}|${v.device||""}|${v.os||""}|${v.browser||""}`.toLowerCase();
+}
+function hostFromRef(raw){
+  const s = String(raw || "").trim();
+  if(!s) return "";
+  try { return new URL(s).hostname.toLowerCase().replace(/^www\./,""); } catch { return s.toLowerCase(); }
+}
+function sourceInfo(raw){
+  const s = String(raw || "").trim();
+  if(!s) return {label:"Diretto",group:"diretto"};
+  const h = hostFromRef(s);
+  if(h.includes("com.google.android.googlequicksearchbox")) return {label:"Google App",group:"google"};
+  if(h.includes("google.")) return {label:"Google Search",group:"google"};
+  if(h.includes("bing.")) return {label:"Bing",group:"altro"};
+  if(/facebook|fb\.com/.test(h)) return {label:"Facebook",group:"social"};
+  if(/instagram/.test(h)) return {label:"Instagram",group:"social"};
+  if(/tiktok/.test(h)) return {label:"TikTok",group:"social"};
+  if(/whatsapp/.test(h)) return {label:"WhatsApp",group:"social"};
+  if(/telegram|t\.me/.test(h)) return {label:"Telegram",group:"social"};
+  if(s.toLowerCase()==="diretto") return {label:"Diretto",group:"diretto"};
+  const label = h && h.length < 60 ? h : s.slice(0,57) + (s.length>57?"…":"");
+  return {label,group:"altro"};
+}
+function provider(v){ return v.isp || v.provider || v.org || v.organization || "N/D"; }
+function asn(v){ return v.asn || v.as || v.asName || "N/D"; }
+function vpnStatus(v){
+  const yes = v.vpn===true || v.proxy===true || v.hosting===true || v.security?.vpn===true || v.security?.proxy===true;
+  const no = v.vpn===false && v.proxy===false && v.hosting===false;
+  return yes ? "Rilevato" : no ? "Non rilevato" : "N/D";
+}
+function dedupeLatest(lista){
+  const m = new Map();
+  for(const v of lista){
+    const k = identityKey(v);
+    const old = m.get(k);
+    if(!old || ts(v) > ts(old)) m.set(k,v);
   }
-);
-
-
-$("logout-btn")
-.addEventListener(
-  "click",
-  () => signOut(auth)
-);
-
-
-function localita(v) {
-
-  const parti = [
-    v.city,
-    v.region,
-    v.country
-  ].filter(Boolean);
-
-  return parti.join(", ") || "N/D";
+  return [...m.values()].sort((a,b)=>ts(b)-ts(a));
 }
-
-
-function ora(ms) {
-
-  if (!ms)
-    return "-";
-
-  return new Date(ms)
-    .toLocaleString(
-      "it-IT"
-    );
-}
-
-
-function tabellaOnline(lista) {
-
-  if (!lista.length) {
-
-    $("tabella-online")
-      .innerHTML =
-      '<div class="vuoto">Nessun visitatore online.</div>';
-
-    return;
+function sessionCount(lista){
+  const groups = new Map();
+  for(const v of lista){
+    const k = identityKey(v);
+    if(!groups.has(k)) groups.set(k,[]);
+    groups.get(k).push(ts(v));
   }
-
-  $("tabella-online")
-    .innerHTML = `
-    <table>
-      <thead>
-        <tr>
-          <th>Stato</th>
-          <th>IP</th>
-          <th>Località</th>
-          <th>Dispositivo</th>
-          <th>Browser</th>
-          <th>Pagina</th>
-          <th>Provenienza</th>
-          <th>Ultimo segnale</th>
-        </tr>
-      </thead>
-
-      <tbody>
-
-      ${lista.map(v => `
-        <tr>
-
-          <td class="online-dot">
-            ● Online
-          </td>
-
-          <td>
-            <span class="badge">
-              ${v.ip || "N/D"}
-            </span>
-          </td>
-
-          <td>
-            ${localita(v)}
-          </td>
-
-          <td>
-            <span class="badge">
-              ${v.device || "-"}
-              / ${v.os || "-"}
-            </span>
-          </td>
-
-          <td>
-            ${v.browser || "-"}
-          </td>
-
-          <td>
-            ${v.page || v.path || "-"}
-          </td>
-
-          <td>
-            ${v.referrer || "Diretto"}
-          </td>
-
-          <td>
-            ${ora(v.lastSeenMs)}
-          </td>
-
-        </tr>
-      `).join("")}
-
-      </tbody>
-    </table>
-  `;
-}
-
-
-function tabellaVisite(lista) {
-
-  if (!lista.length) {
-
-    $("tabella-visite")
-      .innerHTML =
-      '<div class="vuoto">Nessuna visita registrata.</div>';
-
-    return;
+  let total = 0;
+  for(const arr of groups.values()){
+    const a = arr.filter(Boolean).sort((x,y)=>x-y);
+    let prev = null;
+    for(const t of a){ if(prev===null || t-prev > SESSION_GAP) total++; prev=t; }
   }
-
-
-  $("tabella-visite")
-    .innerHTML = `
-    <table>
-
-      <thead>
-        <tr>
-          <th>Ora</th>
-          <th>IP</th>
-          <th>Località</th>
-          <th>Dispositivo</th>
-          <th>Pagina</th>
-          <th>Provenienza</th>
-        </tr>
-      </thead>
-
-      <tbody>
-
-      ${lista.slice(0,100).map(v => `
-        <tr>
-
-          <td>
-            ${ora(v.createdAtMs)}
-          </td>
-
-          <td>
-            <span class="badge">
-              ${v.ip || "N/D"}
-            </span>
-          </td>
-
-          <td>
-            ${localita(v)}
-          </td>
-
-          <td>
-            ${v.device || "-"}
-            / ${v.browser || "-"}
-          </td>
-
-          <td>
-            ${v.page || v.path || "-"}
-          </td>
-
-          <td>
-            ${v.referrer || "Diretto"}
-          </td>
-
-        </tr>
-      `).join("")}
-
-      </tbody>
-
-    </table>
-  `;
+  return total;
 }
-
-
-function avviaDashboard() {
-
-  const onlineDa =
-    Date.now() - 90000;
-
-  const qOnline =
-    query(
-      collection(
-        db,
-        "visitatori_online"
-      ),
-      where(
-        "lastSeenMs",
-        ">=",
-        onlineDa
-      )
-    );
-
-
-  stopOnline =
-    onSnapshot(
-      qOnline,
-      snap => {
-
-        const lista =
-          snap.docs.map(
-            d => d.data()
-          );
-
-        $("online")
-          .textContent =
-          lista.length;
-
-        tabellaOnline(lista);
-      }
-    );
-
-
-  const trentaGiorniFa =
-    Date.now() -
-    30 * 24 * 60 * 60 * 1000;
-
-
-  const qVisite =
-    query(
-      collection(
-        db,
-        "visite"
-      ),
-      where(
-        "createdAtMs",
-        ">=",
-        trentaGiorniFa
-      ),
-      orderBy(
-        "createdAtMs",
-        "desc"
-      ),
-      limit(1000)
-    );
-
-
-  stopVisite =
-    onSnapshot(
-      qVisite,
-      snap => {
-
-        const lista =
-          snap.docs.map(
-            d => d.data()
-          );
-
-        const adesso =
-          Date.now();
-
-        const oggiStart =
-          new Date();
-
-        oggiStart.setHours(
-          0,0,0,0
-        );
-
-        const settimanaDa =
-          adesso -
-          7 * 24 * 60 * 60 * 1000;
-
-
-        $("oggi")
-          .textContent =
-          lista.filter(
-            v =>
-              v.createdAtMs >=
-              oggiStart.getTime()
-          ).length;
-
-
-        $("settimana")
-          .textContent =
-          lista.filter(
-            v =>
-              v.createdAtMs >=
-              settimanaDa
-          ).length;
-
-
-        $("mese")
-          .textContent =
-          lista.length;
-
-
-        tabellaVisite(lista);
-      }
-    );
-}
-
-
-onAuthStateChanged(
-  auth,
-  user => {
-
-    if (stopOnline) {
-      stopOnline();
-      stopOnline = null;
-    }
-
-    if (stopVisite) {
-      stopVisite();
-      stopVisite = null;
-    }
-
-
-    if (
-      user &&
-      user.uid === ADMIN_UID
-    ) {
-
-      $("login-area")
-        .style.display =
-        "none";
-
-      $("admin-area")
-        .style.display =
-        "block";
-
-      avviaDashboard();
-
-    } else {
-
-      $("admin-area")
-        .style.display =
-        "none";
-
-      $("login-area")
-        .style.display =
-        "block";
-    }
+function countTop(lista, fn, max=5){
+  const m = new Map();
+  for(const v of lista){
+    const k = fn(v) || "N/D";
+    m.set(k,(m.get(k)||0)+1);
   }
-);
+  return [...m.entries()].sort((a,b)=>b[1]-a[1]).slice(0,max);
+}
+function renderRank(id, rows){
+  $(id).innerHTML = rows.length ? rows.map(([k,n])=>`<div class="rank"><span title="${esc(k)}">${esc(k)}</span><b>${n}</b></div>`).join("") : '<div class="muted">Nessun dato</div>';
+}
+function firstSeenMap(lista){
+  const m = new Map();
+  for(const v of [...lista].sort((a,b)=>ts(a)-ts(b))){
+    const k = identityKey(v); if(!m.has(k)) m.set(k,ts(v));
+  }
+  return m;
+}
+function classifyVisit(v, firstMap){ return ts(v)===firstMap.get(identityKey(v)) ? "Prima visita" : "Ritorno"; }
 
+function tabellaOnline(lista){
+  const dedup = dedupeLatest(lista);
+  $("online").textContent = dedup.length;
+  if(!dedup.length){ $("tabella-online").innerHTML='<div class="vuoto">Nessun visitatore online.</div>'; return; }
+  $("tabella-online").innerHTML = `<table><thead><tr>
+    <th>Stato</th><th>IP</th><th>Località (appross.)</th><th>Dispositivo</th><th>Browser</th><th>Pagina</th><th>Provenienza</th><th>Ultimo segnale</th><th></th>
+  </tr></thead><tbody>${dedup.map(v=>{
+    const src=sourceInfo(v.referrer); const key=identityKey(v);
+    return `<tr><td class="online-dot">● Online</td><td><span class="badge">${esc(v.ip||"N/D")}</span></td>
+      <td>${esc(localita(v))}</td><td><span class="badge">${esc(v.device||"-")} / ${esc(v.os||"-")}</span></td>
+      <td>${esc(v.browser||"-")}</td><td>${esc(v.page||v.path||"-")}</td><td>${esc(src.label)}</td><td>${esc(ora(v.lastSeenMs))}</td>
+      <td><button type="button" class="btn-detail" data-key="${esc(key)}">Dettagli</button></td></tr>`;
+  }).join("")}</tbody></table>`;
+  $("tabella-online").querySelectorAll(".btn-detail").forEach(b=>b.addEventListener("click",()=>mostraDettaglio(b.dataset.key)));
+}
+
+function visiteFiltrate(){
+  const q = $("filtro-testo").value.trim().toLowerCase();
+  const srcFilter = $("filtro-provenienza").value;
+  const devFilter = $("filtro-dispositivo").value;
+  const days = Number($("filtro-periodo").value || 30);
+  const cutoff = Date.now() - days*24*60*60*1000;
+  return visiteTutte.filter(v=>{
+    if(ts(v) < cutoff) return false;
+    const src = sourceInfo(v.referrer);
+    if(srcFilter && src.group!==srcFilter) return false;
+    if(devFilter && deviceClass(v)!==devFilter) return false;
+    if(q){
+      const hay = [v.ip,localita(v),v.device,v.os,v.browser,v.page,v.path,src.label,provider(v),asn(v)].filter(Boolean).join(" ").toLowerCase();
+      if(!hay.includes(q)) return false;
+    }
+    return true;
+  });
+}
+function tabellaVisite(){
+  const lista = visiteFiltrate();
+  const firstMap = firstSeenMap(visiteTutte);
+  $("filtro-count").textContent = `${lista.length} visite visualizzate`;
+  if(!lista.length){ $("tabella-visite").innerHTML='<div class="vuoto">Nessuna visita con questi filtri.</div>'; aggiornaPanoramica([]); return; }
+  $("tabella-visite").innerHTML = `<table><thead><tr>
+    <th>Ora</th><th>Tipo</th><th>IP</th><th>Località (appross.)</th><th>Dispositivo</th><th>Pagina</th><th>Provenienza</th><th></th>
+  </tr></thead><tbody>${lista.slice(0,200).map(v=>{
+    const src=sourceInfo(v.referrer), tipo=classifyVisit(v,firstMap), key=identityKey(v);
+    return `<tr><td>${esc(ora(v.createdAtMs))}</td><td><span class="badge ${tipo==='Prima visita'?'good':'alt'}">${esc(tipo)}</span></td>
+      <td><span class="badge">${esc(v.ip||"N/D")}</span></td><td>${esc(localita(v))}</td>
+      <td>${esc(v.device||"-")} / ${esc(v.browser||"-")}</td><td>${esc(v.page||v.path||"-")}</td><td>${esc(src.label)}</td>
+      <td><button type="button" class="btn-detail" data-key="${esc(key)}">Dettagli</button></td></tr>`;
+  }).join("")}</tbody></table>`;
+  $("tabella-visite").querySelectorAll(".btn-detail").forEach(b=>b.addEventListener("click",()=>mostraDettaglio(b.dataset.key)));
+  aggiornaPanoramica(lista);
+}
+function aggiornaPanoramica(lista){
+  renderRank("top-provenienze",countTop(lista,v=>sourceInfo(v.referrer).label));
+  renderRank("top-pagine",countTop(lista,v=>v.page||v.path||"N/D"));
+  renderRank("top-localita",countTop(lista,v=>localita(v)));
+  renderRank("top-dispositivi",countTop(lista,v=>deviceClass(v)==="mobile"?"Mobile":deviceClass(v)==="tablet"?"Tablet":"Desktop"));
+}
+function mostraDettaglio(key){
+  const records = visiteTutte.filter(v=>identityKey(v)===key).sort((a,b)=>ts(a)-ts(b));
+  const onlineRecord = onlineTutti.find(v=>identityKey(v)===key);
+  const all = onlineRecord ? [...records,onlineRecord] : records;
+  if(!all.length) return;
+  const latest = [...all].sort((a,b)=>ts(b)-ts(a))[0];
+  const pages = countTop(records,v=>v.page||v.path||"N/D",8);
+  const sources = [...new Set(records.map(v=>sourceInfo(v.referrer).label))];
+  const first = records.length ? ts(records[0]) : ts(latest);
+  const last = records.length ? ts(records[records.length-1]) : ts(latest);
+  $("dettaglio-contenuto").innerHTML = `<div class="detail-grid">
+    <div class="detail-item"><small>IP</small><strong>${esc(latest.ip||"N/D")}</strong></div>
+    <div class="detail-item"><small>Località appross.</small><strong>${esc(localita(latest))}</strong></div>
+    <div class="detail-item"><small>Provider / ISP</small><strong>${esc(provider(latest))}</strong></div>
+    <div class="detail-item"><small>ASN</small><strong>${esc(asn(latest))}</strong></div>
+    <div class="detail-item"><small>VPN / Proxy</small><strong>${esc(vpnStatus(latest))}</strong></div>
+    <div class="detail-item"><small>Dispositivo</small><strong>${esc(`${latest.device||"-"} / ${latest.os||"-"} / ${latest.browser||"-"}`)}</strong></div>
+    <div class="detail-item"><small>Prima vista (max 30g)</small><strong>${esc(ora(first))}</strong></div>
+    <div class="detail-item"><small>Ultima vista</small><strong>${esc(ora(last))}</strong></div>
+    <div class="detail-item"><small>Eventi 30g</small><strong>${records.length}</strong></div>
+    <div class="detail-item"><small>Sessioni stimate 30g</small><strong>${sessionCount(records)}</strong></div>
+    <div class="detail-item"><small>Provenienze</small><strong>${esc(sources.join(", ")||"Diretto")}</strong></div>
+    <div class="detail-item"><small>Identificazione</small><strong>${key.startsWith("id:")?"ID visitatore":"Stima IP + dispositivo"}</strong></div>
+  </div>
+  <div class="detail-pages"><strong>Pagine più viste</strong>${pages.map(([p,n])=>`<div class="rank"><span>${esc(p)}</span><b>${n}</b></div>`).join("")||'<div class="muted">Nessun dato</div>'}</div>`;
+  $("scheda-dettaglio").classList.add("visible");
+  $("scheda-dettaglio").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function aggiornaKpi(lista){
+  const now = Date.now();
+  const start = new Date(); start.setHours(0,0,0,0);
+  const oggi = lista.filter(v=>ts(v)>=start.getTime());
+  const settimana = lista.filter(v=>ts(v)>=now-7*24*60*60*1000);
+  $("oggi").textContent = oggi.length;
+  $("unici-oggi").textContent = new Set(oggi.map(identityKey)).size;
+  $("sessioni-oggi").textContent = sessionCount(oggi);
+  $("settimana").textContent = settimana.length >= MAX_VISITE ? `${MAX_VISITE}+` : settimana.length;
+  $("mese").textContent = lista.length >= MAX_VISITE ? `${MAX_VISITE}+` : lista.length;
+  $("limite-note").textContent = lista.length >= MAX_VISITE ? `⚠️ Raggiunto limite di ${MAX_VISITE} record: i conteggi 7/30 giorni possono essere parziali.` : "";
+  $("sync").textContent = `Ultimo aggiornamento: ${new Date().toLocaleTimeString("it-IT")}`;
+}
+function applicaFiltri(){ tabellaVisite(); }
+
+$("login-btn").addEventListener("click",async()=>{
+  const email=$("email").value.trim(), password=$("password").value;
+  $("login-msg").textContent="";
+  if(!email || !password){ $("login-msg").textContent="Inserisci email e password."; return; }
+  $("login-btn").disabled=true; $("login-btn").textContent="Accesso…";
+  try{
+    const cred=await signInWithEmailAndPassword(auth,email,password);
+    if(cred.user.uid!==ADMIN_UID){ await signOut(auth); throw new Error("Account non autorizzato"); }
+  }catch(e){ console.error(e); $("login-msg").textContent="❌ Accesso non riuscito"; }
+  finally{ $("login-btn").disabled=false; $("login-btn").textContent="Accedi"; }
+});
+$("password").addEventListener("keydown",e=>{ if(e.key==="Enter") $("login-btn").click(); });
+$("logout-btn").addEventListener("click",()=>signOut(auth));
+$("chiudi-dettaglio").addEventListener("click",()=>$("scheda-dettaglio").classList.remove("visible"));
+["filtro-testo","filtro-provenienza","filtro-dispositivo","filtro-periodo"].forEach(id=>$(id).addEventListener(id==="filtro-testo"?"input":"change",applicaFiltri));
+$("reset-filtri").addEventListener("click",()=>{
+  $("filtro-testo").value=""; $("filtro-provenienza").value=""; $("filtro-dispositivo").value=""; $("filtro-periodo").value="30"; applicaFiltri();
+});
+
+function avviaDashboard(){
+  const onlineDa = Date.now()-90000;
+  const qOnline = query(collection(db,"visitatori_online"),where("lastSeenMs",">=",onlineDa));
+  stopOnline = onSnapshot(qOnline,snap=>{
+    onlineTutti=snap.docs.map(d=>({id:d.id,...d.data()}));
+    tabellaOnline(onlineTutti);
+    $("sync").textContent=`Ultimo aggiornamento: ${new Date().toLocaleTimeString("it-IT")}`;
+  },err=>{
+    console.error("Errore online:",err);
+    $("tabella-online").innerHTML='<div class="error">❌ Errore nel caricamento dei visitatori online.</div>';
+  });
+
+  const trentaGiorniFa = Date.now()-30*24*60*60*1000;
+  const qVisite = query(collection(db,"visite"),where("createdAtMs",">=",trentaGiorniFa),orderBy("createdAtMs","desc"),limit(MAX_VISITE));
+  stopVisite = onSnapshot(qVisite,snap=>{
+    visiteTutte=snap.docs.map(d=>({id:d.id,...d.data()}));
+    aggiornaKpi(visiteTutte);
+    tabellaVisite();
+  },err=>{
+    console.error("Errore visite:",err);
+    $("tabella-visite").innerHTML='<div class="error">❌ Errore nel caricamento delle visite.</div>';
+  });
+}
+
+onAuthStateChanged(auth,user=>{
+  if(stopOnline){ stopOnline(); stopOnline=null; }
+  if(stopVisite){ stopVisite(); stopVisite=null; }
+  if(user && user.uid===ADMIN_UID){
+    $("login-area").style.display="none"; $("admin-area").style.display="block"; avviaDashboard();
+  }else{
+    visiteTutte=[]; onlineTutti=[]; $("admin-area").style.display="none"; $("login-area").style.display="block";
+  }
+});
 </script>
-
 </body>
 </html>
