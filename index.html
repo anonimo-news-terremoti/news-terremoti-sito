@@ -4032,6 +4032,114 @@ body > *:not(#lavaVulcanoCanvas) {
 /* APP_ROUND_LOGO_END */
 </style>
 
+<style id="abpromo-home-styles">
+/* ANONIMO BOOK HOME PROMO — stile originale ispirato al look neon del portale */
+.abpromo-feature {
+  isolation:isolate; position:relative; margin:18px auto 34px;
+  width:min(100%,1050px); overflow:hidden;
+  border:1.5px solid rgba(54,216,255,.76); border-radius:22px;
+  background:radial-gradient(circle at 21% 52%,rgba(0,159,255,.24),transparent 40%),
+             radial-gradient(circle at 86% 9%,rgba(34,221,255,.14),transparent 41%),
+             linear-gradient(127deg,#030d1a 3%,#092139 56%,#030b16 100%);
+  box-shadow:0 0 25px rgba(16,187,250,.22),inset 0 0 36px rgba(0,164,255,.10),0 22px 30px rgba(0,0,0,.24);
+  color:#f7fbff; text-align:left;
+}
+.abpromo-feature::before {
+  content:""; pointer-events:none; position:absolute; z-index:-1; inset:0;
+  background:repeating-linear-gradient(0deg,transparent 0 32px,rgba(68,209,249,.055) 33px,transparent 34px);
+}
+.abpromo-main {
+  display:grid; grid-template-columns:minmax(180px,.74fr) minmax(0,1.7fr);
+  align-items:center; gap:clamp(18px,3.5vw,44px); padding:clamp(22px,3.7vw,40px);
+}
+.abpromo-art { min-height:280px; display:flex; align-items:center; justify-content:center; position:relative; }
+.abpromo-art::after {
+  content:""; position:absolute; width:80%; height:36px; bottom:2px; filter:blur(19px);
+  border-radius:50%; background:rgba(0,179,255,.45); z-index:-1;
+}
+.abpromo-book {
+  position:relative; display:flex; width:min(210px,100%); aspect-ratio:2/3;
+  transform:perspective(740px) rotateY(-11deg) rotateZ(-2deg);
+  border-radius:5px 9px 9px 5px;
+  background:linear-gradient(155deg,#07111f,#002b42 70%,#01121d);
+  border:1px solid rgba(119,224,255,.8);
+  box-shadow:-11px 8px 0 #020e1b,0 0 24px rgba(0,203,255,.55),14px 15px 33px #0009;
+  overflow:hidden;
+}
+.abpromo-book-fallback {
+  margin:auto; padding:22px 14px; font-weight:900; line-height:1.2;
+  letter-spacing:.04em; font-size:clamp(17px,2vw,24px);
+  text-align:center; text-shadow:0 0 12px #12cfff; color:#74eaff;
+}
+.abpromo-book img {
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; background:#061220;
+}
+.abpromo-eyebrow {
+  display:inline-block; border-radius:999px; padding:7px 14px;
+  background:#b71021; color:#fff; font-size:13px; letter-spacing:.08em;
+  font-weight:900; box-shadow:0 0 17px rgba(255,34,77,.36);
+}
+.abpromo-heading {
+  margin:15px 0 12px !important; color:white; font-weight:900;
+  line-height:1.05 !important; letter-spacing:.01em;
+  font-size:clamp(30px,4.4vw,49px) !important; text-align:left;
+}
+.abpromo-heading span { display:block; color:#33d9ff; text-shadow:0 0 22px rgba(0,198,255,.5); }
+.abpromo-copy {
+  max-width:580px; color:#c6e9f5; font-size:clamp(15px,1.9vw,19px);
+  line-height:1.5; margin:0 0 23px !important; text-align:left;
+}
+.abpromo-actions { display:flex; flex-wrap:wrap; gap:12px; }
+.abpromo-actions a {
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  min-height:48px; padding:12px 19px; border-radius:11px;
+  font-size:14px; font-weight:900; line-height:1.2;
+  text-align:center; text-decoration:none; transition:transform .2s,box-shadow .2s;
+}
+.abpromo-actions a:hover,.abpromo-actions a:focus-visible {
+  transform:translateY(-2px); box-shadow:0 0 22px rgba(35,207,255,.55);
+}
+.abpromo-discover { background:linear-gradient(115deg,#38e5ff,#0087d5); color:#011626 !important; }
+.abpromo-preorder { border:1.5px solid #67e6ff; background:rgba(2,16,34,.75); color:white !important; }
+.abpromo-bottom {
+  display:flex; flex-wrap:wrap; justify-content:center; gap:9px 20px;
+  padding:11px 18px; border-top:1px solid rgba(48,208,255,.55);
+  background:rgba(0,9,23,.65); color:#aeeefe;
+  font-weight:700; font-size:12px; letter-spacing:.03em;
+}
+@media(max-width:650px) {
+  .abpromo-feature { margin:12px auto 22px; border-radius:16px; }
+  .abpromo-main { grid-template-columns:1fr; gap:12px; padding:22px 17px; text-align:center; }
+  .abpromo-art { min-height:235px; }
+  .abpromo-book { width:150px; }
+  .abpromo-heading { font-size:clamp(26px,7.3vw,35px) !important; text-align:center; }
+  .abpromo-copy { text-align:center; }
+  .abpromo-actions { flex-direction:column; }
+  .abpromo-actions a { width:100%; }
+  .abpromo-bottom { font-size:10px; gap:8px 12px; }
+}
+/* END ANONIMO BOOK HOME PROMO */
+
+
+/* ABPROMO SFONDO LIBERO 2026 */
+.abpromo-feature {
+  width:min(100%,1100px);
+  margin:12px auto 24px;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  overflow:visible !important;
+}
+.abpromo-feature::before { display:none !important; }
+.abpromo-main { padding:22px clamp(12px,3vw,34px); }
+.abpromo-bottom { display:none !important; }
+.abpromo-eyebrow { background:transparent; box-shadow:none; color:#53dfff; padding:0; }
+@media(max-width:650px) {
+ .abpromo-feature { margin:8px auto 16px; }
+ .abpromo-main { padding:14px 16px 22px; }
+}
+</style>
 </head>
 
 <body>
@@ -4119,6 +4227,32 @@ body > *:not(#lavaVulcanoCanvas) {
   </a>
 </div>
 <!-- APP_LOGO_ROW_END -->
+
+<!-- ANONIMO BOOK PROMO START: below logo, before NEWS TERREMOTI -->
+<section id="il-mio-libro" class="abpromo-feature" aria-labelledby="abpromo-title">
+  <div class="abpromo-main">
+    <div class="abpromo-art">
+      <div class="abpromo-book">
+        <span class="abpromo-book-fallback">LA VERA STORIA<br>DI UN<br>BLOGGER</span>
+        <img src="https://anonimo-blogger-preordini.stampa3dnapoli2026.workers.dev/fronte.jpg" alt="Copertina di La vera storia di un blogger, di Anonimo Blogger" loading="lazy" onerror="this.remove()">
+      </div>
+    </div>
+    <div class="abpromo-content">
+      <span class="abpromo-eyebrow">📖 IL NUOVO LIBRO</span>
+      <h2 class="abpromo-heading" id="abpromo-title">LA VERA STORIA <span>DI UN BLOGGER</span></h2>
+      <p class="abpromo-copy">Una storia da conoscere oltre lo schermo. Il nuovo libro di <strong>Anonimo Blogger</strong> sarà presentato in live il <strong>25 dicembre 2026</strong>. I preordini sono aperti.</p>
+      <div class="abpromo-actions">
+        <a class="abpromo-discover" href="libro.html">📚 SCOPRI IL LIBRO</a>
+        <a class="abpromo-preorder" href="https://anonimo-blogger-preordini.stampa3dnapoli2026.workers.dev/" target="_blank" rel="noopener noreferrer">🛒 PREORDINA ORA</a>
+      </div>
+    </div>
+  </div>
+  <div class="abpromo-bottom">
+    <span>⚡ ANONIMO NEWS</span><span>📚 UN RACCONTO PERSONALE</span><span>💙 PREORDINI APERTI</span>
+  </div>
+</section>
+<!-- ANONIMO BOOK PROMO END -->
+
 
 
       <div class="titolo-news-professionale">
